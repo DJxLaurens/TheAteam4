@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+	
+	<servlet>
+		<servlet-name>Hoofdmenu</servlet-name>
+		<servlet-class>Webapp.index</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Hoofdmenu</servlet-name>
+		<url-pattern>/Hoofdmenu.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Klantenbinding</servlet-name>
+		<servlet-class>Webapp.Klantenbinding</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Klantenbinding</servlet-name>
+		<url-pattern>/Klantenbinding.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Klantenbinding1</servlet-name>
+		<servlet-class>Webapp.Klantenbinding1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Klantenbinding1</servlet-name>
+		<url-pattern>/Klantenbinding1.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Werkplaats</servlet-name>
+		<servlet-class>Webapp.Werkplaats</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Werkplaats</servlet-name>
+		<url-pattern>/Werkplaats.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Register Servlet</servlet-name>
+		<servlet-class>Webapp.RegisterServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Register Servlet</servlet-name>
+		<url-pattern>/RegisterServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Login Servlet</servlet-name>
+		<servlet-class>Webapp.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login Servlet</servlet-name>
+		<url-pattern>/LoginServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Logout Servlet</servlet-name>
+		<servlet-class>Webapp.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Logout Servlet</servlet-name>
+		<url-pattern>/LogoutServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CheckLogin Servlet</servlet-name>
+		<servlet-class>Webapp.CheckLoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CheckLogin Servlet</servlet-name>
+		<url-pattern>/CheckLoginServlet.do</url-pattern>
+	</servlet-mapping>
+</web-app>
