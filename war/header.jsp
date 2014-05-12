@@ -20,6 +20,6 @@
 				<li><a href="klantenbinding.jsp">Herinneringsbrieven</a>
 				<ul> <li>Brieven aanmaken</li><li>Factuurbetaling blokkeren</li><li>Klantenbinding</li></ul></li>
 				<li><a href="facturatie.jsp">Betalingen/facturatie</a></li>
-				<li><a href="herinneringsbrieven">Herinneringsbrieven</a></li>
+				<li><a href="herinneringsbrieven.jsp">Herinneringsbrieven</a></li>
 			</ul>
 		</div>
