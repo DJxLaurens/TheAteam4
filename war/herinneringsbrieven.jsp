@@ -1,17 +1,38 @@
+
 <jsp:include page="header.jsp" />
 
 <div class="content">
-<form action="BrievenAanmaken.do" method="get">
-	<h1>Herinneringsbrieven</h1>
-	
-	<h2>Brieven aanmaken</h2>
+<form action="Klantenbinding.do" method="get">
+	<h1>Klantenbinding</h1>
 
-	<h4>Klanten die nog niet betaald hebben binnen 90 dagen:</h4>
+	<h4>Klanten met auto's jonger dan 2010 die een onderhoudsbeurt
+		nodig hebben:</h4>
 
 	<div>
 		<select>
+			<option value="leeg"></option>
+			<option value="jan">Jan</option>
 			<option value="klaas">Klaas</option>
 			<option value="piet">Piet</option>
+		</select>
+	</div>
+
+	<h4>Klanten met auto's ouder dan 2010 die een onderhoudsbeurt
+		nodig hebben:</h4>
+
+	<div>
+		<select>
+			<option value="leeg"></option>
+			<option value="henk">Henk</option>
+		</select>
+	</div>
+
+	<h4>Klanten die langer dan 2 maanden niet aanwezig zijn geweest:</h4>
+
+	<div>
+		<select>
+			<option value="leeg"></option>
+			<option value="jan">Jan</option>
 		</select>
 	</div>
 
