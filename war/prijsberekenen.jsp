@@ -7,14 +7,12 @@
 	<table>
 		<tr>
 			<td><b>Bepaal type dienst:</b></td>
-		</tr>
-	</table>
-	<select>
+		<td><select>
 		<option value="Tanken">Tanken</option>
 		<option value="Onderhoudsbeurt">Onderhoudsbeurt</option>
 		<option value="Parkeren">Parkeren</option>
-	</select>
-	<table>
+		</select></td>
+		</tr>
 		<tr>
 			<td><b>Tanken</b></td>
 		</tr>
@@ -27,28 +25,24 @@
 		</tr>
 		<tr>
 			<td>Klussen:</td>
-		</tr>
-	</table>
-	<select>
+		<td><select>
 		<option value="leeg"></option>
 		<option value="Nieuwe banden">Nieuwe banden</option>
 		<option value="Bougie vervangen">Bougie vervangen</option>
-	</select>
-	<table>
+		</select></td>
+		</tr>
 		<tr>
 			<td>Gewerkte manuren:</td>
 			<td><input type="text" name="aantal"></td>
 		</tr>
 		<tr>
 			<td>Gebruikt onderdeel:</td>
-		</tr>
-		</table>
-			<select>
+			<td><select>
 				<option value="leeg"></option>
 				<option value="Uitlaat">Uitlaat</option>
 				<option value="Voorlamp">Voorlamp</option>
-			</select>
-		<table>
+			</select></td>
+			</tr>
 		<tr>
 			<td>Hoeveelheid onderdelen:</td>
 			<td><input type="text" name="aantal"></td>
@@ -70,13 +64,13 @@
 		</tr>
 		<tr>
 			<td><b>Kies klant:</b></td>
-		</tr>
-	</table>
-	<select>
+	<td><select>
 		<option value="leeg"></option>
 		<option value="Jan">Jan</option>
 		<option value="Klaas">Klaas</option>
-	</select>
+	</select></td>
+	</tr>
+	</table>
 	<div>
 	<input type="submit" value="Pas registreren" name="press" />
 	<input type="submit" value="Direct betalen" name="press" /> 
