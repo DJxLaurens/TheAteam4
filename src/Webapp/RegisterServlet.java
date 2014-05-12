@@ -64,7 +64,7 @@ public class RegisterServlet extends HttpServlet {
 			String email = req.getParameter("email");
 			
 			
-			User u = new User(user, address, password, email);
+			//User u = new User(user, address, password, email);
 			
 			rd = req.getRequestDispatcher("login.jsp");
 		} else
