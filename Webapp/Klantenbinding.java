@@ -18,14 +18,16 @@ public class Klantenbinding extends HttpServlet{
 		
 		String press = req.getParameter("press");
 		
+		RequestDispatcher rd = null;
+		
 		if (press.equals("Brieven aanmaken")){		
 			FileWriter fw = new FileWriter("C:/Users/Jacky/Dropbox/Themaopdracht 4/test.txt", true); 
 			PrintWriter pw = new PrintWriter(fw);			
 			pw.println("test");
 			pw.close(); 
+			rd = req.getRequestDispatcher("klantenbinding.jsp");
+			rd.forward(req, resp);
 		}
-		
-		RequestDispatcher rd = null;
 		
 		if (press.equals("Terug")){		
 			rd = req.getRequestDispatcher("hoofdmenu.jsp");
