@@ -25,15 +25,6 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>Klantenbinding1</servlet-name>
-		<servlet-class>Webapp.Klantenbinding1</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Klantenbinding1</servlet-name>
-		<url-pattern>/Klantenbinding1.do</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
 		<servlet-name>Werkplaats</servlet-name>
 		<servlet-class>Webapp.Werkplaats</servlet-class>
 	</servlet>

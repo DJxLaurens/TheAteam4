@@ -1,4 +1,3 @@
-
 <jsp:include page="header.jsp" />
 
 <div class="content">
@@ -40,8 +39,7 @@
 
 	</br>
 
-	<input type="submit" value="Brieven aanmaken" name="press" /> <input
-		type="submit" value="Terug" name="press" />
+	<input type="submit" value="Brieven aanmaken" name="press" /> 
 
 	<%@ page import="java.util.Calendar"%>
 	<%! Calendar now = Calendar.getInstance(); %>
