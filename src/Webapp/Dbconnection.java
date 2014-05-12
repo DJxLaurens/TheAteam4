@@ -33,5 +33,9 @@ public class Dbconnection {
 	public Connection getConnection(){
 		return con;
 	}
+	
+	public void saveUser(User u){
+		
+	}
 
 }
