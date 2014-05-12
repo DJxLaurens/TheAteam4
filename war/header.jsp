@@ -28,9 +28,9 @@
 					</ul></li>
 				<li><a href="">Herinneringsbrieven</a>
 					<ul>
-						<li>Brieven aanmaken</li>
-						<li>Factuurbetaling blokkeren</li>
-						<li>Klantenbinding</li>
+						<li><a href="herinneringsbrieven-brievenaanmaken.jsp">Brieven aanmaken</a></li>
+						<li><a href="herinneringsbrieven-factuurbetalingblokkeren.jsp">Factuurbetaling blokkeren</a></li>
+						<li><a href="klantenbinding.jsp">Klantenbinding</a></li>
 					</ul></li>
 				<li><a href="">Betalingen/Facturatie</a>
 					<ul>
