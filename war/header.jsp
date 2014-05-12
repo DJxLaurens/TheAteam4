@@ -23,8 +23,8 @@
 				<li><a href="">Parkeergarage</a>
 					<ul>
 						<li><a href="parkeerplaats_reserveren.jsp">Parkeerplaats reserveren</a></li>
-						<li>Parkeerplaats terugboeken</li>
-						<li>Overzicht vorige maand</li>
+						<li><a href="parkeerplaats_terugboeken.jsp">Parkeerplaats terugboeken</a></li>
+						<li><a href="overzicht_bezetting.jsp">Overzicht vorige maand</a></li>
 					</ul></li>
 				<li><a href="">Herinneringsbrieven</a>
 					<ul>
