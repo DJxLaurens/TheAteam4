@@ -1,17 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-	<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-		<title>Menu Werkplaats</title>
-	</head>
-	<body>
+<jsp:include page="header.jsp" />
+	<div class="content">
 		<form action="Werkplaats.do" method="get">
-		<h1>Menu Werkplaats</h1>
-		<div>
-			<input type="submit" value="Voorraadbeheer" name = "press" />
-			<input type="submit" value="Onderhoudsbeurt" name = "press" />
-		</div>
+			<h1>Menu Werkplaats</h1>
+			<div>
+				<input type="submit" value="Voorraadbeheer" name = "press" />
+				<input type="submit" value="Onderhoudsbeurt" name = "press" />
+			</div>
 		</form>
-	</body>
-</html>
+	</div>
+<jsp:include page="footer.jsp" />

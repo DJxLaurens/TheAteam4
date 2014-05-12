@@ -15,10 +15,10 @@
 		<div class="menu">
 			<ul>
 				<li><a href="index.jsp">Home</a></li>
-				<li><a href="werkplaats.jsp">Werkplaats</a></li>
+				<li><a href="menu_werkplaats.jsp">Werkplaats</a></li>
 				<li><a href="parkeergarage.jsp">Parkeergarage</a></li>
 				<li><a href="klantenbinding.jsp">Klantenbinding</a></li>
 				<li><a href="facturatie.jsp">Betalingen/facturatie</a></li>
-				<li><a href="herinneringsbrieven">Herinneringsbrieven</a></li>
+				<li><a href="herinneringsbrieven.jsp">Herinneringsbrieven</a></li>
 			</ul>
 		</div>
