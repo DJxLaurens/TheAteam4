@@ -15,13 +15,28 @@
 		<div class="menu">
 			<ul>
 				<li><a href="index.jsp">Home</a></li>
-				<li><a href="werkplaats.jsp">Werkplaats</a>
-				<ul> <li><a href="voorraadbeheer.jsp">Voorraadbeheer</a></li><li><a href="onderhoudsbeurt.jsp">Onderhoudsbeurt</a></li></ul></li>
-				<li><a href="parkeergarage.jsp">Parkeergarage</a>
-				<ul><li>Parkeerplaats reserveren</li><li>Parkeerplaats terugboeken</li><li>Overzicht vorige maand</li></ul></li>
-				<li><a href="klantenbinding.jsp">Herinneringsbrieven</a>
-				<ul> <li>Brieven aanmaken</li><li>Factuurbetaling blokkeren</li><li>Klantenbinding</li></ul></li>
-				<li><a href="facturatie.jsp">Betalingen/Facturatie</a>
-				<ul><li>Prijs aanpassen</li><li>Prijs berekenen</li><li>Rapportages maken</li></ul></li>
+				<li><a href="">Werkplaats</a>
+					<ul>
+						<li><a href="voorraadbeheer.jsp">Voorraadbeheer</a></li>
+						<li><a href="onderhoudsbeurt.jsp">Onderhoudsbeurt</a></li>
+					</ul></li>
+				<li><a href="">Parkeergarage</a>
+					<ul>
+						<li><a href="parkeerplaats_reserveren.jsp">Parkeerplaats reserveren</a></li>
+						<li>Parkeerplaats terugboeken</li>
+						<li>Overzicht vorige maand</li>
+					</ul></li>
+				<li><a href="">Herinneringsbrieven</a>
+					<ul>
+						<li>Brieven aanmaken</li>
+						<li>Factuurbetaling blokkeren</li>
+						<li>Klantenbinding</li>
+					</ul></li>
+				<li><a href="">Betalingen/Facturatie</a>
+					<ul>
+						<li>Prijs aanpassen</li>
+						<li>Prijs berekenen</li>
+						<li>Rapportages maken</li>
+					</ul></li>
 			</ul>
 		</div>
