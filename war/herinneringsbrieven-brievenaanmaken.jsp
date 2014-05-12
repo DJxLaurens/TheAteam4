@@ -3,6 +3,7 @@
 
 <div class="content">
 <form action="BrievenAanmaken.do" method="get">
+	<div class="left">
 	<h1>Herinneringsbrieven</h1>
 	
 	<h2>Brieven aanmaken</h2>
@@ -20,7 +21,8 @@
 	</br>
 
 	<input type="submit" value="Brieven aanmaken" name="press" /> 
-	
+	</div>
+	<div class="right">
 	<%@ page import="java.util.Calendar"%>
 	<%! Calendar now = Calendar.getInstance(); %>
 	<%
@@ -37,6 +39,7 @@
 	<p>- Er moeten nog aantal brieven aangemaakt worden<p>
 
 </form>
+</div>
 
 </div>
 

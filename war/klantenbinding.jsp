@@ -1,6 +1,7 @@
 <jsp:include page="header.jsp" />
 
 <div class="content">
+<div class="left">
 <form action="Klantenbinding.do" method="get">
 	<h1>Herinneringsbrieven</h1>
 	
@@ -41,6 +42,9 @@
 
 	<input type="submit" value="Brieven aanmaken" name="press" /> 
 
+</div>
+
+<div class="right">
 	<%@ page import="java.util.Calendar"%>
 	<%! Calendar now = Calendar.getInstance(); %>
 	<%
@@ -58,6 +62,7 @@
 
 </form>
 
+</div>
 </div>
 
 <jsp:include page="footer.jsp" />
