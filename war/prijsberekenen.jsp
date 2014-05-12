@@ -1,6 +1,7 @@
 <jsp:include page="header.jsp" />
 
 <div class="content">
+<div class="left">
 <form action="PrijsBerekenen.do" method="get">
 	<h1>Prijs Berekenen</h1>
 	<table>
@@ -82,6 +83,8 @@
 	<input type="submit" value="Factuur aanmaken" name="press" /> 
 	<input type="submit" value="Terug" name="press" />  
 	</div>
+	</div>
+	<div class="right">
 	<%@ page import="java.util.Calendar"%>
 	<%! Calendar now = Calendar.getInstance(); %>
 	<%
@@ -102,6 +105,7 @@
 
 </form>
 
+</div>
 </div>
 
 <jsp:include page="footer.jsp" />

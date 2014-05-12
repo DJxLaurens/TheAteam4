@@ -3,6 +3,7 @@
 
 <div class="content">
 <form action="FactuurbetalingBlokkeren.do" method="get">
+	<div class="left">
 	<h1>Herinneringsbrieven</h1>
 	
 	<h2>Factuurbetaling blokkeren voor klant</h2>
@@ -18,6 +19,10 @@
 	</br>
 
 	<input type="submit" value="Betaling blokkeren" name="press" /> 
+
+	</div>
+	
+	<div class="right">
 
 	<%@ page import="java.util.Calendar"%>
 	<%! Calendar now = Calendar.getInstance(); %>
@@ -36,6 +41,7 @@
 	
 </form>
 
+</div>
 </div>
 
 <jsp:include page="footer.jsp" />

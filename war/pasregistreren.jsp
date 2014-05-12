@@ -16,7 +16,8 @@
 		</tr>
 		<tr>
 			<td>Verloopdatum(Alleen bij creditcards):</td>
-			<td><input type="text" name="verloopdatum"></td>
+			<td><input type="text" name="dagverloop"> - <input type="text"
+					name="maandverloop"> - <input type="text" name="jaarverloop"></td>
 		</tr>
 		<tr>
 			<td>Te betalen bedrag:</td>
