@@ -17,8 +17,7 @@
 
 	</br>
 
-	<input type="submit" value="Betaling blokkeren" name="press" /> <input
-		type="submit" value="Terug" name="press" />
+	<input type="submit" value="Betaling blokkeren" name="press" /> 
 
 	<%@ page import="java.util.Calendar"%>
 	<%! Calendar now = Calendar.getInstance(); %>
