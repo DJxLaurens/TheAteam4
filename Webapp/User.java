@@ -1,7 +1,7 @@
 package Webapp;
 
 public class User {
-	private static String name, pass, email, address;
+	private String name, pass, email, address;
 	
 	public User(String nm, String adr, String ps, String em){
 		name = nm;
@@ -16,7 +16,7 @@ public class User {
 	public void setPass(String ps){
 		pass = ps;
 	}
-	public static String getName(){
+	public String getName(){
 		return name;
 	}
 	

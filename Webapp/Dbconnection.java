@@ -31,8 +31,9 @@ public class Dbconnection {
 		return con;
 	}
 
-	public static void saveUser(User u) {
-
+	public static void saveUser(User u) throws SQLException {
+		Statement statement = con.createStatement();
+		String sql = "INSERT INTO autototaaldiensten" + "VALUES ("+ u.getName() +",'Bananenlaan 1', '1234AB', 123456789, 'jan@lolmail.com', '2013-03-11', 0, '2014-03-01', 0);";
+		statement.executeUpdate(sql);
 	}
-
 }

@@ -10,17 +10,17 @@ import Webapp.Dbconnection;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.sql.SQLException;
 
 public class RegisterServlet extends HttpServlet {
-	private String name, pass;
 	private String registerdUsers = "";
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		boolean loginSuccess = false;		
-		name = req.getParameter("username");
+		String name = req.getParameter("username");
 		String address = req.getParameter("address");
-		pass = req.getParameter("password");
+		String pass = req.getParameter("password");
 		String pass2 = req.getParameter("password2");
 		String email = req.getParameter("email");
 		String email2 = req.getParameter("email2");
@@ -60,31 +60,17 @@ public class RegisterServlet extends HttpServlet {
 			context.setAttribute("name", name);
 			context.setAttribute("pass", pass);
 			
-			String user = req.getParameter("username");
-			String address = req.getParameter("address");
-			String password = req.getParameter("password");
-			String email = req.getParameter("email");
+			User u = new User(name, address, pass, email);
 			
-			
-			User u = new User(user, address, password, email);
-			
-			Dbconnection.saveUser(u);
+			try {
+				Dbconnection.saveUser(u);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 			rd = req.getRequestDispatcher("login.jsp");
 		} else
 			rd = req.getRequestDispatcher("signup.jsp");
 		rd.forward(req, resp);
 	}
-	
-//	public void sqlAction(String sql) throws Exception {
-//		con = getConnection();
-//
-//        Statement stmt = con.createStatement();
-//        stmt.executeUpdate(sql);
-//    }
-//	
-//	public void create(String sql) throws Exception {
-//        sqlAction(sql);
-//        System.out.println("Een student aangemaakt");
-//    }
 }
