@@ -3,7 +3,9 @@
 
 <div class="content">
 <form action="Klantenbinding.do" method="get">
-	<h1>Klantenbinding</h1>
+	<h1>Herinneringsbrieven</h1>
+	
+	<h2>Klantenbinding</h2>
 
 	<h4>Klanten met auto's jonger dan 2010 die een onderhoudsbeurt
 		nodig hebben:</h4>
@@ -53,6 +55,8 @@
 	<%= s %>
 
 	<h1>Brievenoverzicht</h1>
+	
+	<p>- Er moeten nog aantal brieven aangemaakt worden<p>
 
 </form>
 

@@ -35,6 +35,8 @@
 
 	<h1>Brievenoverzicht</h1>
 
+	<p>- Er moeten nog aantal brieven aangemaakt worden<p>
+
 </form>
 
 </div>
