@@ -1,7 +1,7 @@
 <jsp:include page="header.jsp" />
 
 		<div class="content">
-			<h1>Parkeerplaats reserveren</h1>
+			<h1>Parkeerplaats reserveren </h1>
 			
 
 			<form>
