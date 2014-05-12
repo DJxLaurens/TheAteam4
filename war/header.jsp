@@ -36,7 +36,7 @@
 					<ul>
 						<li><a href="prijsaanpassen.jsp">Prijs aanpassen</a></li>
 						<li>Prijs berekenen</li>
-						<li>Rapportages maken</li>
+						<li><a href="rapportagesaanmaken.jsp">Rapportages aanmaken</a></li>
 					</ul></li>
 			</ul>
 		</div>
