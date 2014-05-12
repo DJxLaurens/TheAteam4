@@ -2,7 +2,7 @@
 <jsp:include page="header.jsp" />
 
 <div class="content">
-<form action="Klantenbinding.do" method="get">
+<form action="BrievenAanmaken.do" method="get">
 	<h1>Herinneringsbrieven</h1>
 	
 	<h2>Brieven aanmaken</h2>
