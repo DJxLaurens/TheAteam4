@@ -4,10 +4,12 @@ import java.io.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import Webapp.Dbconnection;
+
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.File;
-import src.Webapp.Dbconnection;
 
 public class RegisterServlet extends HttpServlet {
 	private String name, pass;

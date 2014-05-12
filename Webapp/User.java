@@ -1,4 +1,4 @@
-package src.Webapp;
+package Webapp;
 
 public class User {
 	private static String name, pass, email, address;
