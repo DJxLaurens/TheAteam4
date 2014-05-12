@@ -6,8 +6,7 @@ import com.mysql.jdbc.Connection;
 
 public class Dbconnection {
 	private static Connection con = null;
-
-	public static void main(String[] args) {
+	static{ 
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -33,6 +32,10 @@ public class Dbconnection {
 	
 	public Connection getConnection(){
 		return con;
+	}
+	
+	public void saveUser(User u){
+		
 	}
 
 }

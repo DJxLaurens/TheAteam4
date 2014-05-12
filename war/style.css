@@ -94,6 +94,11 @@
 	color: white;
 	text-decoration: none;
 }
+.menu ul { padding:1; margin:1; list-style:none; } 
+.menu li { float:left; position:relative; font-size:12px; padding-right:100; display:block;} 
+.menu li ul { display:none; position:absolute; background:black; height:auto; width:14em;} 
+.menu li:hover ul{ display:block !important; background:black; height:auto; width:14em; } 
+.menu li ul li{ clear:both; border-style:none;font-size: 12px; padding-left: 10px;}
 
 .container {
 	border: 1px solid black;

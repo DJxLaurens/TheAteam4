@@ -1,7 +1,8 @@
+
 <jsp:include page="header.jsp" />
 
 <div class="content">
-<form action="BrievenAanmaken.do" method="get">
+<form action="Klantenbinding.do" method="get">
 	<h1>Herinneringsbrieven</h1>
 	
 	<h2>Brieven aanmaken</h2>
@@ -10,6 +11,7 @@
 
 	<div>
 		<select>
+			<option value="leeg"></option>
 			<option value="klaas">Klaas</option>
 			<option value="piet">Piet</option>
 		</select>
