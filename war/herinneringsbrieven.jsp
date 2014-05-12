@@ -1,0 +1,40 @@
+<jsp:include page="header.jsp" />
+
+<div class="content">
+<form action="BrievenAanmaken.do" method="get">
+	<h1>Herinneringsbrieven</h1>
+	
+	<h2>Brieven aanmaken</h2>
+
+	<h4>Klanten die nog niet betaald hebben binnen 90 dagen:</h4>
+
+	<div>
+		<select>
+			<option value="klaas">Klaas</option>
+			<option value="piet">Piet</option>
+		</select>
+	</div>
+
+	</br>
+
+	<input type="submit" value="Brieven aanmaken" name="press" /> <input
+		type="submit" value="Terug" name="press" />
+
+	<%@ page import="java.util.Calendar"%>
+	<%! Calendar now = Calendar.getInstance(); %>
+	<%
+		int day = now.get(Calendar.DATE);
+		int month = now.get(Calendar.MONTH) + 1;
+		int year = now.get(Calendar.YEAR);
+		String s = day + "-" + month + "-" + year;
+		%>
+	</br> </br>
+	<%= s %>
+
+	<h1>Brievenoverzicht</h1>
+
+</form>
+
+</div>
+
+<jsp:include page="footer.jsp" />
