@@ -3,7 +3,6 @@
 <div class="content">
 <form action="PrijsBerekenen.do" method="get">
 	<h1>Prijs Berekenen</h1>
-
 	<table>
 		<tr>
 			<td><b>Bepaal type dienst:</b></td>
