@@ -16,7 +16,7 @@
 			<ul>
 				<li><a href="index.jsp">Home</a></li>
 				<li><a href="werkplaats.jsp">Werkplaats</a>
-				<ul> <li>Voorraadbeheer</li><li>Onderhoudsbeurt</li></ul></li>
+				<ul> <li><a href="voorraadbeheer.jsp">Voorraadbeheer</a></li><li><a href="onderhoudsbeurt.jsp">Onderhoudsbeurt</a></li></ul></li>
 				<li><a href="parkeergarage.jsp">Parkeergarage</a>
 				<ul><li>Parkeerplaats reserveren</li><li>Parkeerplaats terugboeken</li><li>Overzicht vorige maand</li></ul></li>
 				<li><a href="klantenbinding.jsp">Herinneringsbrieven</a>
