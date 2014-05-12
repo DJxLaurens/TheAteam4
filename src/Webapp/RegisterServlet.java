@@ -7,7 +7,7 @@ import javax.servlet.http.*;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.File;
-import Webapp.Dbconnection;
+import src.Webapp.Dbconnection;
 
 public class RegisterServlet extends HttpServlet {
 	private String name, pass;
@@ -64,7 +64,9 @@ public class RegisterServlet extends HttpServlet {
 			String email = req.getParameter("email");
 			
 			
-			//User u = new User(user, address, password, email);
+			User u = new User(user, address, password, email);
+			
+			Dbconnection.saveUser(u);
 			
 			rd = req.getRequestDispatcher("login.jsp");
 		} else

@@ -9,6 +9,7 @@ public class User {
 		pass = ps;
 		email = em;
 	}
+	
 	public void setName(String nm){
 		name = nm;
 	}
