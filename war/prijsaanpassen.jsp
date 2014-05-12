@@ -2,6 +2,7 @@
 
 <div class="content">
 <form action="PrijsAanpassen.do" method="get">
+	<div class="left">
 	<h1>Prijs aanpassen</h1>
 
 	<table>
@@ -38,6 +39,9 @@
 
 	<input type="submit" value="Aanpassen" name="press" /> 
 
+</div>
+
+<div class="right">
 	<%@ page import="java.util.Calendar"%>
 	<%! Calendar now = Calendar.getInstance(); %>
 	<%
@@ -59,6 +63,7 @@
 
 </form>
 
+</div>
 </div>
 
 <jsp:include page="footer.jsp" />
