@@ -17,7 +17,8 @@
 				<li><a href="index.jsp">Home</a></li>
 				<li><a href="werkplaats.jsp">Werkplaats</a></li>
 				<li><a href="parkeergarage.jsp">Parkeergarage</a></li>
-				<li><a href="klantenbinding.jsp">Klantenbinding</a></li>
+				<li><a href="klantenbinding.jsp">Herinneringsbrieven</a>
+				<ul> <li>Brieven aanmaken</li><li>Factuurbetaling blokkeren</li><li>Klantenbinding</li></ul></li>
 				<li><a href="facturatie.jsp">Betalingen/facturatie</a></li>
 				<li><a href="herinneringsbrieven">Herinneringsbrieven</a></li>
 			</ul>
