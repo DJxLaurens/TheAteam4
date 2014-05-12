@@ -16,7 +16,7 @@
 			<tr>
 				<td>1</td>
 				<td>Diesel</td>
-				<td>1000 liter</td>
+				<td>10000 liter</td>
 				<td>450 liter</td>
 				<td><input type="text" name="aantal"> </td>
 			</tr>

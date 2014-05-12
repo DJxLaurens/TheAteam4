@@ -2,8 +2,6 @@
 
 <div class="content">
 	<h1>Parkeerplaats reserveren</h1>
-
-
 	<form>
 		<table>
 			<tr>
