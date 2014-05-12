@@ -34,7 +34,7 @@
 					</ul></li>
 				<li><a href="">Betalingen/Facturatie</a>
 					<ul>
-						<li>Prijs aanpassen</li>
+						<li><a href="prijsaanpassen.jsp">Prijs aanpassen</a></li>
 						<li>Prijs berekenen</li>
 						<li>Rapportages maken</li>
 					</ul></li>

@@ -10,29 +10,29 @@
 		</tr>
 		<tr>
 			<td>Literprijs:</td>
-			<td><input type="text" name="aantal"></td>
+			<td><input type="text" name="literprijs"></td>
 		</tr>
 		<tr>
 			<td><b>Onderhoudsprijs</b></td>
 		</tr>
 		<tr>
 			<td>Gewerkte manurenprijs:</td>
-			<td><input type="text" name="aantal"></td>
+			<td><input type="text" name="manurenprijs"></td>
 		</tr>
 		<tr>
 			<td><b>Parkeerprijs</b></td>
 		</tr>
 		<tr>
 			<td>Dagprijs:</td>
-			<td><input type="text" name="aantal"></td>
+			<td><input type="text" name="dagprijs"></td>
 		</tr>
 		<tr>
 			<td>Weekprijs:</td>
-			<td><input type="text" name="aantal"></td>
+			<td><input type="text" name="weekprijs"></td>
 		</tr>
 		<tr>
 			<td>Maandprijs:</td>
-			<td><input type="text" name="aantal"></td>
+			<td><input type="text" name="maandprijs"></td>
 		</tr>
 	</table>
 
@@ -53,6 +53,7 @@
 	
 	<p>- Literprijs is momenteel:<p>
 	<p>- Gewerkte manurenprijs is momenteel:<p>
+	<p>- Dagprijs is momenteel:</p>
 	<p>- Weekprijs is momenteel:<p>
 	<p>- Maandprijs is momenteel:<p>
 
