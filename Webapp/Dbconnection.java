@@ -34,7 +34,7 @@ public class Dbconnection {
 		return con;
 	}
 	
-	public void saveUser(User u){
+	public static void saveUser(User u){
 		
 	}
 
