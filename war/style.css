@@ -81,8 +81,8 @@
 }
 
 .menu ul li a:active {
-	color: white;
-	text-decoration: none;
+	color: blue;
+	text-decoration: underline !important;
 }
 
 .menu ul li a:link {
@@ -94,7 +94,6 @@
 	color: white;
 	text-decoration: none;
 }
-
 .menu ul { padding:1; margin:1; list-style:none; } 
 .menu li { float:left; position:relative; font-size:12px; padding-right:100; display:block;} 
 .menu li ul { display:none; position:absolute; background:black; height:auto; width:14em;} 

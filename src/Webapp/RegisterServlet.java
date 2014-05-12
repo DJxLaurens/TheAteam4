@@ -57,6 +57,15 @@ public class RegisterServlet extends HttpServlet {
 		if (loginSuccess) {			
 			context.setAttribute("name", name);
 			context.setAttribute("pass", pass);
+			
+			String user = req.getParameter("username");
+			String address = req.getParameter("address");
+			String password = req.getParameter("password");
+			String email = req.getParameter("email");
+			
+			
+			//User u = new User(user, address, password, email);
+			
 			rd = req.getRequestDispatcher("login.jsp");
 		} else
 			rd = req.getRequestDispatcher("signup.jsp");

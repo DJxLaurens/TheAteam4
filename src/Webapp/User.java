@@ -1,11 +1,13 @@
-package Webapp;
+package src.Webapp;
 
 public class User {
-	private static String name, pass;
+	private static String name, pass, email, address;
 	
-	public User(String nm, String ps){
+	public User(String nm, String adr, String ps, String em){
 		name = nm;
+		address = adr;
 		pass = ps;
+		email = em;
 	}
 	public void setName(String nm){
 		name = nm;
