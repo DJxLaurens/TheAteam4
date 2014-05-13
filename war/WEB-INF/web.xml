@@ -16,12 +16,12 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>Klantenbinding</servlet-name>
-		<servlet-class>Webapp.Klantenbinding</servlet-class>
+		<servlet-name>Klantenbinding Servlet</servlet-name>
+		<servlet-class>Webapp.KlantenbindingServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Klantenbinding</servlet-name>
-		<url-pattern>/Klantenbinding.do</url-pattern>
+		<servlet-name>Klantenbinding Servlet</servlet-name>
+		<url-pattern>/KlantenbindingServlet.do</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -67,5 +67,14 @@
 	<servlet-mapping>
 		<servlet-name>CheckLogin Servlet</servlet-name>
 		<url-pattern>/CheckLoginServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>PrijsBerekenen Servlet</servlet-name>
+		<servlet-class>Webapp.PrijsBerekenenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PrijsBerekenen Servlet</servlet-name>
+		<url-pattern>/PrijsBerekenenServlet.do</url-pattern>
 	</servlet-mapping>
 </web-app>

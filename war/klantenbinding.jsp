@@ -2,7 +2,7 @@
 
 <div class="content">
 <div class="left">
-<form action="Klantenbinding.do" method="get">
+<form action="KlantenbindingServlet.do" method="get">
 	<h1>Herinneringsbrieven</h1>
 	
 	<h2>Klantenbinding</h2>

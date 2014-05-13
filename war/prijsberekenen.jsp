@@ -2,7 +2,7 @@
 
 <div class="content">
 <div class="left">
-<form action="PrijsBerekenen.do" method="get">
+<form action="PrijsBerekenenServlet.do" method="get">
 	<h1>Prijs Berekenen</h1>
 	<table>
 		<tr>
