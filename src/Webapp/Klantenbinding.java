@@ -16,6 +16,8 @@ public class Klantenbinding extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
+		RequestDispatcher rd = null;
+		
 		String press = req.getParameter("press");
 
 		if (press.equals("Brieven aanmaken")){		
@@ -23,12 +25,7 @@ public class Klantenbinding extends HttpServlet{
 			PrintWriter pw = new PrintWriter(fw);			
 			pw.println("test");
 			pw.close(); 
-		}
-
-		RequestDispatcher rd = null;
-
-		if (press.equals("Terug")){		
-			rd = req.getRequestDispatcher("hoofdmenu.jsp");
+			rd = req.getRequestDispatcher("klantenbinding.jsp");
 			rd.forward(req, resp);
 		}
 	}
