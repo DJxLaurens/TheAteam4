@@ -16,15 +16,17 @@ public class Klantenbinding extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		String press = req.getParameter("press");
-
 		RequestDispatcher rd = null;
 		
+		String press = req.getParameter("press");
+
 		if (press.equals("Brieven aanmaken")){		
 			FileWriter fw = new FileWriter("C:/Users/Jacky/Dropbox/Themaopdracht 4/test.txt", true); 
 			PrintWriter pw = new PrintWriter(fw);			
 			pw.println("test");
 			pw.close(); 
+			rd = req.getRequestDispatcher("klantenbinding.jsp");
+			rd.forward(req, resp);
 		}
 	}
 }
