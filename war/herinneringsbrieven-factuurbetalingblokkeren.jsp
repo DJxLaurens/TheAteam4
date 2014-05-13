@@ -36,9 +36,9 @@
 	<%= s %>
 
 	<h1>Factuuroverzicht</h1>
-	
-	<p>- Er moeten nog aantal factuurbetaling(en) geblokkeerd worden<p>
-	
+	<div class="box">
+		<p>- Er moeten nog aantal factuurbetaling(en) geblokkeerd worden<p>
+	</div>
 </form>
 
 </div>

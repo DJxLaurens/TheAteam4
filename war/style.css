@@ -120,3 +120,9 @@
 	float: right;
 	width: 50%;
 }
+
+.box{
+	border: 1px solid black;
+	width: 400px;
+	padding: 5px;
+}

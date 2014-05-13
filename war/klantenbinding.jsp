@@ -57,9 +57,9 @@
 	<%= s %>
 
 	<h1>Brievenoverzicht</h1>
-	
-	<p>- Er moeten nog aantal brieven aangemaakt worden<p>
-
+	<div class="box">
+		<p>- Er moeten nog aantal brieven aangemaakt worden<p>
+	</div>
 </form>
 
 </div>

@@ -54,13 +54,13 @@
 	<%= s %>
 
 	<h1>Prijzenoverzicht</h1>
-	
-	<p>- Literprijs is momenteel:<p>
-	<p>- Gewerkte manurenprijs is momenteel:<p>
-	<p>- Dagprijs is momenteel:</p>
-	<p>- Weekprijs is momenteel:<p>
-	<p>- Maandprijs is momenteel:<p>
-
+	<div class="box">
+		<p>- Literprijs is momenteel:<p>
+		<p>- Gewerkte manurenprijs is momenteel:<p>
+		<p>- Dagprijs is momenteel:</p>
+		<p>- Weekprijs is momenteel:<p>
+		<p>- Maandprijs is momenteel:<p>
+	</div>
 </form>
 
 </div>
