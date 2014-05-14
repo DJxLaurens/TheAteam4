@@ -24,11 +24,13 @@ public class RegisterServlet extends HttpServlet {
 		String pass2 = req.getParameter("password2");
 		String email = req.getParameter("email");
 		String email2 = req.getParameter("email2");
-		String rol = req.getParameter("rol");
+		String tempRol = req.getParameter("rol");
+		int rol = 0;
 		String s = "";
 		
 		if (!"".equals(name) && !"".equals(address) && !"".equals(pass)
 				&& !"".equals(email)) {
+			rol = Integer.parseInt(tempRol);
 			boolean loginSuccessMail = email.equals(email2);
 			boolean loginSuccessPass = pass.equals(pass2);
 			if(loginSuccessMail && loginSuccessPass){

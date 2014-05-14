@@ -38,12 +38,12 @@
 			</div>
 			<div>
 				<select>
-					<option value="Administrateur" name = "rol">Administrateur</option>
-					<option value="Bedrijfsleider" name = "rol">Bedrijfsleider</option>
-					<option value="Kassamedewerker" name = "rol">Kassamedewerker</option>
-					<option value="Klant" name = "rol">Klant</option>
-					<option value="Magazijn" name = "rol">Magazijn</option>
-					<option value="Planner" name = "rol">Planner</option>					
+					<option value="1" name = "rol">Administrateur</option>
+					<option value="2" name = "rol">Bedrijfsleider</option>
+					<option value="3" name = "rol">Kassamedewerker</option>
+					<option value="4" name = "rol">Klant</option>
+					<option value="5" name = "rol">Magazijn</option>
+					<option value="6" name = "rol">Planner</option>					
 				</select>
 			</div>
 			<div>

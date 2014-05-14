@@ -4,6 +4,8 @@ import java.sql.*;
 
 public class Dbconnection {
 	private static Connection con = null;
+	private static ResultSet resultSet = null;
+	private static int counter = 1;
 	static {
 
 		try {
@@ -32,23 +34,28 @@ public class Dbconnection {
 	}
 
 	public static void saveUser(User u) throws SQLException {
-		System.out.println(u.getName() + u.getAddress() + u.getEmail() + u.getPass());
+		System.out.println(u.getName() + u.getAddress() + u.getEmail()
+				+ u.getPass() + " dit is de invoer");
 		Statement statement = con.createStatement();
-		//String sql = "INSERT INTO users (id, name, role_id, address, email, password) VALUES ('2', " + u.getName() + ", '1', "+ u.getAddress() +"," + u.getEmail() + "," + u.getPass() + ");";
-		//String sql = "INSERT INTO users (id, 'name', role_id, 'address', 'email', 'password') VALUES (2, Henk, 1, Straatweg 5, info@email.nl,w8woord);";
-		try
-        {
-			statement.execute("INSERT INTO user (name, role_id, address, email, password)"+ "VALUES (2,"+ u.getName()+", 1,"+u.getAddress()+", "+u.getAddress()+","+u.getPass()+","+u.getRol()+")");
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }finally {
-            try {
-            	statement.close();
-                con.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+		resultSet = statement.executeQuery("SELECT COUNT(*) FROM autototaaldiensten.user");
+		AantalRecords(resultSet);
+		try {
+			statement.execute("INSERT INTO user (id, name, role_id, address, email, password)"+ "VALUES ('"+counter+"','"+ u.getRol() + "','"+ counter+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				statement.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private static void AantalRecords(ResultSet resultSet) throws SQLException {
+		while (resultSet.next()) {
+			counter ++;
+		}
 	}
 }

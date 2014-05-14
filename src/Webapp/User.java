@@ -1,9 +1,10 @@
 package Webapp;
 
 public class User {
-	private String name, pass, email, address, rol;
+	private String name, pass, email, address;
+	private int rol = 0;
 	
-	public User(String nm, String adr, String ps, String em, String rl){
+	public User(String nm, String adr, String ps, String em, int rl){
 		name = nm;
 		address = adr;
 		pass = ps;
@@ -25,7 +26,7 @@ public class User {
 	public String getPass(){
 		return pass;
 	}
-	public String getRol(){
+	public int getRol(){
 		return rol;
 	}
 }
