@@ -1,4 +1,4 @@
-package Webapp;
+package Servlet;
 
 import java.io.*;
 import java.sql.*;

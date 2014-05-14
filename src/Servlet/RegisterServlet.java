@@ -1,4 +1,4 @@
-package Webapp;
+package Servlet;
 
 import java.io.*;
 
@@ -6,6 +6,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import Webapp.Dbconnection;
+import Webapp.User;
 
 import java.io.FileWriter;
 import java.io.BufferedWriter;

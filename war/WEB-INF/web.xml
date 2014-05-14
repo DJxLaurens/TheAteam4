@@ -76,5 +76,5 @@
 	<servlet-mapping>
 		<servlet-name>PrijsBerekenen Servlet</servlet-name>
 		<url-pattern>/PrijsBerekenenServlet.do</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping>	
 </web-app>
