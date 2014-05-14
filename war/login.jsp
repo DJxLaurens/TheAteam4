@@ -18,7 +18,7 @@
 				}					
 			%>	      
 				<div>		
-					<label>Username:</label> 
+					<label>Usernames:</label> 
 					<input type="text" name="username" />
 				</div>
 				<div>
@@ -27,7 +27,7 @@
 				</div>
 				<div>
 				<input type="submit" value="Submit"/>
-				<a href="signup.jsp">Sign up</a>
+				<a href="register.jsp">Register User</a>
 				</div>			
 			</div>
 		</form>	
