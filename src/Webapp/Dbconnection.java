@@ -14,9 +14,8 @@ public class Dbconnection {
 			System.out.println("Driver not found: " + e);
 		}
 
-		String url = "jdbc:mysql://localhost:3306/autototaaldienst";
+		String url = "jdbc:mysql://localhost/autototaaldiensten";
 		String user = "root";
-
 		String password = "root";
 
 		try {
@@ -39,7 +38,7 @@ public class Dbconnection {
 		//String sql = "INSERT INTO users (id, 'name', role_id, 'address', 'email', 'password') VALUES (2, Henk, 1, Straatweg 5, info@email.nl,w8woord);";
 		try
         {
-			statement.execute("INSERT INTO users (id, name, role_id, address, email, password)"+ "VALUES (2,'Henk', 1,'Straatweg 5', 'info@email.com','w8woord')");
+			statement.execute("INSERT INTO user (id, name, role_id, address, email, password)"+ "VALUES (2,'Henk', 1,'Straatweg 5', 'info@email.com','w8woord')");
         }
         catch (Exception e) {
             e.printStackTrace();
