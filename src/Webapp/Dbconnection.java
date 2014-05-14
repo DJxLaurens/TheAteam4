@@ -38,7 +38,7 @@ public class Dbconnection {
 		//String sql = "INSERT INTO users (id, 'name', role_id, 'address', 'email', 'password') VALUES (2, Henk, 1, Straatweg 5, info@email.nl,w8woord);";
 		try
         {
-			statement.execute("INSERT INTO user (id, name, role_id, address, email, password)"+ "VALUES (2,'Henk', 1,'Straatweg 5', 'info@email.com','w8woord')");
+			statement.execute("INSERT INTO user (name, role_id, address, email, password)"+ "VALUES (2,"+ u.getName()+", 1,"+u.getAddress()+", "+u.getAddress()+","+u.getPass()+","+u.getRol()+")");
         }
         catch (Exception e) {
             e.printStackTrace();

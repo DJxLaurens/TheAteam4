@@ -27,7 +27,7 @@
 				</div>
 				<div>
 				<input type="submit" value="Submit"/>
-				<a href="signup.jsp">Sign up</a>
+				<a href="register.jsp">Register User</a>
 				</div>			
 			</div>
 		</form>	
