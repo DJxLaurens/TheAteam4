@@ -1,5 +1,6 @@
-package Webapp;
+package Servlet;
 
+import Webapp.Klant;
 
 public class Auto{
     private String kenteken;

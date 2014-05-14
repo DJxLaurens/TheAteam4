@@ -1,9 +1,16 @@
-package Webapp;
+package Servlet;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import Webapp.Klant;
+import Webapp.Klus;
+import Webapp.Monteur;
+import Webapp.Parkeerplaats;
+import Webapp.Pas;
+import Webapp.Product;
 
 public class AutoTotaalDienst {
     private ArrayList<Product> alleOnderdelen = new ArrayList<Product>();
