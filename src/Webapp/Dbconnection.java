@@ -13,10 +13,10 @@ public class Dbconnection {
 		} catch (ClassNotFoundException e) {
 			System.out.println("Driver not found: " + e);
 		}
-
-		String url = "jdbc:mysql://localhost/autototaaldienst";
+		String databaseURL = "jdbc:mysql://localhost";
+		String url = "jdbc:mysql://localhost:8889/autototaaldienst";
 		String user = "root";
-		String password = "";
+		String password = "root";
 
 		try {
 			con = (Connection) DriverManager.getConnection(url, user, password);
