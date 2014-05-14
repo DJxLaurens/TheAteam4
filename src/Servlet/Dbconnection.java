@@ -1,4 +1,4 @@
-package Webapp;
+package Servlet;
 
 import java.sql.*;
 import java.sql.SQLException;

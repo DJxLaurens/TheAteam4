@@ -1,4 +1,4 @@
-package Webapp;
+package Servlet;
 
 public class Product {
     private int minVoorraad;
