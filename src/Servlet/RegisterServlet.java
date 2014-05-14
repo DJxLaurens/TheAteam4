@@ -50,25 +50,22 @@ public class RegisterServlet extends HttpServlet {
 			} catch (SQLException e2) {
 				e2.printStackTrace();
 			}
-			if (rs != null) {
-				try {
-					while (rs.next()) {
-						String dbNaam = rs.getString("name");
-						String dbPass = rs.getString("password");
-						if (!dbNaam.equals(name)&& !dbPass.equals(name)) {
-							loginSuccess = true;
-						} else {
-							loginSuccess = false;
-							s += "Er bestaat al een user met deze gegevens";
-						}
+			try {
+				while (rs.next()) {
+					String dbNaam = rs.getString("name");
+					String dbPass = rs.getString("password");
+					if (!dbNaam.equals(name) && !dbPass.equals(name)) {
+						loginSuccess = true;
+					} else {
+						loginSuccess = false;
+						s += "Er bestaat al een user met deze gegevens";
+						break;
 					}
-				} catch (SQLException e1) {
-					e1.printStackTrace();
 				}
-			} else {
-				loginSuccess = false;
-				s += "rs is leeg";
+			} catch (SQLException e1) {
+				e1.printStackTrace();
 			}
+
 		} else {
 			s += "Something is missing!\n\n";
 		}
