@@ -1,4 +1,4 @@
-package Servlet;
+package Webapp;
 
 public class User {
 	private String name, pass, email, address;

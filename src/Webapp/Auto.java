@@ -1,4 +1,5 @@
-package Servlet;
+package Webapp;
+
 
 public class Auto{
     private String kenteken;

@@ -1,4 +1,4 @@
-package Servlet;
+package Webapp;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

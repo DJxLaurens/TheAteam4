@@ -2,7 +2,7 @@
 
 <div class="content">
 <div class="left">
-<form action="PrijsBerekenen.do" method="get">
+<form action="PrijsBerekenenServlet.do" method="get">
 	<h1>Prijs Berekenen</h1>
 	<table>
 		<tr>
@@ -94,6 +94,7 @@
 	<div class="box">
 		<p>- Literprijs is momenteel:<p>
 		<p>- Gewerkte manurenprijs is momenteel:<p>
+		<p>- Dagprijs is momenteel:<p>
 		<p>- Weekprijs is momenteel:<p>
 		<p>- Maandprijs is momenteel:<p>
 	</div>

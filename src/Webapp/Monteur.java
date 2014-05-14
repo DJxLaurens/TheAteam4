@@ -1,4 +1,4 @@
-package Servlet;
+package Webapp;
 
 import java.awt.*;
 import java.awt.event.*;

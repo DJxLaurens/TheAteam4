@@ -1,7 +1,6 @@
-package Servlet;
+package Webapp;
 
 import java.sql.*;
-import java.sql.SQLException;
 
 public class Dbconnection {
 	private static Connection con = null;

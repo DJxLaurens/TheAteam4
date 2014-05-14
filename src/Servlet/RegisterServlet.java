@@ -5,7 +5,8 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import Servlet.Dbconnection;
+import Webapp.Dbconnection;
+import Webapp.User;
 
 import java.io.FileWriter;
 import java.io.BufferedWriter;

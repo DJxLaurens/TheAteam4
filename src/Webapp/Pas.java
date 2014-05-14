@@ -1,4 +1,5 @@
-package Servlet;
+package Webapp;
+
 
 public class Pas{
     private String naamrekeninghouder;
