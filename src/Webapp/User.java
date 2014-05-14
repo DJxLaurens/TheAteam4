@@ -20,6 +20,18 @@ public class User {
 		return name;
 	}
 	
+	public String getAddress(){
+		return address;
+	}
+	
+	public String getEmail(){
+		return email;
+	}
+	
+	public String getPassword(){
+		return pass;
+	}
+	
 	public String getPass(){
 		return pass;
 	}

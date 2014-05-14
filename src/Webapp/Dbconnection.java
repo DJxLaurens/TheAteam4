@@ -32,8 +32,9 @@ public class Dbconnection {
 	}
 
 	public static void saveUser(User u) throws SQLException {
+		System.out.println(u.getName() + u.getAddress() + u.getEmail() + u.getPass());
 		Statement statement = con.createStatement();
-		String sql = "INSERT INTO autototaaldiensten" + "VALUES ("+ u.getName() +",'Bananenlaan 1', '1234AB', 123456789, 'jan@lolmail.com', '2013-03-11', 0, '2014-03-01', 0);";
+		String sql = "INSERT INTO users" + "VALUES ("+ u.getName() +",'1'," + u.getAddress() + " , " + u.getEmail() + "," + u.getPass() + ")";
 		statement.executeUpdate(sql);
 	}
 }
