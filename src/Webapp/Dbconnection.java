@@ -4,8 +4,8 @@ import java.sql.*;
 
 public class Dbconnection {
 	private static Connection con = null;
-	private static ResultSet resultSet = null;
-	private static int counter = 1;
+	private static ResultSet alleRecords = null;
+	private static int counter = 0;
 	static {
 
 		try {
@@ -37,10 +37,10 @@ public class Dbconnection {
 		System.out.println(u.getName() + u.getAddress() + u.getEmail()
 				+ u.getPass() + " dit is de invoer");
 		Statement statement = con.createStatement();
-		resultSet = statement.executeQuery("SELECT COUNT(*) FROM autototaaldiensten.user");
-		AantalRecords(resultSet);
+		alleRecords = statement.executeQuery("SELECT COUNT(*) FROM autototaaldiensten.user");
+		AantalRecords(alleRecords);
 		try {
-			statement.execute("INSERT INTO user (id, name, role_id, address, email, password)"+ "VALUES ('"+counter+"','"+ u.getRol() + "','"+ counter+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");
+			statement.execute("INSERT INTO user (id, name, role_id, address, email, password)"+ "VALUES ('"+counter+"','"+u.getName() + "','"+ u.getRol()+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

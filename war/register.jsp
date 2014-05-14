@@ -37,13 +37,13 @@
 				<label>Bevestig E-mail:</label> <input type="text" name="email2" />
 			</div>
 			<div>
-				<select>
-					<option value="1" name = "rol">Administrateur</option>
-					<option value="2" name = "rol">Bedrijfsleider</option>
-					<option value="3" name = "rol">Kassamedewerker</option>
-					<option value="4" name = "rol">Klant</option>
-					<option value="5" name = "rol">Magazijn</option>
-					<option value="6" name = "rol">Planner</option>					
+				<select name = "rol">
+					<option value="1" >Administrateur</option>
+					<option value="2" >Bedrijfsleider</option>
+					<option value="3" >Kassamedewerker</option>
+					<option value="4" >Klant</option>
+					<option value="5" >Magazijn</option>
+					<option value="6" >Planner</option>					
 				</select>
 			</div>
 			<div>
