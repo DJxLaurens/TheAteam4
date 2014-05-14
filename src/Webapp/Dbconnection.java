@@ -14,7 +14,7 @@ public class Dbconnection {
 			System.out.println("Driver not found: " + e);
 		}
 
-		String url = "jdbc:mysql://localhost/autototaaldienst";
+		String url = "jdbc:mysql://localhost:3306/autototaaldienst";
 		String user = "root";
 		String password = "";
 
@@ -23,6 +23,7 @@ public class Dbconnection {
 			System.out.println("Connectie is goed");
 		} catch (SQLException e) {
 			System.out.println("Er gaat iets verkeerd");
+			e.printStackTrace();
 		}
 	}
 
