@@ -8,7 +8,7 @@
 	
 	<servlet>
 		<servlet-name>Hoofdmenu</servlet-name>
-		<servlet-class>Webapp.index</servlet-class>
+		<servlet-class>Servlet.index</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Hoofdmenu</servlet-name>
@@ -17,7 +17,7 @@
 	
 	<servlet>
 		<servlet-name>Klantenbinding Servlet</servlet-name>
-		<servlet-class>Webapp.KlantenbindingServlet</servlet-class>
+		<servlet-class>Servlet.KlantenbindingServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Klantenbinding Servlet</servlet-name>
@@ -26,7 +26,7 @@
 	
 	<servlet>
 		<servlet-name>Werkplaats</servlet-name>
-		<servlet-class>Webapp.Werkplaats</servlet-class>
+		<servlet-class>Servlet.Werkplaats</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Werkplaats</servlet-name>
@@ -44,7 +44,7 @@
 	
 	<servlet>
 		<servlet-name>Login Servlet</servlet-name>
-		<servlet-class>Webapp.LoginServlet</servlet-class>
+		<servlet-class>Servlet.LoginServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Login Servlet</servlet-name>
@@ -53,7 +53,7 @@
 	
 	<servlet>
 		<servlet-name>Logout Servlet</servlet-name>
-		<servlet-class>Webapp.LogoutServlet</servlet-class>
+		<servlet-class>Servlet.LogoutServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Logout Servlet</servlet-name>
@@ -62,7 +62,7 @@
 	
 	<servlet>
 		<servlet-name>CheckLogin Servlet</servlet-name>
-		<servlet-class>Webapp.CheckLoginServlet</servlet-class>
+		<servlet-class>Servlet.CheckLoginServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>CheckLogin Servlet</servlet-name>
@@ -71,7 +71,7 @@
 	
 	<servlet>
 		<servlet-name>PrijsBerekenen Servlet</servlet-name>
-		<servlet-class>Webapp.PrijsBerekenenServlet</servlet-class>
+		<servlet-class>Servlet.PrijsBerekenenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>PrijsBerekenen Servlet</servlet-name>
