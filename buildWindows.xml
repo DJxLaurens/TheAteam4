@@ -9,4 +9,3 @@
 		<copy file="${ant.project.name}.war" todir="${deploy_dir}" />
 	</target>
 </project>
-
