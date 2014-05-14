@@ -2,6 +2,8 @@ package Webapp;
 
 import java.util.*;
 
+import Servlet.Auto;
+
 public class Klus {
     private String klusNaam;
     private int klusNummer;

@@ -16,7 +16,7 @@ public class Dbconnection {
 
 		String url = "jdbc:mysql://localhost:3306/autototaaldienst";
 		String user = "root";
-		String password = "";
+		String password = "root";
 
 		try {
 			con = (Connection) DriverManager.getConnection(url, user, password);
