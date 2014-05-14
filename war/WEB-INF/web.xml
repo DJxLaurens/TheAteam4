@@ -35,7 +35,7 @@
 	
 	<servlet>
 		<servlet-name>Register Servlet</servlet-name>
-		<servlet-class>Webapp.RegisterServlet</servlet-class>
+		<servlet-class>Servlet.RegisterServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Register Servlet</servlet-name>

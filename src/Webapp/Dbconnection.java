@@ -33,7 +33,21 @@ public class Dbconnection {
 	public static void saveUser(User u) throws SQLException {
 		System.out.println(u.getName() + u.getAddress() + u.getEmail() + u.getPass());
 		Statement statement = con.createStatement();
-		String sql = "INSERT INTO users" + "VALUES ("+ u.getName() +",'1'," + u.getAddress() + " , " + u.getEmail() + "," + u.getPass() + ")";
-		statement.executeUpdate(sql);
+		//String sql = "INSERT INTO users (id, name, role_id, address, email, password) VALUES ('2', " + u.getName() + ", '1', "+ u.getAddress() +"," + u.getEmail() + "," + u.getPass() + ");";
+		//String sql = "INSERT INTO users (id, 'name', role_id, 'address', 'email', 'password') VALUES (2, Henk, 1, Straatweg 5, info@email.nl,w8woord);";
+		try
+        {
+			statement.execute("INSERT INTO users (id, name, role_id, address, email, password)"+ "VALUES (2,'Henk', 1,'Straatweg 5', 'info@email.com','w8woord')");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+            	statement.close();
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 	}
 }
