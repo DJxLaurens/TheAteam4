@@ -8,26 +8,22 @@ import javax.servlet.http.*;
 import Webapp.Dbconnection;
 import Webapp.User;
 
-import java.io.FileWriter;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RegisterServlet extends HttpServlet {
 	private Dbconnection db = new Dbconnection();
+	private String pass = "", name = "", s = "";;
+	private boolean loginSuccess = false;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		boolean loginSuccess = false;
-		String name = req.getParameter("username");
+			throws ServletException, IOException {		
+		name = req.getParameter("username");
 		String address = req.getParameter("address");
-		String pass = req.getParameter("password");
+		pass = req.getParameter("password");
 		String pass2 = req.getParameter("password2");
 		String email = req.getParameter("email");
 		String email2 = req.getParameter("email2");
 		String tempRol = req.getParameter("rol");
-		int rol = 0;
-		String s = "";
+		int rol = 0;		
 
 		if (!"".equals(name) && !"".equals(address) && !"".equals(pass)
 				&& !"".equals(email)) {			
@@ -44,26 +40,15 @@ public class RegisterServlet extends HttpServlet {
 			if (!loginSuccessPass) {
 				s += "Password doesn't match\n";
 			}
-//			ResultSet rs = Dbconnection.resultset();
-//			if (rs != null) {
-//				try {
-//					while (rs.next()) {
-//						String dbNaam = rs.getString("name");
-//						String dbPass = rs.getString("password");
-//						if (!dbNaam.equals(name)&& !dbPass.equals(name)) {
-//							loginSuccess = true;
-//						} else {
-//							loginSuccess = false;
-//							s += "Er bestaat al een user met deze gegevens\n";
-//						}
-//					}
-//				} catch (SQLException e1) {
-//					e1.printStackTrace();
-//				}
-//			} else {
-//				loginSuccess = false;
-//				s += "rs is leegs";
-//			}
+			try {
+				if(db.getLogin()){
+					loginSuccess = false;
+					s += "Er bestaat al een user";
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
 			s += "Something is missing!\n";
 		}
@@ -71,18 +56,17 @@ public class RegisterServlet extends HttpServlet {
 		req.setAttribute("msgs", s);
 		RequestDispatcher rd = null;
 		if (loginSuccess) {
-			User u = new User(name, address, pass, email, rol);	
-				try {
-					db.saveUser(u);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			User u = new User(name, address, pass, email, rol);
+			try {
+				db.saveUser(u);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			s += "Toevoegen is gelukt";
 			rd = req.getRequestDispatcher("login.jsp");
 		} else
 			rd = req.getRequestDispatcher("register.jsp");
 		rd.forward(req, resp);
 	}
-
 }
