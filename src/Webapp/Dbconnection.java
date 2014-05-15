@@ -7,11 +7,11 @@ public class Dbconnection {
 	private static Statement statement;
 	private static ResultSet resultSet = null;
 	private static int counter = 1;
+	private static String naam;
 	static {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-
 			System.out.println("Driver found");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Driver not found: " + e);
@@ -36,7 +36,7 @@ public class Dbconnection {
 		}
 	}
 
-	public static void saveUser(User u) throws SQLException {
+	public static void saveUser(User u) throws SQLException {	
 		statement = con.createStatement();
 		while(resultSet.next()){
 			counter ++;
@@ -53,11 +53,9 @@ public class Dbconnection {
 				e.printStackTrace();
 			}
 		}
-
+		
 	}
-
-	public static ResultSet resultset() throws SQLException{
-		System.out.println("Dit wordt opgehaald uit de database: " + resultSet);
+	public static ResultSet resultset(){
 		return resultSet;
 		
 	}

@@ -42,35 +42,30 @@ public class RegisterServlet extends HttpServlet {
 
 			}
 			if (!loginSuccessPass) {
-				s += "Password doesn't match\n\n";
+				s += "Password doesn't match\n";
 			}
-			ResultSet rs = null;
-			try {
-				rs = Dbconnection.resultset();
-			} catch (SQLException e2) {
-				e2.printStackTrace();
-			}
-			if (rs != null) {
-				try {
-					while (rs.next()) {
-						String dbNaam = rs.getString("name");
-						String dbPass = rs.getString("password");
-						if (!dbNaam.equals(name)&& !dbPass.equals(name)) {
-							loginSuccess = true;
-						} else {
-							loginSuccess = false;
-							s = "Er bestaat al een user met deze gegevens";
-						}
-					}
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-			} else {
-				loginSuccess = false;
-				s += "rs is leeg";
-			}
+//			ResultSet rs = Dbconnection.resultset();
+//			if (rs != null) {
+//				try {
+//					while (rs.next()) {
+//						String dbNaam = rs.getString("name");
+//						String dbPass = rs.getString("password");
+//						if (!dbNaam.equals(name)&& !dbPass.equals(name)) {
+//							loginSuccess = true;
+//						} else {
+//							loginSuccess = false;
+//							s += "Er bestaat al een user met deze gegevens\n";
+//						}
+//					}
+//				} catch (SQLException e1) {
+//					e1.printStackTrace();
+//				}
+//			} else {
+//				loginSuccess = false;
+//				s += "rs is leegs";
+//			}
 		} else {
-			s += "Something is missing!\n\n";
+			s += "Something is missing!\n";
 		}
 
 		req.setAttribute("msgs", s);
