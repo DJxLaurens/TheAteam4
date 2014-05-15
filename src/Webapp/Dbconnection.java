@@ -19,7 +19,7 @@ public class Dbconnection {
 
 		String url = "jdbc:mysql://localhost/autototaaldiensten";
 		String user = "root";
-		String password = "root";
+		String password = "";
 
 		try {
 			con = (Connection) DriverManager.getConnection(url, user, password);
@@ -29,7 +29,7 @@ public class Dbconnection {
 			e.printStackTrace();
 		}
 		try {
-			resultSet = con.createStatement().executeQuery("select * from autotaaldiensten.user");			
+			resultSet = con.createStatement().executeQuery("select * from autototaaldiensten.user");			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,7 +42,7 @@ public class Dbconnection {
 			counter ++;
 		}
 		try {
-			statement.execute("INSERT INTO user (id, name, role_id, address, email, password)"+ "VALUES ('"+counter+"','"+u.getName() + "','"+ u.getRol()+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");
+			statement.execute("INSERT INTO user (id, name, role_id, address, email, password)"+ "VALUES (null,'"+u.getName() + "','"+ u.getRol()+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
