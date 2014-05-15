@@ -5,7 +5,7 @@ import java.sql.*;
 public class Dbconnection {
 	private Connection con = null;
 	private static Statement statement;
-	private static ResultSet resultSet = null, rs = null;
+	private static ResultSet rs = null;
 	private static int counter = 1;
 	private static String naam;
 	
@@ -18,7 +18,7 @@ public class Dbconnection {
 			con = (Connection) DriverManager.getConnection(url, user, password);
 			statement = con.createStatement();
 			System.out.println("Connectie is goed");
-			ResultSet rs = statement.executeQuery("SELECT @@IDENTITY");
+			rs = statement.executeQuery("SELECT *");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -32,8 +32,8 @@ public class Dbconnection {
 		statement.execute("INSERT INTO user (name, role_id, address, email, password)"+ "VALUES ('"+ u.getName() + "','"+ u.getRol()+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");			
 			
 	}
-	public static ResultSet resultset(){
-		return resultSet;
+	public ResultSet resultset(){
+		return rs;
 		
 	}
 	
