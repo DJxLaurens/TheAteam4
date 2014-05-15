@@ -59,7 +59,7 @@ public class RegisterServlet extends HttpServlet {
 							loginSuccess = true;
 						} else {
 							loginSuccess = false;
-							s += "Er bestaat al een user met deze gegevens";
+							s = "Er bestaat al een user met deze gegevens";
 						}
 					}
 				} catch (SQLException e1) {
