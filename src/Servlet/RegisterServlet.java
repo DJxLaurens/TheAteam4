@@ -30,7 +30,7 @@ public class RegisterServlet extends HttpServlet {
 		String s = "";
 
 		if (!"".equals(name) && !"".equals(address) && !"".equals(pass)
-				&& !"".equals(email)) {
+				&& !"".equals(email)) {			
 			rol = Integer.parseInt(tempRol);
 			boolean loginSuccessMail = email.equals(email2);
 			boolean loginSuccessPass = pass.equals(pass2);
@@ -71,8 +71,8 @@ public class RegisterServlet extends HttpServlet {
 		req.setAttribute("msgs", s);
 		RequestDispatcher rd = null;
 		if (loginSuccess) {
-			User u = new User(name, address, pass, email, rol);			
-
+			User u = new User(name, address, pass, email, rol);	
+			
 			try {
 				Dbconnection.saveUser(u);
 			} catch (SQLException e) {
