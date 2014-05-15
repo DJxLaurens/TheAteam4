@@ -46,22 +46,15 @@ public class Dbconnection {
 	}
 	public static void saveUser(User u) throws SQLException {	
 		try {			
-			statement.execute("INSERT INTO user (id, name, role_id, address, email, password)"+ "VALUES ('"+counter+"','"+ resultSet + "','"+ u.getRol()+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");			
+			statement.execute("INSERT INTO user (name, role_id, address, email, password)"+ "VALUES ('"+ u.getName() + "','"+ u.getRol()+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				statement.close();
-				con.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
+		}		
 	}
 	public static ResultSet resultset(){
 		return resultSet;
 		
 	}
+	
 }
