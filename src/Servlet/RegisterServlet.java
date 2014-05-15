@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RegisterServlet extends HttpServlet {
-
+	private Dbconnection db = new Dbconnection();
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		boolean loginSuccess = false;
@@ -72,12 +72,12 @@ public class RegisterServlet extends HttpServlet {
 		RequestDispatcher rd = null;
 		if (loginSuccess) {
 			User u = new User(name, address, pass, email, rol);	
-			
-			try {
-				Dbconnection.saveUser(u);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+				try {
+					db.saveUser(u);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			s += "Toevoegen is gelukt";
 			rd = req.getRequestDispatcher("login.jsp");
 		} else
