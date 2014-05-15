@@ -4,6 +4,9 @@ import java.sql.*;
 
 public class Dbconnection {
 	private static Connection con = null;
+	private static Statement statement;
+	private static ResultSet resultSet = null;
+	private static int counter = 1;
 	static {
 
 		try {
@@ -25,30 +28,37 @@ public class Dbconnection {
 			System.out.println("Er gaat iets verkeerd");
 			e.printStackTrace();
 		}
-	}
-
-	public Connection getConnection() {
-		return con;
+		try {
+			resultSet = con.createStatement().executeQuery("select * from autotaaldiensten.user");			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void saveUser(User u) throws SQLException {
-		System.out.println(u.getName() + u.getAddress() + u.getEmail() + u.getPass());
-		Statement statement = con.createStatement();
-		//String sql = "INSERT INTO users (id, name, role_id, address, email, password) VALUES ('2', " + u.getName() + ", '1', "+ u.getAddress() +"," + u.getEmail() + "," + u.getPass() + ");";
-		//String sql = "INSERT INTO users (id, 'name', role_id, 'address', 'email', 'password') VALUES (2, Henk, 1, Straatweg 5, info@email.nl,w8woord);";
-		try
-        {
-			statement.execute("INSERT INTO user (name, role_id, address, email, password)"+ "VALUES (2,"+ u.getName()+", 1,"+u.getAddress()+", "+u.getAddress()+","+u.getPass()+","+u.getRol()+")");
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }finally {
-            try {
-            	statement.close();
-                con.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+		statement = con.createStatement();
+		while(resultSet.next()){
+			counter ++;
+		}
+		try {
+			statement.execute("INSERT INTO user (id, name, role_id, address, email, password)"+ "VALUES ('"+counter+"','"+u.getName() + "','"+ u.getRol()+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				statement.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	public static ResultSet resultset() throws SQLException{
+		System.out.println("Dit wordt opgehaald uit de database: " + resultSet);
+		return resultSet;
+		
 	}
 }

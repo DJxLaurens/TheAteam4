@@ -11,27 +11,30 @@ import Webapp.User;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RegisterServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		boolean loginSuccess = false;		
+		boolean loginSuccess = false;
 		String name = req.getParameter("username");
 		String address = req.getParameter("address");
 		String pass = req.getParameter("password");
 		String pass2 = req.getParameter("password2");
 		String email = req.getParameter("email");
 		String email2 = req.getParameter("email2");
-		String rol = req.getParameter("rol");
+		String tempRol = req.getParameter("rol");
+		int rol = 0;
 		String s = "";
-		
+
 		if (!"".equals(name) && !"".equals(address) && !"".equals(pass)
 				&& !"".equals(email)) {
+			rol = Integer.parseInt(tempRol);
 			boolean loginSuccessMail = email.equals(email2);
 			boolean loginSuccessPass = pass.equals(pass2);
-			if(loginSuccessMail && loginSuccessPass){
+			if (loginSuccessMail && loginSuccessPass) {
 				loginSuccess = true;
 			}
 			if (!loginSuccessMail) {
@@ -41,24 +44,50 @@ public class RegisterServlet extends HttpServlet {
 			if (!loginSuccessPass) {
 				s += "Password doesn't match\n\n";
 			}
+			ResultSet rs = null;
+			try {
+				rs = Dbconnection.resultset();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+			if (rs != null) {
+				try {
+					while (rs.next()) {
+						String dbNaam = rs.getString("name");
+						String dbPass = rs.getString("password");
+						if (!dbNaam.equals(name)&& !dbPass.equals(name)) {
+							loginSuccess = true;
+						} else {
+							loginSuccess = false;
+							s = "Er bestaat al een user met deze gegevens";
+						}
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			} else {
+				loginSuccess = false;
+				s += "rs is leeg";
+			}
 		} else {
 			s += "Something is missing!\n\n";
 		}
 
 		req.setAttribute("msgs", s);
 		RequestDispatcher rd = null;
-		if (loginSuccess) {				
-			User u = new User(name, address, pass, email, rol);
-			
+		if (loginSuccess) {
+			User u = new User(name, address, pass, email, rol);			
+
 			try {
 				Dbconnection.saveUser(u);
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}	
+			}
 			s += "Toevoegen is gelukt";
 			rd = req.getRequestDispatcher("login.jsp");
 		} else
 			rd = req.getRequestDispatcher("register.jsp");
 		rd.forward(req, resp);
 	}
+
 }
