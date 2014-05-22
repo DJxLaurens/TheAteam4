@@ -11,7 +11,7 @@
 		nodig hebben:</h4>
 
 	<div>
-		<select>
+		<select name="veld1">
 			<option value="leeg"></option>
 			<option value="jan">Jan</option>
 			<option value="klaas">Klaas</option>
@@ -23,7 +23,7 @@
 		nodig hebben:</h4>
 
 	<div>
-		<select>
+		<select name="veld2">
 			<option value="leeg"></option>
 			<option value="henk">Henk</option>
 		</select>
@@ -32,7 +32,7 @@
 	<h4>Klanten die langer dan 2 maanden niet aanwezig zijn geweest:</h4>
 
 	<div>
-		<select>
+		<select name="veld3">
 			<option value="leeg"></option>
 			<option value="jan">Jan</option>
 		</select>
