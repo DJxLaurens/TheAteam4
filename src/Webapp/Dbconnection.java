@@ -7,7 +7,6 @@ public class Dbconnection {
 	private Statement statement;
 	private ResultSet rs = null;
 	private String name = "", pass = "";
-	private boolean b = false;
 	
 	public void readDatabase() throws SQLException {
 		String url = "jdbc:mysql://localhost/autototaaldiensten";
@@ -29,21 +28,15 @@ public class Dbconnection {
 		return con;
 	}
 	public void saveUser(User u) throws SQLException {	
+		readDatabase();
 		statement.execute("INSERT INTO user (name, role_id, address, email, password)"+ "VALUES ('"+ u.getName() + "','"+ u.getRol()+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");			
 			
 	}
-	public void writeResultSet(ResultSet resultSet) throws SQLException {
+	private void writeResultSet(ResultSet resultSet) throws SQLException {
 		while (resultSet.next()) {
-			String nm = resultSet.getString("name");
-			String ps = resultSet.getString("password");
-			if(nm.equals(name)&&ps.equals(pass)){
-				b = true;
-			}
+			name = resultSet.getString("name");
+			pass = resultSet.getString("password");
 		}
-	}
-	public boolean getLogin() throws SQLException{
-		readDatabase();
-		return b;
 	}
 	public String getDbNaam(){
 		return name;

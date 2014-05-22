@@ -40,15 +40,7 @@ public class RegisterServlet extends HttpServlet {
 			if (!loginSuccessPass) {
 				s += "Password doesn't match\n";
 			}
-			try {
-				if(db.getLogin()){
-					loginSuccess = false;
-					s += "Er bestaat al een user";
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 		} else {
 			s += "Something is missing!\n";
 		}
