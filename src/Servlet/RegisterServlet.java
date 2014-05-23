@@ -5,13 +5,13 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import Webapp.Dbconnection;
+import Webapp.Dbconnectie;
 import Webapp.User;
 
 import java.sql.SQLException;
 
 public class RegisterServlet extends HttpServlet {
-	private Dbconnection db = new Dbconnection();
+	private Dbconnectie db = new Dbconnectie();
 	private String pass = "", name = "", s = "";;
 	private boolean loginSuccess = false;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -40,15 +40,7 @@ public class RegisterServlet extends HttpServlet {
 			if (!loginSuccessPass) {
 				s += "Password doesn't match\n";
 			}
-			try {
-				if(db.getLogin()){
-					loginSuccess = false;
-					s += "Er bestaat al een user";
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 		} else {
 			s += "Something is missing!\n";
 		}

@@ -17,7 +17,7 @@ public class Queries {
 	private static int counter = 0;
 	private String id = "", name = "", password = "";
 
-	public void readDataBase() throws Exception {
+	public void leesDataBase() throws Exception {
 		try {
 			
 			// this will load the MySQL driver, each DB has its own driver
@@ -31,7 +31,7 @@ public class Queries {
 			statement1 = statement;
 			// resultSet gets the result of the SQL query
 			resultSet = statement.executeQuery("select * from autototaaldiensten.user");
-			writeResultSet(resultSet);
+			schrijfResultSet(resultSet);
 			
 
 		} catch (Exception e) {
@@ -59,7 +59,7 @@ public class Queries {
 		
 	}
 
-	private void writeResultSet(ResultSet resultSet) throws SQLException {
+	private void schrijfResultSet(ResultSet resultSet) throws SQLException {
 		while(resultSet.next()){
 			counter ++;
 		}
