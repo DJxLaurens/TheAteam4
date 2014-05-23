@@ -28,8 +28,11 @@ public class Dbconnection {
 	public Connection con(){
 		return con;
 	}
-	public void saveUser(User u) throws SQLException {	
-		statement.execute("INSERT INTO user (name, role_id, address, email, password)"+ "VALUES ('"+ u.getName() + "','"+ u.getRol()+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");			
+	public void saveUser(User u) throws SQLException {
+		System.out.println(u);
+		System.out.println(statement);
+		Statement st = con.createStatement();
+		st.execute("INSERT INTO user (name, role_id, address, email, password)"+ "VALUES ('"+ u.getName() + "','"+ u.getRol()+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");			
 			
 	}
 	public void writeResultSet(ResultSet resultSet) throws SQLException {
