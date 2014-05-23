@@ -2,46 +2,46 @@
 <jsp:include page="header.jsp" />
 
 <div class="content">
-<form action="FactuurbetalingBlokkeren.do" method="get">
-	<div class="left">
-	<h1>Herinneringsbrieven</h1>
-	
-	<h2>Factuurbetaling blokkeren voor klant</h2>
+	<form action="FactuurbetalingBlokkeren.do" method="get">
+		<div class="left">
+			<h1>Herinneringsbrieven</h1>
 
-	<h4>Klanten die na 90 dagen nog niet betaald hebben:</h4>
+			<h2>Factuurbetaling blokkeren voor klant</h2>
 
-	<div>
-		<select>
-			<option value="piet">Piet</option>
-		</select>
-	</div>
+			<h4>Klanten die na 90 dagen nog niet betaald hebben:</h4>
 
-	</br>
+			<div>
+				<select>
+					<option value="piet">Piet</option>
+				</select>
+			</div>
 
-	<input type="submit" value="Betaling blokkeren" name="press" /> 
+			</br> <input type="submit" value="Betaling blokkeren" name="press" />
 
-	</div>
-	
-	<div class="right">
+		</div>
 
-	<%@ page import="java.util.Calendar"%>
-	<%! Calendar now = Calendar.getInstance(); %>
-	<%
-		int day = now.get(Calendar.DATE);
-		int month = now.get(Calendar.MONTH) + 1;
-		int year = now.get(Calendar.YEAR);
-		String s = day + "-" + month + "-" + year;
-		%>
-	</br> </br>
-	<%= s %>
+		<div class="right">
 
-	<h1>Factuuroverzicht</h1>
-	<div class="box">
-		<p>- Er moeten nog aantal factuurbetaling(en) geblokkeerd worden<p>
-	</div>
-</form>
+			<%@ page import="java.util.Calendar"%>
+			<%!Calendar now = Calendar.getInstance();%>
+			<%
+				int day = now.get(Calendar.DATE);
+				int month = now.get(Calendar.MONTH) + 1;
+				int year = now.get(Calendar.YEAR);
+				String s = day + "-" + month + "-" + year;
+			%>
+			</br> </br>
+			<%=s%>
 
-</div>
+			<h1>Factuuroverzicht</h1>
+			<div class="box">
+				<p>- Er moeten nog aantal factuurbetaling(en) geblokkeerd worden
+				<p>
+			</div>
+			
+			</div>
+	</form>
+
 </div>
 
 <jsp:include page="footer.jsp" />
