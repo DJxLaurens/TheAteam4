@@ -2,13 +2,13 @@ package Webapp;
 
 import java.sql.*;
 
-public class Dbconnection {
+public class Dbconnectie {
 	private Connection con = null;
 	private Statement statement;
 	private ResultSet rs = null;
 	private String name = "", pass = "";
 	
-	public void readDatabase() throws SQLException {
+	public void leesDatabase() throws SQLException {
 		String url = "jdbc:mysql://localhost/autototaaldiensten";
 		String user = "root";
 		String password = "root"; 
@@ -18,7 +18,7 @@ public class Dbconnection {
 			statement = con.createStatement();
 			System.out.println("Connectie is goed");
 		    rs = statement.executeQuery("SELECT * FROM user");
-		    writeResultSet(rs);
+		    schrijfResultSet(rs);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -28,11 +28,11 @@ public class Dbconnection {
 		return con;
 	}
 	public void saveUser(User u) throws SQLException {	
-		readDatabase();
+		leesDatabase();
 		statement.execute("INSERT INTO user (name, role_id, address, email, password)"+ "VALUES ('"+ u.getName() + "','"+ u.getRol()+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");			
 			
 	}
-	private void writeResultSet(ResultSet resultSet) throws SQLException {
+	private void schrijfResultSet(ResultSet resultSet) throws SQLException {
 		while (resultSet.next()) {
 			name = resultSet.getString("name");
 			pass = resultSet.getString("password");
