@@ -35,7 +35,7 @@ public class Dbconnectie {
 	
 	public void saveKlant(Klant k) throws SQLException {	
 		leesDatabase();
-		statement.execute("INSERT INTO klant (naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, korting, laatstgeweest, openfactuur, blokkade)"+ "VALUES ('"+ k.getNaam() + "','" + k.getWachtwoord()+ "','"+ k.getAdres() + "','"+ k.getPostcode() + "','"+ k.getWoonplaats() + "','"+ k.getTelefoonnummer() + "','"+ k.getEmailadres() + "','"+ k.getKorting() + "','"+ k.getLaatstgeweest() + "','"+ null + "','" + null + "')");				
+		statement.execute("INSERT INTO klant (naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, korting, laatstgeweest, openfactuur, blokkade)"+ "VALUES ('"+ k.getNaam() + "','" + k.getWachtwoord()+ "','"+ k.getAdres() + "','"+ k.getPostcode() + "','"+ k.getWoonplaats() + "','"+ k.getTelefoonnummer() + "','"+ k.getEmailadres() + "','"+ k.getKorting() + "','"+ k.getLaatstgeweest() + "','"+ k.getOpenFactuur() + "','" + k.getBlokkade() + "')");				
 	}
 	
 	private void schrijfResultSet(ResultSet resultSet) throws SQLException {
