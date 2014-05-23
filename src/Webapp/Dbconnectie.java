@@ -17,7 +17,7 @@ public class Dbconnectie {
 			con = (Connection) DriverManager.getConnection(url, user, password);
 			statement = con.createStatement();
 			System.out.println("Connectie is goed");
-		    rs = statement.executeQuery("SELECT * FROM medewerker");
+		    rs = statement.executeQuery("SELECT * FROM klant");
 		    schrijfResultSet(rs);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -27,11 +27,17 @@ public class Dbconnectie {
 	public Connection con(){
 		return con;
 	}
-	public void saveMedewerker(Medewerker m) throws SQLException {	
+//	public void saveMedewerker(Medewerker m) throws SQLException {	
+//		leesDatabase();
+//		statement.execute("INSERT INTO medewerker (naam, rol_id, wachtwoord)"+ "VALUES ('"+ m.getNaam() + "','"+ m.getRol()+ "','"+ m.getWw() + "')");			
+//			
+//	}
+	
+	public void saveKlant(Klant k) throws SQLException {	
 		leesDatabase();
-		statement.execute("INSERT INTO medewerker (naam, rol_id, wachtwoord)"+ "VALUES ('"+ m.getNaam() + "','"+ m.getRol()+ "','"+ m.getWw() + "')");			
-			
+		statement.execute("INSERT INTO klant (naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, korting, laatstgeweest, openfactuur, blokkade)"+ "VALUES ('"+ k.getNaam() + "','" + k.getWachtwoord()+ "','"+ k.getAdres() + "','"+ k.getPostcode() + "','"+ k.getWoonplaats() + "','"+ k.getTelefoonnummer() + "','"+ k.getEmailadres() + "','"+ k.getKorting() + "','"+ k.getLaatstgeweest() + "','"+ null + "','" + null + "')");				
 	}
+	
 	private void schrijfResultSet(ResultSet resultSet) throws SQLException {
 		while (resultSet.next()) {
 			naam = resultSet.getString("naam");

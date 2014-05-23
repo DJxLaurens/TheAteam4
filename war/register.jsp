@@ -28,6 +28,21 @@
 					name="wachtwoord2" />
 			</div>
 			<div>
+				<label>Adres:</label> <input type="adres" name="adres" />
+			</div>
+			<div>
+				<label>Postcode:</label> <input type="postcode" name="postcode" />
+			</div>
+			<div>
+				<label>Woonplaats:</label> <input type="woonplaats" name="woonplaats" />
+			</div>
+			<div>
+				<label>telefoonnummer:</label> <input type="telefoonnummer" name="telefoonnummer" />
+			</div>
+			<div>
+				<label>emailadres:</label> <input type="emailadres" name="emailadres" />
+			</div>
+			<div>
 				<select name = "rol_id">
 					<option value="1" >Administrateur</option>
 					<option value="2" >Bedrijfsleider</option>

@@ -7,8 +7,10 @@ import javax.servlet.http.*;
 
 import Webapp.Dbconnectie;
 import Webapp.Medewerker;
+import Webapp.Klant;
 
 import java.sql.SQLException;
+import java.util.Date;
 
 public class RegisterServlet extends HttpServlet {
 	private Dbconnectie db = new Dbconnectie();
@@ -20,10 +22,26 @@ public class RegisterServlet extends HttpServlet {
 		wachtwoord = req.getParameter("wachtwoord");
 		String wachtwoord2 = req.getParameter("wachtwoord2");
 		String tempRol = req.getParameter("rol_id");
-		int rol_id = 0;		
+		int rol_id = 0;
+		String adres = req.getParameter("adres");
+		String postcode = req.getParameter("postcode");
+		String woonplaats = req.getParameter("woonplaats");
+		String telefoonnummer = req.getParameter("telefoonnummer");
+		String emailadres = req.getParameter("emailadres");
+		String emailadres2 = req.getParameter("emailadres2");
+		String tempLaatstgeweest = req.getParameter("laatstgeweest");
+		Date laatstgeweest = null;
+		String tempKorting = req.getParameter("korting");
+		double korting = 0;	
+		String tempOpenFactuur = req.getParameter("openFactuur");
+		Date openFactuur = null;
+		String tempBlokkade = req.getParameter("blokkade");
+		boolean blokkade = false;
 
 		if (!"".equals(naam) && !"".equals(wachtwoord)) {			
 			rol_id = Integer.parseInt(tempRol);
+			korting = Double.parseDouble(tempRol);
+
 			boolean loginSuccessPass = wachtwoord.equals(wachtwoord2);
 			if (loginSuccessPass) {
 				loginSuccess = true;
@@ -40,9 +58,11 @@ public class RegisterServlet extends HttpServlet {
 		req.setAttribute("msgs", s);
 		RequestDispatcher rd = null;
 		if (loginSuccess) {
-			Medewerker m = new Medewerker(naam, rol_id, wachtwoord);
+//			Medewerker m = new Medewerker(naam, rol_id, wachtwoord);
+			Klant k = new Klant(naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openFactuur, blokkade);
 			try {
-				db.saveMedewerker(m);
+//				db.saveMedewerker(m);
+				db.saveKlant(k);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
