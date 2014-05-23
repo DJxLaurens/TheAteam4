@@ -1,35 +1,35 @@
 package Webapp;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.Date;
 
-public class Klant{
-    private String naam;
-    private int klantnummer;
-    private String adres;
-    private String postcode;
-    private String woonplaats;
-    private int telefoonnummer;
-    private String emailadres;
-    private Calendar laatstgeweest;
-    private double korting;
-    private Calendar openFactuur;
-    private boolean blokkade;
-
-    public Klant(String nm, int kl, String adr, String pc, String wp, int tn, String em, Calendar lg, double kt){
-        naam = nm;
-        klantnummer = kl;
-        adres = adr;
-        postcode = pc;
-        woonplaats = wp;
-        telefoonnummer = tn;
-        emailadres = em;
-        laatstgeweest = lg;
-        korting = kt;
-        blokkade = false;
-    }
-
-    public String getNaam(){
+public class Klant {
+	private String naam;
+	private String wachtwoord;
+	private String adres;
+	private String postcode;
+	private String woonplaats;
+	private String telefoonnummer;
+	private String emailadres;
+	private double korting;
+	private Date laatstgeweest;
+	private Date openFactuur;
+	private boolean blokkade;
+	
+	public Klant(String nm, String ww, String adr, String pc, String wp, String tn, String ea, Date lg, double kt, Date of, boolean bk){
+		naam = nm;
+		wachtwoord = ww;
+		adres = adr;
+		postcode = pc;
+		woonplaats = wp;
+		telefoonnummer = tn;
+		emailadres = ea;
+		laatstgeweest = lg;
+		korting = kt;
+		openFactuur = of;
+		blokkade = bk;
+	}
+	
+	public String getNaam(){
         return naam;
     }
 
@@ -37,11 +37,19 @@ public class Klant{
         naam = nm;
     }
     
-    public Calendar getOpenFactuur(){
+    public String getWachtwoord(){
+        return wachtwoord;
+    }
+
+    public void setWachtwoord(String ww){
+        wachtwoord = ww;
+    }
+    
+    public Date getOpenFactuur(){
         return openFactuur;
     }
     
-    public void setOpenFactuur(Calendar of){
+    public void setOpenFactuur(Date of){
         openFactuur = of;        
     }
     
@@ -51,14 +59,6 @@ public class Klant{
     
     public boolean getBlokkade(){
         return blokkade;
-    }
-
-    public int getKlantnummer(){
-	return klantnummer;
-    }
-
-    public void setKlantnummer(int at){
-        klantnummer = at;
     }
 
     public String getAdres(){
@@ -85,11 +85,11 @@ public class Klant{
         woonplaats = wp;
     }
 
-    public int getTelefoonnummer(){
+    public String getTelefoonnummer(){
         return telefoonnummer;
     }
 
-    public void setTelefoonnummer(int tn){
+    public void setTelefoonnummer(String tn){
         telefoonnummer = tn;
     }
 
@@ -101,11 +101,11 @@ public class Klant{
         emailadres = em;
     }
 
-    public Calendar getLaatstgeweest(){
+    public Date getLaatstgeweest(){
         return laatstgeweest;
     }
 
-    public void setLaatstgeweest(Calendar dt){
+    public void setLaatstgeweest(Date dt){
         laatstgeweest = dt;
     }
     
@@ -120,4 +120,6 @@ public class Klant{
     public String toString(){
         return naam;
     }
+	
+	
 }

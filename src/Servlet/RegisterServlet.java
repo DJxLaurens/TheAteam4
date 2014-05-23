@@ -6,51 +6,43 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import Webapp.Dbconnectie;
-import Webapp.User;
+import Webapp.Medewerker;
 
 import java.sql.SQLException;
 
 public class RegisterServlet extends HttpServlet {
 	private Dbconnectie db = new Dbconnectie();
-	private String pass = "", name = "", s = "";;
+	private String wachtwoord = "", naam = "", s = "";;
 	private boolean loginSuccess = false;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {		
-		name = req.getParameter("username");
-		String address = req.getParameter("address");
-		pass = req.getParameter("password");
-		String pass2 = req.getParameter("password2");
-		String email = req.getParameter("email");
-		String email2 = req.getParameter("email2");
-		String tempRol = req.getParameter("rol");
-		int rol = 0;		
+		naam = req.getParameter("naam");
+		wachtwoord = req.getParameter("wachtwoord");
+		String wachtwoord2 = req.getParameter("wachtwoord2");
+		String tempRol = req.getParameter("rol_id");
+		int rol_id = 0;		
 
-		if (!"".equals(name) && !"".equals(address) && !"".equals(pass)
-				&& !"".equals(email)) {			
-			rol = Integer.parseInt(tempRol);
-			boolean loginSuccessMail = email.equals(email2);
-			boolean loginSuccessPass = pass.equals(pass2);
-			if (loginSuccessMail && loginSuccessPass) {
+		if (!"".equals(naam) && !"".equals(wachtwoord)) {			
+			rol_id = Integer.parseInt(tempRol);
+			boolean loginSuccessPass = wachtwoord.equals(wachtwoord2);
+			if (loginSuccessPass) {
 				loginSuccess = true;
 			}
-			if (!loginSuccessMail) {
-				s += "E-mail doesn't match\n";
 
-			}
 			if (!loginSuccessPass) {
-				s += "Password doesn't match\n";
+				s += "Wachtwoord is niet hetzelfde!\n";
 			}
 			
 		} else {
-			s += "Something is missing!\n";
+			s += "Niet alle velden zijn ingevuld!\n";
 		}
 
 		req.setAttribute("msgs", s);
 		RequestDispatcher rd = null;
 		if (loginSuccess) {
-			User u = new User(name, address, pass, email, rol);
+			Medewerker m = new Medewerker(naam, rol_id, wachtwoord);
 			try {
-				db.saveUser(u);
+				db.saveMedewerker(m);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
