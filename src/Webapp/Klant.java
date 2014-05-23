@@ -11,11 +11,11 @@ public class Klant {
 	private String telefoonnummer;
 	private String emailadres;
 	private double korting;
-	private Date laatstgeweest;
-	private Date openFactuur;
+	private String laatstgeweest;
+	private String openFactuur;
 	private boolean blokkade;
 	
-	public Klant(String nm, String ww, String adr, String pc, String wp, String tn, String ea, Date lg, double kt, Date of, boolean bk){
+	public Klant(String nm, String ww, String adr, String pc, String wp, String tn, String ea, String laatstgeweest2, double kt, String openFactuur2, boolean bk){
 		naam = nm;
 		wachtwoord = ww;
 		adres = adr;
@@ -23,9 +23,9 @@ public class Klant {
 		woonplaats = wp;
 		telefoonnummer = tn;
 		emailadres = ea;
-		laatstgeweest = lg;
+		laatstgeweest = laatstgeweest2;
 		korting = kt;
-		openFactuur = of;
+		openFactuur = openFactuur2;
 		blokkade = bk;
 	}
 	
@@ -45,11 +45,11 @@ public class Klant {
         wachtwoord = ww;
     }
     
-    public Date getOpenFactuur(){
+    public String getOpenFactuur(){
         return openFactuur;
     }
     
-    public void setOpenFactuur(Date of){
+    public void setOpenFactuur(String of){
         openFactuur = of;        
     }
     
@@ -101,11 +101,11 @@ public class Klant {
         emailadres = em;
     }
 
-    public Date getLaatstgeweest(){
+    public String getLaatstgeweest(){
         return laatstgeweest;
     }
 
-    public void setLaatstgeweest(Date dt){
+    public void setLaatstgeweest(String dt){
         laatstgeweest = dt;
     }
     

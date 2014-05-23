@@ -29,12 +29,36 @@ public class RegisterServlet extends HttpServlet {
 		String telefoonnummer = req.getParameter("telefoonnummer");
 		String emailadres = req.getParameter("emailadres");
 		String emailadres2 = req.getParameter("emailadres2");
-		String tempLaatstgeweest = req.getParameter("laatstgeweest");
-		Date laatstgeweest = null;
+		String laatstgeweest = null;
+		System.out.println(req.getParameter("laatstgeweest"));
+//		try{
+//		if(req.getParameter("laatstgeweest").equals(null)){
+//			laatstgeweest = "00-00-00";
+//		}else{
+//			laatstgeweest = req.getParameter("laatstgeweest");
+//		}
+//		}catch (NullPointerException np){
+//			np.printStackTrace();
+//		}
+		
+		laatstgeweest = "00-00-00";
+		
 		String tempKorting = req.getParameter("korting");
 		double korting = 0;	
-		String tempOpenFactuur = req.getParameter("openFactuur");
-		Date openFactuur = null;
+		String openFactuur = null;
+		System.out.println(req.getParameter("openFactuur"));
+//		try{
+//		if(req.getParameter("openFactuur").equals(null)){
+//			openFactuur = "00-00-00";
+//		}else{
+//			openFactuur = req.getParameter("openFactuur");
+//		}
+//		}catch(NullPointerException np){
+//			np.printStackTrace();
+//		}
+		
+		openFactuur = "00-00-00";
+		
 		String tempBlokkade = req.getParameter("blokkade");
 		boolean blokkade = false;
 
