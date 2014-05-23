@@ -11,12 +11,12 @@
 			<h4>Klanten die na 90 dagen nog niet betaald hebben:</h4>
 
 			<div>
-				<select>
+				<select name="klantveld">
 					<option value="piet">Piet</option>
 				</select>
 			</div>
 
-			</br> <input type="submit" value="Betaling blokkeren" name="press" />
+			<input type="submit" value="Betaling blokkeren" name="press" />
 
 		</div>
 
@@ -30,16 +30,16 @@
 				int year = now.get(Calendar.YEAR);
 				String s = day + "-" + month + "-" + year;
 			%>
-			</br> </br>
 			<%=s%>
 
 			<h1>Factuuroverzicht</h1>
 			<div class="box">
 				<p>- Er moeten nog aantal factuurbetaling(en) geblokkeerd worden
+				
 				<p>
 			</div>
-			
-			</div>
+
+		</div>
 	</form>
 
 </div>
