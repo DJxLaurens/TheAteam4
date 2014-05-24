@@ -24,13 +24,13 @@ public class Queries {
 			Class.forName(DB_DRIV).newInstance();
 			// setup the connection with the DB.
 			String databaseURL = "jdbc:mysql://localhost/autototaaldiensten";
-			con = DriverManager.getConnection(databaseURL, "root", "root");
+			con = DriverManager.getConnection(databaseURL, "root", "");
 
 			// statements allow to issue SQL queries to the database
 			statement = con.createStatement();
 			statement1 = statement;
 			// resultSet gets the result of the SQL query
-			resultSet = statement.executeQuery("select * from autototaaldiensten.user");
+			resultSet = statement.executeQuery("select * from autototaaldiensten.gebruiker");
 			schrijfResultSet(resultSet);
 			
 
@@ -43,9 +43,9 @@ public class Queries {
 		}
 
 	}
-	public static void saveUser(User u) throws SQLException {	
+	public static void saveGebruiker(Gebruiker g) throws SQLException {	
 		try {			
-			statement1.execute("INSERT INTO user (id, name, role_id, address, email, password)"+ "VALUES ('"+counter+"','"+ u.getName() + "','"+ u.getRol()+ "','"+ u.getAddress() + "', '"+ u.getEmail()+ "','"+ u.getPass() + "')");			
+			statement1.execute("INSERT INTO Gebruiker (rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, korting, laatstgeweest, openfactuur, blokkade)"+ "VALUES ('" + g.getRol() + "','" + g.getNaam() + "','" + g.getWachtwoord()+ "','"+ g.getAdres() + "','"+ g.getPostcode() + "','"+ g.getWoonplaats() + "','"+ g.getTelefoonnummer() + "','"+ g.getEmailadres() + "','"+ g.getKorting() + "','"+ g.getLaatstgeweest() + "','"+ g.getOpenFactuur() + "','" + '0' + "')");						
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,8 +1,7 @@
 package Webapp;
 
-import java.util.Date;
-
-public class Klant {
+public class Gebruiker {
+	private int rol_id = 0;
 	private String naam;
 	private String wachtwoord;
 	private String adres;
@@ -15,7 +14,8 @@ public class Klant {
 	private String openFactuur;
 	private boolean blokkade;
 	
-	public Klant(String nm, String ww, String adr, String pc, String wp, String tn, String ea, String laatstgeweest2, double kt, String openFactuur2, boolean bk){
+	public Gebruiker(int rl, String nm, String ww, String adr, String pc, String wp, String tn, String ea, String laatstgeweest2, double kt, String openFactuur2, boolean bk){
+		rol_id = rl;
 		naam = nm;
 		wachtwoord = ww;
 		adres = adr;
@@ -28,6 +28,14 @@ public class Klant {
 		openFactuur = openFactuur2;
 		blokkade = bk;
 	}
+	
+	public int getRol(){
+		return rol_id;
+	}
+	
+    public void setRol(int rl){
+        rol_id = rl;
+    }
 	
 	public String getNaam(){
         return naam;
@@ -120,6 +128,4 @@ public class Klant {
     public String toString(){
         return naam;
     }
-	
-	
 }

@@ -17,7 +17,7 @@ public class Dbconnectie {
 			con = (Connection) DriverManager.getConnection(url, user, password);
 			statement = con.createStatement();
 			System.out.println("Connectie is goed");
-		    rs = statement.executeQuery("SELECT * FROM klant");
+		    rs = statement.executeQuery("SELECT * FROM Gebruiker");
 		    schrijfResultSet(rs);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -27,15 +27,10 @@ public class Dbconnectie {
 	public Connection con(){
 		return con;
 	}
-//	public void saveMedewerker(Medewerker m) throws SQLException {	
-//		leesDatabase();
-//		statement.execute("INSERT INTO medewerker (naam, rol_id, wachtwoord)"+ "VALUES ('"+ m.getNaam() + "','"+ m.getRol()+ "','"+ m.getWw() + "')");			
-//			
-//	}
 	
-	public void saveKlant(Klant k) throws SQLException {	
+	public void saveGebruiker(Gebruiker g) throws SQLException {	
 		leesDatabase();
-		statement.execute("INSERT INTO klant (naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, korting, laatstgeweest, openfactuur, blokkade)"+ "VALUES ('"+ k.getNaam() + "','" + k.getWachtwoord()+ "','"+ k.getAdres() + "','"+ k.getPostcode() + "','"+ k.getWoonplaats() + "','"+ k.getTelefoonnummer() + "','"+ k.getEmailadres() + "','"+ k.getKorting() + "','"+ k.getLaatstgeweest() + "','"+ k.getOpenFactuur() + "','" + '0' + "')");				
+		statement.execute("INSERT INTO Gebruiker (rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, korting, laatstgeweest, openfactuur, blokkade)"+ "VALUES ('" + g.getRol() + "','" + g.getNaam() + "','" + g.getWachtwoord()+ "','"+ g.getAdres() + "','"+ g.getPostcode() + "','"+ g.getWoonplaats() + "','"+ g.getTelefoonnummer() + "','"+ g.getEmailadres() + "','"+ g.getKorting() + "','"+ g.getLaatstgeweest() + "','"+ g.getOpenFactuur() + "','" + '0' + "')");				
 	}
 	
 	private void schrijfResultSet(ResultSet resultSet) throws SQLException {

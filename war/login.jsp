@@ -4,7 +4,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 		<link rel="stylesheet" type="text/css" href="design.css" />
-		<title>Practicum 2</title>
+		<title>Inloggen</title>
 	</head>
 	<body background = "model.jpg">
 		<form action="LoginServlet.do" method="post">		
@@ -18,16 +18,16 @@
 				}					
 			%>	      
 				<div>		
-					<label>Usernames:</label> 
-					<input type="text" name="username" />
+					<label>Naam:</label> 
+					<input type="text" name="naam" />
 				</div>
 				<div>
-					<label>Password:</label>
-					<input type="password" name="password" />
+					<label>Wachtwoord:</label>
+					<input type="password" name="wachtwoord" />
 				</div>
 				<div>
-				<input type="submit" value="Submit"/>
-				<a href="register.jsp">Register User</a>
+				<input type="submit" value="Inloggen"/>
+				<a href="registreer.jsp">Registreer gebruiker</a>
 				</div>			
 			</div>
 		</form>	

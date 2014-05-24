@@ -6,16 +6,15 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import Webapp.Dbconnectie;
-import Webapp.Medewerker;
-import Webapp.Klant;
+import Webapp.Gebruiker;
 
 import java.sql.SQLException;
 import java.util.Date;
 
-public class RegisterServlet extends HttpServlet {
+public class RegistreerServlet extends HttpServlet {
 	private Dbconnectie db = new Dbconnectie();
 	private String wachtwoord = "", naam = "", s = "";;
-	private boolean loginSuccess = false;
+	private boolean loginSucces, loginSuccesWachtwoord, loginSuccesEmail = false;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {		
 		naam = req.getParameter("naam");
@@ -30,7 +29,14 @@ public class RegisterServlet extends HttpServlet {
 		String emailadres = req.getParameter("emailadres");
 		String emailadres2 = req.getParameter("emailadres2");
 		String laatstgeweest = null;
-		System.out.println(req.getParameter("laatstgeweest"));
+		laatstgeweest = "00-00-00";	
+		String tempKorting = req.getParameter("korting");
+		double korting = 0;	
+		String openFactuur = null;
+		openFactuur = "00-00-00";
+		String tempBlokkade = req.getParameter("blokkade");
+		boolean blokkade = false;
+		
 //		try{
 //		if(req.getParameter("laatstgeweest").equals(null)){
 //			laatstgeweest = "00-00-00";
@@ -41,12 +47,6 @@ public class RegisterServlet extends HttpServlet {
 //			np.printStackTrace();
 //		}
 		
-		laatstgeweest = "00-00-00";
-		
-		String tempKorting = req.getParameter("korting");
-		double korting = 0;	
-		String openFactuur = null;
-		System.out.println(req.getParameter("openFactuur"));
 //		try{
 //		if(req.getParameter("openFactuur").equals(null)){
 //			openFactuur = "00-00-00";
@@ -56,23 +56,25 @@ public class RegisterServlet extends HttpServlet {
 //		}catch(NullPointerException np){
 //			np.printStackTrace();
 //		}
-		
-		openFactuur = "00-00-00";
-		
-		String tempBlokkade = req.getParameter("blokkade");
-		boolean blokkade = false;
 
-		if (!"".equals(naam) && !"".equals(wachtwoord)) {			
+		if (!"".equals(naam) && !"".equals(wachtwoord) && !"".equals(adres) && !"".equals(postcode) 
+				&& !"".equals(woonplaats) && !"".equals(telefoonnummer) && !"".equals(emailadres)) {			
 			rol_id = Integer.parseInt(tempRol);
 			korting = Double.parseDouble(tempRol);
 
-			boolean loginSuccessPass = wachtwoord.equals(wachtwoord2);
-			if (loginSuccessPass) {
-				loginSuccess = true;
+			loginSuccesWachtwoord = wachtwoord.equals(wachtwoord2);
+			loginSuccesEmail = emailadres.equals(emailadres2);
+			
+			if (loginSuccesWachtwoord && loginSuccesEmail) {
+				loginSucces = true;
 			}
 
-			if (!loginSuccessPass) {
+			if (!loginSuccesWachtwoord) {
 				s += "Wachtwoord is niet hetzelfde!\n";
+			}
+			
+			if (!loginSuccesEmail) {
+				s += "Emailadres is niet hetzelfde!\n";
 			}
 			
 		} else {
@@ -81,20 +83,17 @@ public class RegisterServlet extends HttpServlet {
 
 		req.setAttribute("msgs", s);
 		RequestDispatcher rd = null;
-		if (loginSuccess) {
-//			Medewerker m = new Medewerker(naam, rol_id, wachtwoord);
-			Klant k = new Klant(naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openFactuur, blokkade);
+		if (loginSucces) {
+			Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openFactuur, blokkade);
 			try {
-//				db.saveMedewerker(m);
-				db.saveKlant(k);
+				db.saveGebruiker(g);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			s += "Toevoegen is gelukt";
 			rd = req.getRequestDispatcher("login.jsp");
 		} else
-			rd = req.getRequestDispatcher("register.jsp");
-		rd.forward(req, resp);
-	}
+			rd = req.getRequestDispatcher("registreer.jsp");
+			rd.forward(req, resp);
+		}	
 }
