@@ -33,6 +33,11 @@ public class Dbconnectie {
 		statement.execute("INSERT INTO Gebruiker (rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, korting, laatstgeweest, openfactuur, blokkade)"+ "VALUES ('" + g.getRol() + "','" + g.getNaam() + "','" + g.getWachtwoord()+ "','"+ g.getAdres() + "','"+ g.getPostcode() + "','"+ g.getWoonplaats() + "','"+ g.getTelefoonnummer() + "','"+ g.getEmailadres() + "','"+ g.getKorting() + "','"+ g.getLaatstgeweest() + "','"+ g.getOpenFactuur() + "','" + '0' + "')");				
 	}
 	
+	public void saveKlus(Klus k) throws SQLException {	
+		leesDatabase();
+		statement.execute("INSERT INTO klussen (id, naam, omschrijving, auto_id, werknemer_id)"+ "VALUES (null,'"+ k.getKlusNaam() + "','" + k.getKlusOmschrijving() + "','" + k.getAutoId() + "','" + k.getWerknemerId() + "')");				
+	}
+	
 	private void schrijfResultSet(ResultSet resultSet) throws SQLException {
 		while (resultSet.next()) {
 			naam = resultSet.getString("naam");

@@ -43,6 +43,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>Klus Servlet</servlet-name>
+		<servlet-class>Servlet.KlusServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Klus Servlet</servlet-name>
+		<url-pattern>/KlusServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>Login Servlet</servlet-name>
 		<servlet-class>Servlet.LoginServlet</servlet-class>
 	</servlet>

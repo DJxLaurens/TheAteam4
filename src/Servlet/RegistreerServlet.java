@@ -13,7 +13,7 @@ import java.util.Date;
 
 public class RegistreerServlet extends HttpServlet {
 	private Dbconnectie db = new Dbconnectie();
-	private String wachtwoord = "", naam = "", s = "";;
+	private String wachtwoord = "", naam = "", s = "";
 	private boolean loginSucces, loginSuccesWachtwoord, loginSuccesEmail = false;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {		
