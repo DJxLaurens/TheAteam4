@@ -11,7 +11,7 @@
 		}
 	%>
 	
-	<form action="KlusServlet.do" method="post">
+	<form action="KlusToevoegenServlet.do" method="post">
 		<table>
 			<tr>
 				<td>Klus naam:</td>

@@ -10,29 +10,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Webapp.Dbconnectie;
-import Webapp.Gebruiker;
 import Webapp.Klus;
+import Webapp.Product;
 
-public class KlusServlet extends HttpServlet {
+public class VoorraadToevoegenServlet extends HttpServlet {
 	private Dbconnectie db = new Dbconnectie();
-	private String klusNaam;
-	private String klusOmschrijving;
-	private int autoId;
-	private int werknemerId;
+	private String voorraadNaam;
+	private int voorraadType;
+	private int voorraadMin;
+	private int voorraad;
+	private double voorraadPrijs;
 	private String s;
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {	
-			klusNaam = req.getParameter("klusNaam");
-			klusOmschrijving = req.getParameter("klusOmschrijving");
-			autoId = 0;
-			werknemerId = 0;
+			voorraadNaam = req.getParameter("voorraadNaam");
+			voorraadMin = Integer.parseInt(req.getParameter("voorraadMin"));
+			voorraad = Integer.parseInt(req.getParameter("voorraad"));
+			voorraadPrijs = Double.parseDouble(req.getParameter("voorraadPrijs"));
+			
+			if(req.getParameter("type").equals("Brandstof")){
+				voorraadType = 1;
+			}else{
+				voorraadType = 2;
+			}
 			
 			req.setAttribute("msgs", s);
 			RequestDispatcher rd = null;
-			Klus k = new Klus(klusNaam, klusOmschrijving, autoId, werknemerId);
+			Product p = new Product(voorraadMin, voorraad, voorraadNaam, voorraadPrijs, voorraadType);
 			try {
-				db.saveKlus(k);
+				db.saveVoorraad(p);
 				s += "Toevoegen is gelukt";
 			} catch (SQLException e) {
 				e.printStackTrace();

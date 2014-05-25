@@ -38,6 +38,11 @@ public class Dbconnectie {
 		statement.execute("INSERT INTO klussen (id, naam, omschrijving, auto_id, werknemer_id)"+ "VALUES (null,'"+ k.getKlusNaam() + "','" + k.getKlusOmschrijving() + "','" + k.getAutoId() + "','" + k.getWerknemerId() + "')");				
 	}
 	
+	public void saveVoorraad(Product p) throws SQLException {	
+		leesDatabase();
+		statement.execute("INSERT INTO voorraad (id, naam, type, minVoorraad, voorraad)"+ "VALUES (null,'"+ p.getProductNaam() + "','" + p.getType() + "','" + p.getMinVoorraad() + "','" + p.getVoorraad() + "')");				
+	}
+	
 	private void schrijfResultSet(ResultSet resultSet) throws SQLException {
 		while (resultSet.next()) {
 			naam = resultSet.getString("naam");
