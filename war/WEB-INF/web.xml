@@ -34,12 +34,30 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>Register Servlet</servlet-name>
-		<servlet-class>Servlet.RegisterServlet</servlet-class>
+		<servlet-name>Registreer Servlet</servlet-name>
+		<servlet-class>Servlet.RegistreerServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Register Servlet</servlet-name>
-		<url-pattern>/RegisterServlet.do</url-pattern>
+		<servlet-name>Registreer Servlet</servlet-name>
+		<url-pattern>/RegistreerServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Klus Toevoegen Servlet</servlet-name>
+		<servlet-class>Servlet.KlusToevoegenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Klus Toevoegen Servlet</servlet-name>
+		<url-pattern>/KlusToevoegenServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Vooraad Toevoegen Servlet</servlet-name>
+		<servlet-class>Servlet.VoorraadToevoegenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Voorraad Toevoegen Servlet</servlet-name>
+		<url-pattern>/VoorraadToevoegenServlet.do</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

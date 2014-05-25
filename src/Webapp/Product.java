@@ -6,15 +6,20 @@ public class Product {
     private String productNaam;
     private int productNummer;
     private Double prijs;
+    private int type;
 
-    public Product(int minVrd, int vrd, String pNm, int aNr, double pr){
+    public Product(int minVrd, int vrd, String pNm, double pr, int tp){
         minVoorraad = minVrd;
         voorraad = vrd;
         productNaam = pNm;
-        productNummer = aNr;
         prijs = pr;
+        type = tp;
     }
 
+    public int getType(){
+    	return type;
+    }
+    
     public int getMinVoorraad(){
         return minVoorraad;
     }

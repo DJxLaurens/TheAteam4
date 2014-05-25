@@ -1,9 +1,7 @@
 package Webapp;
 
-import java.util.Calendar;
-
 public class Gebruiker {
-	private int id;
+	private int rol_id = 0;
 	private String naam;
 	private String wachtwoord;
 	private String adres;
@@ -11,13 +9,13 @@ public class Gebruiker {
 	private String woonplaats;
 	private String telefoonnummer;
 	private String emailadres;
-	private Calendar laatstgeweest;
 	private double korting;
-	private Calendar openFactuur;
+	private String laatstgeweest;
+	private String openFactuur;
 	private boolean blokkade;
 	
-	public Gebruiker(int i, String nm, String ww, String adr, String pc, String wp, String tn, String ea, int kt, boolean bk, Calendar lg, Calendar of){
-		id = i;
+	public Gebruiker(int rl, String nm, String ww, String adr, String pc, String wp, String tn, String ea, String laatstgeweest2, double kt, String openFactuur2, boolean bk){
+		rol_id = rl;
 		naam = nm;
 		wachtwoord = ww;
 		adres = adr;
@@ -25,20 +23,18 @@ public class Gebruiker {
 		woonplaats = wp;
 		telefoonnummer = tn;
 		emailadres = ea;
-		laatstgeweest = lg;
+		laatstgeweest = laatstgeweest2;
 		korting = kt;
-		openFactuur = of;
+		openFactuur = openFactuur2;
 		blokkade = bk;
 	}
-	
-	public int getID(){
-		return id;
+	public int getRol(){
+		return rol_id;
 	}
-	
-	public void setID(int i){
-		id = i;
-	}
-	
+    public void setRol(int rl){
+        rol_id = rl;
+        
+    }
 	public String getNaam(){
         return naam;
     }
@@ -54,11 +50,12 @@ public class Gebruiker {
     public void setWachtwoord(String ww){
         wachtwoord = ww;
     }
-    public Calendar getOpenFactuur(){
+    
+    public String getOpenFactuur(){
         return openFactuur;
     }
     
-    public void setOpenFactuur(Calendar of){
+    public void setOpenFactuur(String of){
         openFactuur = of;        
     }
     
@@ -110,11 +107,11 @@ public class Gebruiker {
         emailadres = em;
     }
 
-    public Calendar getLaatstgeweest(){
+    public String getLaatstgeweest(){
         return laatstgeweest;
     }
 
-    public void setLaatstgeweest(Calendar dt){
+    public void setLaatstgeweest(String dt){
         laatstgeweest = dt;
     }
     
@@ -129,6 +126,4 @@ public class Gebruiker {
     public String toString(){
         return naam;
     }
-	
-	
 }

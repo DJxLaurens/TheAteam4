@@ -9,13 +9,13 @@ public class AutoTotaalDienst {
     private ArrayList<Product> alleOnderdelen = new ArrayList<Product>();
     private ArrayList<Product> alleOnderdelen2 = new ArrayList<Product>();
     private ArrayList<Product> alleBrandstoffen = new ArrayList<Product>();
-    private ArrayList<Klant> alleKlanten = new ArrayList<Klant>();
+    private ArrayList<Gebruiker> alleKlanten = new ArrayList<Gebruiker>();
     private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
-    private ArrayList<Klant> jongerdan = new ArrayList<Klant>();
-    private ArrayList<Klant> ouderdan = new ArrayList<Klant>();
-    private ArrayList<Klant> afwezig = new ArrayList<Klant>();
-    private ArrayList<Klant> blokkade = new ArrayList<Klant>();
-    private ArrayList<Klant> factuur = new ArrayList<Klant>();
+    private ArrayList<Gebruiker> jongerdan = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> ouderdan = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> afwezig = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> blokkade = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> factuur = new ArrayList<Gebruiker>();
     private ArrayList<Klus> alleKlussen = new ArrayList<Klus>();
     private ArrayList<Klus> alleKlussenCombo = new ArrayList<Klus>();
     private ArrayList<Klus> klussenStatus = new ArrayList<Klus>();
@@ -72,7 +72,7 @@ public class AutoTotaalDienst {
     public double getWeekPrijs(){
         return weekPrijs;
     }
-    public double klantenKorting (Klant ka){
+    public double klantenKorting (Gebruiker ka){
         double ko = ka.getKorting();
         return ko;
     }
@@ -153,16 +153,16 @@ public class AutoTotaalDienst {
     }
     public boolean heeftKlant(String nm){
         boolean b = false;
-        for (Klant k: alleKlanten){
+        for (Gebruiker k: alleKlanten){
             if (k.getNaam().equals(nm)){
                 b = true;
             }
         }
         return b;
     }
-    public Klant zoekKlant(String nm){
-        Klant antw = null;
-        for(Klant k: alleKlanten){
+    public Gebruiker zoekKlant(String nm){
+    	Gebruiker antw = null;
+        for(Gebruiker k: alleKlanten){
             if(k.getNaam().equals(nm)){
                 antw = k;
                 break;
@@ -170,7 +170,7 @@ public class AutoTotaalDienst {
         }
         return antw;
     }
-    public boolean voegKlantToe(Klant nweKlant){
+    public boolean voegKlantToe(Gebruiker nweKlant){
         boolean b = false;
         if(!heeftKlant(nweKlant.getNaam())){
             alleKlanten.add(nweKlant);
@@ -178,28 +178,28 @@ public class AutoTotaalDienst {
         }
         return b;
     }
-    public void verwijderKlant(Klant exKlant, ArrayList a) {
+    public void verwijderKlant(Gebruiker exKlant, ArrayList a) {
         if (heeftKlant(exKlant.getNaam())) {
             a.remove(exKlant);
         }
     }
-    public ArrayList<Klant> getAlleKlanten(){
+    public ArrayList<Gebruiker> getAlleKlanten(){
         return alleKlanten;
     }
     // Arraylist van auto's jonger dan 2010
-    public ArrayList<Klant> getjongerdan(){
+    public ArrayList<Gebruiker> getjongerdan(){
         return jongerdan;
     }
     // Arraylist van auto's ouder dan 2010
-    public ArrayList<Klant> getouderdan(){
+    public ArrayList<Gebruiker> getouderdan(){
         return ouderdan;
     }
     //ArrayList van klanten die meer 2 maanden niet zijn langsgeweest
-    public ArrayList<Klant> getafwezig(){
+    public ArrayList<Gebruiker> getafwezig(){
         return afwezig;
     }
     //Hier worden alle Klanten met een auto jonger dan 2010 toegevoegd aan de ArrayList
-    public ArrayList<Klant> getAlleKlantenJongerDan2010(){
+    public ArrayList<Gebruiker> getAlleKlantenJongerDan2010(){
         for(Auto a: alleAutos){
             if(a.getBouwjaar() < 2010){
                 if (!jongerdan.contains(a.getEigenaar())) {
@@ -210,7 +210,7 @@ public class AutoTotaalDienst {
         return jongerdan;
     }
     //Hier worden alle Klanten met een auto ouder dan 2010 toegevoegd aan de ArrayList
-    public ArrayList<Klant> getAlleKlantenOuderDan2010(){
+    public ArrayList<Gebruiker> getAlleKlantenOuderDan2010(){
         for(Auto a: alleAutos){
             if(a.getBouwjaar() > 2010){
                 if (!ouderdan.contains(a.getEigenaar())) {
@@ -221,55 +221,55 @@ public class AutoTotaalDienst {
         return ouderdan;
     }
     //vraagt ArrayList op met klanten die 2 maanden niet zijn langsgeweest
-    public ArrayList<Klant> getAlleKlantenAfwezig(){
+    public ArrayList<Gebruiker> getAlleKlantenAfwezig(){
         Calendar test = Calendar.getInstance();
         test.add(Calendar.DATE, -60);
 
-        for (Klant k : alleKlanten) {
-            if (k.getLaatstgeweest().before(test)) {
+        for (Gebruiker k : alleKlanten) {
+//            if (k.getLaatstgeweest().before(test)) {
                 if(!afwezig.contains(k)){
                     afwezig.add(k);
                 }
-            }
+//            }
         }
         return afwezig;
     }
     //Maak factuur als klanten langer dan 30 dagen niet hebben betaald
-    public ArrayList<Klant> getAlleKlantenBrieven(){
+    public ArrayList<Gebruiker> getAlleKlantenBrieven(){
         factuur.removeAll(factuur);
         Calendar test = Calendar.getInstance();
         test.add(Calendar.DATE, -30);
-        for (Klant k : alleKlanten){
+        for (Gebruiker k : alleKlanten){
             if(k.getOpenFactuur() != null){
-                if(k.getOpenFactuur().before(test)){
+//                if(k.getOpenFactuur().before(test)){
                     if(!factuur.contains(k)){
                         factuur.add(k);
                     }
-                }
+//                }
             }
         }
         return factuur;
     }
     //Klanten combobox bij FactuurbetalingBlokkerenFrame
-    public ArrayList<Klant> getAlleKlantenBlok(){
+    public ArrayList<Gebruiker> getAlleKlantenBlok(){
         blokkade.removeAll(blokkade);
         Calendar test = Calendar.getInstance();
         test.add(Calendar.DATE, -90);
         //klanten die langer dan 90 dagen niet hebben betaald
-        for (Klant k : alleKlanten){
+        for (Gebruiker k : alleKlanten){
             if(k.getBlokkade() == false){
                 if(k.getOpenFactuur() != null){
-                    if(k.getOpenFactuur().before(test)){
+//                    if(k.getOpenFactuur().before(test)){
                         if(!blokkade.contains(k)){
                             blokkade.add(k);
-                        }
+//                        }
                     }
                 }
             }
         }
         return blokkade;
     }
-    public void blokkeer(Klant k){
+    public void blokkeer(Gebruiker k){
         k.setBlokkade();
     }
     public boolean voegVrijeParkeerplaatsToe(Parkeerplaats nP){

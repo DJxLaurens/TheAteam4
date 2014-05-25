@@ -4,13 +4,19 @@ import java.util.*;
 
 public class Klus {
     private String klusNaam;
+    private String klusOmschrijving;
+    private int autoId;
+    private int werknemerId;
     private int klusNummer;
+    private int a;
     private ArrayList<Auto>alleAutos = new ArrayList<Auto>();
     private ArrayList<Monteur>alleMonteurs = new ArrayList<Monteur>();
     private ArrayList<String> datum = new ArrayList<String>();
-    public Klus(String kNm, int kNr ){
+    public Klus(String kNm, String kO, int aI, int wI){
         klusNaam = kNm;
-        klusNummer = kNr;
+        klusOmschrijving = kO;
+        autoId = aI;
+        werknemerId = wI;
     }
     public void setKlusNaam(String kNm){
         klusNaam = kNm;
@@ -18,6 +24,19 @@ public class Klus {
     public String getKlusNaam(){
         return klusNaam;
     }
+    
+    public String getKlusOmschrijving(){
+        return klusOmschrijving;
+    }
+    
+    public int getAutoId(){
+        return autoId;
+    }
+    
+    public int getWerknemerId(){
+        return werknemerId;
+    }
+    
     public void setKlusNummer(int kNr){
         klusNummer = kNr;
     }
