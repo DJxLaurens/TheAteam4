@@ -1,16 +1,12 @@
 package Servlet;
 
-import java.io.IOException;
-import java.sql.SQLException;
+import java.io.*;
+import java.sql.*;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
 import Webapp.Dbconnectie;
-import Webapp.Klus;
 import Webapp.Product;
 
 public class VoorraadToevoegenServlet extends HttpServlet {

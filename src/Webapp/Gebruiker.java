@@ -28,15 +28,13 @@ public class Gebruiker {
 		openFactuur = openFactuur2;
 		blokkade = bk;
 	}
-	
 	public int getRol(){
 		return rol_id;
 	}
-	
     public void setRol(int rl){
         rol_id = rl;
+        
     }
-	
 	public String getNaam(){
         return naam;
     }

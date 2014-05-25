@@ -6,10 +6,10 @@ public class Auto{
     private String merk;
     private int bouwjaar;
     private String type;
-    private Klant eigenaar;
+    private Gebruiker eigenaar;
     private String brandstoftype;
 
-    public Auto(String kt, String mk, int bj, String tp, Klant eig, String bt){
+    public Auto(String kt, String mk, int bj, String tp, Gebruiker eig, String bt){
         kenteken = kt;
         merk = mk;
         bouwjaar = bj;
@@ -50,11 +50,11 @@ public class Auto{
         type = tp;
     }
 
-    public Klant getEigenaar(){
+    public Gebruiker getEigenaar(){
         return eigenaar;
     }
 
-    public void setEigenaar(Klant eig){
+    public void setEigenaar(Gebruiker eig){
         eigenaar = eig;
     }
 

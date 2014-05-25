@@ -6,9 +6,9 @@ public class Pas{
     private int pasnummer;
     private String verloopdatum;
     private double tebetalenbedrag;
-    private Klant klant;
+    private Gebruiker klant;
     
-    public Pas(String nrh, int pn, String vd, double tbb, Klant kl){
+    public Pas(String nrh, int pn, String vd, double tbb, Gebruiker kl){
             naamrekeninghouder = nrh;
             pasnummer = pn;
             verloopdatum = vd;
@@ -48,11 +48,11 @@ public class Pas{
         return tebetalenbedrag;
     }
     
-    public void setKlant(Klant kl){
+    public void setKlant(Gebruiker kl){
         klant = kl;
     }
     
-    public Klant getKlant(){
+    public Gebruiker getKlant(){
         return klant;
     }
     

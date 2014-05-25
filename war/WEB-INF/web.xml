@@ -51,6 +51,7 @@
 		<url-pattern>/KlusToevoegenServlet.do</url-pattern>
 	</servlet-mapping>
 	
+<<<<<<< HEAD
 <!-- 	<servlet> -->
 <!-- 		<servlet-name>Vooraad Toevoegen Servlet</servlet-name> -->
 <!-- 		<servlet-class>Servlet.VoorraadToevoegenServlet</servlet-class> -->
@@ -60,6 +61,8 @@
 <!-- 		<url-pattern>/VoorraadToevoegenServlet.do</url-pattern> -->
 <!-- 	</servlet-mapping> -->
 	
+=======
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
 	<servlet>
 		<servlet-name>Login Servlet</servlet-name>
 		<servlet-class>Servlet.LoginServlet</servlet-class>
