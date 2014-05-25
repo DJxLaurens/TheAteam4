@@ -3,10 +3,9 @@ package Webapp;
 import java.util.Calendar;
 
 public class Gebruiker {
-	private int gebruikerID;
+	private int id;
 	private String naam;
 	private String wachtwoord;
-	private int rol;
 	private String adres;
 	private String postcode;
 	private String woonplaats;
@@ -17,11 +16,10 @@ public class Gebruiker {
 	private Calendar openFactuur;
 	private boolean blokkade;
 	
-	public Gebruiker(int id, int rl, String nm, String ww, String adr, String pc, String wp, String tn, String ea, int kt, boolean bk, Calendar lg, Calendar of){
-		gebruikerID = id;
+	public Gebruiker(int i, String nm, String ww, String adr, String pc, String wp, String tn, String ea, int kt, boolean bk, Calendar lg, Calendar of){
+		id = i;
 		naam = nm;
 		wachtwoord = ww;
-		rol = rl;
 		adres = adr;
 		postcode = pc;
 		woonplaats = wp;
@@ -34,11 +32,11 @@ public class Gebruiker {
 	}
 	
 	public int getID(){
-		return gebruikerID;
+		return id;
 	}
 	
-	public void setID(int id){
-		gebruikerID = id;
+	public void setID(int i){
+		id = i;
 	}
 	
 	public String getNaam(){
@@ -56,15 +54,6 @@ public class Gebruiker {
     public void setWachtwoord(String ww){
         wachtwoord = ww;
     }
-    
-    public int getRol(){
-        return rol;
-    }
-
-    public void setRol(int rl){
-        rol = rl;
-    }
-    
     public Calendar getOpenFactuur(){
         return openFactuur;
     }
