@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
 public class KlantenbindingServlet extends HttpServlet{
+	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
