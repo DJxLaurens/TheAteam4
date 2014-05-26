@@ -93,4 +93,14 @@
 		<servlet-name>PrijsBerekenen Servlet</servlet-name>
 		<url-pattern>/PrijsBerekenenServlet.do</url-pattern>
 	</servlet-mapping>	
+	
+	<servlet>
+		<servlet-name>Voorraad toevoegen</servlet-name>
+		<servlet-class>Servlet.VoorraadToevoegenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Voorraad toevoegen</servlet-name>
+		<url-pattern>/VoorraadToevoegenServlet.do</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
