@@ -11,7 +11,7 @@ public class Dbconnectie {
 	public void leesDatabase() throws SQLException {
 		String url = "jdbc:mysql://localhost/autototaaldiensten";
 		String user = "root";
-		String password = ""; 
+		String password = "root"; 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = (Connection) DriverManager.getConnection(url, user, password);
@@ -30,7 +30,7 @@ public class Dbconnectie {
 	
 	public void saveGebruiker(Gebruiker g) throws SQLException {	
 		leesDatabase();
-		statement.execute("INSERT INTO Gebruiker (rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, korting, laatstgeweest, openfactuur, blokkade)"+ "VALUES ('" + g.getRol() + "','" + g.getNaam() + "','" + g.getWachtwoord()+ "','"+ g.getAdres() + "','"+ g.getPostcode() + "','"+ g.getWoonplaats() + "','"+ g.getTelefoonnummer() + "','"+ g.getEmailadres() + "','"+ g.getKorting() + "','"+ g.getLaatstgeweest() + "','"+ g.getOpenFactuur() + "','" + '0' + "')");				
+		statement.execute("INSERT INTO Gebruiker (rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openfactuur, blokkade)"+ "VALUES ('" + g.getRol() + "','" + g.getNaam() + "','" + g.getWachtwoord()+ "','"+ g.getAdres() + "','"+ g.getPostcode() + "','"+ g.getWoonplaats() + "','"+ g.getTelefoonnummer() + "','"+ g.getEmailadres() + "','"+ g.getLaatstgeweest() + "','"+ g.getKorting() + "','"+ g.getOpenFactuur() + "','" + '0' + "')");				
 	}
 	
 	public void saveKlus(Klus k) throws SQLException {	

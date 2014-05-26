@@ -13,12 +13,12 @@ import java.util.Date;
 
 public class RegistreerServlet extends HttpServlet {
 	private Dbconnectie db = new Dbconnectie();
-	private String wachtwoord = "", naam = "", s = "";
+	private String s = "";
 	private boolean loginSucces, loginSuccesWachtwoord, loginSuccesEmail = false;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {		
-		naam = req.getParameter("naam");
-		wachtwoord = req.getParameter("wachtwoord");
+		String naam = req.getParameter("naam");
+		String wachtwoord = req.getParameter("wachtwoord");
 		String wachtwoord2 = req.getParameter("wachtwoord2");
 		String tempRol = req.getParameter("rol_id");
 		int rol_id = 0;
@@ -33,7 +33,7 @@ public class RegistreerServlet extends HttpServlet {
 		String tempKorting = req.getParameter("korting");
 		double korting = 0;	
 		String openFactuur = null;
-		openFactuur = "00-00-00";
+		openFactuur = "00-00-0000";
 		String tempBlokkade = req.getParameter("blokkade");
 		boolean blokkade = false;
 		
