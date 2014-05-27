@@ -19,7 +19,7 @@
 			</tr>
 			<tr>
 				<td>Type:</td>
-				<td><select>
+				<td><select name="type">
 				<option value="Brandstof" name="type">Brandstof</option>
 				<option value="Onderdeel" name="type">Onderdeel</option>
 				</select></td>

@@ -41,7 +41,7 @@ public class VoorraadToevoegenServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			//s += "Toevoegen is gelukt";
-			rd = req.getRequestDispatcher("klus_toevoegen.jsp");
+			rd = req.getRequestDispatcher("voorraad_toevoegen.jsp");
 			rd.forward(req, resp);
 	}
 }

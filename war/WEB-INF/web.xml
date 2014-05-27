@@ -50,14 +50,7 @@
 		<servlet-name>Klus Toevoegen Servlet</servlet-name>
 		<url-pattern>/KlusToevoegenServlet.do</url-pattern>
 	</servlet-mapping>
-		<servlet>
-		<servlet-name>Vooraad Toevoegen Servlet</servlet-name>
-		<servlet-class>Servlet.VoorraadToevoegenServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Voorraad Toevoegen Servlet</servlet-name>
-		<url-pattern>/VoorraadToevoegenServlet.do</url-pattern>
-	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>Login Servlet</servlet-name>
 		<servlet-class>Servlet.LoginServlet</servlet-class>
