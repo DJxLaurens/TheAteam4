@@ -19,6 +19,7 @@ public class VoorraadToevoegenServlet extends HttpServlet {
 	private int voorraadType;
 	private int voorraadMin;
 	private int voorraad;
+	private int voorraadId;
 	private double voorraadPrijs;
 	private String s;
 	
@@ -48,7 +49,7 @@ public class VoorraadToevoegenServlet extends HttpServlet {
 			
 			req.setAttribute("msgs", s);
 			RequestDispatcher rd = null;
-			Product p = new Product(voorraadMin, voorraad, voorraadNaam, voorraadPrijs, voorraadType);
+			Product p = new Product(voorraadId, voorraadNaam, voorraadType, voorraadMin, voorraad);
 			try {
 				db.saveVoorraad(p);
 				s += "Toevoegen is gelukt";
