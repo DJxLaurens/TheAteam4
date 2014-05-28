@@ -2,9 +2,10 @@
 
 <div class="content">
 	<h1>Weekplanning</h1>
-	<%@ page import = "Webapp.Klus" %>
-	<%@ page import = "Webapp.AutoTotaalDienst" %>
-	<form>
+	<%@ page import="Webapp.Klus"%>
+	<%@ page import="Webapp.Monteur"%>
+	<%@ page import="Webapp.AutoTotaalDienst"%>
+	<form action ="WeekplanningServlet.do" method = "post">
 		<table>
 			<tr>
 				<td>Klus:</td>
@@ -15,22 +16,28 @@
 			<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); 
 			
 			for(Klus k : atd.getAlleKlussen()) { %>
-			<tr id = "headRow">
+			<tr id="headRow">
 				<td><%= k.getKlusNaam()  %></td>
 				<td><%= k.getWerknemerId() %></td>
 				<td><%= k.getAutoId()  %></td>
 				<td>0</td>
-				<td><input type="text" name="aantal"> </td>
+				<td><input type="text" name="aantal"></td>
 			</tr>
 			<% }%>
 		</table>
-		<table>		
+		<table>
 			<tr>
-				<td>Selecteer klus:</td>				
-				<td><select><%
+				<td>Selecteer klus:</td>
+				<td><select>
+						<%
 				for(Klus k : atd.getAlleKlussen()) {
 					if(k.getWerknemerId() == 0){ %>
-					<option value=klus><%=k.getKlusNaam()%>	</option><%}}%></select></td>				
+						<option value=klus><%=k.getKlusNaam()%>
+						</option>
+						<%
+					}
+				}%>
+				</select></td>
 			</tr>
 			<tr>
 				<td>Datum:</td>
@@ -39,10 +46,18 @@
 			</tr>
 			<tr>
 				<td>Selecteer Monteur:</td>
-				<td><select><option value="monteur">Klaas
-							vaak</option></select></td>
+				<td><select>
+						<%
+							for(Monteur m : atd.getAlleMonteurs()) {
+						%>
+						<option value=monteur><%=m.getNaam()%>
+						</option>
+						<%
+							}
+						%>
+				</select></td>
 			</tr>
-			
+
 		</table>
 		<input type="submit" value="Toevoegen">
 	</form>
