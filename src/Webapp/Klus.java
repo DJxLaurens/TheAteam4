@@ -8,11 +8,11 @@ public class Klus {
     private int autoId;
     private int werknemerId;
     private int klusNummer;
-    private int a;
     private ArrayList<Auto>alleAutos = new ArrayList<Auto>();
     private ArrayList<Monteur>alleMonteurs = new ArrayList<Monteur>();
     private ArrayList<String> datum = new ArrayList<String>();
-    public Klus(String kNm, String kO, int aI, int wI){
+    public Klus(int kN, String kNm, String kO, int aI, int wI){
+    	klusNummer = kN;
         klusNaam = kNm;
         klusOmschrijving = kO;
         autoId = aI;
