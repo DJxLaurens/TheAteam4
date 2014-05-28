@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import Connection.Dbconnectie;
+
 public class AutoTotaalDienst {
     private ArrayList<Product> alleOnderdelen = new ArrayList<Product>();
     private ArrayList<Product> alleOnderdelen2 = new ArrayList<Product>();

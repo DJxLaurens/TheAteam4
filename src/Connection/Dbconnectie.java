@@ -1,7 +1,12 @@
-package Webapp;
+package Connection;
 
 import java.sql.*;
 import java.util.*;
+
+import Webapp.AutoTotaalDienst;
+import Webapp.Gebruiker;
+import Webapp.Klus;
+import Webapp.Product;
 
 public class Dbconnectie {
 	private Connection con = null;

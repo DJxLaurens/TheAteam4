@@ -5,7 +5,7 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import Webapp.Dbconnectie;
+import Connection.Dbconnectie;
 import Webapp.Gebruiker;
 
 import java.sql.SQLException;
