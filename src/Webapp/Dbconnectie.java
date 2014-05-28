@@ -5,10 +5,9 @@ import java.util.*;
 
 public class Dbconnectie {
 	private Connection con = null;
-	private static Statement statement;
+	private Statement statement;
 	private ResultSet rs = null;
 	private String naam = "", ww = "";
-	private ArrayList<Product> alleOnderdelen = new ArrayList<Product>();
 	private AutoTotaalDienst atdRef;
 	
 	public void leesDatabase() throws SQLException {
@@ -19,7 +18,7 @@ public class Dbconnectie {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = (Connection) DriverManager.getConnection(url, user, password);
 			statement = con.createStatement();		
-			rs = statement.executeQuery("SELECT * FROM klussen");
+			rs = statement.executeQuery("SELECT * FROM gebruiker");
 		    System.out.println(rs + " dit is RS");
 		    onderdeelResultset(rs);	
 		} catch (ClassNotFoundException e) {
@@ -28,14 +27,7 @@ public class Dbconnectie {
 	}
 	public Connection con(){
 		return con;
-	}
-	public static ResultSet getAlleBrandstoffen() throws SQLException{
-		return statement.executeQuery("SELECT * FROM voorraad WHERE type = '1'");
-	}
-	public static ResultSet getAlleOnderdelen() throws SQLException{
-		return statement.executeQuery("SELECT * FROM Gebruiker");		
-	}
-	
+	}	
 	public void saveGebruiker(Gebruiker g) throws SQLException {	
 		leesDatabase();	
 		statement.execute("INSERT INTO Gebruiker (rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openfactuur, blokkade)"+ "VALUES ('" + g.getRol() + "','" + g.getNaam() + "','" + g.getWachtwoord()+ "','"+ g.getAdres() + "','"+ g.getPostcode() + "','"+ g.getWoonplaats() + "','"+ g.getTelefoonnummer() + "','"+ g.getEmailadres() + "','"+ g.getLaatstgeweest() + "','"+ g.getKorting() + "','"+ g.getOpenFactuur() + "','" + '0' + "')");		
@@ -66,14 +58,14 @@ public class Dbconnectie {
 //			ww = resultSet.getString("wachtwoord");
 	
 	public void onderdeelResultset(ResultSet resultSet) throws SQLException {
-		System.out.println(" aaa");
 		while (resultSet.next()) {
-			int id = resultSet.getInt("id");
+			int id = resultSet.getInt("id");			
 			String naam = resultSet.getString("naam");
-			String omschrijving = resultSet.getString("omschrijving");
-			int autoId = resultSet.getInt("auto_id");
-			int werknemerId = resultSet.getInt("werknemer_id");
-			Klus u = new Klus(id, naam, omschrijving, autoId, werknemerId);			
+			System.out.println(naam);
+			String omschrijving = resultSet.getString("wachtwoord");
+//			int autoId = resultSet.getInt("auto_id");
+//			int werknemerId = resultSet.getInt("werknemer_id");
+			Klus u = new Klus(id, naam, omschrijving, 0, 0);			
 			atdRef.voegKlusToe(u);			
 		}
 	}

@@ -1,5 +1,6 @@
 package Webapp;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,9 +28,9 @@ public class AutoTotaalDienst {
     private ArrayList<Pas> allePassen = new ArrayList<Pas>();
     private double literPrijs, werkUurPrijs, maandPrijs, weekPrijs, dagPrijs;
     
-   public AutoTotaalDienst(){
-	   System.out.println(getAlleKlussen().size() + " klussenarray");
-	   new Dbconnectie();
+   public AutoTotaalDienst() throws SQLException{
+	   Dbconnectie db = new Dbconnectie();
+	   db.leesDatabase();
    }
    
     // checkt of ingevoerd gegeven een int getal is
