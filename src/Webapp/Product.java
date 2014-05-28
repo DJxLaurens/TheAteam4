@@ -7,13 +7,14 @@ public class Product {
     private int productNummer;
     private Double prijs;
     private int type;
+    private int productID;
 
-    public Product(int minVrd, int vrd, String pNm, double pr, int tp){
-        minVoorraad = minVrd;
+    public Product(int pId, String pNm, int tp, int mV, int vrd){
+        minVoorraad = mV;
         voorraad = vrd;
         productNaam = pNm;
-        prijs = pr;
         type = tp;
+        productID = pId;
     }
 
     public int getType(){

@@ -2,6 +2,8 @@
 
 <div class="content">
 	<h1>Weekplanning</h1>
+	<%@ page import = "Webapp.Klus" %>
+	<%@ page import = "Webapp.AutoTotaalDienst" %>
 	<form>
 		<table>
 			<tr>
@@ -10,12 +12,17 @@
 				<td>Auto:</td>
 				<td>Datum:</td>
 			</tr>
+			<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); 
+			
+			for(Klus k : atd.getAlleKlussen()){ %>
 			<tr>
-				<td>Bougie vervangen</td>
-				<td>Sjaak langsma:</td>
-				<td>BMW M3:</td>
-				<td>12-05-14</td>
+				<td><%= k.getKlusNaam()  %></td>
+				<td><%= k.getWerknemerId() %></td>
+				<td><%= k.getAutoId()  %></td>
+				<td><%= k.getAlleData().get(0)  %></td>
+				<td><input type="text" name="aantal"> </td>
 			</tr>
+			<% }%>
 		</table>
 		<table>
 			<tr>

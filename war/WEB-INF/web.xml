@@ -95,5 +95,10 @@
 		<servlet-name>Voorraad toevoegen</servlet-name>
 		<url-pattern>/VoorraadToevoegenServlet.do</url-pattern>
 	</servlet-mapping>
+	<listener>
+		<listener-class>
+			Webapp.MyServletContextListener
+		</listener-class>
+	</listener>
 	
 </web-app>
