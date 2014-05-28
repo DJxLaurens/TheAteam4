@@ -33,7 +33,7 @@ public class ProductDAO {
 		try {
 			this.leesDatabase();
 			statement = con.createStatement();
-			rs = statement.executeQuery("SELECT * FROM voorraad where type='1'");
+			rs = statement.executeQuery("SELECT * FROM voorraad where type='2'");
 			
 			while (rs.next()) {
 				int id = rs.getInt("id");
