@@ -5,13 +5,10 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import Connection.Dbconnectie;
 import Connection.GebruikersDAO;
-import Connection.KlussenDAO;
 import Webapp.Gebruiker;
 
 import java.sql.SQLException;
-import java.util.Date;
 
 public class RegistreerServlet extends HttpServlet {
 	private GebruikersDAO gebruiker = new GebruikersDAO();

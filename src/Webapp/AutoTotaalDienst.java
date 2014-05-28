@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import Connection.KlussenDAO;
-import Connection.Dbconnectie;
 import Connection.ProductDAO;
+import Connection.GebruikersDAO;
 
 public class AutoTotaalDienst {
     private ArrayList<Product> alleOnderdelen = new ArrayList<Product>();
@@ -33,17 +33,6 @@ public class AutoTotaalDienst {
     private double literPrijs, werkUurPrijs, maandPrijs, weekPrijs, dagPrijs;
     
 
-	public AutoTotaalDienst() {
-		Dbconnectie db = new Dbconnectie();
-		try {
-			db.leesDatabase();
-			System.out.println("Ik lees de DB");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("Ik kan niet lezen");
-		}
-	}
    
     // checkt of ingevoerd gegeven een int getal is
     public static boolean isInteger(String s) {

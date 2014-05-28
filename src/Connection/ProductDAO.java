@@ -72,4 +72,8 @@ public class ProductDAO {
 	public void setBrandstoffenDB(){
 		
 	}
+	public void saveVoorraad(Product p) throws SQLException {	
+		this.leesDatabase();
+		statement.execute("INSERT INTO voorraad (naam, type, minVoorraad, voorraad)"+ "VALUES ('"+ p.getProductNaam() + "','" + p.getType() + "','" + p.getMinVoorraad() + "','" + p.getVoorraad() + "')");				
+	}
 }

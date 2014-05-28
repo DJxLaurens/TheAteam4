@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Connection.Dbconnectie;
+import Connection.ProductDAO;
 import Webapp.Product;
 
 public class VoorraadToevoegenServlet extends HttpServlet {
-	private Dbconnectie db = new Dbconnectie();
+	private ProductDAO producten = new ProductDAO();
 	private String voorraadNaam;
 	private int voorraadType;
 	private int voorraadMin;
@@ -51,7 +51,7 @@ public class VoorraadToevoegenServlet extends HttpServlet {
 			RequestDispatcher rd = null;
 			Product p = new Product(voorraadId, voorraadNaam, voorraadType, voorraadMin, voorraad);
 			try {
-				db.saveVoorraad(p);
+				producten.saveVoorraad(p);
 				s += "Toevoegen is gelukt";
 			} catch (SQLException e) {
 				e.printStackTrace();
