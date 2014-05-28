@@ -12,7 +12,7 @@ import Webapp.Klus;
 public class KlussenDAO {
 	private Connection con = null;
 	private Statement statement;
-	private ResultSet output, insert;
+	private ResultSet output;
 	
 	public void leesDatabase() throws SQLException {
 		String url = "jdbc:mysql://localhost/autototaaldiensten";
@@ -28,7 +28,7 @@ public class KlussenDAO {
 		}		
 	}
 	
-	public ArrayList<Klus> getAlleKlussen() {
+	public ArrayList<Klus> getAlleKlussenDB() {
 		ArrayList<Klus> alleKlussenDB = new ArrayList<Klus>();	
 		try {
 			this.leesDatabase();
@@ -39,7 +39,6 @@ public class KlussenDAO {
 				String omschrijving = output.getString("omschrijving");
 				int autoId = output.getInt("auto_id");
 				int werknemerId = output.getInt("werknemer_id");
-				System.out.println("Dit is een klus: "+ id + naam + omschrijving + autoId + werknemerId);
 				Klus u = new Klus(id, naam, omschrijving, autoId, werknemerId);
 				alleKlussenDB.add(u);			
 			}

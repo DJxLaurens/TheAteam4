@@ -393,9 +393,6 @@ public class AutoTotaalDienst {
         return alleAutos;
     }
     public boolean heeftKlus(int kNr){
-    	if(alleKlussen == null){
-    		alleKlussen = new KlussenDAO().getAlleKlussen();
-    	}
         boolean b = false;
         for (Klus k: alleKlussen){
             if (k.getKlusNummer() == kNr){
@@ -419,9 +416,13 @@ public class AutoTotaalDienst {
            alleKlussen.remove(exKlus);
        }
     }
-    public ArrayList<Klus> getAlleKlussen(){
-        return alleKlussen;
-    }
+    
+	public ArrayList<Klus> getAlleKlussen() {
+		if (alleKlussen.isEmpty()) {
+			alleKlussen = new KlussenDAO().getAlleKlussenDB();
+		}
+		return alleKlussen;
+	}
     //ArrayList met Onderdelen voor PrijsBerekenenFrame
     public boolean heeftKlusCombo(int kNr){
         boolean b = false;
