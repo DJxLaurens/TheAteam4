@@ -4,7 +4,6 @@ public class Product {
     private int minVoorraad;
     private int voorraad;
     private String productNaam;
-    private int productNummer;
     private Double prijs;
     private int type;
     private int productID;
@@ -41,7 +40,7 @@ public class Product {
     }
 
     public int getProductNummer(){
-        return productNummer;
+        return productID;
     }
     public double getProductPrijs(){
         return prijs;
