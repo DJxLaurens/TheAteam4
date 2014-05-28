@@ -1,10 +1,14 @@
 package Servlet;
 
-import java.io.*;
-import java.sql.*;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Enumeration;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import Webapp.Dbconnectie;
 import Webapp.Product;
@@ -19,7 +23,18 @@ public class VoorraadToevoegenServlet extends HttpServlet {
 	private String s;
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {	
+			throws ServletException, IOException {
+		
+			Enumeration<String> enumeratie = req.getParameterNames();
+			while(enumeratie.hasMoreElements()) {
+				String name = enumeratie.nextElement();
+				if (name.startsWith("prod_" )) {
+					String id = name.substring(name.indexOf('_'));
+					String aantal = req.getParameter(name);
+				}
+			}
+			
+		
 			voorraadNaam = req.getParameter("voorraadNaam");
 			voorraadMin = Integer.parseInt(req.getParameter("voorraadMin"));
 			voorraad = Integer.parseInt(req.getParameter("voorraad"));

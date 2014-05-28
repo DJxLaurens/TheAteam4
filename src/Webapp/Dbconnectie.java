@@ -1,11 +1,14 @@
 package Webapp;
 
 import java.sql.*;
+import java.util.*;
 
 public class Dbconnectie {
 	private Connection con = null;
 	private static Statement statement;
 	private ResultSet rs = null;
+	private String naam = "", ww = "";
+	private ArrayList<Product> alleOnderdelen = new ArrayList<Product>();
 	private AutoTotaalDienst atdRef;
 	
 	public void leesDatabase() throws SQLException {
@@ -47,6 +50,20 @@ public class Dbconnectie {
 		leesDatabase();
 		statement.execute("INSERT INTO voorraad (naam, type, minVoorraad, voorraad)"+ "VALUES ('"+ p.getProductNaam() + "','" + p.getType() + "','" + p.getMinVoorraad() + "','" + p.getVoorraad() + "')");				
 	}
+	
+//	public void onderdelen(){
+//		try {
+//			statement.executeQuery("SELECT * FROM voorraad");
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}	
+//	}
+//	
+//	private void schrijfResultSet(ResultSet resultSet) throws SQLException {
+//		while (resultSet.next()) {
+//			naam = resultSet.getString("naam");
+//			ww = resultSet.getString("wachtwoord");
 	
 	public void onderdeelResultset(ResultSet resultSet) throws SQLException {
 		System.out.println(" aaa");
