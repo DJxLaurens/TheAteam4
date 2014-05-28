@@ -11,15 +11,7 @@
 	<div class="container">
 		<div class="header">
 			<img src="images/Logo-A-Team.png" />
-		</div>
-		<div class="menu">
-			<ul>
-				<li><a href="index.jsp">Home</a></li>
-			</ul>
-		</div>
-		<div id = "login">
-		<form action="LoginServlet.do" method="post">		
-			<div id="form"> 			
+		<form action="LoginServlet.do" method="post">					
 			<h1>Login</h1>
 			<% 
 				Object msgs = request.getAttribute("msgs"); 
@@ -40,6 +32,11 @@
 				<input type="submit" value="Inloggen"/>
 				<a href="registreer.jsp">Registreer gebruiker</a>
 				</div>			
-			</div>
 		</form>	
+			
+		</div>
+		<div class="menu">
+			<ul>
+				<li><a href="index.jsp">Home</a></li>
+			</ul>
 		</div>
