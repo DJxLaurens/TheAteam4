@@ -26,7 +26,12 @@ public class AutoTotaalDienst {
     private ArrayList<Parkeerplaats> alleReserveringen = new ArrayList<Parkeerplaats>();
     private ArrayList<Pas> allePassen = new ArrayList<Pas>();
     private double literPrijs, werkUurPrijs, maandPrijs, weekPrijs, dagPrijs;
-
+    
+   public AutoTotaalDienst(){
+	   System.out.println(getAlleKlussen().size() + " klussenarray");
+	   new Dbconnectie();
+   }
+   
     // checkt of ingevoerd gegeven een int getal is
     public static boolean isInteger(String s) {
                 try {

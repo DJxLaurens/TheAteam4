@@ -15,10 +15,10 @@ public class Dbconnectie {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = (Connection) DriverManager.getConnection(url, user, password);
-			statement = con.createStatement();			
-		    rs = statement.executeQuery("SELECT * FROM klussen");
+			statement = con.createStatement();		
+			rs = statement.executeQuery("SELECT * FROM klussen");
 		    System.out.println(rs + " dit is RS");
-		    onderdeelResultset(rs);
+		    onderdeelResultset(rs);	
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}		
@@ -31,9 +31,6 @@ public class Dbconnectie {
 	}
 	public static ResultSet getAlleOnderdelen() throws SQLException{
 		return statement.executeQuery("SELECT * FROM Gebruiker");		
-	}
-	public ResultSet alleKlussen() throws SQLException{
-		return statement.executeQuery("SELECT * FROM klussen");			
 	}
 	
 	public void saveGebruiker(Gebruiker g) throws SQLException {	
@@ -52,15 +49,15 @@ public class Dbconnectie {
 	}
 	
 	public void onderdeelResultset(ResultSet resultSet) throws SQLException {
-		while (alleKlussen().next()) {
+		System.out.println(" aaa");
+		while (resultSet.next()) {
 			int id = resultSet.getInt("id");
 			String naam = resultSet.getString("naam");
 			String omschrijving = resultSet.getString("omschrijving");
 			int autoId = resultSet.getInt("auto_id");
 			int werknemerId = resultSet.getInt("werknemer_id");
-			Klus u = new Klus(id, naam, omschrijving, autoId, werknemerId);
-			atdRef.voegKlusToe(u);
-			
+			Klus u = new Klus(id, naam, omschrijving, autoId, werknemerId);			
+			atdRef.voegKlusToe(u);			
 		}
 	}
 }

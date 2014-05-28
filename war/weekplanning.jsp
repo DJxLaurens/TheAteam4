@@ -5,7 +5,6 @@
 	<%@ page import = "java.util.*" %>
 	<%@ page import = "Webapp.Klus" %>
 	<%@ page import = "Webapp.AutoTotaalDienst" %>
-	<%@ page import = "Webapp.Dbconnectie" %>
 	<form>
 		<table>
 			<tr>
@@ -14,10 +13,7 @@
 				<td>Auto:</td>
 				<td>Datum:</td>
 			</tr>
-			
-			<% Dbconnectie db = new Dbconnectie();
-			db.leesDatabase();
-			AutoTotaalDienst atd = new AutoTotaalDienst();
+			<% AutoTotaalDienst atd = new AutoTotaalDienst();
 			for(Klus k : atd.getAlleKlussen()){ %>
 			<tr>
 				<td><%= k.getKlusNaam()  %></td>
