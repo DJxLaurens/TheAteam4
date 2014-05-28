@@ -13,7 +13,7 @@ public class Dbconnectie {
 	public void leesDatabase() throws SQLException {
 		String url = "jdbc:mysql://localhost/autototaaldiensten";
 		String user = "root";
-		String password = "root"; 
+		String password = ""; 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = (Connection) DriverManager.getConnection(url, user, password);
@@ -59,13 +59,13 @@ public class Dbconnectie {
 	
 	public void onderdeelResultset(ResultSet resultSet) throws SQLException {
 		while (resultSet.next()) {
-			int id = resultSet.getInt("id");			
+			int id = resultSet.getInt("id");
 			String naam = resultSet.getString("naam");
-			System.out.println(naam);
-			String omschrijving = resultSet.getString("wachtwoord");
-//			int autoId = resultSet.getInt("auto_id");
-//			int werknemerId = resultSet.getInt("werknemer_id");
-			Klus u = new Klus(id, naam, omschrijving, 0, 0);			
+			String omschrijving = resultSet.getString("omschrijving");
+			int autoId = resultSet.getInt("auto_id");
+			int werknemerId = resultSet.getInt("werknemer_id");
+			System.out.println("Dit is een klus: "+ id + naam + omschrijving + autoId + werknemerId);
+			Klus u = new Klus(id, naam, omschrijving, autoId, werknemerId);		
 			atdRef.voegKlusToe(u);			
 		}
 	}
