@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import Connection.Dbconnectie;
+import Connection.ProductDAO;
 
 public class AutoTotaalDienst {
     private ArrayList<Product> alleOnderdelen = new ArrayList<Product>();
@@ -94,11 +95,7 @@ public class AutoTotaalDienst {
     }
 
     public boolean heeftOnderdeel(int artNr){
-    	if (alleOnderdelen == null) {
-    		alleOnderdelen = new Dbconnectie().getAlleProducten();
-    	}
-    	
-        boolean b = false;
+    	boolean b = false;
         for (Product p: alleOnderdelen){
             if (p.getProductNummer() == (artNr)){
                     b = true;
@@ -110,7 +107,7 @@ public class AutoTotaalDienst {
         boolean b = false;
         if(!heeftOnderdeel(nwOnderdeel.getProductNummer())){
             alleOnderdelen.add(nwOnderdeel);
-            new Dbconnectie().saveOnderdeel(nwOnderdeel);
+            //new Dbconnectie().saveOnderdeel(nwOnderdeel);
             b = true;
         }
         
@@ -125,6 +122,12 @@ public class AutoTotaalDienst {
         }
     }
     public ArrayList<Product> getAlleOnderdelen(){
+    	if (alleOnderdelen.isEmpty()) {
+    		System.out.println("Hoi");
+    		alleOnderdelen = new ProductDAO().getAlleOnderdelenDB();
+    	}
+    	
+    	System.out.println("Test: " + alleOnderdelen);
         return alleOnderdelen;
 
     }
