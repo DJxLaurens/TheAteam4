@@ -8,7 +8,7 @@ public class Dbconnectie {
 	private Statement statement;
 	private ResultSet rs = null;
 	private String naam = "", ww = "";
-	private AutoTotaalDienst atdRef;
+	private AutoTotaalDienst atdRef;	
 	
 	public void leesDatabase() throws SQLException {
 		String url = "jdbc:mysql://localhost/autototaaldiensten";
@@ -18,7 +18,7 @@ public class Dbconnectie {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = (Connection) DriverManager.getConnection(url, user, password);
 			statement = con.createStatement();		
-			rs = statement.executeQuery("SELECT * FROM gebruiker");
+			rs = statement.executeQuery("SELECT * FROM klussen");
 		    System.out.println(rs + " dit is RS");
 		    onderdeelResultset(rs);	
 		} catch (ClassNotFoundException e) {
