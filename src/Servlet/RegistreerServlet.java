@@ -6,13 +6,15 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import Connection.Dbconnectie;
+import Connection.GebruikersDAO;
+import Connection.KlussenDAO;
 import Webapp.Gebruiker;
 
 import java.sql.SQLException;
 import java.util.Date;
 
 public class RegistreerServlet extends HttpServlet {
-	private Dbconnectie db = new Dbconnectie();
+	private GebruikersDAO gebruiker = new GebruikersDAO();
 	private String s = "";
 	private boolean loginSucces, loginSuccesWachtwoord, loginSuccesEmail = false;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -68,15 +70,15 @@ public class RegistreerServlet extends HttpServlet {
 			}
 
 			if (!loginSuccesWachtwoord) {
-				s += "Wachtwoord is niet hetzelfde!\n";
+				s = "Wachtwoord is niet hetzelfde!\n";
 			}
 			
 			if (!loginSuccesEmail) {
-				s += "Emailadres is niet hetzelfde!\n";
+				s = "Emailadres is niet hetzelfde!\n";
 			}
 			
 		} else {
-			s += "Niet alle velden zijn ingevuld!\n";
+			s = "Niet alle velden zijn ingevuld!\n";
 		}
 
 		req.setAttribute("msgs", s);
@@ -84,7 +86,8 @@ public class RegistreerServlet extends HttpServlet {
 		if (loginSucces) {
 			Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openFactuur, blokkade);
 			try {
-				db.saveGebruiker(g);
+				
+				gebruiker.saveGebruiker(g);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

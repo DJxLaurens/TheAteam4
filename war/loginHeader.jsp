@@ -12,7 +12,7 @@
 		<div class="header">
 			<img src="images/Logo-A-Team.png" />
 		<form action="LoginServlet.do" method="post">					
-			<h1>Login</h1>
+			<h3>Login</h3>
 			<% 
 				Object msgs = request.getAttribute("msgs"); 
 				if (msgs != null) { 	 
@@ -30,7 +30,7 @@
 				</div>
 				<div>
 				<input type="submit" value="Inloggen"/>
-				<a href="registreer.jsp">Registreer gebruiker</a>
+				<a href="registreer.jsp">Registreer</a>
 				</div>			
 		</form>	
 			

@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Connection.Dbconnectie;
-import Webapp.Gebruiker;
+import Connection.KlussenDAO;
 import Webapp.Klus;
 
 public class KlusToevoegenServlet extends HttpServlet {
-	private Dbconnectie db = new Dbconnectie();
+	private KlussenDAO klus = new KlussenDAO();
 	private String klusNaam;
 	private String klusOmschrijving;
 	private int autoId;
@@ -34,13 +33,13 @@ public class KlusToevoegenServlet extends HttpServlet {
 			RequestDispatcher rd = null;
 			Klus k = new Klus(id, klusNaam, klusOmschrijving, autoId, werknemerId);			
 			try {
-				db.saveKlus(k);
+				klus.saveKlus(k);
 				id ++;
-				s += "Toevoegen is gelukt";
+				s = "Toevoegen is gelukt";
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			s += "Toevoegen is mislukt";
+			s = "Toevoegen is mislukt";
 			rd = req.getRequestDispatcher("klus_toevoegen.jsp");
 			rd.forward(req, resp);
 	}
