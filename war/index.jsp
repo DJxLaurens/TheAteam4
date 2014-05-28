@@ -4,8 +4,7 @@
 	<h1>AutoTotaalDiensten</h1>
 
 	<p>
-		Welkom bij het systeem van AutoTotaalDiensten.<br> Maak hierboven
-		uw keuze in het menu.
+		Welkom bij het systeem van AutoTotaalDiensten.<br> Log A.U.B. in in het systeem
 	</p>
 </div>
 
