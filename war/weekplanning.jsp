@@ -2,7 +2,6 @@
 
 <div class="content">
 	<h1>Weekplanning</h1>
-	<%@ page import = "java.util.*" %>
 	<%@ page import = "Webapp.Klus" %>
 	<%@ page import = "Webapp.AutoTotaalDienst" %>
 	<form>
@@ -15,21 +14,23 @@
 			</tr>
 			<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); 
 			
-			for(Klus k : atd.getAlleKlussen()){ %>
-			<tr>
+			for(Klus k : atd.getAlleKlussen()) { %>
+			<tr id = "headRow">
 				<td><%= k.getKlusNaam()  %></td>
 				<td><%= k.getWerknemerId() %></td>
 				<td><%= k.getAutoId()  %></td>
-				<td><%= k.getAlleData().get(0)  %></td>
+				<td>0</td>
 				<td><input type="text" name="aantal"> </td>
 			</tr>
 			<% }%>
 		</table>
-		<table>
+		<table>		
 			<tr>
-				<td>Selecteer klus:</td>
-				<td><select><option value="klus">Banden
-							vervangen</option></select></td>
+				<td>Selecteer klus:</td>				
+				<td><select><%
+				for(Klus k : atd.getAlleKlussen()) {
+					if(k.getWerknemerId() == 0){ %>
+					<option value=klus><%=k.getKlusNaam()%>	</option><%}}%></select></td>				
 			</tr>
 			<tr>
 				<td>Datum:</td>
@@ -41,7 +42,7 @@
 				<td><select><option value="monteur">Klaas
 							vaak</option></select></td>
 			</tr>
-
+			
 		</table>
 		<input type="submit" value="Toevoegen">
 	</form>

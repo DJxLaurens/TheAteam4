@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import Connection.KlussenDAO;
 import Connection.Dbconnectie;
 import Connection.ProductDAO;
 
@@ -95,7 +96,11 @@ public class AutoTotaalDienst {
     }
 
     public boolean heeftOnderdeel(int artNr){
-    	boolean b = false;
+//    	if (alleOnderdelen == null) {
+//    		alleOnderdelen = new Dbconnectie().getAlleProducten();
+//    	}
+    	
+        boolean b = false;
         for (Product p: alleOnderdelen){
             if (p.getProductNummer() == (artNr)){
                     b = true;
@@ -110,9 +115,6 @@ public class AutoTotaalDienst {
             //new Dbconnectie().saveOnderdeel(nwOnderdeel);
             b = true;
         }
-        
-        
-        
         return b;
     }
 
@@ -399,11 +401,12 @@ public class AutoTotaalDienst {
         }
         return b;
     }
-    public boolean voegKlusToe(Klus nK){
+    public boolean voegKlusToe(Klus nK) throws SQLException{
     	System.out.println("Ik vraag deze klus op: " + nK.getKlusNaam());
         boolean b = false;
             if(!heeftKlus(nK.getKlusNummer())){
                 alleKlussen.add(nK);
+                new KlussenDAO().saveKlus(nK);
                 b = true;
             }
         return b;
@@ -413,9 +416,13 @@ public class AutoTotaalDienst {
            alleKlussen.remove(exKlus);
        }
     }
-    public ArrayList<Klus> getAlleKlussen(){
-        return alleKlussen;
-    }
+    
+	public ArrayList<Klus> getAlleKlussen() {
+		if (alleKlussen.isEmpty()) {
+			alleKlussen = new KlussenDAO().getAlleKlussenDB();
+		}
+		return alleKlussen;
+	}
     //ArrayList met Onderdelen voor PrijsBerekenenFrame
     public boolean heeftKlusCombo(int kNr){
         boolean b = false;
