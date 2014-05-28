@@ -1,14 +1,17 @@
-package Webapp;
+package Connection;
 
 import java.sql.*;
 import java.util.*;
 
+import Webapp.AutoTotaalDienst;
+import Webapp.Gebruiker;
+import Webapp.Klus;
+import Webapp.Product;
+
 public class Dbconnectie {
 	private Connection con = null;
 	private Statement statement;
-	private ResultSet rs = null;
-	private String naam = "", ww = "";
-	private AutoTotaalDienst atdRef;	
+	private AutoTotaalDienst atdRef;
 	
 	public void leesDatabase() throws SQLException {
 		String url = "jdbc:mysql://localhost/autototaaldiensten";
@@ -19,9 +22,6 @@ public class Dbconnectie {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = (Connection) DriverManager.getConnection(url, user, password);
 			statement = con.createStatement();		
-			rs = statement.executeQuery("SELECT * FROM klussen");
-		    System.out.println(rs + " dit is RS");
-		    onderdeelResultset(rs);	
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}		
@@ -58,19 +58,10 @@ public class Dbconnectie {
 //			naam = resultSet.getString("naam");
 //			ww = resultSet.getString("wachtwoord");
 	
-	public ArrayList<Product> getAlleProducten() {
-		ArrayList<Product> alleProducten = new ArrayList<Product>();
-		
-		
-		
-		return alleProducten;
-	}
-
+	
 	public void onderdeelResultset(ResultSet resultSet) throws SQLException {
 		System.out.println("aaa");
-		//System.out.println("Resultset: " + resultSet.next());
 		while (resultSet.next()) {
-			//System.out.println("Resultset2: " + resultSet.getInt("id"));
 			int id = resultSet.getInt("id");
 			String naam = resultSet.getString("naam");
 			String omschrijving = resultSet.getString("omschrijving");
@@ -78,9 +69,12 @@ public class Dbconnectie {
 			int werknemerId = resultSet.getInt("werknemer_id");
 			System.out.println("Dit is een klus: "+ id + naam + omschrijving + autoId + werknemerId);
 			Klus u = new Klus(id, naam, omschrijving, autoId, werknemerId);	
-			//System.out.println("Klusnaampie: " + u.getKlusNaam());
 
 			atdRef.voegKlusToe(u);			
 		}
+	}
+	public ArrayList<Product> getAlleProducten() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

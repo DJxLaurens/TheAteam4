@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Webapp.Dbconnectie;
+import Connection.Dbconnectie;
 import Webapp.Product;
 
 public class VoorraadToevoegenServlet extends HttpServlet {

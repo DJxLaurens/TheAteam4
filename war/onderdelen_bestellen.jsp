@@ -1,6 +1,6 @@
 
 <jsp:include page="header.jsp" />
-<%@ page import="Webapp.Dbconnectie"%>
+<%@ page import="Connection.Dbconnectie"%>
 <%@ page import="java.util.*"%>
 
 <div class="content">

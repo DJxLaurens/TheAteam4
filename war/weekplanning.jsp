@@ -2,7 +2,6 @@
 
 <div class="content">
 	<h1>Weekplanning</h1>
-	<%@ page import = "java.util.*" %>
 	<%@ page import = "Webapp.Klus" %>
 	<%@ page import = "Webapp.AutoTotaalDienst" %>
 	<form>
