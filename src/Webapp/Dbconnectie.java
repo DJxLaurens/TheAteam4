@@ -14,6 +14,7 @@ public class Dbconnectie {
 		String url = "jdbc:mysql://localhost/autototaaldiensten";
 		String user = "root";
 		String password = ""; 
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = (Connection) DriverManager.getConnection(url, user, password);
@@ -57,15 +58,28 @@ public class Dbconnectie {
 //			naam = resultSet.getString("naam");
 //			ww = resultSet.getString("wachtwoord");
 	
+	public ArrayList<Product> getAlleProducten() {
+		ArrayList<Product> alleProducten = new ArrayList<Product>();
+		
+		
+		
+		return alleProducten;
+	}
+
 	public void onderdeelResultset(ResultSet resultSet) throws SQLException {
+		System.out.println("aaa");
+		//System.out.println("Resultset: " + resultSet.next());
 		while (resultSet.next()) {
+			//System.out.println("Resultset2: " + resultSet.getInt("id"));
 			int id = resultSet.getInt("id");
 			String naam = resultSet.getString("naam");
 			String omschrijving = resultSet.getString("omschrijving");
 			int autoId = resultSet.getInt("auto_id");
 			int werknemerId = resultSet.getInt("werknemer_id");
 			System.out.println("Dit is een klus: "+ id + naam + omschrijving + autoId + werknemerId);
-			Klus u = new Klus(id, naam, omschrijving, autoId, werknemerId);		
+			Klus u = new Klus(id, naam, omschrijving, autoId, werknemerId);	
+			//System.out.println("Klusnaampie: " + u.getKlusNaam());
+
 			atdRef.voegKlusToe(u);			
 		}
 	}

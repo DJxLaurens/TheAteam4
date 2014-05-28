@@ -92,6 +92,10 @@ public class AutoTotaalDienst {
     }
 
     public boolean heeftOnderdeel(int artNr){
+    	if (alleOnderdelen == null) {
+    		alleOnderdelen = new Dbconnectie().getAlleProducten();
+    	}
+    	
         boolean b = false;
         for (Product p: alleOnderdelen){
             if (p.getProductNummer() == (artNr)){
@@ -104,8 +108,12 @@ public class AutoTotaalDienst {
         boolean b = false;
         if(!heeftOnderdeel(nwOnderdeel.getProductNummer())){
             alleOnderdelen.add(nwOnderdeel);
+            new Dbconnectie().saveOnderdeel(nwOnderdeel);
             b = true;
         }
+        
+        
+        
         return b;
     }
 
@@ -387,6 +395,7 @@ public class AutoTotaalDienst {
         return b;
     }
     public boolean voegKlusToe(Klus nK){
+    	System.out.println("Ik vraag deze klus op: " + nK.getKlusNaam());
         boolean b = false;
             if(!heeftKlus(nK.getKlusNummer())){
                 alleKlussen.add(nK);
