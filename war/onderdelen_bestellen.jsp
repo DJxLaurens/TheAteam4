@@ -1,4 +1,6 @@
 <jsp:include page="header.jsp" />
+<%@ page import="Webapp.Dbconnectie"%>
+<%@ page import="java.util.*"%>
 
 <div class="content">
 	<h1>Onderdeel bestellen</h1>
@@ -6,6 +8,11 @@
 
 	<form>
 		<table>
+		<%
+			Dbconnectie db = new Dbconnectie();
+			ArrayList<Onderdeel> onderdelen = db.getOnderdelen();
+			
+		%>
 			<tr id = "headRow">
 				<td>ProductNr:</td>
 				<td>Onderdeel</td>

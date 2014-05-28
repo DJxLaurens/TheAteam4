@@ -1,12 +1,14 @@
 package Webapp;
 
 import java.sql.*;
+import java.util.*;
 
 public class Dbconnectie {
 	private Connection con = null;
 	private Statement statement;
 	private ResultSet rs = null;
 	private String naam = "", ww = "";
+	private ArrayList<Product> alleOnderdelen = new ArrayList<Product>();
 	
 	public void leesDatabase() throws SQLException {
 		String url = "jdbc:mysql://localhost/autototaaldiensten";
@@ -41,6 +43,15 @@ public class Dbconnectie {
 	public void saveVoorraad(Product p) throws SQLException {	
 		leesDatabase();
 		statement.execute("INSERT INTO voorraad (id, naam, type, minVoorraad, voorraad)"+ "VALUES (null,'"+ p.getProductNaam() + "','" + p.getType() + "','" + p.getMinVoorraad() + "','" + p.getVoorraad() + "')");				
+	}
+	
+	public void onderdelen(){
+		try {
+			statement.executeQuery("SELECT * FROM voorraad");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 	
 	private void schrijfResultSet(ResultSet resultSet) throws SQLException {
