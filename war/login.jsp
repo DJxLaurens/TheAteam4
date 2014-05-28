@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="design.css" />
 		<title>Inloggen</title>
 	</head>
-	<body background = "model.jpg">
+	<body>
 		<form action="LoginServlet.do" method="post">		
 			<div id="form"> 			
 			<h1>Login</h1>

@@ -126,3 +126,24 @@
 	width: 400px;
 	padding: 5px;
 }
+#login{
+	font-family: "Trebuchet MS";
+    font-size: 100%;
+    position:relative;
+   	float: right;
+}
+#login input{
+	margin-left: 9em;
+    position: relative;
+    line-height: 1.4em;
+    margin-bottom: .2em;
+    left:50px;
+}
+#login label{
+	position: absolute;
+    padding-top: .2em;
+}
+#login a{
+    position: relative;
+    left:100px;
+}
