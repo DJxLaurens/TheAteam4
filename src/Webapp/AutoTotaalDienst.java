@@ -1,5 +1,6 @@
 package Webapp;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,7 +30,15 @@ public class AutoTotaalDienst {
     
    public AutoTotaalDienst(){
 	   System.out.println(getAlleKlussen().size() + " klussenarray");
-	   new Dbconnectie();
+	  Dbconnectie db = new Dbconnectie();
+	  try {
+		db.leesDatabase();
+		System.out.println("Ik lees de DB");
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		System.out.println("Ik kan niet lezen");
+	}
    }
    
     // checkt of ingevoerd gegeven een int getal is
