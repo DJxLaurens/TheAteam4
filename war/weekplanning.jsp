@@ -13,7 +13,8 @@
 				<td>Auto:</td>
 				<td>Datum:</td>
 			</tr>
-			<% AutoTotaalDienst atd = new AutoTotaalDienst();
+			<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); 
+			
 			for(Klus k : atd.getAlleKlussen()){ %>
 			<tr>
 				<td><%= k.getKlusNaam()  %></td>
