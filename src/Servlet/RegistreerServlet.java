@@ -9,6 +9,7 @@ import Connection.GebruikersDAO;
 import Webapp.Gebruiker;
 
 import java.sql.SQLException;
+import java.util.Date;
 
 public class RegistreerServlet extends HttpServlet {
 	private GebruikersDAO gebruiker = new GebruikersDAO();
@@ -27,10 +28,10 @@ public class RegistreerServlet extends HttpServlet {
 		String telefoonnummer = req.getParameter("telefoonnummer");
 		String emailadres = req.getParameter("emailadres");
 		String emailadres2 = req.getParameter("emailadres2");
-		String laatstgeweest = "00-00-00"; 	
+		Date laatstgeweest = "00-00-0000"; // Dateformat?
 		String tempKorting = req.getParameter("korting");
 		double korting = 0;	
-		String openFactuur = "00-00-0000"; 
+		Date openFactuur = "00-00-0000"; //Dateformat?
 		String tempBlokkade = req.getParameter("blokkade");
 		boolean blokkade = false;
 		
