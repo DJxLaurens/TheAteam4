@@ -61,7 +61,7 @@ public class RegistreerServlet extends HttpServlet {
 		req.setAttribute("msgs", s);
 		RequestDispatcher rd = null;
 		if (loginSucces) {
-			Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openFactuur, blokkade);
+			Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, korting,  blokkade);
 			try {
 				
 				gebruiker.saveGebruiker(g);

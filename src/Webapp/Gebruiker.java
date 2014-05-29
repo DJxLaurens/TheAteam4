@@ -12,11 +12,11 @@ public class Gebruiker {
 	private String telefoonnummer;
 	private String emailadres;
 	private double korting;
-	private String laatstgeweest;
-	private String openFactuur;
+	private Date laatstgeweest;
+	private Date openFactuur;
 	private boolean blokkade;
 	
-	public Gebruiker(int rl, String nm, String ww, String adr, String pc, String wp, String tn, String ea, String laatstgeweest2, double kt, String openFactuur2, boolean bk){
+	public Gebruiker(int rl, String nm, String ww, String adr, String pc, String wp, String tn, String ea, Date laatstgeweest2, double kt, Date openFactuur2, boolean bk){
 		rol_id = rl;
 		naam = nm;
 		wachtwoord = ww;
@@ -53,11 +53,11 @@ public class Gebruiker {
         wachtwoord = ww;
     }
     
-    public String getOpenFactuur(){
+    public Date getOpenFactuur(){
         return openFactuur;
     }
     
-    public void setOpenFactuur(String of){
+    public void setOpenFactuur(Date of){
         openFactuur = of;        
     }
     
@@ -109,11 +109,11 @@ public class Gebruiker {
         emailadres = em;
     }
 
-    public String getLaatstgeweest(){
+    public Date getLaatstgeweest(){
         return laatstgeweest;
     }
 
-    public void setLaatstgeweest(String dt){
+    public void setLaatstgeweest(Date dt){
         laatstgeweest = dt;
     }
     
