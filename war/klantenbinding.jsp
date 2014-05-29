@@ -9,15 +9,29 @@
 
 	<h4>Klanten met auto's jonger dan 2010 die een onderhoudsbeurt
 		nodig hebben:</h4>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
 	<div>
 		<select name="veld1">
+<<<<<<< HEAD
 			<option value="leeg"></option>
 			<option value="jan">Jan</option>
 			<option value="klaas">Klaas</option>
 			<option value="piet">Piet</option>
+=======
+		<% for(Gebruiker g : atd.getAlleKlanten()) { %>
+			<option value="naam"><%= g.getNaam() %></option>
+			<% }%>
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
 		</select>
 	</div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
 
 	<h4>Klanten met auto's ouder dan 2010 die een onderhoudsbeurt
 		nodig hebben:</h4>
