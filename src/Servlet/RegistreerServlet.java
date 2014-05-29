@@ -28,10 +28,12 @@ public class RegistreerServlet extends HttpServlet {
 		String telefoonnummer = req.getParameter("telefoonnummer");
 		String emailadres = req.getParameter("emailadres");
 		String emailadres2 = req.getParameter("emailadres2");
-		Date laatstgeweest = "00-00-0000"; // Dateformat?
+		String tempLaatstgeweest = req.getParameter("laatstgeweest"); 
+		Date laatstgeweest = "00-00-0000"; // DateFormat moet voor vergelijken verschil datums auto	
 		String tempKorting = req.getParameter("korting");
 		double korting = 0;	
-		Date openFactuur = "00-00-0000"; //Dateformat?
+		String tempOpenFactuur = req.getParameter("openFactuur");
+		Date openFactuur = "00-00-0000" ; // DateFormat moet voor vergelijken verschil datums auto
 		String tempBlokkade = req.getParameter("blokkade");
 		boolean blokkade = false;
 		
@@ -39,6 +41,7 @@ public class RegistreerServlet extends HttpServlet {
 				&& !"".equals(woonplaats) && !"".equals(telefoonnummer) && !"".equals(emailadres)) {			
 			rol_id = Integer.parseInt(tempRol);
 			korting = Double.parseDouble(tempRol);
+			
 
 			loginSuccesWachtwoord = wachtwoord.equals(wachtwoord2);
 			loginSuccesEmail = emailadres.equals(emailadres2);
@@ -62,7 +65,7 @@ public class RegistreerServlet extends HttpServlet {
 		req.setAttribute("msgs", s);
 		RequestDispatcher rd = null;
 		if (loginSucces) {
-			Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, korting,  blokkade);
+			Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openFactuur, blokkade);
 			try {
 				
 				gebruiker.saveGebruiker(g);
@@ -70,7 +73,7 @@ public class RegistreerServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			s = "Toevoegen is gelukt";
-			rd = req.getRequestDispatcher("login.jsp");
+			rd = req.getRequestDispatcher("index.jsp");
 		} else
 			rd = req.getRequestDispatcher("registreer.jsp");
 			rd.forward(req, resp);
