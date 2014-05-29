@@ -46,7 +46,7 @@ public class GebruikersDAO {
 				double korting = output.getDouble("korting");
 				String openFactuur = output.getString("openFactuur");
 				boolean blokkade = output.getBoolean("blokkade");
-				Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, korting, blokkade);
+				Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openFactuur, blokkade);
 				alleGebruikersDB.add(g);			
 			}
 		} catch (SQLException e) {
@@ -59,7 +59,7 @@ public class GebruikersDAO {
 	
 	public void saveGebruiker(Gebruiker g) throws SQLException {	
 		leesDatabase();	
-		statement.execute("INSERT INTO Gebruiker (rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openfactuur, blokkade)"+ "VALUES ('" + g.getRol() + "','" + g.getNaam() + "','" + g.getWachtwoord()+ "','"+ g.getAdres() + "','"+ g.getPostcode() + "','"+ g.getWoonplaats() + "','"+ g.getTelefoonnummer() + "','"+ g.getEmailadres() + "','"+ null + "','"+ g.getKorting() + "','"+ null + "','" + '0' + "')");		
+		statement.execute("INSERT INTO Gebruiker (rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openfactuur, blokkade)"+ "VALUES ('" + g.getRol() + "','" + g.getNaam() + "','" + g.getWachtwoord()+ "','"+ g.getAdres() + "','"+ g.getPostcode() + "','"+ g.getWoonplaats() + "','"+ g.getTelefoonnummer() + "','"+ g.getEmailadres() + "','"+ g.getLaatstgeweest() + "','"+ g.getKorting() + "','"+ g.getOpenFactuur() + "','" + '0' + "')");		
 	}
 
 }
