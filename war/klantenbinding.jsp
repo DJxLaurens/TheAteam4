@@ -14,17 +14,14 @@
 	<h4>Klanten met auto's jonger dan 2010 die een onderhoudsbeurt
 		nodig hebben:</h4>
     
-    <% for(Gebruiker g : atd.getAlleKlanten()) { %>
 	<div>
 		<select name="veld1">
-			<option value="leeg"></option>
-			<option value="jan"><%= g.getNaam() %></option>
-			<option value="klaas">g.getNaam()</option>
-			<option value="piet">g.getNaam()</option>
+		<% for(Gebruiker g : atd.getAlleKlanten()) { %>
+			<option value="naam"><%= g.getNaam() %></option>
+			<% }%>
 		</select>
 	</div>
 
-	<% }%>
 
 	<h4>Klanten met auto's ouder dan 2010 die een onderhoudsbeurt
 		nodig hebben:</h4>
