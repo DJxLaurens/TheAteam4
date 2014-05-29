@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 import Webapp.Gebruiker;
-import Webapp.Klus;
 
 public class GebruikersDAO {
 	private Connection con = null;
@@ -28,26 +28,33 @@ public class GebruikersDAO {
 			e.printStackTrace();
 		}		
 	}
-	public ArrayList<Klus> getAlleKlussenDB() {
-		ArrayList<Klus> alleKlussenDB = new ArrayList<Klus>();	
+	public ArrayList<Gebruiker> getAlleGebruikersDB() {
+		ArrayList<Gebruiker> alleGebruikersDB = new ArrayList<Gebruiker>();	
 		try {
 			this.leesDatabase();
-			output = statement.executeQuery("SELECT * FROM klussen");
+			output = statement.executeQuery("SELECT * FROM gebruiker");
 			while (output.next()){
-				int id = output.getInt("id");
+				int rol_id = output.getInt("rol_id");
 				String naam = output.getString("naam");
-				String omschrijving = output.getString("omschrijving");
-				int autoId = output.getInt("auto_id");
-				int werknemerId = output.getInt("werknemer_id");
-				Klus u = new Klus(id, naam, omschrijving, autoId, werknemerId);
-				alleKlussenDB.add(u);			
+				String wachtwoord = output.getString("wachtwoord");
+				String adres = output.getString("adres");
+				String postcode = output.getString("postcode");
+				String woonplaats = output.getString("woonplaats");
+				String telefoonnummer = output.getString("telefoonnummer");
+				String laatstgeweest = output.getString("laatstgeweest");
+				String emailadres = output.getString("emailadres");
+				double korting = output.getDouble("korting");
+				String openFactuur = output.getString("openFactuur");
+				boolean blokkade = output.getBoolean("blokkade");
+				Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openFactuur, blokkade);
+				alleGebruikersDB.add(g);			
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		
-		return alleKlussenDB;
+		return alleGebruikersDB;
 	}
 	
 	public void saveGebruiker(Gebruiker g) throws SQLException {	

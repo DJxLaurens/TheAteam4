@@ -34,26 +34,6 @@ public class RegistreerServlet extends HttpServlet {
 		String tempBlokkade = req.getParameter("blokkade");
 		boolean blokkade = false;
 		
-//		try{
-//		if(req.getParameter("laatstgeweest").equals(null)){
-//			laatstgeweest = "00-00-00";
-//		}else{
-//			laatstgeweest = req.getParameter("laatstgeweest");
-//		}
-//		}catch (NullPointerException np){
-//			np.printStackTrace();
-//		}
-		
-//		try{
-//		if(req.getParameter("openFactuur").equals(null)){
-//			openFactuur = "00-00-00";
-//		}else{
-//			openFactuur = req.getParameter("openFactuur");
-//		}
-//		}catch(NullPointerException np){
-//			np.printStackTrace();
-//		}
-
 		if (!"".equals(naam) && !"".equals(wachtwoord) && !"".equals(adres) && !"".equals(postcode) 
 				&& !"".equals(woonplaats) && !"".equals(telefoonnummer) && !"".equals(emailadres)) {			
 			rol_id = Integer.parseInt(tempRol);
@@ -88,7 +68,7 @@ public class RegistreerServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			s += "Toevoegen is gelukt";
+			s = "Toevoegen is gelukt";
 			rd = req.getRequestDispatcher("login.jsp");
 		} else
 			rd = req.getRequestDispatcher("registreer.jsp");

@@ -2,22 +2,29 @@
 
 <div class="content">
 <div class="left">
+	<%@ page import="Webapp.Gebruiker"%>
+	<%@ page import="Webapp.Auto"%>
+	<%@ page import="Webapp.AutoTotaalDienst"%>
 <form action="KlantenbindingServlet.do" method="get">
+	<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); %>
 	<h1>Herinneringsbrieven</h1>
 	
 	<h2>Klantenbinding</h2>
 
 	<h4>Klanten met auto's jonger dan 2010 die een onderhoudsbeurt
 		nodig hebben:</h4>
-
+    
+    <% for(Gebruiker g : atd.getAlleKlanten()) { %>
 	<div>
 		<select name="veld1">
 			<option value="leeg"></option>
-			<option value="jan">Jan</option>
-			<option value="klaas">Klaas</option>
-			<option value="piet">Piet</option>
+			<option value="jan"><%= g.getNaam() %></option>
+			<option value="klaas">g.getNaam()</option>
+			<option value="piet">g.getNaam()</option>
 		</select>
 	</div>
+
+	<% }%>
 
 	<h4>Klanten met auto's ouder dan 2010 die een onderhoudsbeurt
 		nodig hebben:</h4>
