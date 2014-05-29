@@ -46,7 +46,7 @@ public class GebruikersDAO {
 				double korting = output.getDouble("korting");
 				String openFactuur = output.getString("openFactuur");
 				boolean blokkade = output.getBoolean("blokkade");
-				Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openFactuur, blokkade);
+				Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, korting, blokkade);
 				alleGebruikersDB.add(g);			
 			}
 		} catch (SQLException e) {

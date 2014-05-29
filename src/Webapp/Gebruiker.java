@@ -16,7 +16,7 @@ public class Gebruiker {
 	private Date openFactuur;
 	private boolean blokkade;
 	
-	public Gebruiker(int rl, String nm, String ww, String adr, String pc, String wp, String tn, String ea, Date laatstgeweest2, double kt, Date openFactuur2, boolean bk){
+	public Gebruiker(int rl, String nm, String ww, String adr, String pc, String wp, String tn, String ea, double kt, boolean bk){
 		rol_id = rl;
 		naam = nm;
 		wachtwoord = ww;
@@ -25,9 +25,7 @@ public class Gebruiker {
 		woonplaats = wp;
 		telefoonnummer = tn;
 		emailadres = ea;
-		laatstgeweest = laatstgeweest2;
 		korting = kt;
-		openFactuur = openFactuur2;
 		blokkade = bk;
 	}
 	public int getRol(){
