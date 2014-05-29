@@ -201,11 +201,7 @@ public class AutoTotaalDienst {
             a.remove(exKlant);
         }
     }
-    
     public ArrayList<Gebruiker> getAlleKlanten(){
-    	if(alleKlanten.isEmpty()) {
-    		alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
-    	}
         return alleKlanten;
     }
     // Arraylist van auto's jonger dan 2010
@@ -441,31 +437,28 @@ public class AutoTotaalDienst {
     }
     public ArrayList<Klus> getAlleKlussenCombo(){
         return alleKlussenCombo;
-	}
-
-	// ArrayList met Klussen die de datum van vandaag hebben
-	public boolean heeftKlusVandaag(int kNr) {
-		boolean b = false;
-		for (Klus k : klussenStatus) {
-			if (k.getKlusNummer() == kNr) {
-				b = true;
-			}
-		}
-		return b;
-	}
-
-	public boolean voegKlusVandaagToe(Klus nK) {
-		boolean b = false;
-		if (!heeftKlusVandaag(nK.getKlusNummer())) {
-			if ((getToday().equals(nK.getAlleData().get(0)))) {
-				klussenStatus.add(nK);
-				b = true;
-			}
-		}
-		return b;
-	}
-
-	public void verwijderKlusVandaag(Klus exKlus) {
+    }
+    //ArrayList met Klussen die de datum van vandaag hebben
+    public boolean heeftKlusVandaag(int kNr){
+        boolean b = false;
+        for (Klus k: klussenStatus){
+            if (k.getKlusNummer() == kNr){
+                if((getToday().equals(k.getAlleData().get(0)))){
+                    b = true;
+                }
+            }
+        }
+        return b;
+    }
+    public boolean voegKlusVandaagToe(Klus nK){
+        boolean b = false;
+        if(!heeftKlusVandaag(nK.getKlusNummer())){
+            klussenStatus.add(nK);
+            b = true;
+        }
+        return b;
+    }
+    public void verwijderKlusVandaag(Klus exKlus) {
        if (heeftKlusVandaag(exKlus.getKlusNummer())) {
            klussenStatus.remove(exKlus);
        }
