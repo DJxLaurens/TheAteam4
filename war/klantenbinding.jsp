@@ -2,7 +2,11 @@
 
 <div class="content">
 <div class="left">
+	<%@ page import="Webapp.Gebruiker"%>
+	<%@ page import="Webapp.Auto"%>
+	<%@ page import="Webapp.AutoTotaalDienst"%>
 <form action="KlantenbindingServlet.do" method="get">
+	<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); %>
 	<h1>Herinneringsbrieven</h1>
 	
 	<h2>Klantenbinding</h2>
