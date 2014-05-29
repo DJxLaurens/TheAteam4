@@ -55,6 +55,7 @@
 					<option value="4">Klant</option>
 					<option value="5">Magazijn</option>
 					<option value="6">Planner</option>
+					<option value="7">Monteur</option>
 				</select>
 			</div>
 			<div>

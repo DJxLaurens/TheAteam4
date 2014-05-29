@@ -1,26 +1,32 @@
+
 <jsp:include page="header.jsp" />
+<%@ page import="Connection.Dbconnectie"%>
+<%@ page import="java.util.*"%>
 
 <div class="content">
 	<h1>Onderdeel bestellen</h1>
 
-
-	<form>
+	<%@ page import = "Webapp.AutoTotaalDienst" %>
+	<%@ page import = "Webapp.Product" %>
+	<form action="VoorraadToevoegenServlet.do" method="post">
 		<table>
+		<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef");%> 
+			<tr>
+				<th>Onderdeelnummer</th>
+				<th>Onderdeelnaam</th>
+				<th>Minimale voorraad</th>
+				<th>Voorraad</th>
+				<th>Bestel</th>
+			</tr>
+			<%for(Product p : atd.getAlleOnderdelen()){ %>
 			<tr id = "headRow">
-				<td>ProductNr:</td>
-				<td>Onderdeel</td>
-				<td>Minimale voorraad</td>
-				<td>Voorraad</td>
-				<td>Bestel</td>
+				<td><%= p.getProductNummer()  %></td>
+				<td><%= p.getProductNaam()  %></td>
+				<td><%= p.getMinVoorraad() %></td>
+				<td><%= p.getVoorraad()  %></td>
+				<td><input type="text" name="prod_<%=p.getProductNummer()%>"/></td>
 			</tr>
-			<tr>
-				<td>1</td>
-				<td>Uitlaat</td>
-				<td>100 stuks</td>
-				<td>450 stuks</td>
-				<td><input type="text" name="aantal"> </td>
-			</tr>
-			<tr>
+			<% }%>
 		</table>
 
 		<input type="submit" value="Wijzig" name="wijzig">

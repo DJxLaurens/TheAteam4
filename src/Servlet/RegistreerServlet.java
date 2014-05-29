@@ -5,14 +5,13 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import Webapp.Dbconnectie;
+import Connection.GebruikersDAO;
 import Webapp.Gebruiker;
 
 import java.sql.SQLException;
-import java.util.Date;
 
 public class RegistreerServlet extends HttpServlet {
-	private Dbconnectie db = new Dbconnectie();
+	private GebruikersDAO gebruiker = new GebruikersDAO();
 	private String s = "";
 	private boolean loginSucces, loginSuccesWachtwoord, loginSuccesEmail = false;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -28,12 +27,10 @@ public class RegistreerServlet extends HttpServlet {
 		String telefoonnummer = req.getParameter("telefoonnummer");
 		String emailadres = req.getParameter("emailadres");
 		String emailadres2 = req.getParameter("emailadres2");
-		String laatstgeweest = null;
-		laatstgeweest = "00-00-00";	
+		String laatstgeweest = "00-00-00";	
 		String tempKorting = req.getParameter("korting");
 		double korting = 0;	
-		String openFactuur = null;
-		openFactuur = "00-00-0000";
+		String openFactuur = "00-00-0000";
 		String tempBlokkade = req.getParameter("blokkade");
 		boolean blokkade = false;
 		
@@ -70,15 +67,15 @@ public class RegistreerServlet extends HttpServlet {
 			}
 
 			if (!loginSuccesWachtwoord) {
-				s += "Wachtwoord is niet hetzelfde!\n";
+				s = "Wachtwoord is niet hetzelfde!\n";
 			}
 			
 			if (!loginSuccesEmail) {
-				s += "Emailadres is niet hetzelfde!\n";
+				s = "Emailadres is niet hetzelfde!\n";
 			}
 			
 		} else {
-			s += "Niet alle velden zijn ingevuld!\n";
+			s = "Niet alle velden zijn ingevuld!\n";
 		}
 
 		req.setAttribute("msgs", s);
@@ -86,7 +83,8 @@ public class RegistreerServlet extends HttpServlet {
 		if (loginSucces) {
 			Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openFactuur, blokkade);
 			try {
-				db.saveGebruiker(g);
+				
+				gebruiker.saveGebruiker(g);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

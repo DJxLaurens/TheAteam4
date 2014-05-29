@@ -1,5 +1,7 @@
 package Webapp;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Klus {
@@ -8,15 +10,20 @@ public class Klus {
     private int autoId;
     private int werknemerId;
     private int klusNummer;
-    private int a;
     private ArrayList<Auto>alleAutos = new ArrayList<Auto>();
     private ArrayList<Monteur>alleMonteurs = new ArrayList<Monteur>();
     private ArrayList<String> datum = new ArrayList<String>();
-    public Klus(String kNm, String kO, int aI, int wI){
+    public Klus(int kN, String kNm, String kO, int aI, int wI){
+    	klusNummer = kN;
         klusNaam = kNm;
         klusOmschrijving = kO;
         autoId = aI;
         werknemerId = wI;
+    }
+    public String getToday(){
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar cal = Calendar.getInstance();
+        return dateFormat.format(cal.getTime());
     }
     public void setKlusNaam(String kNm){
         klusNaam = kNm;
@@ -89,9 +96,11 @@ public class Klus {
         } 
         return b;
     }
-    public boolean voegDatumToe(String d){
-        return datum.add(d);
-    }
+	public void voegDatumToe(String d) {
+		if (d.equals(getToday())) {
+			datum.add(d);
+		}
+	}
     public ArrayList<String> getAlleData(){
         return datum;
     }

@@ -1,9 +1,14 @@
 package Webapp;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import Connection.KlussenDAO;
+import Connection.ProductDAO;
+import Connection.GebruikersDAO;
 
 public class AutoTotaalDienst {
     private ArrayList<Product> alleOnderdelen = new ArrayList<Product>();
@@ -26,7 +31,9 @@ public class AutoTotaalDienst {
     private ArrayList<Parkeerplaats> alleReserveringen = new ArrayList<Parkeerplaats>();
     private ArrayList<Pas> allePassen = new ArrayList<Pas>();
     private double literPrijs, werkUurPrijs, maandPrijs, weekPrijs, dagPrijs;
+    
 
+   
     // checkt of ingevoerd gegeven een int getal is
     public static boolean isInteger(String s) {
                 try {
@@ -78,6 +85,10 @@ public class AutoTotaalDienst {
     }
 
     public boolean heeftOnderdeel(int artNr){
+//    	if (alleOnderdelen == null) {
+//    		alleOnderdelen = new Dbconnectie().getAlleProducten();
+//    	}
+    	
         boolean b = false;
         for (Product p: alleOnderdelen){
             if (p.getProductNummer() == (artNr)){
@@ -90,6 +101,7 @@ public class AutoTotaalDienst {
         boolean b = false;
         if(!heeftOnderdeel(nwOnderdeel.getProductNummer())){
             alleOnderdelen.add(nwOnderdeel);
+            //new Dbconnectie().saveOnderdeel(nwOnderdeel);
             b = true;
         }
         return b;
@@ -101,6 +113,12 @@ public class AutoTotaalDienst {
         }
     }
     public ArrayList<Product> getAlleOnderdelen(){
+    	if (alleOnderdelen.isEmpty()) {
+    		System.out.println("Hoi");
+    		alleOnderdelen = new ProductDAO().getAlleOnderdelenDB();
+    	}
+    	
+    	System.out.println("Test: " + alleOnderdelen);
         return alleOnderdelen;
 
     }
@@ -372,10 +390,12 @@ public class AutoTotaalDienst {
         }
         return b;
     }
-    public boolean voegKlusToe(Klus nK){
+    public boolean voegKlusToe(Klus nK) throws SQLException{
+    	System.out.println("Ik vraag deze klus op: " + nK.getKlusNaam());
         boolean b = false;
             if(!heeftKlus(nK.getKlusNummer())){
                 alleKlussen.add(nK);
+                new KlussenDAO().saveKlus(nK);
                 b = true;
             }
         return b;
@@ -385,9 +405,13 @@ public class AutoTotaalDienst {
            alleKlussen.remove(exKlus);
        }
     }
-    public ArrayList<Klus> getAlleKlussen(){
-        return alleKlussen;
-    }
+    
+	public ArrayList<Klus> getAlleKlussen() {
+		if (alleKlussen.isEmpty()) {
+			alleKlussen = new KlussenDAO().getAlleKlussenDB();
+		}
+		return alleKlussen;
+	}
     //ArrayList met Onderdelen voor PrijsBerekenenFrame
     public boolean heeftKlusCombo(int kNr){
         boolean b = false;

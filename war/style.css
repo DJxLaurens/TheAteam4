@@ -126,3 +126,24 @@
 	width: 400px;
 	padding: 5px;
 }
+
+.header input{
+	margin-left: 9em;
+    position: relative;
+    line-height: 1.4em;
+    margin-bottom: .2em;
+    left:50px;
+}
+.header label{
+	position: absolute;
+    padding-top: .2em;
+}
+.header a{
+    position: relative;
+    left:100px;
+}
+
+.header form{
+	float: right;
+	width: 410px;
+}
