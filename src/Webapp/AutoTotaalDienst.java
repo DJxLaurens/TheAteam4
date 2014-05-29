@@ -201,7 +201,11 @@ public class AutoTotaalDienst {
             a.remove(exKlant);
         }
     }
+    
     public ArrayList<Gebruiker> getAlleKlanten(){
+    	if(alleKlanten.isEmpty()) {
+    		alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
+    	}
         return alleKlanten;
     }
     // Arraylist van auto's jonger dan 2010

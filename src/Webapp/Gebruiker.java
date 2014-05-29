@@ -1,5 +1,7 @@
 package Webapp;
 
+import java.util.Date;
+
 public class Gebruiker {
 	private int rol_id = 0;
 	private String naam;
