@@ -41,10 +41,10 @@ public class GebruikersDAO {
 				String postcode = output.getString("postcode");
 				String woonplaats = output.getString("woonplaats");
 				String telefoonnummer = output.getString("telefoonnummer");
-				Date laatstgeweest = output.getDate("laatstgeweest");
+				String laatstgeweest = output.getString("laatstgeweest");
 				String emailadres = output.getString("emailadres");
 				double korting = output.getDouble("korting");
-				Date openFactuur = output.getDate("openFactuur");
+				String openFactuur = output.getString("openFactuur");
 				boolean blokkade = output.getBoolean("blokkade");
 				Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openFactuur, blokkade);
 				alleGebruikersDB.add(g);			
