@@ -88,7 +88,7 @@ public class RegistreerServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			s += "Toevoegen is gelukt";
+			s = "Toevoegen is gelukt";
 			rd = req.getRequestDispatcher("login.jsp");
 		} else
 			rd = req.getRequestDispatcher("registreer.jsp");
