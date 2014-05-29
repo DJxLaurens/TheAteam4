@@ -27,10 +27,10 @@ public class RegistreerServlet extends HttpServlet {
 		String telefoonnummer = req.getParameter("telefoonnummer");
 		String emailadres = req.getParameter("emailadres");
 		String emailadres2 = req.getParameter("emailadres2");
-		String laatstgeweest = "00-00-00"; //Dateformat
+		String laatstgeweest = "00-00-00"; 
 		String tempKorting = req.getParameter("korting");
 		double korting = 0;	
-		String openFactuur = "00-00-0000"; //Dateformat
+		String openFactuur = "00-00-0000"; 
 		String tempBlokkade = req.getParameter("blokkade");
 		boolean blokkade = false;
 		
