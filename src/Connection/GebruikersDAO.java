@@ -32,11 +32,12 @@ public class GebruikersDAO {
 		ArrayList<Gebruiker> alleGebruikersDB = new ArrayList<Gebruiker>();	
 		try {
 			this.leesDatabase();
-			output = statement.executeQuery("SELECT gebruiker.naam FROM gebruiker ");
+			output = statement.executeQuery("SELECT * FROM gebruiker ");
 			while (output.next()){
 //				int bouwjaar = output.getInt("bouwjaar");
 //				int rol_id = output.getInt("rol_id");
 				String naam = output.getString("naam");
+				int id = output.getInt("gebruiker_id");
 //				String wachtwoord = output.getString("wachtwoord");
 //				String adres = output.getString("adres");
 //				String postcode = output.getString("postcode");
@@ -48,6 +49,7 @@ public class GebruikersDAO {
 //				String openFactuur = output.getString("openFactuur");
 //				boolean blokkade = output.getBoolean("blokkade");
 				Gebruiker g = new Gebruiker(naam);
+				g.setID(id);
 				alleGebruikersDB.add(g);			
 			}
 		} catch (SQLException e) {

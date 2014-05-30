@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Gebruiker {
 	private int rol_id = 0;
+	private int gebruikerID;
 	private String naam;
 	private String wachtwoord;
 	private String adres;
@@ -47,6 +48,10 @@ public class Gebruiker {
 
     public void setNaam(String nm){
         naam = nm;
+    }
+    
+    public void setID(int id){
+    	gebruikerID = id;
     }
     
     public String getWachtwoord(){
