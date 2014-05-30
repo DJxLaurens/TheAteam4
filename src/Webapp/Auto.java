@@ -8,7 +8,7 @@ public class Auto{
     private String type;
     private Gebruiker eigenaar;
     private String brandstoftype;
-
+    
     public Auto(String kt, String mk, int bj, String tp, Gebruiker eig, String bt){
         kenteken = kt;
         merk = mk;
