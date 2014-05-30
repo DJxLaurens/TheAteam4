@@ -6,6 +6,7 @@ public class Auto{
     private String merk;
     private int bouwjaar;
     private String type;
+    private int eigenaarID;
     private Gebruiker eigenaar;
     private String brandstoftype;
     
@@ -17,6 +18,10 @@ public class Auto{
         eigenaar = eig;
         brandstoftype = bt;
     }
+    
+    public Auto(int bj){
+    	bouwjaar = bj;
+    }
 
     public String getKenteken(){
         return kenteken;
@@ -24,6 +29,10 @@ public class Auto{
 
     public void setKenteken(String kt){
         kenteken = kt;
+    }
+    
+    public void setEigenaarID(int id){
+    	eigenaarID = id;
     }
 
     public String getMerk(){
