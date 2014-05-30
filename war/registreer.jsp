@@ -59,7 +59,7 @@
 				</select>
 			</div>
 			<div>
-				<input type="submit" value="Registreer" /> <a href="login.jsp">Login</a>
+				<input type="submit" value="login" /> <a href="index.jsp">Login</a>
 			</div>
 		</div>
 	</form>

@@ -69,7 +69,7 @@ public class RegistreerServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			s = "Toevoegen is gelukt";
-			rd = req.getRequestDispatcher("login.jsp");
+			rd = req.getRequestDispatcher("index.jsp");
 		} else
 			rd = req.getRequestDispatcher("registreer.jsp");
 			rd.forward(req, resp);
