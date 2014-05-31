@@ -83,7 +83,7 @@
 		brieven aangemaakt worden<p>
 	</div>
 	<div class="box1">
-		<table>
+		<table width="410px">
 			<tr>
 				<td>Hoeveelheid brieven</td>
 				<td>Type brief</td>
