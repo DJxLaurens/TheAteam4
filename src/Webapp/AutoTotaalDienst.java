@@ -253,7 +253,7 @@ public class AutoTotaalDienst {
     }
     
     public ArrayList<Gebruiker> getAlleKlantenLaatstgeweest(){
-    	SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+    	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
     	Calendar test = Calendar.getInstance();
         test.add(Calendar.DATE, -60);
     	if(alleKlanten2.isEmpty()) {
@@ -263,7 +263,6 @@ public class AutoTotaalDienst {
 	        	Date date = null;
 	    		xx = g.getLaatstgeweest();
 	    		try {
-	    			 
 	    			date = formatter.parse(xx);
 	    			Calendar bezig = Calendar.getInstance();
 	    			bezig.setTime(date);

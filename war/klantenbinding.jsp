@@ -42,7 +42,9 @@
 	<div>
 		<select name="veld3">
 			<option value="leeg"></option>
-			<option value="jan">Jan</option>
+			<% for(Gebruiker g : atd.getAlleKlantenLaatstgeweest()) { %>
+			<option value="naam"><%= g.getNaam() %></option>
+			<% }%>
 		</select>
 	</div>
 
