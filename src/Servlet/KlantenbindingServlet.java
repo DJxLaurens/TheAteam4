@@ -63,9 +63,7 @@ public class KlantenbindingServlet extends HttpServlet{
 				rd = req.getRequestDispatcher("klantenbinding.jsp");
 				rd.forward(req, resp);
 			}
-		}
-		
-		if (press.equals("Brieven aanmaken")){
+			
 			if(!x.equals("") && check == 2){
 				FileWriter fw = new FileWriter("C:/testbrieven/-datum- " + x + ".txt", true); 
 				PrintWriter pw = new PrintWriter(fw);			
@@ -88,6 +86,8 @@ public class KlantenbindingServlet extends HttpServlet{
 				rd.forward(req, resp);
 			}
 		}
+		
+
 		
 	}
 	
