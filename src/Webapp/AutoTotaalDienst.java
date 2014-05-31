@@ -2,10 +2,13 @@ package Webapp;
 
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
+import Connection.AutosDAO;
 import Connection.KlussenDAO;
 import Connection.ProductDAO;
 import Connection.GebruikersDAO;
@@ -15,7 +18,10 @@ public class AutoTotaalDienst {
     private ArrayList<Product> alleOnderdelen2 = new ArrayList<Product>();
     private ArrayList<Product> alleBrandstoffen = new ArrayList<Product>();
     private ArrayList<Gebruiker> alleKlanten = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleKlanten1 = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleKlanten2 = new ArrayList<Gebruiker>();
     private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
+    private ArrayList<Auto> alleAutos1 = new ArrayList<Auto>();
     private ArrayList<Gebruiker> jongerdan = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> ouderdan = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> afwezig = new ArrayList<Gebruiker>();
@@ -203,11 +209,86 @@ public class AutoTotaalDienst {
     }
     
     public ArrayList<Gebruiker> getAlleKlanten(){
-    	if(alleKlanten.isEmpty()) {
-    		alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
-    	}
         return alleKlanten;
     }
+    
+    //Hier worden alle Klanten met een auto jonger dan 2010 toegevoegd aan de ArrayList
+    public ArrayList<Gebruiker> getAlleKlantenJongerDan2010(){
+    	if(alleKlanten.isEmpty() && alleAutos.isEmpty()) {
+	    	alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
+	    	alleAutos = new AutosDAO().getAlleAutosDB();
+	    	int x = 0;
+	    	for(Auto a: alleAutos){
+	    		if(a.getBouwjaar() < 2010){
+	    			x = a.getEigenaarID();
+	    			for(Gebruiker g: alleKlanten){
+	    				if(g.getGebruikerID() == x){
+	    					jongerdan.add(g);
+	    				}
+	    			}
+	    		}
+	    	}
+    	}
+	    	return jongerdan;
+    }
+    
+    //Hier worden alle Klanten met een auto ouder dan 2010 toegevoegd aan de ArrayList
+    public ArrayList<Gebruiker> getAlleKlantenOuderDan2010(){
+    	if(alleKlanten1.isEmpty() && alleAutos1.isEmpty()) {
+	    	alleKlanten1 = new GebruikersDAO().getAlleGebruikersDB();
+	    	alleAutos1 = new AutosDAO().getAlleAutosDB();
+	    	int x = 0;
+	    	for(Auto a: alleAutos1){
+	    		if(a.getBouwjaar() > 2010){
+	    			x = a.getEigenaarID();
+	    			for(Gebruiker g: alleKlanten1){
+	    				if(g.getGebruikerID() == x){
+	    					ouderdan.add(g);
+	    				}
+	    			}
+	    		}
+	    	}
+    	}
+	    	return ouderdan;
+    }
+    
+    public ArrayList<Gebruiker> getAlleKlantenLaatstgeweest(){
+    	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+    	Calendar test = Calendar.getInstance();
+        test.add(Calendar.DATE, -60);
+    	if(alleKlanten2.isEmpty()) {
+	    	alleKlanten2 = new GebruikersDAO().getAlleGebruikersDB();
+	    	for(Gebruiker g: alleKlanten2){
+	    		String xx = "";
+	        	Date date = null;
+	    		xx = g.getLaatstgeweest();
+	    		try {
+	    			date = formatter.parse(xx);
+	    			Calendar bezig = Calendar.getInstance();
+	    			bezig.setTime(date);
+	    			if(bezig.before(test)){
+	    				afwezig.add(g);
+	    			}	    	 
+	    		} catch (ParseException e) {
+	    			e.printStackTrace();
+	    		}
+	    	}
+    	}
+	    	return afwezig;
+    }
+    
+    public ArrayList<Gebruiker> getAlleKlanten1(){
+        return alleKlanten1;
+    }
+    
+    public ArrayList<Gebruiker> getAlleKlanten2(){
+    	return alleKlanten2;
+    }
+    
+    public ArrayList<Auto> getAlleAutos1(){
+        return alleAutos1;
+    }
+    
     // Arraylist van auto's jonger dan 2010
     public ArrayList<Gebruiker> getjongerdan(){
         return jongerdan;
@@ -220,28 +301,7 @@ public class AutoTotaalDienst {
     public ArrayList<Gebruiker> getafwezig(){
         return afwezig;
     }
-    //Hier worden alle Klanten met een auto jonger dan 2010 toegevoegd aan de ArrayList
-    public ArrayList<Gebruiker> getAlleKlantenJongerDan2010(){
-        for(Auto a: alleAutos){
-            if(a.getBouwjaar() < 2010){
-                if (!jongerdan.contains(a.getEigenaar())) {
-                    jongerdan.add(a.getEigenaar());
-                }
-            }
-        }
-        return jongerdan;
-    }
-    //Hier worden alle Klanten met een auto ouder dan 2010 toegevoegd aan de ArrayList
-    public ArrayList<Gebruiker> getAlleKlantenOuderDan2010(){
-        for(Auto a: alleAutos){
-            if(a.getBouwjaar() > 2010){
-                if (!ouderdan.contains(a.getEigenaar())) {
-                    ouderdan.add(a.getEigenaar());
-                }
-            }
-        }
-        return ouderdan;
-    }
+
     //vraagt ArrayList op met klanten die 2 maanden niet zijn langsgeweest
     public ArrayList<Gebruiker> getAlleKlantenAfwezig(){
         Calendar test = Calendar.getInstance();
