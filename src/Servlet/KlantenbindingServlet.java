@@ -58,7 +58,7 @@ public class KlantenbindingServlet extends HttpServlet{
 				rd = req.getRequestDispatcher("klantenbinding.jsp");
 				rd.forward(req, resp);
 			}
-			else{
+			else if(check != 2){
 				JOptionPane.showMessageDialog(null, "Aanmaken mislukt, Selecteer 1 klant", "Brief is niet aangemaakt", JOptionPane.PLAIN_MESSAGE);
 				rd = req.getRequestDispatcher("klantenbinding.jsp");
 				rd.forward(req, resp);
@@ -80,7 +80,7 @@ public class KlantenbindingServlet extends HttpServlet{
 				rd = req.getRequestDispatcher("klantenbinding.jsp");
 				rd.forward(req, resp);
 			}
-			else{
+			else if(check == 2){
 				JOptionPane.showMessageDialog(null, "Aanmaken mislukt, Selecteer 1 klant", "Brief is niet aangemaakt", JOptionPane.PLAIN_MESSAGE);
 				rd = req.getRequestDispatcher("klantenbinding.jsp");
 				rd.forward(req, resp);
