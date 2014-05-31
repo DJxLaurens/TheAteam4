@@ -16,7 +16,9 @@ public class AutoTotaalDienst {
     private ArrayList<Product> alleOnderdelen2 = new ArrayList<Product>();
     private ArrayList<Product> alleBrandstoffen = new ArrayList<Product>();
     private ArrayList<Gebruiker> alleKlanten = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleKlanten1 = new ArrayList<Gebruiker>();
     private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
+    private ArrayList<Gebruiker> alleAutos1 = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> jongerdan = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> ouderdan = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> afwezig = new ArrayList<Gebruiker>();
@@ -232,14 +234,14 @@ public class AutoTotaalDienst {
     
     //Hier worden alle Klanten met een auto ouder dan 2010 toegevoegd aan de ArrayList
     public ArrayList<Gebruiker> getAlleKlantenOuderDan2010(){
-    	if(alleKlanten.isEmpty() && alleAutos.isEmpty()) {
-	    	alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
+    	if(alleKlanten1.isEmpty() && alleAutos1.isEmpty()) {
+	    	alleKlanten1 = new GebruikersDAO().getAlleGebruikersDB();
 	    	alleAutos = new AutosDAO().getAlleAutosDB();
 	    	int x = 0;
 	    	for(Auto a: alleAutos){
 	    		if(a.getBouwjaar() > 2010){
 	    			x = a.getEigenaarID();
-	    			for(Gebruiker g: alleKlanten){
+	    			for(Gebruiker g: alleKlanten1){
 	    				if(g.getGebruikerID() == x){
 	    					ouderdan.add(g);
 	    				}
@@ -248,6 +250,10 @@ public class AutoTotaalDienst {
 	    	}
     	}
 	    	return ouderdan;
+    }
+    
+    public ArrayList<Gebruiker> getAlleKlanten1(){
+        return alleKlanten1;
     }
     
     // Arraylist van auto's jonger dan 2010
