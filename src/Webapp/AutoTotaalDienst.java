@@ -206,9 +206,6 @@ public class AutoTotaalDienst {
     }
     
     public ArrayList<Gebruiker> getAlleKlanten(){
-    	if(alleKlanten.isEmpty()) {
-    		alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
-    	}
         return alleKlanten;
     }
     
@@ -254,6 +251,10 @@ public class AutoTotaalDienst {
     
     public ArrayList<Gebruiker> getAlleKlanten1(){
         return alleKlanten1;
+    }
+    
+    public ArrayList<Auto> getAlleAutos1(){
+        return alleAutos1;
     }
     
     // Arraylist van auto's jonger dan 2010
