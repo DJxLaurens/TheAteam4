@@ -76,4 +76,18 @@ public class ProductDAO {
 		this.leesDatabase();
 		statement.execute("INSERT INTO voorraad (naam, type, minVoorraad, voorraad)"+ "VALUES ('"+ p.getProductNaam() + "','" + p.getType() + "','" + p.getMinVoorraad() + "','" + p.getVoorraad() + "')");				
 	}
+	
+	public void changeVoorraad(Product p) throws SQLException {	
+		try {
+			this.leesDatabase();
+			statement = con.createStatement();
+			
+		String sql = "UPDATE voorraad " + "SET voorraad = "+ p.getVoorraad() +" WHERE id=" + p.getProductNummer();
+		statement.executeUpdate(sql);	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.getAlleOnderdelenDB();
+	}
 }

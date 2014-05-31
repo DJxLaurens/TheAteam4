@@ -1,4 +1,5 @@
-<jsp:include page="loginHeader.jsp" />
+<%-- <jsp:include page="loginHeader.jsp" /> --%>
+<jsp:include page="header.jsp" />
 
 <div class="content">
 	<h1>AutoTotaalDiensten</h1>

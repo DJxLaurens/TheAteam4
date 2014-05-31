@@ -29,11 +29,11 @@ public class RegistreerServlet extends HttpServlet {
 		String emailadres = req.getParameter("emailadres");
 		String emailadres2 = req.getParameter("emailadres2");
 		String tempLaatstgeweest = req.getParameter("laatstgeweest"); 
-		Date laatstgeweest = "00-00-0000"; // DateFormat moet voor vergelijken verschil datums auto	
+		String laatstgeweest = "00-00-0000"; // DateFormat moet voor vergelijken verschil datums auto	
 		String tempKorting = req.getParameter("korting");
 		double korting = 0;	
 		String tempOpenFactuur = req.getParameter("openFactuur");
-		Date openFactuur = "00-00-0000" ; // DateFormat moet voor vergelijken verschil datums auto
+		String openFactuur = "00-00-0000" ; // DateFormat moet voor vergelijken verschil datums auto
 		String tempBlokkade = req.getParameter("blokkade");
 		boolean blokkade = false;
 		

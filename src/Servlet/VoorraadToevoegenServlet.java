@@ -20,44 +20,58 @@ public class VoorraadToevoegenServlet extends HttpServlet {
 	private int voorraadMin;
 	private int voorraad;
 	private int voorraadId;
-	private double voorraadPrijs;
 	private String s;
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-			Enumeration<String> enumeratie = req.getParameterNames();
-			while(enumeratie.hasMoreElements()) {
-				String name = enumeratie.nextElement();
-				if (name.startsWith("prod_" )) {
-					String id = name.substring(name.indexOf('_'));
-					String aantal = req.getParameter(name);
-				}
-			}
-			
+		if(req.getParameter("voorraadType").equals("Brandstof")){
+			voorraadType = 1;
+		}else{
+			voorraadType = 2;
+		}
 		
-			voorraadNaam = req.getParameter("voorraadNaam");
-			voorraadMin = Integer.parseInt(req.getParameter("voorraadMin"));
-			voorraad = Integer.parseInt(req.getParameter("voorraad"));
-			voorraadPrijs = Double.parseDouble(req.getParameter("voorraadPrijs"));
-			
-			if(req.getParameter("type").equals("Brandstof")){
-				voorraadType = 1;
-			}else{
-				voorraadType = 2;
-			}
-			
-			req.setAttribute("msgs", s);
+			Enumeration<String> enumeratie = req.getParameterNames();
 			RequestDispatcher rd = null;
-			Product p = new Product(voorraadId, voorraadNaam, voorraadType, voorraadMin, voorraad);
-			try {
-				producten.saveVoorraad(p);
-				s += "Toevoegen is gelukt";
-			} catch (SQLException e) {
-				e.printStackTrace();
+			while(enumeratie.hasMoreElements()) {
+				voorraadNaam = req.getParameter("voorraadNaam");
+				voorraadMin = Integer.parseInt(req.getParameter("voorraadMin"));
+				voorraad = Integer.parseInt(req.getParameter("voorraad"));
+				
+				System.out.println("Per while krijg ik: " + voorraadNaam + " " + voorraadMin + " " + voorraad);
+				
+				String name = enumeratie.nextElement();
+				int aantal = 0;
+				
+				if (name.startsWith("prod_" )) {
+					//System.out.println("Ik kom Boven: " + name);
+					
+					int id = Integer.parseInt(name.substring(name.indexOf('_')+1));
+					//System.out.println("Ik kom Voor: " + id);
+					
+					//System.out.println("Paramater: " + req.getParameter(name));
+					
+					if (!req.getParameter(name).isEmpty()){
+						aantal = Integer.parseInt(req.getParameter(name));
+						//System.out.println("Ik zit er toch in!");
+					}
+					
+					req.setAttribute("msgs", s);
+					Product p = new Product(id, voorraadNaam, voorraadType, voorraadMin, voorraad+aantal);
+					
+					try {
+						producten.changeVoorraad(p);
+						s += "Toevoegen is gelukt";
+						//System.out.println("Ik voeg wat toe: " + p.getProductNaam());
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					rd = req.getRequestDispatcher("onderdelen_bestellen.jsp");
+					
+					//System.out.println("Ik ben bij Hoi");
+				}
+				
 			}
-			//s += "Toevoegen is gelukt";
-			rd = req.getRequestDispatcher("voorraad_toevoegen.jsp");
 			rd.forward(req, resp);
 	}
 }
