@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import Webapp.Auto;
+import Webapp.Klus;
 
 public class AutosDAO {
 	private Connection con = null;
@@ -49,4 +50,8 @@ public class AutosDAO {
 		return alleAutosDB;
 	}
 	
+	public void saveAuto(Auto a) throws SQLException {	
+		this.leesDatabase();
+		statement.execute("INSERT INTO auto (kenteken, merk, bouwjaar, type, brandstoftype)"+ "VALUES ('"+ a.getKenteken() + "','" + a.getMerk() + "','" + a.getBouwjaar() + "','" + a.getType() + "','" + a.getBrandstoftype() + "')");				
+	}
 }

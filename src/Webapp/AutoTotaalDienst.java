@@ -210,22 +210,46 @@ public class AutoTotaalDienst {
         return alleKlanten;
     }
     
-    public ArrayList<Gebruiker> getAlleKlantenJongerdan2010(){
-    	alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
-    	alleAutos = new AutosDAO().getAlleAutosDB();
-    	int x = 0;
-    	for(Auto a: alleAutos){
-    		if(a.getBouwjaar() > 2010){
-    			x = a.getEigenaarID();
-    			for(Gebruiker g: alleKlanten){
-    				if(g.getGebruikerID() == x){
-    					jongerdan.add(g);
-    				}
-    			}
-    		}
+    //Hier worden alle Klanten met een auto jonger dan 2010 toegevoegd aan de ArrayList
+    public ArrayList<Gebruiker> getAlleKlantenJongerDan2010(){
+    	if(alleKlanten.isEmpty() && alleAutos.isEmpty()) {
+	    	alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
+	    	alleAutos = new AutosDAO().getAlleAutosDB();
+	    	int x = 0;
+	    	for(Auto a: alleAutos){
+	    		if(a.getBouwjaar() < 2010){
+	    			x = a.getEigenaarID();
+	    			for(Gebruiker g: alleKlanten){
+	    				if(g.getGebruikerID() == x){
+	    					jongerdan.add(g);
+	    				}
+	    			}
+	    		}
+	    	}
     	}
-    	return jongerdan;
+	    	return jongerdan;
     }
+    
+    //Hier worden alle Klanten met een auto ouder dan 2010 toegevoegd aan de ArrayList
+    public ArrayList<Gebruiker> getAlleKlantenOuderDan2010(){
+    	if(alleKlanten.isEmpty() && alleAutos.isEmpty()) {
+	    	alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
+	    	alleAutos = new AutosDAO().getAlleAutosDB();
+	    	int x = 0;
+	    	for(Auto a: alleAutos){
+	    		if(a.getBouwjaar() > 2010){
+	    			x = a.getEigenaarID();
+	    			for(Gebruiker g: alleKlanten){
+	    				if(g.getGebruikerID() == x){
+	    					ouderdan.add(g);
+	    				}
+	    			}
+	    		}
+	    	}
+    	}
+	    	return ouderdan;
+    }
+    
     // Arraylist van auto's jonger dan 2010
     public ArrayList<Gebruiker> getjongerdan(){
         return jongerdan;
@@ -238,28 +262,7 @@ public class AutoTotaalDienst {
     public ArrayList<Gebruiker> getafwezig(){
         return afwezig;
     }
-    //Hier worden alle Klanten met een auto jonger dan 2010 toegevoegd aan de ArrayList
-    public ArrayList<Gebruiker> getAlleKlantenJongerDan2010(){
-        for(Auto a: alleAutos){
-            if(a.getBouwjaar() < 2010){
-                if (!jongerdan.contains(a.getEigenaar())) {
-                    jongerdan.add(a.getEigenaar());
-                }
-            }
-        }
-        return jongerdan;
-    }
-    //Hier worden alle Klanten met een auto ouder dan 2010 toegevoegd aan de ArrayList
-    public ArrayList<Gebruiker> getAlleKlantenOuderDan2010(){
-        for(Auto a: alleAutos){
-            if(a.getBouwjaar() > 2010){
-                if (!ouderdan.contains(a.getEigenaar())) {
-                    ouderdan.add(a.getEigenaar());
-                }
-            }
-        }
-        return ouderdan;
-    }
+
     //vraagt ArrayList op met klanten die 2 maanden niet zijn langsgeweest
     public ArrayList<Gebruiker> getAlleKlantenAfwezig(){
         Calendar test = Calendar.getInstance();

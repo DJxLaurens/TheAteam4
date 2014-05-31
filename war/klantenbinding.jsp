@@ -16,7 +16,8 @@
     
 	<div>
 		<select name="veld1">
-			<% for(Gebruiker g : atd.getAlleKlanten()) { %>
+			<option value="leeg"></option>
+			<% for(Gebruiker g : atd.getAlleKlantenJongerDan2010()) { %>
 			<option value="naam"><%= g.getNaam() %></option>
 			<% }%>
 		</select>
@@ -30,7 +31,9 @@
 	<div>
 		<select name="veld2">
 			<option value="leeg"></option>
-			<option value="henk">Henk</option>
+			<% for(Gebruiker g : atd.getAlleKlantenOuderDan2010()) { %>
+			<option value="naam"><%= g.getNaam() %></option>
+			<% }%>
 		</select>
 	</div>
 
