@@ -50,6 +50,10 @@ public class Gebruiker {
         naam = nm;
     }
     
+    public int getGebruikerID(){
+    	return gebruikerID;
+    }
+    
     public void setID(int id){
     	gebruikerID = id;
     }

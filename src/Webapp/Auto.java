@@ -31,6 +31,10 @@ public class Auto{
         kenteken = kt;
     }
     
+    public int getEigenaarID(){
+    	return eigenaarID;
+    }
+    
     public void setEigenaarID(int id){
     	eigenaarID = id;
     }

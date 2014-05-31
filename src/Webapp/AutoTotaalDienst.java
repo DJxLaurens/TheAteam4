@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import Connection.AutosDAO;
 import Connection.KlussenDAO;
 import Connection.ProductDAO;
 import Connection.GebruikersDAO;
@@ -207,6 +208,23 @@ public class AutoTotaalDienst {
     		alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
     	}
         return alleKlanten;
+    }
+    
+    public ArrayList<Gebruiker> getAlleKlantenJongerdan2010(){
+    	alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
+    	alleAutos = new AutosDAO().getAlleAutosDB();
+    	int x = 0;
+    	for(Auto a: alleAutos){
+    		if(a.getBouwjaar() > 2010){
+    			x = a.getEigenaarID();
+    			for(Gebruiker g: alleKlanten){
+    				if(g.getGebruikerID() == x){
+    					jongerdan.add(g);
+    				}
+    			}
+    		}
+    	}
+    	return jongerdan;
     }
     // Arraylist van auto's jonger dan 2010
     public ArrayList<Gebruiker> getjongerdan(){
