@@ -43,13 +43,14 @@ public class GebruikersDAO {
 //				String postcode = output.getString("postcode");
 //				String woonplaats = output.getString("woonplaats");
 //				String telefoonnummer = output.getString("telefoonnummer");
-//				String laatstgeweest = output.getString("laatstgeweest");
+				String laatstgeweest = output.getString("laatstgeweest");
 //				String emailadres = output.getString("emailadres");
 //				double korting = output.getDouble("korting");
 //				String openFactuur = output.getString("openFactuur");
 //				boolean blokkade = output.getBoolean("blokkade");
 				Gebruiker g = new Gebruiker(naam);
 				g.setID(id);
+				g.setLaatstgeweest(laatstgeweest);
 				alleGebruikersDB.add(g);			
 			}
 		} catch (SQLException e) {

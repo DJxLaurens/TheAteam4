@@ -2,9 +2,11 @@ package Webapp;
 
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import Connection.AutosDAO;
 import Connection.KlussenDAO;
@@ -17,6 +19,7 @@ public class AutoTotaalDienst {
     private ArrayList<Product> alleBrandstoffen = new ArrayList<Product>();
     private ArrayList<Gebruiker> alleKlanten = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> alleKlanten1 = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleKlanten2 = new ArrayList<Gebruiker>();
     private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
     private ArrayList<Auto> alleAutos1 = new ArrayList<Auto>();
     private ArrayList<Gebruiker> jongerdan = new ArrayList<Gebruiker>();
@@ -249,8 +252,38 @@ public class AutoTotaalDienst {
 	    	return ouderdan;
     }
     
+    public ArrayList<Gebruiker> getAlleKlantenLaatstgeweest(){
+    	SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+    	Calendar test = Calendar.getInstance();
+        test.add(Calendar.DATE, -60);
+    	if(alleKlanten2.isEmpty()) {
+	    	alleKlanten2 = new GebruikersDAO().getAlleGebruikersDB();
+	    	for(Gebruiker g: alleKlanten2){
+	    		String xx = "";
+	        	Date date = null;
+	    		xx = g.getLaatstgeweest();
+	    		try {
+	    			 
+	    			date = formatter.parse(xx);
+	    			Calendar bezig = Calendar.getInstance();
+	    			bezig.setTime(date);
+	    			if(bezig.before(test)){
+	    				afwezig.add(g);
+	    			}	    	 
+	    		} catch (ParseException e) {
+	    			e.printStackTrace();
+	    		}
+	    	}
+    	}
+	    	return afwezig;
+    }
+    
     public ArrayList<Gebruiker> getAlleKlanten1(){
         return alleKlanten1;
+    }
+    
+    public ArrayList<Gebruiker> getAlleKlanten2(){
+    	return alleKlanten2;
     }
     
     public ArrayList<Auto> getAlleAutos1(){
