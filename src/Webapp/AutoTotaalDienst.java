@@ -18,7 +18,7 @@ public class AutoTotaalDienst {
     private ArrayList<Gebruiker> alleKlanten = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> alleKlanten1 = new ArrayList<Gebruiker>();
     private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
-    private ArrayList<Gebruiker> alleAutos1 = new ArrayList<Gebruiker>();
+    private ArrayList<Auto> alleAutos1 = new ArrayList<Auto>();
     private ArrayList<Gebruiker> jongerdan = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> ouderdan = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> afwezig = new ArrayList<Gebruiker>();
@@ -236,9 +236,9 @@ public class AutoTotaalDienst {
     public ArrayList<Gebruiker> getAlleKlantenOuderDan2010(){
     	if(alleKlanten1.isEmpty() && alleAutos1.isEmpty()) {
 	    	alleKlanten1 = new GebruikersDAO().getAlleGebruikersDB();
-	    	alleAutos = new AutosDAO().getAlleAutosDB();
+	    	alleAutos1 = new AutosDAO().getAlleAutosDB();
 	    	int x = 0;
-	    	for(Auto a: alleAutos){
+	    	for(Auto a: alleAutos1){
 	    		if(a.getBouwjaar() > 2010){
 	    			x = a.getEigenaarID();
 	    			for(Gebruiker g: alleKlanten1){
