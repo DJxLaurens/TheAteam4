@@ -19,30 +19,31 @@ public class LoginServlet extends HttpServlet {
 		if ("".equals(naam) || "".equals(wachtwoord)) {
 			req.setAttribute("msgs", "Vul AUB uw e-mailadres en wachtwoord in");
 		} else {
-			for (Gebruiker g : atd.getAlleGebruikers()) {
+			for (Gebruiker g : atd.getAlleKlanten()) {
 				String dbNaam = g.getEmailadres();
 				String dbWachtwoord = g.getWachtwoord();
 				rol_id = g.getRol();
-				if (dbNaam.equals(naam) && wachtwoord.equals(dbWachtwoord)) {
+				if (dbNaam.equals(naam) && dbWachtwoord.equals(wachtwoord)) {
 					loginSuccess = true;
+					break;
 				}
 				else{
 					req.setAttribute("msgs", "Email en/of wachtwoord is onjuist!");
 				}
-			}
-		
+			}		
 		}
 
 		RequestDispatcher rd = null;
 		if (loginSuccess) {
-			rd = req.getRequestDispatcher("index.jsp");
+			rd = req.getRequestDispatcher("index.jsp");	
 			req.getSession().setAttribute("rol", rol_id);
 			req.getSession().setAttribute("naam", naam);
 			
 
 		} else {
-			rd = req.getRequestDispatcher("index.jsp");			
-			rd.forward(req, resp);
+			rd = req.getRequestDispatcher("loginIndex.jsp");		
+			
 		}
+		rd.forward(req, resp);
 	}
 }

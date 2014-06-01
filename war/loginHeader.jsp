@@ -36,6 +36,6 @@
 		</div>
 		<div class="menu">
 			<ul>
-				<li><a href="index.jsp">Home</a></li>
+				<li><a href="loginIndex.jsp">Home</a></li>
 			</ul>
 		</div>
