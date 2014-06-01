@@ -21,7 +21,7 @@
 				}					
 			%>	      
 				<div>		
-					<label>Naam:</label> 
+					<label>Email:</label> 
 					<input type="text" name="naam" />
 				</div>
 				<div>
@@ -30,7 +30,6 @@
 				</div>
 				<div>
 				<input type="submit" value="Inloggen"/>
-				<a href="registreer.jsp">Registreer</a>
 				</div>			
 		</form>	
 			
