@@ -45,7 +45,7 @@ public class VoorraadWijzigenServlet extends HttpServlet {
 								}
 			 				}
 		}
-			rd = req.getRequestDispatcher("onderdelen_bestellen.jsp");
+			rd = req.getRequestDispatcher("voorraad_toevoegen.jsp");
 			rd.forward(req, resp);
 	}
 }
