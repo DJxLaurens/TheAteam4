@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
+import Connection.GebruikersDAO;
 import Webapp.AutoTotaalDienst;
+import Webapp.Gebruiker;
 
 public class FactuurbetalingBlokkerenServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -28,6 +31,17 @@ public class FactuurbetalingBlokkerenServlet extends HttpServlet{
 		
 		if (press.equals("Betaling blokkeren")){
 			
+			ArrayList <Gebruiker> alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
+			Gebruiker kl = atd.zoekGebruiker(klant, alleKlanten);
+			kl.setBlokkade();
+			
+			ArrayList<Gebruiker> klanten = atd.getblokkade();
+			Gebruiker k = atd.zoekGebruiker(klant, klanten);
+			atd.verwijderKlant(k, klanten);
+			JOptionPane.showMessageDialog(null, "Blokkeren gelukt", "Factuur betalings mogelijkheid is geblokkeerd.", JOptionPane.PLAIN_MESSAGE);
+			
+			rd = req.getRequestDispatcher("herinneringsbrieven-factuurbetalingblokkeren.jsp");
+			rd.forward(req, resp);
 		}
 	}
 }

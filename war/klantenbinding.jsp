@@ -39,9 +39,16 @@
 	<div>
 		<select name="veld2">
 			<option value="leeg"></option>
-			<% for(Gebruiker g : atd.getAlleKlantenOuderDan2010()) { %>
-			<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
-			<% }%>
+			<% if(atd.getouderdan().size() == 0){
+				for(Gebruiker g : atd.getAlleKlantenOuderDan2010()){ %>
+					<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+				<%}
+			}
+			else{
+				for(Gebruiker g : atd.getouderdan()){ %>
+				<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+			<%}			
+			}%>
 		</select>
 	</div>
 
@@ -50,9 +57,16 @@
 	<div>
 		<select name="veld3">
 			<option value="leeg"></option>
-			<% for(Gebruiker g : atd.getAlleKlantenLaatstgeweest()) { %>
-			<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
-			<% }%>
+			<% if(atd.getafwezig().size() == 0){
+				for(Gebruiker g : atd.getAlleKlantenLaatstgeweest()){ %>
+					<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+				<%}
+			}
+			else{
+				for(Gebruiker g : atd.getafwezig()){ %>
+				<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+			<%}			
+			}%>
 		</select>
 	</div>
 
