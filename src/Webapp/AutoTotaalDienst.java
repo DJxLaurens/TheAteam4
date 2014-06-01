@@ -28,6 +28,7 @@ public class AutoTotaalDienst {
     private ArrayList<Gebruiker> afwezig = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> blokkade = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> factuur = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> brief = new ArrayList<Gebruiker>();
     private ArrayList<Klus> alleKlussen = new ArrayList<Klus>();
     private ArrayList<Klus> alleKlussenCombo = new ArrayList<Klus>();
     private ArrayList<Klus> klussenStatus = new ArrayList<Klus>();
@@ -388,7 +389,7 @@ public class AutoTotaalDienst {
     }
     //Maak factuur als klanten langer dan 90 dagen niet hebben betaald
     public ArrayList<Gebruiker> getAlleKlantenBrieven90(){
-    	factuur.removeAll(factuur);
+    	brief.removeAll(brief);
     	Calendar test = Calendar.getInstance();
     	test.add(Calendar.DATE, -90);
     	Date date1 = test.getTime();
@@ -399,8 +400,8 @@ public class AutoTotaalDienst {
     			try {
     				date2 = sdf.parse(k.getOpenFactuur());
     				if(date2.before(date1)==true){
-    					if(!factuur.contains(k)){
-    						factuur.add(k);
+    					if(!brief.contains(k)){
+    						brief.add(k);
     					}
     				}
     			} catch (ParseException e) {
@@ -408,7 +409,7 @@ public class AutoTotaalDienst {
     			}
     		}
     	}
-    	return factuur;
+    	return brief;
     }
     
     public void blokkeer(Gebruiker k){
