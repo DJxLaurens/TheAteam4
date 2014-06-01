@@ -96,13 +96,31 @@
 		<url-pattern>/VoorraadToevoegenServlet.do</url-pattern>
 	</servlet-mapping>
 	
-		<servlet>
+	<servlet>
 		<servlet-name>Voorraad wijzigen</servlet-name>
 		<servlet-class>Servlet.VoorraadWijzigenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Voorraad wijzigen</servlet-name>
 		<url-pattern>/VoorraadWijzigenServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Minimale voorraad wijzigen</servlet-name>
+		<servlet-class>Servlet.MinimaleVoorraadWijzigenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Minimale voorraad wijzigen</servlet-name>
+		<url-pattern>/MinimaleVoorraadWijzigenServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Voorraad verwijderen</servlet-name>
+		<servlet-class>Servlet.VerwijderVoorraadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Voorraad verwijderen</servlet-name>
+		<url-pattern>/VerwijderVoorraadServlet.do</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

@@ -119,15 +119,17 @@ public class AutoTotaalDienst {
         }
     }
     public ArrayList<Product> getAlleOnderdelen(){
-//    	if (alleOnderdelen.isEmpty()) {
-//    		System.out.println("Hoi");
     		alleOnderdelen = new ProductDAO().getAlleOnderdelenDB();
-    	//}
-    	
-    	System.out.println("Test: " + alleOnderdelen);
         return alleOnderdelen;
 
     }
+    
+    public Product getOnderdeelById(int id){
+    	Product onderdeel = new ProductDAO().getOnderdeelFromID(id);
+    	
+    	return onderdeel;
+    }
+    
     //Onderdelen combobox bij PrijsBerekenenFrame
     public boolean heeftOnderdeel2(int artNr){
         boolean b = false;
@@ -172,9 +174,13 @@ public class AutoTotaalDienst {
         }
         return b;
     }
+
     public ArrayList<Product> getAlleBrandstoffen(){
-        return alleBrandstoffen;
+		alleBrandstoffen = new ProductDAO().getAlleBrandstoffenDB();
+	
+    return alleBrandstoffen;
     }
+    
     public boolean heeftKlant(String nm){
         boolean b = false;
         for (Gebruiker k: alleKlanten){
