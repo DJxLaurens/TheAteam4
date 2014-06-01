@@ -27,11 +27,7 @@
 				<div>
 					<label>Wachtwoord:</label>
 					<input type="password" name="wachtwoord" />
-				</div>
-				<div>
-				<input type="submit" value="Inloggen"/>
-				<a href="registreer.jsp">Registreer</a>
-				</div>			
+				</div>		
 		</form>	
 			
 		</div>

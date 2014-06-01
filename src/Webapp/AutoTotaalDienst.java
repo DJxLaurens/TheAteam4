@@ -14,7 +14,7 @@ public class AutoTotaalDienst {
     private ArrayList<Product> alleOnderdelen = new ArrayList<Product>();
     private ArrayList<Product> alleOnderdelen2 = new ArrayList<Product>();
     private ArrayList<Product> alleBrandstoffen = new ArrayList<Product>();
-    private ArrayList<Gebruiker> alleKlanten = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
     private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
     private ArrayList<Gebruiker> jongerdan = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> ouderdan = new ArrayList<Gebruiker>();
@@ -36,7 +36,7 @@ public class AutoTotaalDienst {
    
     // checkt of ingevoerd gegeven een int getal is
     public static boolean isInteger(String s) {
-                try {
+        try {
             Integer.parseInt(s);
         }
         catch(NumberFormatException e) {
@@ -169,18 +169,18 @@ public class AutoTotaalDienst {
     public ArrayList<Product> getAlleBrandstoffen(){
         return alleBrandstoffen;
     }
-    public boolean heeftKlant(String nm){
+    public boolean heeftGebruiker(String nm){
         boolean b = false;
-        for (Gebruiker k: alleKlanten){
+        for (Gebruiker k: alleGebruikers){
             if (k.getNaam().equals(nm)){
                 b = true;
             }
         }
         return b;
     }
-    public Gebruiker zoekKlant(String nm){
+    public Gebruiker zoekGebruiker(String nm){
     	Gebruiker antw = null;
-        for(Gebruiker k: alleKlanten){
+        for(Gebruiker k: alleGebruikers){
             if(k.getNaam().equals(nm)){
                 antw = k;
                 break;
@@ -188,26 +188,23 @@ public class AutoTotaalDienst {
         }
         return antw;
     }
-    public boolean voegKlantToe(Gebruiker nweKlant){
+    public boolean voegGebruikerToe(Gebruiker nweKlant){
         boolean b = false;
-        if(!heeftKlant(nweKlant.getNaam())){
-            alleKlanten.add(nweKlant);
+        if(!heeftGebruiker(nweKlant.getNaam())){
+            alleGebruikers.add(nweKlant);
             b = true;
         }
         return b;
     }
-    public void verwijderKlant(Gebruiker exKlant, ArrayList a) {
-        if (heeftKlant(exKlant.getNaam())) {
-            a.remove(exKlant);
+    public void verwijderGebruiker(Gebruiker exKlant) {
+        if (heeftGebruiker(exKlant.getNaam())) {
+            alleGebruikers.remove(exKlant);
         }
     }
     
-    public ArrayList<Gebruiker> getAlleKlanten(){
-    	if(alleKlanten.isEmpty()) {
-    		alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
-    	}
-        return alleKlanten;
-    }
+	public ArrayList<Gebruiker> getAlleGebruikers() {
+		return alleGebruikers = new GebruikersDAO().getAlleGebruikersDB();
+	}
     // Arraylist van auto's jonger dan 2010
     public ArrayList<Gebruiker> getjongerdan(){
         return jongerdan;
@@ -247,7 +244,7 @@ public class AutoTotaalDienst {
         Calendar test = Calendar.getInstance();
         test.add(Calendar.DATE, -60);
 
-        for (Gebruiker k : alleKlanten) {
+        for (Gebruiker k : alleGebruikers) {
 //            if (k.getLaatstgeweest().before(test)) {
                 if(!afwezig.contains(k)){
                     afwezig.add(k);
@@ -261,7 +258,7 @@ public class AutoTotaalDienst {
         factuur.removeAll(factuur);
         Calendar test = Calendar.getInstance();
         test.add(Calendar.DATE, -30);
-        for (Gebruiker k : alleKlanten){
+        for (Gebruiker k : alleGebruikers){
             if(k.getOpenFactuur() != null){
 //                if(k.getOpenFactuur().before(test)){
                     if(!factuur.contains(k)){
@@ -278,7 +275,7 @@ public class AutoTotaalDienst {
         Calendar test = Calendar.getInstance();
         test.add(Calendar.DATE, -90);
         //klanten die langer dan 90 dagen niet hebben betaald
-        for (Gebruiker k : alleKlanten){
+        for (Gebruiker k : alleGebruikers){
             if(k.getBlokkade() == false){
                 if(k.getOpenFactuur() != null){
 //                    if(k.getOpenFactuur().before(test)){
