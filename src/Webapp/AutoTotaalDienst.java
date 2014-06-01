@@ -306,6 +306,9 @@ public class AutoTotaalDienst {
         if(alleKlanten3.isEmpty()){
         	alleKlanten3 = new GebruikersDAO().getAlleGebruikersDB();
         	for(Gebruiker g: alleKlanten3){
+        		if(g.getOpenFactuur().equals(null)){
+        			g.setOpenFactuur("06-06-2012");
+        		}
         		String xx = "";
         		Date date = null;
         		xx = g.getOpenFactuur();
@@ -321,7 +324,7 @@ public class AutoTotaalDienst {
 	    		}
         	}
         }
-        return alleKlanten3;
+        return blokkade;
     }
     
     public ArrayList<Gebruiker> getblokkade(){
