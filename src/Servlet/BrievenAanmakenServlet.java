@@ -38,8 +38,8 @@ public class BrievenAanmakenServlet extends HttpServlet{
 		if(!v1.equals("leeg")){
 			x = v1;
 			ArrayList<Gebruiker> klanten = atdRef.getjongerdan();
-			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
-			atdRef.verwijderKlant(klant, klanten);
+			Gebruiker klant = atdRef.zoekGebruiker(x);
+			atdRef.verwijderGebruiker(klant);
 		}
 
 		if (press.equals("Brieven aanmaken")){

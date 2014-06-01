@@ -30,7 +30,6 @@
 				</div>
 				<div>
 				<input type="submit" value="Inloggen"/>
-				<a href="registreer.jsp">Registreer</a>
 				</div>			
 		</form>	
 			

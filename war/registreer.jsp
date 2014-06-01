@@ -62,13 +62,15 @@
 					<option value="2">Bedrijfsleider</option>
 					<option value="3">Kassamedewerker</option>
 					<option value="4">Klant</option>
-					<option value="5">Magazijn</option>
+					<option value="5">Magazijnmedewerker</option>
 					<option value="6">Planner</option>
 					<option value="7">Monteur</option>
+					<option value="8">Garagemedewerker</option>
+				</select>
 				</select>
 			</div>
 			<div>
-				<input type="submit" value="Registreer" /> <a href="login.jsp">Login</a>
+				<input type="submit" value="login" /> <a href="index.jsp">Login</a>
 			</div>
 			</table>
 		</div>
