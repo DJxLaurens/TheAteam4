@@ -26,6 +26,7 @@ public class KlantenbindingServlet extends HttpServlet{
 		String v2=(String)req.getParameter("veld2");
 		String v3=(String)req.getParameter("veld3");
 		String x = "";
+		System.out.println(v1);
 		int check = 1;
 
 		if(!v1.equals("leeg") && v2.equals("leeg") && v3.equals("leeg")){
