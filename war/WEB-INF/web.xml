@@ -114,6 +114,15 @@
 		<url-pattern>/WeekplanningServlet.do</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>Herinneringsbrief toevoegen</servlet-name>
+		<servlet-class>Servlet.BrievenAanmakenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Herinneringsbrief toevoegen</servlet-name>
+		<url-pattern>/BrievenAanmakenServlet.do</url-pattern>
+	</servlet-mapping>
+	
 	<listener>
 		<listener-class>
 			Webapp.MyServletContextListener
