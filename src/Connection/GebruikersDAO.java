@@ -36,29 +36,20 @@ public class GebruikersDAO {
 			while (output.next()){
 				int rol_id = output.getInt("rol_id");
 				String naam = output.getString("naam");
-				int id = output.getInt("id");
+				int gebruiker_id = output.getInt("gebruiker_id");
 				String wachtwoord = output.getString("wachtwoord");
 				String adres = output.getString("adres");
 				String postcode = output.getString("postcode");
 				String woonplaats = output.getString("woonplaats");
 				String telefoonnummer = output.getString("telefoonnummer");
 				String laatstgeweest = output.getString("laatstgeweest");
-<<<<<<< HEAD
-//				String emailadres = output.getString("emailadres");
-//				double korting = output.getDouble("korting");
-				String openFactuur = output.getString("openFactuur");
-//				boolean blokkade = output.getBoolean("blokkade");
-				Gebruiker g = new Gebruiker(naam);
-=======
 				String emailadres = output.getString("emailadres");
 				double korting = output.getDouble("korting");
 				String openFactuur = output.getString("openFactuur");
 				boolean blokkade = output.getBoolean("blokkade");
 				Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openFactuur, blokkade);
->>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
-				g.setID(id);
+				g.setID(gebruiker_id);
 				g.setLaatstgeweest(laatstgeweest);
-				g.setOpenFactuur(openFactuur);
 				alleGebruikersDB.add(g);			
 			}
 		} catch (SQLException e) {
