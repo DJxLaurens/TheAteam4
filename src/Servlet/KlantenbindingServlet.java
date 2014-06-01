@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,35 +14,49 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
+import Webapp.AutoTotaalDienst;
+import Webapp.Gebruiker;
+
 public class KlantenbindingServlet extends HttpServlet{
 	private int brieven = 1;
 	private int onderhoud = 1;
 	private int afwezig = 1;
+	private AutoTotaalDienst atdRef;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
 		RequestDispatcher rd = null;
-
+		
 		String press = req.getParameter("press");
 
 		String v1=(String)req.getParameter("veld1");
 		String v2=(String)req.getParameter("veld2");
 		String v3=(String)req.getParameter("veld3");
 		String x = "";
+		System.out.println(v1);
 		int check = 1;
 		
 		if(!v1.equals("leeg") && v2.equals("leeg") && v3.equals("leeg")){
 			x = v1;
+			ArrayList<Gebruiker> klanten = atdRef.getjongerdan();
+			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
+			atdRef.verwijderKlant(klant, klanten);
 		}
 
 		if(v1.equals("leeg") && !v2.equals("leeg") && v3.equals("leeg")){
 			x = v2;
+			ArrayList<Gebruiker> klanten = atdRef.getouderdan();
+			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
+			atdRef.verwijderKlant(klant, klanten);
 		}
 
 		if(v1.equals("leeg") && v2.equals("leeg") && !v3.equals("leeg")){
 			x = v3;
 			check = 2;
+			ArrayList<Gebruiker> klanten = atdRef.getafwezig();
+			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
+			atdRef.verwijderKlant(klant, klanten);
 		}
 
 		if (press.equals("Brieven aanmaken")){
