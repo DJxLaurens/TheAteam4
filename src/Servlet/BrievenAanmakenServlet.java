@@ -18,9 +18,6 @@ import Webapp.AutoTotaalDienst;
 import Webapp.Gebruiker;
 
 public class BrievenAanmakenServlet extends HttpServlet{
-	private int brieven = 1;
-	private int onderhoud = 1;
-	private int afwezig = 1;
 	private AutoTotaalDienst atdRef;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -32,40 +29,37 @@ public class BrievenAanmakenServlet extends HttpServlet{
 
 		String v1=(String)req.getParameter("veld1");
 		String x = "";
-		System.out.println(v1);
+		System.out.println("v1 =" + v1);
+		System.out.println("dit is een string");
 		int check = 1;
 		
 		if(!v1.equals("leeg")){
 			x = v1;
-			ArrayList<Gebruiker> klanten = atdRef.getjongerdan();
-			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
-			atdRef.verwijderKlant(klant, klanten);
+//			ArrayList<Gebruiker> klanten = atdRef.getAlleKlantenBrieven90();
+//			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
+//			atdRef.verwijderKlant(klant, klanten);
 		}
 
 		if (press.equals("Brieven aanmaken")){
-			req.setAttribute("msgs", brieven);
 			if(!x.equals("") && check != 2){
-				req.setAttribute("msgs1", onderhoud);
-				brieven++;
-				onderhoud++;
-				FileWriter fw = new FileWriter("C:/testbrieven/Herrinering voor " + x +  " voor een onderhoudsbeurt (+1 jaar) " + ".txt", true); 
+				FileWriter fw = new FileWriter("C:/testbrieven/Herrinering voor " + x +  " wegens +90 dagen niet betalen " + ".txt", false); 
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");
-				pw.println("U bent al meer dan 1 jaar geleden voor het laatst langsgeweest voor een onderhoudsbeurt.");
-				pw.println("Het is belangrijk dat u zo spoedig mogelijk een nieuwe onderhoudsbeurt inpland.");
+				pw.println("U heeft al langer dan 90 dagen gewacht met het betalen van uw factuur.");
+				pw.println("Het is belangrijk dat u zo spoedig mogelijk deze factuur betaalt.");
 				pw.println("");
 				pw.println("Met vriendelijke groet,");
 				pw.println("");
 				pw.println("Henk Paladijn");
 				pw.close(); 
 				JOptionPane.showMessageDialog(null, "Aanmaken gelukt", "Brief is aangemaakt", JOptionPane.PLAIN_MESSAGE);
-				rd = req.getRequestDispatcher("klantenbinding.jsp");
+				rd = req.getRequestDispatcher("herinneringsbrieven-brievenaanmaken.jsp");
 				rd.forward(req, resp);
 			}
 			else if(check != 2){
 				JOptionPane.showMessageDialog(null, "Aanmaken mislukt, Selecteer 1 klant", "Brief is niet aangemaakt", JOptionPane.PLAIN_MESSAGE);
-				rd = req.getRequestDispatcher("klantenbinding.jsp");
+				rd = req.getRequestDispatcher("herinneringsbrieven-brievenaanmaken.jsp");
 				rd.forward(req, resp);
 			}
 		}
