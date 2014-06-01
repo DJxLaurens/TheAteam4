@@ -25,8 +25,7 @@ public class KlantenbindingServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");
-		
+		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");	
 		
 		RequestDispatcher rd = null;
 		
