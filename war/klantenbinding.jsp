@@ -79,12 +79,8 @@
 		<p>- Er moeten nog 
 		
 		<%
-		Object msgs = request.getAttribute("msgs");
-		if (msgs != null) {
-		out.println(msgs);
-		} else {
-			out.println(0);
-		}
+		int x = atd.getjongerdan().size() + atd.getouderdan().size() + atd.getafwezig().size();
+		out.println(x);
 		%>
 		
 		brieven aangemaakt worden<p>
