@@ -43,7 +43,18 @@
 	<h1>Brievenoverzicht</h1>
 
 	<div class="box">
-	<p>- Er moeten nog aantal brieven aangemaakt worden<p>
+		<p>- Er moeten nog 
+		
+		<%
+		Object msgs = request.getAttribute("msgs");
+		if (msgs != null) {
+		out.println(msgs);
+		} else {
+			out.println(0);
+		}
+		%>
+		
+		brieven aangemaakt worden<p>
 	</div>
 
 </form>
