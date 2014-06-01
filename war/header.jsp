@@ -49,5 +49,7 @@
 						<li><a href="rapportagesaanmaken.jsp">Rapportages
 								aanmaken</a></li>
 					</ul></li>
+				<li><a href="registreer.jsp">Registreren</a>
+					</li>
 			</ul>
 		</div>
