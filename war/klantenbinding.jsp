@@ -18,9 +18,16 @@
 	<div>
 		<select name="veld1">
 			<option value="leeg"></option>
-			<% for(Gebruiker g : atd.getAlleKlantenJongerDan2010()) { %>
-			<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
-			<% }%>
+			<% if(atd.getjongerdan().size() == 0){
+				for(Gebruiker g : atd.getAlleKlantenJongerDan2010()){ %>
+					<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+				<%}
+			}
+			else{
+				for(Gebruiker g : atd.getjongerdan()){ %>
+				<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+			<%}			
+			}%>
 		</select>
 	</div>
 
