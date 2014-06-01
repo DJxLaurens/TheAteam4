@@ -5,7 +5,9 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,7 +44,9 @@ public class BrievenAanmakenServlet extends HttpServlet{
 
 		if (press.equals("Brieven aanmaken")){
 			if(!x.equals("") && check != 2){
-				FileWriter fw = new FileWriter("C:/testbrieven/Herrinering voor " + x +  " wegens +90 dagen niet betalen " + ".txt", false); 
+				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+				Date datum = new Date();
+				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] Herrinering voor " + x +  " wegens +90 dagen niet betalen " + ".txt", false); 
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");
