@@ -1,47 +1,39 @@
 package Servlet;
 
 import java.io.*;
-
+import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import Webapp.AutoTotaalDienst;
-import Webapp.Gebruiker;
 
-public class LoginServlet extends HttpServlet {	
-	public int rol_id = 0;
+public class LoginServlet extends HttpServlet {
+	String userName = "1", userPass = "1", id = "";
+	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");
 		boolean loginSuccess = false;
-		String naam = req.getParameter("naam");
-		String wachtwoord = req.getParameter("wachtwoord");
-		if ("".equals(naam) || "".equals(wachtwoord)) {
-			req.setAttribute("msgs", "Vul AUB uw e-mailadres en wachtwoord in");
-		} else {
-			for (Gebruiker g : atd.getAlleGebruikers()) {
-				String dbNaam = g.getEmailadres();
-				String dbWachtwoord = g.getWachtwoord();
-				rol_id = g.getRol();
-				if (dbNaam.equals(naam) && wachtwoord.equals(dbWachtwoord)) {
-					loginSuccess = true;
-				}
-				else{
-					req.setAttribute("msgs", "Email en/of wachtwoord is onjuist!");
-				}
-			}
+		String name = req.getParameter("username");
+		String pass = req.getParameter("password");
 		
+		if ("".equals(name) || "".equals(pass)) {
+			req.setAttribute("msgs", "Vul A.U.B. uw naam en/of wachtwoord in!");
+		} else {
+			if (!userName.equals(name) && userPass.equals(pass)) {
+				req.setAttribute("msgs", "Naam en/of wachtwoord is onjuist!");
+			} else {
+				loginSuccess = true;
+				req.getSession().setAttribute("name", name);
+				req.getSession().setAttribute("pass", pass);
+				
+			}
 		}
 
 		RequestDispatcher rd = null;
-		if (loginSuccess) {
+		if (loginSuccess) {		
 			rd = req.getRequestDispatcher("index.jsp");
-			req.getSession().setAttribute("rol", rol_id);
-			req.getSession().setAttribute("naam", naam);
-			
 
 		} else {
-			rd = req.getRequestDispatcher("index.jsp");			
+			rd = req.getRequestDispatcher("index.jsp");
 			rd.forward(req, resp);
 		}
 	}

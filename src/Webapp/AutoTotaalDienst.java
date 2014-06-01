@@ -177,7 +177,7 @@ public class AutoTotaalDienst {
 
     public ArrayList<Product> getAlleBrandstoffen(){
 		alleBrandstoffen = new ProductDAO().getAlleBrandstoffenDB();
-
+	
     return alleBrandstoffen;
     }
     
