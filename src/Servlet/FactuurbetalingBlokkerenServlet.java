@@ -32,6 +32,8 @@ public class FactuurbetalingBlokkerenServlet extends HttpServlet{
 			
 			gebruikers.setBlokkade(klantId);
 			System.out.println("Klant ID: " + klantId);
+			
+			JOptionPane.showMessageDialog(null, "Klant is geblokkeerd", "Blokkeren gelukt", JOptionPane.PLAIN_MESSAGE);
 
 			rd = req.getRequestDispatcher("herinneringsbrieven-factuurbetalingblokkeren.jsp");
 			rd.forward(req, resp);
