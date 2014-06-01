@@ -321,7 +321,7 @@ public class AutoTotaalDienst {
 	    		}
         	}
         }
-        return blokkade;
+        return alleKlanten3;
     }
     
     public ArrayList<Gebruiker> getblokkade(){

@@ -16,6 +16,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>FactuurbetalingBlokkeren Servlet</servlet-name>
+		<servlet-class>Servlet.FactuurbetalingBlokkerenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FactuurbetalingBlokkeren Servlet</servlet-name>
+		<url-pattern>/FactuurbetalingBlokkeren.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>Klantenbinding Servlet</servlet-name>
 		<servlet-class>Servlet.KlantenbindingServlet</servlet-class>
 	</servlet>
