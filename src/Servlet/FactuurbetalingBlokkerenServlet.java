@@ -42,5 +42,6 @@ public class FactuurbetalingBlokkerenServlet extends HttpServlet{
 			rd = req.getRequestDispatcher("herinneringsbrieven-factuurbetalingblokkeren.jsp");
 			rd.forward(req, resp);
 		}
+		
 	}
 }
