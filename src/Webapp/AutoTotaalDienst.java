@@ -120,15 +120,17 @@ public class AutoTotaalDienst {
         }
     }
     public ArrayList<Product> getAlleOnderdelen(){
-//    	if (alleOnderdelen.isEmpty()) {
-//    		System.out.println("Hoi");
     		alleOnderdelen = new ProductDAO().getAlleOnderdelenDB();
-    	//}
-    	
-    	System.out.println("Test: " + alleOnderdelen);
         return alleOnderdelen;
 
     }
+    
+    public Product getOnderdeelById(int id){
+    	Product onderdeel = new ProductDAO().getOnderdeelFromID(id);
+    	
+    	return onderdeel;
+    }
+    
     //Onderdelen combobox bij PrijsBerekenenFrame
     public boolean heeftOnderdeel2(int artNr){
         boolean b = false;
@@ -173,10 +175,14 @@ public class AutoTotaalDienst {
         }
         return b;
     }
+
     public ArrayList<Product> getAlleBrandstoffen(){
-        return alleBrandstoffen;
+		alleBrandstoffen = new ProductDAO().getAlleBrandstoffenDB();
+	
+    return alleBrandstoffen;
     }
     public boolean heeftGebruiker(String nm){
+
         boolean b = false;
         for (Gebruiker k: alleGebruikers){
             if (k.getNaam().equals(nm)){
@@ -334,27 +340,31 @@ public class AutoTotaalDienst {
     }
     //Maak factuur als klanten langer dan 90 dagen niet hebben betaald
     public ArrayList<Gebruiker> getAlleKlantenBrieven90(){
-    	factuur.removeAll(factuur);
-    	Calendar test = Calendar.getInstance();
-    	test.add(Calendar.DATE, -90);
-    	Date date1 = test.getTime();
-    	for (Gebruiker k : alleKlanten){
-    		if(k.getOpenFactuur() != null){
-    			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-    			Date date2 = null;
-    			try {
-    				date2 = sdf.parse(k.getOpenFactuur());
-    				if(date2.before(date1)==true){
-    					if(!factuur.contains(k)){
-    						factuur.add(k);
+    	if(alleKlanten.isEmpty() && alleAutos.isEmpty()) {
+    		alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
+    		alleAutos = new AutosDAO().getAlleAutosDB();
+    		factuur.removeAll(factuur);
+    		Calendar test = Calendar.getInstance();
+    		test.add(Calendar.DATE, -90);
+    		Date date1 = test.getTime();
+    		for (Gebruiker k : alleKlanten){
+    			if(k.getOpenFactuur() != null){
+    				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    				Date date2 = null;
+    				try {
+    					date2 = sdf.parse(k.getOpenFactuur());
+    					if(date2.before(date1)==true){
+    						if(!factuur.contains(k)){
+    							factuur.add(k);
+    						}
     					}
+    				} catch (ParseException e) {
+    					e.printStackTrace();
     				}
-    			} catch (ParseException e) {
-    				e.printStackTrace();
     			}
     		}
     	}
-    	return factuur;
+		return factuur;
     }
     //Klanten combobox bij FactuurbetalingBlokkerenFrame
     public ArrayList<Gebruiker> getAlleKlantenBlok(){
