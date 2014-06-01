@@ -13,16 +13,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
+import Webapp.AutoTotaalDienst;
+import Webapp.Gebruiker;
+
 public class KlantenbindingServlet extends HttpServlet{
 	private int brieven = 1;
 	private int onderhoud = 1;
 	private int afwezig = 1;
+	private AutoTotaalDienst atdRef;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
 		RequestDispatcher rd = null;
-
+		
 		String press = req.getParameter("press");
 
 		String v1=(String)req.getParameter("veld1");
@@ -32,7 +36,7 @@ public class KlantenbindingServlet extends HttpServlet{
 		int check = 1;
 		
 		if(!v1.equals("leeg") && v2.equals("leeg") && v3.equals("leeg")){
-			x = v1;
+			x = v1;		
 		}
 
 		if(v1.equals("leeg") && !v2.equals("leeg") && v3.equals("leeg")){
