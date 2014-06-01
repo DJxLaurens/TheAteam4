@@ -5,6 +5,7 @@
 	<%@ page import="Webapp.Gebruiker"%>
 	<%@ page import="Webapp.Auto"%>
 	<%@ page import="Webapp.AutoTotaalDienst"%>
+	<%@ page import="Servlet.KlantenbindingServlet" %>
 <form action="KlantenbindingServlet.do" method="get">
 	<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); %>
 	<h1>Herinneringsbrieven</h1>
@@ -18,7 +19,7 @@
 		<select name="veld1">
 			<option value="leeg"></option>
 			<% for(Gebruiker g : atd.getAlleKlantenJongerDan2010()) { %>
-			<option value="naam"><%= g.getNaam() %></option>
+			<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
 			<% }%>
 		</select>
 	</div>
@@ -32,7 +33,7 @@
 		<select name="veld2">
 			<option value="leeg"></option>
 			<% for(Gebruiker g : atd.getAlleKlantenOuderDan2010()) { %>
-			<option value="naam"><%= g.getNaam() %></option>
+			<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
 			<% }%>
 		</select>
 	</div>
@@ -43,7 +44,7 @@
 		<select name="veld3">
 			<option value="leeg"></option>
 			<% for(Gebruiker g : atd.getAlleKlantenLaatstgeweest()) { %>
-			<option value="naam"><%= g.getNaam() %></option>
+			<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
 			<% }%>
 		</select>
 	</div>
@@ -68,7 +69,52 @@
 
 	<h1>Brievenoverzicht</h1>
 	<div class="box">
-		<p>- Er moeten nog aantal brieven aangemaakt worden<p>
+		<p>- Er moeten nog 
+		
+		<%
+		Object msgs = request.getAttribute("msgs");
+		if (msgs != null) {
+		out.println(msgs);
+		} else {
+			out.println(0);
+		}
+		%>
+		
+		brieven aangemaakt worden<p>
+	</div>
+	<div class="box1">
+		<table width="410px">
+			<tr>
+				<td>Hoeveelheid brieven</td>
+				<td>Type brief</td>
+			</tr>
+			<tr>
+				<td>
+				<%
+				Object msgs1 = request.getAttribute("msgs1");
+				if (msgs1 != null) {
+				out.println(msgs1);
+				} else {
+					out.println(0);
+				}
+				%>
+				</td>
+				<td>Onderhoudsbrief</td>
+			</tr>
+			<tr>
+				<td>
+				<%
+				Object msgs2 = request.getAttribute("msgs2");
+				if (msgs2 != null) {
+				out.println(msgs2);
+				} else {
+					out.println(0);
+				}
+				%>
+				</td>
+				<td>Afwezigheidsbrief</td>
+			</tr>
+		</table>
 	</div>
 </form>
 

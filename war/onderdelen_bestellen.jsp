@@ -1,6 +1,5 @@
 
 <jsp:include page="header.jsp" />
-<%@ page import="Connection.Dbconnectie"%>
 <%@ page import="java.util.*"%>
 
 <div class="content">
@@ -26,6 +25,12 @@
 				<td><%= p.getVoorraad()  %></td>
 				<td><input type="text" name="prod_<%=p.getProductNummer()%>"/></td>
 			</tr>
+			<input type="hidden" name="voorraadId" value="<%= p.getProductNummer()  %>"/>
+			<input type="hidden" name="voorraadNaam" value="<%= p.getProductNaam()  %>"/>
+			<input type="hidden" name="voorraadMin" value="<%= p.getMinVoorraad() %>"/>
+			<input type="hidden" name="voorraad" value="<%= p.getVoorraad()  %>"/>
+			<input type="hidden" name="voorraadType" value="<%= p.getType() %>"/>
+			
 			<% }%>
 		</table>
 

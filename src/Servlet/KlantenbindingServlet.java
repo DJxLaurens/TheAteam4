@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
 public class KlantenbindingServlet extends HttpServlet{
+	private int brieven = 1;
+	private int onderhoud = 1;
+	private int afwezig = 1;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -28,7 +31,7 @@ public class KlantenbindingServlet extends HttpServlet{
 		String x = "";
 		System.out.println(v1);
 		int check = 1;
-
+		
 		if(!v1.equals("leeg") && v2.equals("leeg") && v3.equals("leeg")){
 			x = v1;
 		}
@@ -43,10 +46,14 @@ public class KlantenbindingServlet extends HttpServlet{
 		}
 
 		if (press.equals("Brieven aanmaken")){
+			req.setAttribute("msgs", brieven);
 			if(!x.equals("") && check != 2){
-				FileWriter fw = new FileWriter("C:/testbrieven/-datum- " + x + ".txt", true); 
+				req.setAttribute("msgs1", onderhoud);
+				brieven++;
+				onderhoud++;
+				FileWriter fw = new FileWriter("C:/testbrieven/Herrinering voor " + x +  " voor een onderhoudsbeurt (+1 jaar) " + ".txt", true); 
 				PrintWriter pw = new PrintWriter(fw);			
-				pw.println("Geachte " + x);
+				pw.println("Geachte " + x + ",");
 				pw.println("");
 				pw.println("U bent al meer dan 1 jaar geleden voor het laatst langsgeweest voor een onderhoudsbeurt.");
 				pw.println("Het is belangrijk dat u zo spoedig mogelijk een nieuwe onderhoudsbeurt inpland.");
@@ -66,12 +73,15 @@ public class KlantenbindingServlet extends HttpServlet{
 			}
 			
 			if(!x.equals("") && check == 2){
-				FileWriter fw = new FileWriter("C:/testbrieven/-datum- " + x + ".txt", true); 
+				req.setAttribute("msgs2", afwezig);
+				brieven++;
+				afwezig++;
+				FileWriter fw = new FileWriter("C:/testbrieven/Herinnering voor " + x + " voor een onderhoudsbeurt (+2 maanden) " + ".txt", true); 
 				PrintWriter pw = new PrintWriter(fw);			
-				pw.println("Geachte " + x);
+				pw.println("Geachte " + x + ",");
 				pw.println("");
 				pw.println("U bent al 2 maanden niet langsgeweest.");
-				pw.println("Het is belangrijk om binnenkort weer eens langs te komen");
+				pw.println("Het is belangrijk om binnenkort weer eens langs te komen.");
 				pw.println("");
 				pw.println("Met vriendelijke groet,");
 				pw.println("");
@@ -87,9 +97,5 @@ public class KlantenbindingServlet extends HttpServlet{
 				rd.forward(req, resp);
 			}
 		}
-		
-
-		
 	}
-	
 }

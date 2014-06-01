@@ -119,10 +119,10 @@ public class AutoTotaalDienst {
         }
     }
     public ArrayList<Product> getAlleOnderdelen(){
-    	if (alleOnderdelen.isEmpty()) {
-    		System.out.println("Hoi");
+//    	if (alleOnderdelen.isEmpty()) {
+//    		System.out.println("Hoi");
     		alleOnderdelen = new ProductDAO().getAlleOnderdelenDB();
-    	}
+    	//}
     	
     	System.out.println("Test: " + alleOnderdelen);
         return alleOnderdelen;
