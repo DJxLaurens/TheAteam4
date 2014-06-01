@@ -51,6 +51,7 @@ public class GebruikersDAO {
 				g.setID(gebruiker_id);
 				g.setLaatstgeweest(laatstgeweest);
 				g.setOpenFactuur(openFactuur);
+				g.setBlokkade();
 				alleGebruikersDB.add(g);			
 			}
 		} catch (SQLException e) {
