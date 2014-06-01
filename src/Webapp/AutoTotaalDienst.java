@@ -228,7 +228,8 @@ public class AutoTotaalDienst {
     }
     
     public ArrayList<Gebruiker> getAlleKlanten(){
-        return alleKlanten;
+    	System.out.println(alleKlanten);
+    	return alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
     }
     
     //Hier worden alle Klanten met een auto jonger dan 2010 toegevoegd aan de ArrayList

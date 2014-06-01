@@ -2,12 +2,7 @@
 <jsp:include page="header.jsp" />
 
 <div class="content">
-	<%@ page import="Webapp.Gebruiker"%>
-	<%@ page import="Webapp.Auto"%>
-	<%@ page import="Webapp.AutoTotaalDienst"%>
-	<%@ page import="Servlet.KlantenbindingServlet" %>
 	<form action="FactuurbetalingBlokkeren.do" method="get">
-	<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); %>
 		<div class="left">
 			<h1>Herinneringsbrieven</h1>
 
@@ -17,6 +12,7 @@
 
 			<div>
 				<select name="klantveld">
+<<<<<<< HEAD
 				<% if(atd.getblokkade().size() == 0){
 				for(Gebruiker g : atd.getAlleKlantenBlok()){ %>
 					<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
@@ -27,6 +23,9 @@
 				<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
 			<%}			
 			}%>
+=======
+					<option value="piet">Piet</option>
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
 				</select>
 			</div>
 
