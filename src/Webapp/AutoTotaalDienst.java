@@ -17,7 +17,6 @@ public class AutoTotaalDienst {
     private ArrayList<Product> alleOnderdelen = new ArrayList<Product>();
     private ArrayList<Product> alleOnderdelen2 = new ArrayList<Product>();
     private ArrayList<Product> alleBrandstoffen = new ArrayList<Product>();
-    private ArrayList<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> alleKlanten = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> alleKlanten1 = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> alleKlanten2 = new ArrayList<Gebruiker>();
@@ -43,7 +42,7 @@ public class AutoTotaalDienst {
    
     // checkt of ingevoerd gegeven een int getal is
     public static boolean isInteger(String s) {
-        try {
+                try {
             Integer.parseInt(s);
         }
         catch(NumberFormatException e) {
@@ -178,22 +177,23 @@ public class AutoTotaalDienst {
 
     public ArrayList<Product> getAlleBrandstoffen(){
 		alleBrandstoffen = new ProductDAO().getAlleBrandstoffenDB();
-	
+
     return alleBrandstoffen;
     }
-    public boolean heeftGebruiker(String nm){
-
+    
+    public boolean heeftKlant(String nm){
         boolean b = false;
-        for (Gebruiker k: alleGebruikers){
+        for (Gebruiker k: alleKlanten){
             if (k.getNaam().equals(nm)){
                 b = true;
             }
         }
         return b;
     }
-    public Gebruiker zoekGebruiker(String nm){
+    
+    public Gebruiker zoekGebruiker(String nm, ArrayList<Gebruiker> a){
     	Gebruiker antw = null;
-    	for(Gebruiker g: alleGebruikers){
+    	for(Gebruiker g: a){
     		if(g.getNaam().equals(nm)){
     			antw = g;
     			break;
@@ -201,22 +201,34 @@ public class AutoTotaalDienst {
     	}
     	return antw;
     }
-    public boolean voegGebruikerToe(Gebruiker nweKlant){
+    
+    public Gebruiker zoekKlant(String nm){
+    	Gebruiker antw = null;
+        for(Gebruiker k: alleKlanten){
+            if(k.getNaam().equals(nm)){
+                antw = k;
+                break;
+            }
+        }
+        return antw;
+    }
+    public boolean voegKlantToe(Gebruiker nweKlant){
         boolean b = false;
-        if(!heeftGebruiker(nweKlant.getNaam())){
-            alleGebruikers.add(nweKlant);
+        if(!heeftKlant(nweKlant.getNaam())){
+            alleKlanten.add(nweKlant);
             b = true;
         }
         return b;
     }
-    public void verwijderGebruiker(Gebruiker exKlant) {
-        if (heeftGebruiker(exKlant.getNaam())) {
-            alleGebruikers.remove(exKlant);
+    public void verwijderKlant(Gebruiker exKlant, ArrayList a) {
+        if (heeftKlant(exKlant.getNaam())) {
+            a.remove(exKlant);
         }
     }
-	public ArrayList<Gebruiker> getAlleGebruikers() {
-		return alleGebruikers = new GebruikersDAO().getAlleGebruikersDB();
-	}
+    
+    public ArrayList<Gebruiker> getAlleKlanten(){
+        return alleKlanten;
+    }
     
     //Hier worden alle Klanten met een auto jonger dan 2010 toegevoegd aan de ArrayList
     public ArrayList<Gebruiker> getAlleKlantenJongerDan2010(){
@@ -313,7 +325,7 @@ public class AutoTotaalDienst {
         Calendar test = Calendar.getInstance();
         test.add(Calendar.DATE, -60);
 
-        for (Gebruiker k : alleGebruikers) {
+        for (Gebruiker k : alleKlanten) {
 //            if (k.getLaatstgeweest().before(test)) {
                 if(!afwezig.contains(k)){
                     afwezig.add(k);
@@ -327,7 +339,7 @@ public class AutoTotaalDienst {
         factuur.removeAll(factuur);
         Calendar test = Calendar.getInstance();
         test.add(Calendar.DATE, -30);
-        for (Gebruiker k : alleGebruikers){
+        for (Gebruiker k : alleKlanten){
             if(k.getOpenFactuur() != null){
 //                if(k.getOpenFactuur().before(test)){
                     if(!factuur.contains(k)){
@@ -340,31 +352,27 @@ public class AutoTotaalDienst {
     }
     //Maak factuur als klanten langer dan 90 dagen niet hebben betaald
     public ArrayList<Gebruiker> getAlleKlantenBrieven90(){
-    	if(alleKlanten.isEmpty() && alleAutos.isEmpty()) {
-    		alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
-    		alleAutos = new AutosDAO().getAlleAutosDB();
-    		factuur.removeAll(factuur);
-    		Calendar test = Calendar.getInstance();
-    		test.add(Calendar.DATE, -90);
-    		Date date1 = test.getTime();
-    		for (Gebruiker k : alleKlanten){
-    			if(k.getOpenFactuur() != null){
-    				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-    				Date date2 = null;
-    				try {
-    					date2 = sdf.parse(k.getOpenFactuur());
-    					if(date2.before(date1)==true){
-    						if(!factuur.contains(k)){
-    							factuur.add(k);
-    						}
+    	factuur.removeAll(factuur);
+    	Calendar test = Calendar.getInstance();
+    	test.add(Calendar.DATE, -90);
+    	Date date1 = test.getTime();
+    	for (Gebruiker k : alleKlanten){
+    		if(k.getOpenFactuur() != null){
+    			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    			Date date2 = null;
+    			try {
+    				date2 = sdf.parse(k.getOpenFactuur());
+    				if(date2.before(date1)==true){
+    					if(!factuur.contains(k)){
+    						factuur.add(k);
     					}
-    				} catch (ParseException e) {
-    					e.printStackTrace();
     				}
+    			} catch (ParseException e) {
+    				e.printStackTrace();
     			}
     		}
     	}
-		return factuur;
+    	return factuur;
     }
     //Klanten combobox bij FactuurbetalingBlokkerenFrame
     public ArrayList<Gebruiker> getAlleKlantenBlok(){
@@ -372,7 +380,7 @@ public class AutoTotaalDienst {
         Calendar test = Calendar.getInstance();
         test.add(Calendar.DATE, -90);
         //klanten die langer dan 90 dagen niet hebben betaald
-        for (Gebruiker k : alleGebruikers){
+        for (Gebruiker k : alleKlanten){
             if(k.getBlokkade() == false){
                 if(k.getOpenFactuur() != null){
 //                    if(k.getOpenFactuur().before(test)){
