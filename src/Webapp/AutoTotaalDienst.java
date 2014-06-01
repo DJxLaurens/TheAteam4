@@ -184,6 +184,18 @@ public class AutoTotaalDienst {
         }
         return b;
     }
+    
+    public Gebruiker zoekGebruiker(String nm, ArrayList<Gebruiker> a){
+    	Gebruiker antw = null;
+    	for(Gebruiker g: a){
+    		if(g.getNaam().equals(nm)){
+    			antw = g;
+    			break;
+    		}
+    	}
+    	return antw;
+    }
+    
     public Gebruiker zoekKlant(String nm){
     	Gebruiker antw = null;
         for(Gebruiker k: alleKlanten){

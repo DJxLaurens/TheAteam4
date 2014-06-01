@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,16 +38,25 @@ public class KlantenbindingServlet extends HttpServlet{
 		int check = 1;
 		
 		if(!v1.equals("leeg") && v2.equals("leeg") && v3.equals("leeg")){
-			x = v1;		
+			x = v1;
+			ArrayList<Gebruiker> klanten = atdRef.getjongerdan();
+			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
+			atdRef.verwijderKlant(klant, klanten);
 		}
 
 		if(v1.equals("leeg") && !v2.equals("leeg") && v3.equals("leeg")){
 			x = v2;
+			ArrayList<Gebruiker> klanten = atdRef.getouderdan();
+			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
+			atdRef.verwijderKlant(klant, klanten);
 		}
 
 		if(v1.equals("leeg") && v2.equals("leeg") && !v3.equals("leeg")){
 			x = v3;
 			check = 2;
+			ArrayList<Gebruiker> klanten = atdRef.getafwezig();
+			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
+			atdRef.verwijderKlant(klant, klanten);
 		}
 
 		if (press.equals("Brieven aanmaken")){
