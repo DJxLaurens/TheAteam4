@@ -350,6 +350,30 @@ public class AutoTotaalDienst {
         }
         return factuur;
     }
+    //Maak factuur als klanten langer dan 90 dagen niet hebben betaald
+    public ArrayList<Gebruiker> getAlleKlantenBrieven90(){
+    	factuur.removeAll(factuur);
+    	Calendar test = Calendar.getInstance();
+    	test.add(Calendar.DATE, -90);
+    	Date date1 = test.getTime();
+    	for (Gebruiker k : alleKlanten){
+    		if(k.getOpenFactuur() != null){
+    			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    			Date date2 = null;
+    			try {
+    				date2 = sdf.parse(k.getOpenFactuur());
+    				if(date2.before(date1)==true){
+    					if(!factuur.contains(k)){
+    						factuur.add(k);
+    					}
+    				}
+    			} catch (ParseException e) {
+    				e.printStackTrace();
+    			}
+    		}
+    	}
+    	return factuur;
+    }
     //Klanten combobox bij FactuurbetalingBlokkerenFrame
     public ArrayList<Gebruiker> getAlleKlantenBlok(){
         blokkade.removeAll(blokkade);

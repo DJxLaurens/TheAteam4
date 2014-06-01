@@ -79,12 +79,8 @@
 		<p>- Er moeten nog 
 		
 		<%
-		Object msgs = request.getAttribute("msgs");
-		if (msgs != null) {
-		out.println(msgs);
-		} else {
-			out.println(0);
-		}
+		int x = atd.getjongerdan().size() + atd.getouderdan().size() + atd.getafwezig().size();
+		out.println(x);
 		%>
 		
 		brieven aangemaakt worden<p>
@@ -98,12 +94,8 @@
 			<tr>
 				<td>
 				<%
-				Object msgs1 = request.getAttribute("msgs1");
-				if (msgs1 != null) {
-				out.println(msgs1);
-				} else {
-					out.println(0);
-				}
+				int y = atd.getjongerdan().size() + atd.getouderdan().size();
+				out.println(y);
 				%>
 				</td>
 				<td>Onderhoudsbrief</td>
@@ -111,12 +103,8 @@
 			<tr>
 				<td>
 				<%
-				Object msgs2 = request.getAttribute("msgs2");
-				if (msgs2 != null) {
-				out.println(msgs2);
-				} else {
-					out.println(0);
-				}
+				int z = atd.getafwezig().size();
+				out.println(z);
 				%>
 				</td>
 				<td>Afwezigheidsbrief</td>
