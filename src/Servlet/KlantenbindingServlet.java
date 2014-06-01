@@ -21,11 +21,12 @@ public class KlantenbindingServlet extends HttpServlet{
 	private int brieven = 1;
 	private int onderhoud = 1;
 	private int afwezig = 1;
-	private AutoTotaalDienst atdRef;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-
+		
+		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");	
+		
 		RequestDispatcher rd = null;
 		
 		String press = req.getParameter("press");
@@ -39,24 +40,24 @@ public class KlantenbindingServlet extends HttpServlet{
 		
 		if(!v1.equals("leeg") && v2.equals("leeg") && v3.equals("leeg")){
 			x = v1;
-			ArrayList<Gebruiker> klanten = atdRef.getjongerdan();
-			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
-			atdRef.verwijderKlant(klant, klanten);
+			ArrayList<Gebruiker> klanten = atd.getjongerdan();
+			Gebruiker klant = atd.zoekGebruiker(x, klanten);
+			atd.verwijderKlant(klant, klanten);
 		}
 
 		if(v1.equals("leeg") && !v2.equals("leeg") && v3.equals("leeg")){
 			x = v2;
-			ArrayList<Gebruiker> klanten = atdRef.getouderdan();
-			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
-			atdRef.verwijderKlant(klant, klanten);
+			ArrayList<Gebruiker> klanten = atd.getouderdan();
+			Gebruiker klant = atd.zoekGebruiker(x, klanten);
+			atd.verwijderKlant(klant, klanten);
 		}
 
 		if(v1.equals("leeg") && v2.equals("leeg") && !v3.equals("leeg")){
 			x = v3;
 			check = 2;
-			ArrayList<Gebruiker> klanten = atdRef.getafwezig();
-			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
-			atdRef.verwijderKlant(klant, klanten);
+			ArrayList<Gebruiker> klanten = atd.getafwezig();
+			Gebruiker klant = atd.zoekGebruiker(x, klanten);
+			atd.verwijderKlant(klant, klanten);
 		}
 
 		if (press.equals("Brieven aanmaken")){
