@@ -3,8 +3,6 @@ package Servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.FileWriter;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -18,9 +16,6 @@ import Webapp.AutoTotaalDienst;
 import Webapp.Gebruiker;
 
 public class KlantenbindingServlet extends HttpServlet{
-	private int brieven = 1;
-	private int onderhoud = 1;
-	private int afwezig = 1;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -35,7 +30,6 @@ public class KlantenbindingServlet extends HttpServlet{
 		String v2=(String)req.getParameter("veld2");
 		String v3=(String)req.getParameter("veld3");
 		String x = "";
-		System.out.println(v1);
 		int check = 1;
 		
 		if(!v1.equals("leeg") && v2.equals("leeg") && v3.equals("leeg")){
@@ -61,11 +55,7 @@ public class KlantenbindingServlet extends HttpServlet{
 		}
 
 		if (press.equals("Brieven aanmaken")){
-			req.setAttribute("msgs", brieven);
 			if(!x.equals("") && check != 2){
-				req.setAttribute("msgs1", onderhoud);
-				brieven++;
-				onderhoud++;
 				FileWriter fw = new FileWriter("C:/testbrieven/Herrinering voor " + x +  " voor een onderhoudsbeurt (+1 jaar) " + ".txt", true); 
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
@@ -88,9 +78,6 @@ public class KlantenbindingServlet extends HttpServlet{
 			}
 			
 			if(!x.equals("") && check == 2){
-				req.setAttribute("msgs2", afwezig);
-				brieven++;
-				afwezig++;
 				FileWriter fw = new FileWriter("C:/testbrieven/Herinnering voor " + x + " voor een onderhoudsbeurt (+2 maanden) " + ".txt", true); 
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
