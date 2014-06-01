@@ -27,7 +27,10 @@
 				<div>
 					<label>Wachtwoord:</label>
 					<input type="password" name="wachtwoord" />
-				</div>		
+				</div>
+				<div>
+				<input type="submit" value="Inloggen"/>
+				</div>			
 		</form>	
 			
 		</div>
