@@ -36,7 +36,7 @@ public class GebruikersDAO {
 			while (output.next()){
 				int rol_id = output.getInt("rol_id");
 				String naam = output.getString("naam");
-				int id = output.getInt("id");
+				int id = output.getInt("gebruiker_id");
 				String wachtwoord = output.getString("wachtwoord");
 				String adres = output.getString("adres");
 				String postcode = output.getString("postcode");
