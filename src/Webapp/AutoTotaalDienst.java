@@ -20,6 +20,7 @@ public class AutoTotaalDienst {
     private ArrayList<Gebruiker> alleKlanten = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> alleKlanten1 = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> alleKlanten2 = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleKlanten3 = new ArrayList<Gebruiker>();
     private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
     private ArrayList<Auto> alleAutos1 = new ArrayList<Auto>();
     private ArrayList<Gebruiker> jongerdan = new ArrayList<Gebruiker>();
@@ -295,12 +296,46 @@ public class AutoTotaalDienst {
 	    	return afwezig;
     }
     
+  //Klanten combobox bij FactuurbetalingBlokkerenFrame
+    public ArrayList<Gebruiker> getAlleKlantenBlok(){
+    	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+    	Calendar test = Calendar.getInstance();
+        test.add(Calendar.DATE, -90);
+        if(alleKlanten3.isEmpty()){
+        	alleKlanten3 = new GebruikersDAO().getAlleGebruikersDB();
+        	for(Gebruiker g: alleKlanten3){
+        		String xx = "";
+        		Date date = null;
+        		xx = g.getOpenFactuur();
+        		try {
+	    			date = formatter.parse(xx);
+	    			Calendar bezig = Calendar.getInstance();
+	    			bezig.setTime(date);
+	    			if(bezig.before(test)){
+	    				blokkade.add(g);
+	    			}	    	 
+	    		} catch (ParseException e) {
+	    			e.printStackTrace();
+	    		}
+        	}
+        }
+        return blokkade;
+    }
+    
+    public ArrayList<Gebruiker> getblokkade(){
+        return blokkade;
+    }
+    
     public ArrayList<Gebruiker> getAlleKlanten1(){
         return alleKlanten1;
     }
     
     public ArrayList<Gebruiker> getAlleKlanten2(){
     	return alleKlanten2;
+    }
+    
+    public ArrayList<Gebruiker> getAlleKlanten3(){
+    	return alleKlanten3;
     }
     
     public ArrayList<Auto> getAlleAutos1(){
@@ -374,25 +409,7 @@ public class AutoTotaalDienst {
     	}
     	return factuur;
     }
-    //Klanten combobox bij FactuurbetalingBlokkerenFrame
-    public ArrayList<Gebruiker> getAlleKlantenBlok(){
-        blokkade.removeAll(blokkade);
-        Calendar test = Calendar.getInstance();
-        test.add(Calendar.DATE, -90);
-        //klanten die langer dan 90 dagen niet hebben betaald
-        for (Gebruiker k : alleKlanten){
-            if(k.getBlokkade() == false){
-                if(k.getOpenFactuur() != null){
-//                    if(k.getOpenFactuur().before(test)){
-                        if(!blokkade.contains(k)){
-                            blokkade.add(k);
-//                        }
-                    }
-                }
-            }
-        }
-        return blokkade;
-    }
+    
     public void blokkeer(Gebruiker k){
         k.setBlokkade();
     }

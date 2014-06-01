@@ -46,11 +46,12 @@ public class GebruikersDAO {
 				String laatstgeweest = output.getString("laatstgeweest");
 //				String emailadres = output.getString("emailadres");
 //				double korting = output.getDouble("korting");
-//				String openFactuur = output.getString("openFactuur");
+				String openFactuur = output.getString("openFactuur");
 //				boolean blokkade = output.getBoolean("blokkade");
 				Gebruiker g = new Gebruiker(naam);
 				g.setID(id);
 				g.setLaatstgeweest(laatstgeweest);
+				g.setOpenFactuur(openFactuur);
 				alleGebruikersDB.add(g);			
 			}
 		} catch (SQLException e) {

@@ -17,9 +17,16 @@
 
 			<div>
 				<select name="klantveld">
-				<% for(Gebruiker g : atd.getAlleKlantenBlok()) { %>
+				<% if(atd.getblokkade().size() == 0){
+				for(Gebruiker g : atd.getAlleKlantenBlok()){ %>
+					<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+				<%}
+			}
+			else{
+				for(Gebruiker g : atd.getblokkade()){ %>
 				<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
-				<% }%>
+			<%}			
+			}%>
 				</select>
 			</div>
 
