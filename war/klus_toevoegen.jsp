@@ -2,7 +2,7 @@
 
 <div class="content">
 	<h1>Klus toevoegen</h1>
-	
+
 	<%
 		Object msgs = request.getAttribute("msgs");
 		if (msgs != null) {
@@ -10,7 +10,7 @@
 			out.println();
 		}
 	%>
-	
+
 	<form action="KlusToevoegenServlet.do" method="post">
 		<table>
 			<tr>
@@ -23,7 +23,8 @@
 			</tr>
 			<tr>
 				<td>Kies Auto:</td>
-				<td><select><option value="BMW M3 GTR" name="auto">BMW M3 GTR</option>
+				<td><select><option value="BMW M3 GTR" name="auto">BMW
+							M3 GTR</option>
 				</select></td>
 			</tr>
 		</table>
