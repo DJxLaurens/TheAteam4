@@ -21,6 +21,10 @@ public class KlantenbindingServlet extends HttpServlet{
 	private int brieven = 1;
 	private int onderhoud = 1;
 	private int afwezig = 1;
+<<<<<<< HEAD
+=======
+	private AutoTotaalDienst atd;
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {

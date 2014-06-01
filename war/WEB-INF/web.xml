@@ -96,6 +96,15 @@
 		<url-pattern>/VoorraadToevoegenServlet.do</url-pattern>
 	</servlet-mapping>
 	
+		<servlet>
+		<servlet-name>Voorraad wijzigen</servlet-name>
+		<servlet-class>Servlet.VoorraadWijzigenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Voorraad wijzigen</servlet-name>
+		<url-pattern>/VoorraadWijzigenServlet.do</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>Weekplanning Servlet</servlet-name>
 		<servlet-class>Servlet.WeekplanningServlet</servlet-class>

@@ -7,7 +7,7 @@
 
 	<%@ page import = "Webapp.AutoTotaalDienst" %>
 	<%@ page import = "Webapp.Product" %>
-	<form action="VoorraadToevoegenServlet.do" method="post">
+	<form action="VoorraadWijzigenServlet.do" method="post">
 		<table>
 		<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef");%> 
 			<tr>
@@ -22,7 +22,7 @@
 				<td><%= p.getProductNummer()  %></td>
 				<td><%= p.getProductNaam()  %></td>
 				<td><%= p.getMinVoorraad() %></td>
-				<td><%= p.getVoorraad()  %></td>
+				<td <%if(p.getVoorraad() < p.getMinVoorraad()){%> class="red" <%}%>><%= p.getVoorraad()  %></td>
 				<td><input type="text" name="prod_<%=p.getProductNummer()%>"/></td>
 			</tr>
 			<input type="hidden" name="voorraadId" value="<%= p.getProductNummer()  %>"/>

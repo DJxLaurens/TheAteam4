@@ -164,3 +164,8 @@
 	float: right;
 	width: 410px;
 }
+
+.red{
+	color: red;
+	font-weight: bold;
+}
