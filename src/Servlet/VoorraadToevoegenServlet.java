@@ -47,7 +47,11 @@ public class VoorraadToevoegenServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		//s += "Toevoegen is gelukt";
-		rd = req.getRequestDispatcher("voorraad_toevoegen.jsp");
+		if(voorraadType == 2){
+			rd = req.getRequestDispatcher("onderdelen_bestellen.jsp");
+		}else{
+			rd = req.getRequestDispatcher("brandstof_bestellen.jsp");
+		}
 		rd.forward(req, resp);
 
 	}

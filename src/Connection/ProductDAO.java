@@ -68,7 +68,6 @@ public class ProductDAO {
 		try {
 			this.leesDatabase();
 			statement = con.createStatement();
-			System.out.println("SELECT voorraad FROM voorraad where id='"+ id +"'");
 			rs = statement.executeQuery("SELECT voorraad FROM voorraad where id='"+ id +"'");
 			
 			while (rs.next()) {
@@ -90,6 +89,27 @@ public class ProductDAO {
 	
 	public ArrayList<Product> getAlleBrandstoffenDB() {
 		ArrayList<Product> alleBrandstoffenDB = new ArrayList<Product>();
+		try {
+			this.leesDatabase();
+			statement = con.createStatement();
+			rs = statement.executeQuery("SELECT * FROM voorraad where type='1'");
+			
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String naam = rs.getString("naam");
+				int type = rs.getInt("type");
+				int minVoorraad = rs.getInt("minVoorraad");
+				int voorraad = rs.getInt("voorraad");
+				
+				Product p = new Product(id, naam, type, minVoorraad, voorraad);	
+				alleBrandstoffenDB.add(p);
+				//System.out.println(p.getProductNaam());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
 		
 		//TO DO: Data uit de DB halen en toevoegen aan de ArrayList.
 		
@@ -99,6 +119,38 @@ public class ProductDAO {
 	public void setBrandstoffenDB(){
 		
 	}
+	
+	public Product getOnderdeelFromID(int pId){
+		int id = 0;
+		String naam = null;
+		int type = 0;
+		int minVoorraad = 0;
+		int voorraad = 0;
+		
+		try {
+			this.leesDatabase();
+			statement = con.createStatement();
+			rs = statement.executeQuery("SELECT * FROM voorraad where id='"+ pId +"'");
+			
+			while (rs.next()) {
+				id = rs.getInt("id");
+				naam = rs.getString("naam");
+				type = rs.getInt("type");
+				minVoorraad = rs.getInt("minVoorraad");
+				voorraad = rs.getInt("voorraad");
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Product p = new Product(id, naam, type, minVoorraad, voorraad);
+		
+		return p;
+	}
+	
+	
+	
 	public void saveVoorraad(String vrdNm, int vT, int vrdMin, int vrd) throws SQLException {	
 		this.leesDatabase();
 		statement = con.createStatement();
@@ -112,6 +164,34 @@ public class ProductDAO {
 			
 		int voorraad = nwVrd + odVrd;	
 		String sql = "UPDATE voorraad " + "SET voorraad = "+ voorraad +" WHERE id=" + id;
+		statement.executeUpdate(sql);	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.getAlleOnderdelenDB();
+	}
+	
+	public void changeMinVoorraad(int id, int nwMVrd) throws SQLException {	
+		try {
+			this.leesDatabase();
+			statement = con.createStatement();
+			
+		String sql = "UPDATE voorraad " + "SET minVoorraad = "+ nwMVrd +" WHERE id=" + id;
+		statement.executeUpdate(sql);	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.getAlleOnderdelenDB();
+	}
+	
+	public void deleteVoorraad(int id) throws SQLException {	
+		try {
+			this.leesDatabase();
+			statement = con.createStatement();
+			
+		String sql = "DELETE FROM voorraad WHERE id=" + id;
 		statement.executeUpdate(sql);	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
