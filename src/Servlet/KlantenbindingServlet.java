@@ -28,8 +28,6 @@ public class KlantenbindingServlet extends HttpServlet{
 
 		RequestDispatcher rd = null;
 		
-		atd = ;
-		
 		String press = req.getParameter("press");
 
 		String v1=(String)req.getParameter("veld1");
