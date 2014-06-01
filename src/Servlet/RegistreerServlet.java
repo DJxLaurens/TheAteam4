@@ -9,6 +9,7 @@ import Connection.GebruikersDAO;
 import Webapp.Gebruiker;
 
 import java.sql.SQLException;
+import java.util.Date;
 
 public class RegistreerServlet extends HttpServlet {
 	private GebruikersDAO gebruiker = new GebruikersDAO();
@@ -28,9 +29,11 @@ public class RegistreerServlet extends HttpServlet {
 		String emailadres = req.getParameter("emailadres");
 		String emailadres2 = req.getParameter("emailadres2");
 		String laatstgeweest = "00-00-00";
+		String tempLaatstgeweest = req.getParameter("laatstgeweest"); 
 		String tempKorting = req.getParameter("korting");
 		double korting = 0;	
-		String openFactuur = "00-00-0000";
+		String tempOpenFactuur = req.getParameter("openFactuur");
+		String openFactuur = "00-00-00" ; // DateFormat moet voor vergelijken verschil datums auto
 		String tempBlokkade = req.getParameter("blokkade");
 		boolean blokkade = false;
 		
@@ -38,6 +41,7 @@ public class RegistreerServlet extends HttpServlet {
 				&& !"".equals(woonplaats) && !"".equals(telefoonnummer) && !"".equals(emailadres)) {			
 			rol_id = Integer.parseInt(tempRol);
 			korting = Double.parseDouble(tempRol);
+			
 
 			loginSuccesWachtwoord = wachtwoord.equals(wachtwoord2);
 			loginSuccesEmail = emailadres.equals(emailadres2);

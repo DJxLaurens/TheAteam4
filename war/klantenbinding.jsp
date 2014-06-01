@@ -5,6 +5,7 @@
 	<%@ page import="Webapp.Gebruiker"%>
 	<%@ page import="Webapp.Auto"%>
 	<%@ page import="Webapp.AutoTotaalDienst"%>
+	<%@ page import="Servlet.KlantenbindingServlet" %>
 <form action="KlantenbindingServlet.do" method="get">
 	<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); %>
 	<h1>Herinneringsbrieven</h1>
@@ -14,17 +15,23 @@
 	<h4>Klanten met auto's jonger dan 2010 die een onderhoudsbeurt
 		nodig hebben:</h4>
     
-    <% for(Gebruiker g : atd.getAlleKlanten()) { %>
 	<div>
 		<select name="veld1">
 			<option value="leeg"></option>
-			<option value="jan"><%= g.getNaam() %></option>
-			<option value="klaas">g.getNaam()</option>
-			<option value="piet">g.getNaam()</option>
+			<% if(atd.getjongerdan().size() == 0){
+				for(Gebruiker g : atd.getAlleKlantenJongerDan2010()){ %>
+					<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+				<%}
+			}
+			else{
+				for(Gebruiker g : atd.getjongerdan()){ %>
+				<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+			<%}			
+			}%>
 		</select>
 	</div>
 
-	<% }%>
+
 
 	<h4>Klanten met auto's ouder dan 2010 die een onderhoudsbeurt
 		nodig hebben:</h4>
@@ -32,7 +39,9 @@
 	<div>
 		<select name="veld2">
 			<option value="leeg"></option>
-			<option value="henk">Henk</option>
+			<% for(Gebruiker g : atd.getAlleKlantenOuderDan2010()) { %>
+			<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+			<% }%>
 		</select>
 	</div>
 
@@ -41,7 +50,9 @@
 	<div>
 		<select name="veld3">
 			<option value="leeg"></option>
-			<option value="jan">Jan</option>
+			<% for(Gebruiker g : atd.getAlleKlantenLaatstgeweest()) { %>
+			<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+			<% }%>
 		</select>
 	</div>
 
@@ -65,7 +76,40 @@
 
 	<h1>Brievenoverzicht</h1>
 	<div class="box">
-		<p>- Er moeten nog aantal brieven aangemaakt worden<p>
+		<p>- Er moeten nog 
+		
+		<%
+		int x = atd.getjongerdan().size() + atd.getouderdan().size() + atd.getafwezig().size();
+		out.println(x);
+		%>
+		
+		brieven aangemaakt worden<p>
+	</div>
+	<div class="box1">
+		<table width="410px">
+			<tr>
+				<td>Hoeveelheid brieven</td>
+				<td>Type brief</td>
+			</tr>
+			<tr>
+				<td>
+				<%
+				int y = atd.getjongerdan().size() + atd.getouderdan().size();
+				out.println(y);
+				%>
+				</td>
+				<td>Onderhoudsbrief</td>
+			</tr>
+			<tr>
+				<td>
+				<%
+				int z = atd.getafwezig().size();
+				out.println(z);
+				%>
+				</td>
+				<td>Afwezigheidsbrief</td>
+			</tr>
+		</table>
 	</div>
 </form>
 

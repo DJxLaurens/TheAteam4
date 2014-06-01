@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Gebruiker {
 	private int rol_id = 0;
+	private int gebruikerID;
 	private String naam;
 	private String wachtwoord;
 	private String adres;
@@ -15,6 +16,10 @@ public class Gebruiker {
 	private String laatstgeweest;
 	private String openFactuur;
 	private boolean blokkade;
+	
+	public Gebruiker(String nm){
+		naam = nm;
+	}
 	
 	public Gebruiker(int rl, String nm, String ww, String adr, String pc, String wp, String tn, String ea, String laatstgeweest2, double kt, String openFactuur2, boolean bk){
 		rol_id = rl;
@@ -43,6 +48,14 @@ public class Gebruiker {
 
     public void setNaam(String nm){
         naam = nm;
+    }
+    
+    public int getGebruikerID(){
+    	return gebruikerID;
+    }
+    
+    public void setID(int id){
+    	gebruikerID = id;
     }
     
     public String getWachtwoord(){
@@ -113,8 +126,8 @@ public class Gebruiker {
         return laatstgeweest;
     }
 
-    public void setLaatstgeweest(String dt){
-        laatstgeweest = dt;
+    public void setLaatstgeweest(String lg){
+        laatstgeweest = lg;
     }
     
     public void setKorting(double kt){

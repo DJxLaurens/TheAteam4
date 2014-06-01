@@ -44,7 +44,7 @@ public class ProductDAO {
 				
 				Product p = new Product(id, naam, type, minVoorraad, voorraad);	
 				alleOnderdelenDB.add(p);
-				System.out.println(p.getProductNaam());
+				//System.out.println(p.getProductNaam());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -55,6 +55,33 @@ public class ProductDAO {
 		//TO DO: Data uit de DB halen en toevoegen aan de ArrayList.
 		
 		return alleOnderdelenDB;
+	}
+	
+	public int getSizeOnderdelen(){
+		int size = this.getAlleOnderdelenDB().size();
+		
+		return size;
+	}
+	
+	public int getVoorraadById(int id){
+		int voorraad = 0;
+		try {
+			this.leesDatabase();
+			statement = con.createStatement();
+			System.out.println("SELECT voorraad FROM voorraad where id='"+ id +"'");
+			rs = statement.executeQuery("SELECT voorraad FROM voorraad where id='"+ id +"'");
+			
+			while (rs.next()) {
+				voorraad = rs.getInt("voorraad");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return voorraad;
+		
 	}
 
 	public void setOnderdelenDB(){
@@ -72,8 +99,24 @@ public class ProductDAO {
 	public void setBrandstoffenDB(){
 		
 	}
-	public void saveVoorraad(Product p) throws SQLException {	
+	public void saveVoorraad(String vrdNm, int vT, int vrdMin, int vrd) throws SQLException {	
 		this.leesDatabase();
-		statement.execute("INSERT INTO voorraad (naam, type, minVoorraad, voorraad)"+ "VALUES ('"+ p.getProductNaam() + "','" + p.getType() + "','" + p.getMinVoorraad() + "','" + p.getVoorraad() + "')");				
+		statement = con.createStatement();
+		statement.execute("INSERT INTO voorraad (naam, type, minVoorraad, voorraad)"+ "VALUES ('"+ vrdNm + "','" + vT + "','" + vrdMin + "','" + vrd + "')");				
+	}
+	
+	public void changeVoorraad(int id, int nwVrd, int odVrd) throws SQLException {	
+		try {
+			this.leesDatabase();
+			statement = con.createStatement();
+			
+		int voorraad = nwVrd + odVrd;	
+		String sql = "UPDATE voorraad " + "SET voorraad = "+ voorraad +" WHERE id=" + id;
+		statement.executeUpdate(sql);	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.getAlleOnderdelenDB();
 	}
 }

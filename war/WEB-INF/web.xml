@@ -96,6 +96,15 @@
 		<url-pattern>/VoorraadToevoegenServlet.do</url-pattern>
 	</servlet-mapping>
 	
+		<servlet>
+		<servlet-name>Voorraad wijzigen</servlet-name>
+		<servlet-class>Servlet.VoorraadWijzigenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Voorraad wijzigen</servlet-name>
+		<url-pattern>/VoorraadWijzigenServlet.do</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>Weekplanning Servlet</servlet-name>
 		<servlet-class>Servlet.WeekplanningServlet</servlet-class>
@@ -103,6 +112,15 @@
 	<servlet-mapping>
 		<servlet-name>Weekplanning Servlet</servlet-name>
 		<url-pattern>/WeekplanningServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Herinneringsbrief toevoegen</servlet-name>
+		<servlet-class>Servlet.BrievenAanmakenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Herinneringsbrief toevoegen</servlet-name>
+		<url-pattern>/BrievenAanmakenServlet.do</url-pattern>
 	</servlet-mapping>
 	
 	<listener>
