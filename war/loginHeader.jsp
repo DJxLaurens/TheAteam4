@@ -21,7 +21,7 @@
 				}					
 			%>	      
 				<div>		
-					<label>Naam:</label> 
+					<label>Email:</label> 
 					<input type="text" name="naam" />
 				</div>
 				<div>
