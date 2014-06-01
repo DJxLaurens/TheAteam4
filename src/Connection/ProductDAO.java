@@ -99,9 +99,10 @@ public class ProductDAO {
 	public void setBrandstoffenDB(){
 		
 	}
-	public void saveVoorraad(Product p) throws SQLException {	
+	public void saveVoorraad(String vrdNm, int vT, int vrdMin, int vrd) throws SQLException {	
 		this.leesDatabase();
-		statement.execute("INSERT INTO voorraad (naam, type, minVoorraad, voorraad)"+ "VALUES ('"+ p.getProductNaam() + "','" + p.getType() + "','" + p.getMinVoorraad() + "','" + p.getVoorraad() + "')");				
+		statement = con.createStatement();
+		statement.execute("INSERT INTO voorraad (naam, type, minVoorraad, voorraad)"+ "VALUES ('"+ vrdNm + "','" + vT + "','" + vrdMin + "','" + vrd + "')");				
 	}
 	
 	public void changeVoorraad(int id, int nwVrd, int odVrd) throws SQLException {	

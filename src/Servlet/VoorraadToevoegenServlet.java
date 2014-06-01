@@ -25,27 +25,30 @@ public class VoorraadToevoegenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		RequestDispatcher rd = null;
-		Enumeration<String> enumeratie = req.getParameterNames();
-		
-		while(enumeratie.hasMoreElements()) {
-							String name = enumeratie.nextElement();
-							if (name.startsWith("prod_" )) {
-								int id = Integer.parseInt(name.substring(name.indexOf('_')+1));
-								int aantal = 0;
-								if(!req.getParameter(name).equals("")){
-									aantal = Integer.parseInt(req.getParameter(name));
-								}
-			 					//String huidigeVoorraad = req.getParameter("voorraad");
-			 					System.out.println("Nieuwe uitkomst: " + id + " " + aantal + " " + producten.getVoorraadById(id));
-			 					try {
-									producten.changeVoorraad(id, aantal, producten.getVoorraadById(id));
-								} catch (SQLException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
-			 				}
+		voorraadNaam = req.getParameter("voorraadNaam");
+		voorraadMin = Integer.parseInt(req.getParameter("voorraadMin"));
+		voorraad = Integer.parseInt(req.getParameter("voorraad"));
+		//voorraadPrijs = Double.parseDouble(req.getParameter("voorraadPrijs"));
+
+		if(req.getParameter("type").equals("Brandstof")){
+			voorraadType = 1;
+		}else{
+			voorraadType = 2;
 		}
-			rd = req.getRequestDispatcher("onderdelen_bestellen.jsp");
-			rd.forward(req, resp);
+
+		req.setAttribute("msgs", s);
+		//RequestDispatcher rd = null;
+		//Product p = new Product(null, voorraadNaam, voorraadType, voorraadMin, voorraad);
+		try {
+			System.out.println(voorraadNaam + " " + voorraadType + " " + voorraadMin + " " + voorraad);
+			producten.saveVoorraad(voorraadNaam, voorraadType, voorraadMin, voorraad);
+			s += "Toevoegen is gelukt";
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//s += "Toevoegen is gelukt";
+		rd = req.getRequestDispatcher("voorraad_toevoegen.jsp");
+		rd.forward(req, resp);
+
 	}
 }

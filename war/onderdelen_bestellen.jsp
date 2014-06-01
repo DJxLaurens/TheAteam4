@@ -7,7 +7,7 @@
 
 	<%@ page import = "Webapp.AutoTotaalDienst" %>
 	<%@ page import = "Webapp.Product" %>
-	<form action="VoorraadToevoegenServlet.do" method="post">
+	<form action="VoorraadWijzigenServlet.do" method="post">
 		<table>
 		<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef");%> 
 			<tr>
