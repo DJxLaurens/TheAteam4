@@ -28,12 +28,12 @@ public class RegistreerServlet extends HttpServlet {
 		String telefoonnummer = req.getParameter("telefoonnummer");
 		String emailadres = req.getParameter("emailadres");
 		String emailadres2 = req.getParameter("emailadres2");
-		String laatstgeweest = "00-00-00";
 		String tempLaatstgeweest = req.getParameter("laatstgeweest"); 
+		String laatstgeweest = "00-00-0000"; // DateFormat moet voor vergelijken verschil datums auto	
 		String tempKorting = req.getParameter("korting");
 		double korting = 0;	
 		String tempOpenFactuur = req.getParameter("openFactuur");
-		String openFactuur = "00-00-00" ; // DateFormat moet voor vergelijken verschil datums auto
+		String openFactuur = "00-00-0000" ; // DateFormat moet voor vergelijken verschil datums auto
 		String tempBlokkade = req.getParameter("blokkade");
 		boolean blokkade = false;
 		
