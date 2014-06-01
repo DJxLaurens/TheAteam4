@@ -2,7 +2,12 @@
 <jsp:include page="header.jsp" />
 
 <div class="content">
+	<%@ page import="Webapp.Gebruiker"%>
+	<%@ page import="Webapp.Auto"%>
+	<%@ page import="Webapp.AutoTotaalDienst"%>
+	<%@ page import="Servlet.KlantenbindingServlet" %>
 <form action="BrievenAanmaken.do" method="get">
+	<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); %>
 	<div class="left">
 	<h1>Herinneringsbrieven</h1>
 	
@@ -11,10 +16,11 @@
 	<h4>Klanten die nog niet betaald hebben binnen 90 dagen:</h4>
 
 	<div>
-		<select>
+		<select name="veld1">
 			<option value="leeg"></option>
-			<option value="klaas">Klaas</option>
-			<option value="piet">Piet</option>
+			<% for(Gebruiker g : atd.getAlleKlantenBrieven90()) { %>
+			<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+			<% }%>
 		</select>
 	</div>
 
