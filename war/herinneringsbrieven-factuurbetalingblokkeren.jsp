@@ -48,7 +48,13 @@
 
 			<h1>Factuuroverzicht</h1>
 			<div class="box">
-				<p>- Er moeten nog aantal factuurbetaling(en) geblokkeerd worden
+				<p>- Er moeten nog aantal 
+				<%
+				int x = atd.getblokkade().size();
+				out.println(x);
+				%>
+				
+				factuurbetaling(en) geblokkeerd worden
 				
 				<p>
 			</div>
