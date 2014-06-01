@@ -35,9 +35,8 @@ public class FactuurbetalingBlokkerenServlet extends HttpServlet{
 			Gebruiker kl = atd.zoekGebruiker(klant, alleKlanten);
 			kl.setBlokkade();
 			
-			ArrayList<Gebruiker> klanten = atd.getblokkade();
-			Gebruiker k = atd.zoekGebruiker(klant, klanten);
-			atd.verwijderKlant(k, klanten);
+			Gebruiker k = atd.zoekGebruiker(klant, atd.getblokkade());
+			atd.verwijderKlant(k, atd.getblokkade());
 			JOptionPane.showMessageDialog(null, "Blokkeren gelukt", "Factuur betalings mogelijkheid is geblokkeerd.", JOptionPane.PLAIN_MESSAGE);
 			
 			rd = req.getRequestDispatcher("herinneringsbrieven-factuurbetalingblokkeren.jsp");
