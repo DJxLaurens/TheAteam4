@@ -42,6 +42,7 @@ public class BrievenAanmakenServlet extends HttpServlet{
 			System.out.println("AL voor verwijderKlant:"+atd.getAlleKlantenBrieven90());
 			atd.verwijderKlant(klant, klanten);
 			System.out.println("AL na verwijderKlant:"+atd.getAlleKlantenBrieven90());
+			
 		}
 
 		if (press.equals("Brieven aanmaken")){
