@@ -10,7 +10,8 @@
 <body>
 	<div class="container">
 		<div class="header">
-			<img src="images/Logo-A-Team.png" />
+			<img src="images/Logo-A-Team.png" class="logo" />
+			<img src="images/auto_img.png" class="auto" />
 		</div>
 		<div class="menu">
 			<ul>
