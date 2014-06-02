@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 					break;
 				}
 				else{
-					req.setAttribute("msgs", g.getEmailadres() + " " + g.getWachtwoord());
+					req.setAttribute("msgs", "Email en/of wachtwoord is onjuist!");
 				}
 			}		
 		}
