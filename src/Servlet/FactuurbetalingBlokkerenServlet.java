@@ -28,13 +28,20 @@ public class FactuurbetalingBlokkerenServlet extends HttpServlet{
 			//AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");
 		
 			RequestDispatcher rd = null;
-			int klantId = Integer.parseInt(req.getParameter("klantveld"));
 			
-			gebruikers.setBlokkade(klantId);
-			System.out.println("Klant ID: " + klantId);
-			
-			JOptionPane.showMessageDialog(null, "Klant is geblokkeerd", "Blokkeren gelukt", JOptionPane.PLAIN_MESSAGE);
-			rd = req.getRequestDispatcher("herinneringsbrieven-factuurbetalingblokkeren.jsp");
-			rd.forward(req, resp);
+			if(req.getParameter("klantveld").equals("leeg")){
+				JOptionPane.showMessageDialog(null, "Blokkeren mislukt, Selecteer 1 klant", "Blokkeren mislukt", JOptionPane.PLAIN_MESSAGE);
+				rd = req.getRequestDispatcher("herinneringsbrieven-factuurbetalingblokkeren.jsp");
+				rd.forward(req, resp);
+			}else{			
+				int klantId = Integer.parseInt(req.getParameter("klantveld"));
+
+				gebruikers.setBlokkade(klantId);
+				System.out.println("Klant ID: " + klantId);
+
+				JOptionPane.showMessageDialog(null, "Klant is geblokkeerd", "Blokkeren gelukt", JOptionPane.PLAIN_MESSAGE);
+				rd = req.getRequestDispatcher("herinneringsbrieven-factuurbetalingblokkeren.jsp");
+				rd.forward(req, resp);
+			}
 		}
 	}
