@@ -20,11 +20,11 @@ import Webapp.AutoTotaalDienst;
 import Webapp.Gebruiker;
 
 public class BrievenAanmakenServlet extends HttpServlet{
-	private AutoTotaalDienst atdRef;
-	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
+		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");	
+		
 		RequestDispatcher rd = null;
 		
 		String press = req.getParameter("press");
@@ -37,16 +37,19 @@ public class BrievenAanmakenServlet extends HttpServlet{
 		
 		if(!v1.equals("leeg")){
 			x = v1;
-//			ArrayList<Gebruiker> klanten = atdRef.getAlleKlantenBrieven90();
-//			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
-//			atdRef.verwijderKlant(klant, klanten);
+			ArrayList<Gebruiker> klanten = atd.getAlleKlantenBrieven90();
+			Gebruiker klant = atd.zoekGebruiker(x, klanten);
+			System.out.println("AL voor verwijderKlant:"+atd.getAlleKlantenBrieven90());
+			atd.verwijderKlant(klant, klanten);
+			System.out.println("AL na verwijderKlant:"+atd.getAlleKlantenBrieven90());
+			
 		}
 
 		if (press.equals("Brieven aanmaken")){
 			if(!x.equals("") && check != 2){
-				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmm");
 				Date datum = new Date();
-				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] Herrinering voor " + x +  " wegens +90 dagen niet betalen " + ".txt", false); 
+				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Betaalherinnering +90 dagen.txt", false); 
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");

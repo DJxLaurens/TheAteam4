@@ -3,7 +3,9 @@ package Servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.FileWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -56,7 +58,9 @@ public class KlantenbindingServlet extends HttpServlet{
 
 		if (press.equals("Brieven aanmaken")){
 			if(!x.equals("") && check != 2){
-				FileWriter fw = new FileWriter("C:/testbrieven/Herrinering voor " + x +  " voor een onderhoudsbeurt (+1 jaar) " + ".txt", true); 
+				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmm");
+				Date datum = new Date();
+				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +1 jaar.txt", true);
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");
@@ -78,7 +82,9 @@ public class KlantenbindingServlet extends HttpServlet{
 			}
 			
 			if(!x.equals("") && check == 2){
-				FileWriter fw = new FileWriter("C:/testbrieven/Herinnering voor " + x + " voor een onderhoudsbeurt (+2 maanden) " + ".txt", true); 
+				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmm");
+				Date datum = new Date();
+				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +2 maanden.txt", true); 
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");

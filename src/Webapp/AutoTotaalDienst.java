@@ -21,6 +21,7 @@ public class AutoTotaalDienst {
     private ArrayList<Gebruiker> alleKlanten1 = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> alleKlanten2 = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> alleKlanten3 = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleKlanten4 = new ArrayList<Gebruiker>();
     private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
     private ArrayList<Auto> alleAutos1 = new ArrayList<Auto>();
     private ArrayList<Gebruiker> jongerdan = new ArrayList<Gebruiker>();
@@ -348,6 +349,10 @@ public class AutoTotaalDienst {
     	return alleKlanten3;
     }
     
+    public ArrayList<Gebruiker> getAlleKlanten4(){
+    	return alleKlanten4;
+    }
+    
     public ArrayList<Auto> getAlleAutos1(){
         return alleAutos1;
     }
@@ -397,23 +402,25 @@ public class AutoTotaalDienst {
     }
     //Maak factuur als klanten langer dan 90 dagen niet hebben betaald
     public ArrayList<Gebruiker> getAlleKlantenBrieven90(){
-    	brief.removeAll(brief);
-    	Calendar test = Calendar.getInstance();
-    	test.add(Calendar.DATE, -90);
-    	Date date1 = test.getTime();
-    	for (Gebruiker k : alleKlanten){
-    		if(k.getOpenFactuur() != null){
-    			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-    			Date date2 = null;
-    			try {
-    				date2 = sdf.parse(k.getOpenFactuur());
-    				if(date2.before(date1)==true){
-    					if(!brief.contains(k)){
-    						brief.add(k);
+    	if(alleKlanten4.isEmpty()) {
+    		alleKlanten4 = new GebruikersDAO().getAlleGebruikersDB();
+    		Calendar test = Calendar.getInstance();
+    		test.add(Calendar.DATE, -90);
+    		Date date1 = test.getTime();
+    		for (Gebruiker k : alleKlanten4){
+    			if(k.getOpenFactuur() != null){
+    				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    				Date date2 = null;
+    				try {
+    					date2 = sdf.parse(k.getOpenFactuur());
+    					if(date2.before(date1)==true){
+    						if(!brief.contains(k)){
+    							brief.add(k);
+    						}
     					}
+    				} catch (ParseException e) {
+    					e.printStackTrace();
     				}
-    			} catch (ParseException e) {
-    				e.printStackTrace();
     			}
     		}
     	}
