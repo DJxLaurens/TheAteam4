@@ -49,7 +49,7 @@ public class BrievenAanmakenServlet extends HttpServlet{
 			if(!x.equals("") && check != 2){
 				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmm");
 				Date datum = new Date();
-				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] Betaalherinnering +90 dagen " + x + ".txt", false); 
+				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" Betaalherinnering +90 dagen.txt", false); 
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");
