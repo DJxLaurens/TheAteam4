@@ -397,7 +397,6 @@ public class AutoTotaalDienst {
     }
     //Maak factuur als klanten langer dan 90 dagen niet hebben betaald
     public ArrayList<Gebruiker> getAlleKlantenBrieven90(){
-    	brief.removeAll(brief);
     	Calendar test = Calendar.getInstance();
     	test.add(Calendar.DATE, -90);
     	Date date1 = test.getTime();

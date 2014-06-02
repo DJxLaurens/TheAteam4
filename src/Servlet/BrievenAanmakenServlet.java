@@ -20,11 +20,11 @@ import Webapp.AutoTotaalDienst;
 import Webapp.Gebruiker;
 
 public class BrievenAanmakenServlet extends HttpServlet{
-	private AutoTotaalDienst atdRef;
-	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
+		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");	
+		
 		RequestDispatcher rd = null;
 		
 		String press = req.getParameter("press");
@@ -37,9 +37,11 @@ public class BrievenAanmakenServlet extends HttpServlet{
 		
 		if(!v1.equals("leeg")){
 			x = v1;
-//			ArrayList<Gebruiker> klanten = atdRef.getAlleKlantenBrieven90();
-//			Gebruiker klant = atdRef.zoekGebruiker(x, klanten);
-//			atdRef.verwijderKlant(klant, klanten);
+			ArrayList<Gebruiker> klanten = atd.getAlleKlantenBrieven90();
+			Gebruiker klant = atd.zoekGebruiker(x, klanten);
+			System.out.println("AL voor verwijderKlant:"+atd.getAlleKlantenBrieven90());
+			atd.verwijderKlant(klant, klanten);
+			System.out.println("AL na verwijderKlant:"+atd.getAlleKlantenBrieven90());
 		}
 
 		if (press.equals("Brieven aanmaken")){
