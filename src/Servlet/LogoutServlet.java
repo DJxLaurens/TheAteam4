@@ -17,9 +17,12 @@ public class LogoutServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 			RequestDispatcher rd = null;
-			req.getSession().removeAttribute("name");
-			req.getSession().removeAttribute("pass");
-			rd = req.getRequestDispatcher("login.jsp");
+			req.getSession().removeAttribute("naam");
+			req.getSession().removeAttribute("laatstgeweest");
+			req.getSession().removeAttribute("openFactuur");
+			req.getSession().removeAttribute("email");
+			req.getSession().removeAttribute("rol");
+			rd = req.getRequestDispatcher("loginIndex.jsp");
 			rd.forward(req, resp);
 		
 	}

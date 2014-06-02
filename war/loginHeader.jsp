@@ -18,11 +18,12 @@
 				if (msgs != null) { 	 
 					out.println(msgs); 
 					out.println(); 		
-				}					
-			%>	      
-				<div>		
-					<label>Email:</label> 
-					<input type="text" name="naam" />
+				}		
+				Object naam = request.getAttribute("email"); 
+			%>
+				<div>
+					<label>Email:</label> <input type="text" name="naam" value="<%if(naam !=null){ out.println(naam); }%>" />
+
 				</div>
 				<div>
 					<label>Wachtwoord:</label>
