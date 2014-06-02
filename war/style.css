@@ -24,23 +24,6 @@
 	left: 80px;
 }
 
-.header {
-	background-color: #8a8fad;
-	width: 960px;
-	height: 150px;
-}
-
-.header .logo {
-	width: 500px;
-	margin-top: 30px;
-	margin-left: 30px;
-}
-
-.header .auto {
-	width: 250px;
-	margin-left: 30px;
-	float: right;
-}
 
 .menu {
 	background-color: black;
@@ -170,9 +153,24 @@
 	float: right;
 	width: 410px;
 }
-.header form .knop{
-	color: blue;
+.header {
+	background-color: #8a8fad;
+	width: 960px;
+	height: 150px;
 }
+
+.header .logo {
+	width: 500px;
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
+.header .auto {
+	width: 250px;
+	margin-left: 30px;
+	float: right;
+}
+
 
 .red{
 	color: red;
@@ -185,4 +183,15 @@
     bottom: 80px;
     left:600px;
     font-weight: bold;
+}
+.headerUser {
+	background-color: #8a8fad;
+	width: 960px;
+	height: 150px;
+}
+
+.headerUser .logo {
+	width: 500px;
+	margin-top: 30px;
+	margin-left: 30px;
 }
