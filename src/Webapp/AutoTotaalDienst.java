@@ -328,7 +328,12 @@ public class AutoTotaalDienst {
     }
     
     public ArrayList<Gebruiker> getblokkade(){
+    	blokkade = new GebruikersDAO().getBlokkadeDB();
         return blokkade;
+    }
+    
+    public void setBlokkade(int gId){
+    	new GebruikersDAO().setBlokkade(gId);
     }
     
     public ArrayList<Gebruiker> getAlleKlanten1(){

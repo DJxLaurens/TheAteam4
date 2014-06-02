@@ -15,32 +15,26 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
 import Connection.GebruikersDAO;
+import Connection.ProductDAO;
 import Webapp.AutoTotaalDienst;
 import Webapp.Gebruiker;
 
 public class FactuurbetalingBlokkerenServlet extends HttpServlet{
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+		private GebruikersDAO gebruikers = new GebruikersDAO();
+	
+		protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+				throws ServletException, IOException {
 		
-		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");
+			//AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");
 		
-		RequestDispatcher rd = null;
-		
-		String press = req.getParameter("press");
-		String klant=(String)req.getParameter("klantveld");
-		
-		if (press.equals("Betaling blokkeren")){
+			RequestDispatcher rd = null;
+			int klantId = Integer.parseInt(req.getParameter("klantveld"));
 			
-			ArrayList <Gebruiker> alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
-			Gebruiker kl = atd.zoekGebruiker(klant, alleKlanten);
-			kl.setBlokkade();
+			gebruikers.setBlokkade(klantId);
+			System.out.println("Klant ID: " + klantId);
 			
-			Gebruiker k = atd.zoekGebruiker(klant, atd.getblokkade());
-			atd.verwijderKlant(k, atd.getblokkade());
-			JOptionPane.showMessageDialog(null, "Blokkeren gelukt", "Factuur betalings mogelijkheid is geblokkeerd.", JOptionPane.PLAIN_MESSAGE);
-			
+			JOptionPane.showMessageDialog(null, "Klant is geblokkeerd", "Blokkeren gelukt", JOptionPane.PLAIN_MESSAGE);
 			rd = req.getRequestDispatcher("herinneringsbrieven-factuurbetalingblokkeren.jsp");
 			rd.forward(req, resp);
 		}
 	}
-}

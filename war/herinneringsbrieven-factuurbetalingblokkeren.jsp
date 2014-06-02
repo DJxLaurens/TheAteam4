@@ -6,7 +6,7 @@
 	<%@ page import="Webapp.Auto"%>
 	<%@ page import="Webapp.AutoTotaalDienst"%>
 	<%@ page import="Servlet.KlantenbindingServlet" %>
-	<form action="FactuurbetalingBlokkeren.do" method="get">
+	<form action="FactuurbetalingBlokkeren.do" method="post">
 	<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); %>
 		<div class="left">
 			<h1>Herinneringsbrieven</h1>
@@ -19,12 +19,12 @@
 				<select name="klantveld">
 				<% if(atd.getblokkade().size() == 0){
 				for(Gebruiker g : atd.getAlleKlantenBlok()){ %>
-					<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+					<option value="<%= g.getGebruikerID() %>" name="blokkadeId"><%= g.getNaam() %></option>
 				<%}
 			}
 			else{
 				for(Gebruiker g : atd.getblokkade()){ %>
-				<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+				<option value="<%=g.getGebruikerID() %>" name="blokkadeId"><%= g.getNaam() %></option>
 			<%}			
 			}%>
 				</select>
@@ -48,7 +48,13 @@
 
 			<h1>Factuuroverzicht</h1>
 			<div class="box">
-				<p>- Er moeten nog aantal factuurbetaling(en) geblokkeerd worden
+				<p>- Er moeten nog aantal 
+				<%
+				int x = atd.getblokkade().size();
+				out.println(x);
+				%>
+				
+				factuurbetaling(en) geblokkeerd worden
 				
 				<p>
 			</div>
