@@ -4,6 +4,9 @@
 	if (session.getAttribute("rol") == null) {
 %>
 <jsp:forward page="loginIndex.jsp" />
+<%
+	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,8 +17,7 @@
 <body>	
 	<div class="container">
 		<div class="header">
-			<img src="images/Logo-A-Team.png" class="logo" />
-			<img src="images/auto_img.png" class="auto" />
+			<img src="images/Logo-A-Team.png" />
 		</div>
 		<div class="menu">
 			<ul>
@@ -72,4 +74,3 @@
 				<%} %>
 			</ul>
 		</div>
-		<%} %>
