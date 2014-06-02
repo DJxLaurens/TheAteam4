@@ -10,7 +10,7 @@
 <body>
 	<div class="container">
 		<div class="header">
-			<img src="images/Logo-A-Team.png" />
+			<img src="images/Logo-A-Team.png" class="logo"/>
 		<form action="LoginServlet.do" method="post">					
 			<h3>Login</h3>
 			<% 
