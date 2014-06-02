@@ -31,10 +31,16 @@
 	height: 150px;
 }
 
-.header img {
+.header .logo {
 	width: 300px;
 	margin-top: 50px;
 	margin-left: 30px;
+}
+
+.header .auto {
+	width: 250px;
+	margin-left: 30px;
+	float: right;
 }
 
 .menu {
