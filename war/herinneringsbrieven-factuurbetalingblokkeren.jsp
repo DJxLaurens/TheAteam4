@@ -2,7 +2,12 @@
 <jsp:include page="header.jsp" />
 
 <div class="content">
-	<form action="FactuurbetalingBlokkeren.do" method="get">
+	<%@ page import="Webapp.Gebruiker"%>
+	<%@ page import="Webapp.Auto"%>
+	<%@ page import="Webapp.AutoTotaalDienst"%>
+	<%@ page import="Servlet.KlantenbindingServlet" %>
+	<form action="FactuurbetalingBlokkeren.do" method="post">
+	<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); %>
 		<div class="left">
 			<h1>Herinneringsbrieven</h1>
 
@@ -12,7 +17,17 @@
 
 			<div>
 				<select name="klantveld">
-					<option value="piet">Piet</option>
+					<option value="leeg">Kies een Klant</option>
+				<% if(atd.getblokkade().size() == 0){
+				for(Gebruiker g : atd.getAlleKlantenBlok()){ %>
+					<option value="<%= g.getGebruikerID() %>" name="blokkadeId"><%= g.getNaam() %></option>
+				<%}
+			}
+			else{
+				for(Gebruiker g : atd.getblokkade()){ %>
+				<option value="<%=g.getGebruikerID() %>" name="blokkadeId"><%= g.getNaam() %></option>
+			<%}			
+			}%>
 				</select>
 			</div>
 
@@ -34,7 +49,13 @@
 
 			<h1>Factuuroverzicht</h1>
 			<div class="box">
-				<p>- Er moeten nog aantal factuurbetaling(en) geblokkeerd worden
+				<p>- Er moeten nog aantal 
+				<%
+				int x = atd.getblokkade().size();
+				out.println(x);
+				%>
+				
+				factuurbetaling(en) geblokkeerd worden
 				
 				<p>
 			</div>

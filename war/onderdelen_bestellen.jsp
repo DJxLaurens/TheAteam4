@@ -7,10 +7,13 @@
 
 	<%@ page import = "Webapp.AutoTotaalDienst" %>
 	<%@ page import = "Webapp.Product" %>
-	<form action="VoorraadToevoegenServlet.do" method="post">
+	
+	<a href="voorraad_toevoegen.jsp">Voeg een onderdeel toe</a><br>
+	<form action="VoorraadWijzigenServlet.do" method="post">
 		<table>
 		<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef");%> 
 			<tr>
+				<th></th>
 				<th>Onderdeelnummer</th>
 				<th>Onderdeelnaam</th>
 				<th>Minimale voorraad</th>
@@ -19,11 +22,13 @@
 			</tr>
 			<%for(Product p : atd.getAlleOnderdelen()){ %>
 			<tr id = "headRow">
+				<td><a href="verwijderVoorraad.jsp?id=<%=p.getProductNummer()%>&type=2">X</a></td>
 				<td><%= p.getProductNummer()  %></td>
 				<td><%= p.getProductNaam()  %></td>
 				<td><%= p.getMinVoorraad() %></td>
-				<td><%= p.getVoorraad()  %></td>
+				<td <%if(p.getVoorraad() < p.getMinVoorraad()){%> class="red" <%}%>><%= p.getVoorraad()  %></td>
 				<td><input type="text" name="prod_<%=p.getProductNummer()%>"/></td>
+				<td><a href="minimalevoorraad_onderdeel.jsp?id=<%=p.getProductNummer()%>&type=2">Minimale voorraad aanpassen</a></td>
 			</tr>
 			<input type="hidden" name="voorraadId" value="<%= p.getProductNummer()  %>"/>
 			<input type="hidden" name="voorraadNaam" value="<%= p.getProductNaam()  %>"/>
@@ -33,8 +38,6 @@
 			
 			<% }%>
 		</table>
-
-		<input type="submit" value="Wijzig" name="wijzig">
 		<input type="submit" value="Bestel" name = "bestel">
 	</form>
 </div>

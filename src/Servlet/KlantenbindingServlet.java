@@ -3,8 +3,9 @@ package Servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.FileWriter;
-import java.io.BufferedWriter;
-import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,16 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
+import Webapp.AutoTotaalDienst;
+import Webapp.Gebruiker;
+
 public class KlantenbindingServlet extends HttpServlet{
-	private int brieven = 1;
-	private int onderhoud = 1;
-	private int afwezig = 1;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-
+		
+		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");	
+		
 		RequestDispatcher rd = null;
-
+		
 		String press = req.getParameter("press");
 
 		String v1=(String)req.getParameter("veld1");
@@ -33,24 +36,31 @@ public class KlantenbindingServlet extends HttpServlet{
 		
 		if(!v1.equals("leeg") && v2.equals("leeg") && v3.equals("leeg")){
 			x = v1;
+			ArrayList<Gebruiker> klanten = atd.getjongerdan();
+			Gebruiker klant = atd.zoekGebruiker(x, klanten);
+			atd.verwijderKlant(klant, klanten);
 		}
 
 		if(v1.equals("leeg") && !v2.equals("leeg") && v3.equals("leeg")){
 			x = v2;
+			ArrayList<Gebruiker> klanten = atd.getouderdan();
+			Gebruiker klant = atd.zoekGebruiker(x, klanten);
+			atd.verwijderKlant(klant, klanten);
 		}
 
 		if(v1.equals("leeg") && v2.equals("leeg") && !v3.equals("leeg")){
 			x = v3;
 			check = 2;
+			ArrayList<Gebruiker> klanten = atd.getafwezig();
+			Gebruiker klant = atd.zoekGebruiker(x, klanten);
+			atd.verwijderKlant(klant, klanten);
 		}
 
 		if (press.equals("Brieven aanmaken")){
-			req.setAttribute("msgs", brieven);
 			if(!x.equals("") && check != 2){
-				req.setAttribute("msgs1", onderhoud);
-				brieven++;
-				onderhoud++;
-				FileWriter fw = new FileWriter("C:/testbrieven/Herrinering voor " + x +  " voor een onderhoudsbeurt (+1 jaar) " + ".txt", true); 
+				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmm");
+				Date datum = new Date();
+				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +1 jaar.txt", true);
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");
@@ -72,10 +82,9 @@ public class KlantenbindingServlet extends HttpServlet{
 			}
 			
 			if(!x.equals("") && check == 2){
-				req.setAttribute("msgs2", afwezig);
-				brieven++;
-				afwezig++;
-				FileWriter fw = new FileWriter("C:/testbrieven/Herinnering voor " + x + " voor een onderhoudsbeurt (+2 maanden) " + ".txt", true); 
+				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmm");
+				Date datum = new Date();
+				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +2 maanden.txt", true); 
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");

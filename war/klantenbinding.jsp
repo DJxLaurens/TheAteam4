@@ -17,10 +17,17 @@
     
 	<div>
 		<select name="veld1">
-			<option value="leeg"></option>
-			<% for(Gebruiker g : atd.getAlleKlantenJongerDan2010()) { %>
-			<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
-			<% }%>
+			<option value="leeg">Kies een Klant</option>
+			<% if(atd.getjongerdan().size() == 0){
+				for(Gebruiker g : atd.getAlleKlantenJongerDan2010()){ %>
+					<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+				<%}
+			}
+			else{
+				for(Gebruiker g : atd.getjongerdan()){ %>
+				<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+			<%}			
+			}%>
 		</select>
 	</div>
 
@@ -31,10 +38,17 @@
 
 	<div>
 		<select name="veld2">
-			<option value="leeg"></option>
-			<% for(Gebruiker g : atd.getAlleKlantenOuderDan2010()) { %>
-			<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
-			<% }%>
+			<option value="leeg">Kies een Klant</option>
+			<% if(atd.getouderdan().size() == 0){
+				for(Gebruiker g : atd.getAlleKlantenOuderDan2010()){ %>
+					<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+				<%}
+			}
+			else{
+				for(Gebruiker g : atd.getouderdan()){ %>
+				<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+			<%}			
+			}%>
 		</select>
 	</div>
 
@@ -42,10 +56,17 @@
 
 	<div>
 		<select name="veld3">
-			<option value="leeg"></option>
-			<% for(Gebruiker g : atd.getAlleKlantenLaatstgeweest()) { %>
-			<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
-			<% }%>
+			<option value="leeg">Kies een Klant</option>
+			<% if(atd.getafwezig().size() == 0){
+				for(Gebruiker g : atd.getAlleKlantenLaatstgeweest()){ %>
+					<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+				<%}
+			}
+			else{
+				for(Gebruiker g : atd.getafwezig()){ %>
+				<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
+			<%}			
+			}%>
 		</select>
 	</div>
 
@@ -72,12 +93,8 @@
 		<p>- Er moeten nog 
 		
 		<%
-		Object msgs = request.getAttribute("msgs");
-		if (msgs != null) {
-		out.println(msgs);
-		} else {
-			out.println(0);
-		}
+		int x = atd.getjongerdan().size() + atd.getouderdan().size() + atd.getafwezig().size();
+		out.println(x);
 		%>
 		
 		brieven aangemaakt worden<p>
@@ -91,12 +108,8 @@
 			<tr>
 				<td>
 				<%
-				Object msgs1 = request.getAttribute("msgs1");
-				if (msgs1 != null) {
-				out.println(msgs1);
-				} else {
-					out.println(0);
-				}
+				int y = atd.getjongerdan().size() + atd.getouderdan().size();
+				out.println(y);
 				%>
 				</td>
 				<td>Onderhoudsbrief</td>
@@ -104,12 +117,8 @@
 			<tr>
 				<td>
 				<%
-				Object msgs2 = request.getAttribute("msgs2");
-				if (msgs2 != null) {
-				out.println(msgs2);
-				} else {
-					out.println(0);
-				}
+				int z = atd.getafwezig().size();
+				out.println(z);
 				%>
 				</td>
 				<td>Afwezigheidsbrief</td>

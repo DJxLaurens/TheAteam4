@@ -10,7 +10,7 @@
 <body>
 	<div class="container">
 		<div class="header">
-			<img src="images/Logo-A-Team.png" />
+			<img src="images/Logo-A-Team.png" class="logo"/>
 		<form action="LoginServlet.do" method="post">					
 			<h3>Login</h3>
 			<% 
@@ -18,11 +18,12 @@
 				if (msgs != null) { 	 
 					out.println(msgs); 
 					out.println(); 		
-				}					
-			%>	      
-				<div>		
-					<label>Naam:</label> 
-					<input type="text" name="naam" />
+				}		
+				Object naam = request.getAttribute("email"); 
+			%>
+				<div>
+					<label>Email:</label> <input type="text" name="naam" value="<%if(naam !=null){ out.println(naam); }%>" />
+
 				</div>
 				<div>
 					<label>Wachtwoord:</label>
@@ -30,13 +31,12 @@
 				</div>
 				<div>
 				<input type="submit" value="Inloggen"/>
-				<a href="registreer.jsp">Registreer</a>
 				</div>			
 		</form>	
 			
 		</div>
 		<div class="menu">
 			<ul>
-				<li><a href="index.jsp">Home</a></li>
+				<li><a href="loginIndex.jsp">Home</a></li>
 			</ul>
 		</div>

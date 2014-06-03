@@ -20,6 +20,8 @@ public class AutoTotaalDienst {
     private ArrayList<Gebruiker> alleKlanten = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> alleKlanten1 = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> alleKlanten2 = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleKlanten3 = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleKlanten4 = new ArrayList<Gebruiker>();
     private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
     private ArrayList<Auto> alleAutos1 = new ArrayList<Auto>();
     private ArrayList<Gebruiker> jongerdan = new ArrayList<Gebruiker>();
@@ -27,6 +29,7 @@ public class AutoTotaalDienst {
     private ArrayList<Gebruiker> afwezig = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> blokkade = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> factuur = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> brief = new ArrayList<Gebruiker>();
     private ArrayList<Klus> alleKlussen = new ArrayList<Klus>();
     private ArrayList<Klus> alleKlussenCombo = new ArrayList<Klus>();
     private ArrayList<Klus> klussenStatus = new ArrayList<Klus>();
@@ -119,15 +122,17 @@ public class AutoTotaalDienst {
         }
     }
     public ArrayList<Product> getAlleOnderdelen(){
-//    	if (alleOnderdelen.isEmpty()) {
-//    		System.out.println("Hoi");
     		alleOnderdelen = new ProductDAO().getAlleOnderdelenDB();
-    	//}
-    	
-    	System.out.println("Test: " + alleOnderdelen);
         return alleOnderdelen;
 
     }
+    
+    public Product getOnderdeelById(int id){
+    	Product onderdeel = new ProductDAO().getOnderdeelFromID(id);
+    	
+    	return onderdeel;
+    }
+    
     //Onderdelen combobox bij PrijsBerekenenFrame
     public boolean heeftOnderdeel2(int artNr){
         boolean b = false;
@@ -172,9 +177,13 @@ public class AutoTotaalDienst {
         }
         return b;
     }
+
     public ArrayList<Product> getAlleBrandstoffen(){
-        return alleBrandstoffen;
+		alleBrandstoffen = new ProductDAO().getAlleBrandstoffenDB();
+	
+    return alleBrandstoffen;
     }
+    
     public boolean heeftKlant(String nm){
         boolean b = false;
         for (Gebruiker k: alleKlanten){
@@ -184,6 +193,18 @@ public class AutoTotaalDienst {
         }
         return b;
     }
+    
+    public Gebruiker zoekGebruiker(String nm, ArrayList<Gebruiker> a){
+    	Gebruiker antw = null;
+    	for(Gebruiker g: a){
+    		if(g.getNaam().equals(nm)){
+    			antw = g;
+    			break;
+    		}
+    	}
+    	return antw;
+    }
+    
     public Gebruiker zoekKlant(String nm){
     	Gebruiker antw = null;
         for(Gebruiker k: alleKlanten){
@@ -209,7 +230,8 @@ public class AutoTotaalDienst {
     }
     
     public ArrayList<Gebruiker> getAlleKlanten(){
-        return alleKlanten;
+    	System.out.println(alleKlanten);
+    	return alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
     }
     
     //Hier worden alle Klanten met een auto jonger dan 2010 toegevoegd aan de ArrayList
@@ -277,12 +299,58 @@ public class AutoTotaalDienst {
 	    	return afwezig;
     }
     
+  //Klanten combobox bij FactuurbetalingBlokkerenFrame
+    public ArrayList<Gebruiker> getAlleKlantenBlok(){
+    	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+    	Calendar test = Calendar.getInstance();
+        test.add(Calendar.DATE, -90);
+        if(alleKlanten3.isEmpty()){
+        	alleKlanten3 = new GebruikersDAO().getAlleGebruikersDB();
+        	for(Gebruiker g: alleKlanten3){
+        		if(g.getOpenFactuur().equals(null)){
+        			g.setOpenFactuur("06-06-2012");
+        		}
+        		String xx = "";
+        		Date date = null;
+        		xx = g.getOpenFactuur();
+        		try {
+	    			date = formatter.parse(xx);
+	    			Calendar bezig = Calendar.getInstance();
+	    			bezig.setTime(date);
+	    			if(bezig.before(test)){
+	    				blokkade.add(g);
+	    			}	    	 
+	    		} catch (ParseException e) {
+	    			e.printStackTrace();
+	    		}
+        	}
+        }
+        return blokkade;
+    }
+    
+    public ArrayList<Gebruiker> getblokkade(){
+    	blokkade = new GebruikersDAO().getBlokkadeDB();
+        return blokkade;
+    }
+    
+    public void setBlokkade(int gId){
+    	new GebruikersDAO().setBlokkade(gId);
+    }
+    
     public ArrayList<Gebruiker> getAlleKlanten1(){
         return alleKlanten1;
     }
     
     public ArrayList<Gebruiker> getAlleKlanten2(){
     	return alleKlanten2;
+    }
+    
+    public ArrayList<Gebruiker> getAlleKlanten3(){
+    	return alleKlanten3;
+    }
+    
+    public ArrayList<Gebruiker> getAlleKlanten4(){
+    	return alleKlanten4;
     }
     
     public ArrayList<Auto> getAlleAutos1(){
@@ -332,25 +400,33 @@ public class AutoTotaalDienst {
         }
         return factuur;
     }
-    //Klanten combobox bij FactuurbetalingBlokkerenFrame
-    public ArrayList<Gebruiker> getAlleKlantenBlok(){
-        blokkade.removeAll(blokkade);
-        Calendar test = Calendar.getInstance();
-        test.add(Calendar.DATE, -90);
-        //klanten die langer dan 90 dagen niet hebben betaald
-        for (Gebruiker k : alleKlanten){
-            if(k.getBlokkade() == false){
-                if(k.getOpenFactuur() != null){
-//                    if(k.getOpenFactuur().before(test)){
-                        if(!blokkade.contains(k)){
-                            blokkade.add(k);
-//                        }
-                    }
-                }
-            }
-        }
-        return blokkade;
+    //Maak factuur als klanten langer dan 90 dagen niet hebben betaald
+    public ArrayList<Gebruiker> getAlleKlantenBrieven90(){
+    	if(alleKlanten4.isEmpty()) {
+    		alleKlanten4 = new GebruikersDAO().getAlleGebruikersDB();
+    		Calendar test = Calendar.getInstance();
+    		test.add(Calendar.DATE, -90);
+    		Date date1 = test.getTime();
+    		for (Gebruiker k : alleKlanten4){
+    			if(k.getOpenFactuur() != null){
+    				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    				Date date2 = null;
+    				try {
+    					date2 = sdf.parse(k.getOpenFactuur());
+    					if(date2.before(date1)==true){
+    						if(!brief.contains(k)){
+    							brief.add(k);
+    						}
+    					}
+    				} catch (ParseException e) {
+    					e.printStackTrace();
+    				}
+    			}
+    		}
+    	}
+    	return brief;
     }
+    
     public void blokkeer(Gebruiker k){
         k.setBlokkade();
     }

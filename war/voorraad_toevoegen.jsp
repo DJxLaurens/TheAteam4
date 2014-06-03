@@ -33,10 +33,10 @@
 				<td><input type="text" name="voorraad"></td>
 			</tr>
 			
-			<tr>
+			<!-- <tr>
 				<td>Prijs per stuk/liter:</td>
 				<td><input type="text" name="voorraadPrijs"></td>
-			</tr>
+			</tr> -->
 		</table>
 		<input type="submit" value="Toevoegen">
 	</form>

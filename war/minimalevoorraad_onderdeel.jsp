@@ -5,14 +5,14 @@
 	<form>
 		<table>
 			<tr>
-				<td>Kies onderdeel:</td>
-				<td><select><option value="parkeerplaats1">Uitlaat</option>
-						<option value="parkeerplaats2">Motorkap</option>
-						<option value="parkeerplaats3">kit</option></select></td>
+				<td>Kies Onderdeel:</td>
+				<td><select><option value="parkeerplaats1">Diesel</option>
+						<option value="parkeerplaats2">Benzine</option>
+						<option value="parkeerplaats3">LPG</option></select></td>
 			</tr>
 			<tr>
 				<td>Minimale voorraad:</td>
-				<td><input type="text" name="naam_reservering" value="4"></td>
+				<td><input type="text" name="naam_reservering" value="1000"></td>
 			</tr>
 		</table>
 
