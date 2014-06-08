@@ -2,9 +2,9 @@
 
 <div class="content">
 	<h1>Weekplanning</h1>
-	<%@ page import="Webapp.Klus"%>
-	<%@ page import="Webapp.Monteur"%>
-	<%@ page import="Webapp.AutoTotaalDienst"%>
+	<%@ page import="Onderdelen.Klus"%>
+	<%@ page import="Onderdelen.Monteur"%>
+	<%@ page import="DomeinModel.AutoTotaalDienst"%>
 	<form action ="WeekplanningServlet.do" method = "post">
 		<table>
 			<tr>

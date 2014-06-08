@@ -11,7 +11,7 @@
 	<div class="container">
 		<div class="header">
 			<img src="images/Logo-A-Team.png" class="logo"/>
-		<form action="LoginServlet.do" method="post">					
+		<form action="LoginServlet.do" method="post" class="login">					
 			<h3>Login</h3>
 			<% 
 				Object msgs = request.getAttribute("msgs"); 
