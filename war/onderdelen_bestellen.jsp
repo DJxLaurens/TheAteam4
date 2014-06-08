@@ -5,8 +5,8 @@
 <div class="content">
 	<h1>Onderdeel bestellen</h1>
 
-	<%@ page import = "Webapp.AutoTotaalDienst" %>
-	<%@ page import = "Webapp.Product" %>
+	<%@ page import = "DomeinModel.AutoTotaalDienst" %>
+	<%@ page import = "Onderdelen.Product" %>
 	
 	<a href="voorraad_toevoegen.jsp">Voeg een onderdeel toe</a><br>
 	<form action="VoorraadWijzigenServlet.do" method="post">
