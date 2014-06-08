@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Inloggen</title>
-<link href="style.css" rel="stylesheet">
+<link href="style/style.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
