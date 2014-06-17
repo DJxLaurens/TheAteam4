@@ -52,6 +52,9 @@ public class Gebruiker {
 		openFactuur = openFactuur2;
 		blokkade2 = bk;
 	}
+	public Gebruiker() {
+	}
+
 	public int getRol(){
 		return rol_id;
 	}
