@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 /Connection
 /Servlet
 /Webapp
@@ -10,16 +12,18 @@
 /VoorraadbeheerServlets/
 /DomeinModel/
 /Webapp/
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
 /BetalingFacturatieServlets/
-/Herinneringsbrieven/
-/Klantenbinding/
-/Onderhoudsbeurt/
-/OnderhoudsbeurtServlet/
-/OnderhoudsbeurtServlets/
-/KlantenbindingServlets/
-/HerinneringsbrievenServlets/
 /DAO/
-/Connection/
+/DomeinModel/
+/HerinneringsbrievenServlets/
+/InloggenServlets/
+/KlantenbindingServlets/
 /MyServletContextListener/
 /Onderdelen/
+<<<<<<< HEAD
+/OnderhoudsbeurtServlets/
+/VoorraadbeheerServlets/
+=======
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
 >>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
