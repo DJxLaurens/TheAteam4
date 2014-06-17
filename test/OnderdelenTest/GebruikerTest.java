@@ -66,7 +66,7 @@ public class GebruikerTest {
 	@Test
 	public void testKorting(){ 
 		Gebruiker g1 = new Gebruiker(5, 4, "Lionel", "Messi", "Kalverenstraat 10", "1234AB", "Kalverenstraat 10", "87654321", "lionel@lolmail.com", "11-02-2012", 10, "01-01-2011", 1);
-		assertEquals(10, g1.getKorting());
+		assertEquals(10, g1.getKorting(), 0);
 	}
 	
 	@Test
