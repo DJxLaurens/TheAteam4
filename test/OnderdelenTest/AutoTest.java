@@ -34,14 +34,21 @@ public class AutoTest {
 	public void testType(){ 
 		Gebruiker g1 = new Gebruiker(0, 0, null, null, null, null, null, null, null, null, 0, null, 0);
 		Auto a1 = new Auto("11-JJ-AT", "Opel", 1991, "Astra", g1, "Gas");
-		assertEquals(1991, a1.getType());
+		assertEquals("Astra", a1.getType());
 	}
 	
 	@Test
 	public void testEigenaar(){ 
 		Gebruiker g1 = new Gebruiker(0, 0, null, null, null, null, null, null, null, null, 0, null, 0);
 		Auto a1 = new Auto("11-JJ-AT", "Opel", 1991, "Astra", g1, "Gas");
-		assertEquals(1991, a1.getEigenaar());
+		assertEquals(g1, a1.getEigenaar());
+	}
+	
+	@Test
+	public void testBrandstoftype(){ 
+		Gebruiker g1 = new Gebruiker(0, 0, null, null, null, null, null, null, null, null, 0, null, 0);
+		Auto a1 = new Auto("11-JJ-AT", "Opel", 1991, "Astra", g1, "Gas");
+		assertEquals("Gas", a1.getBrandstoftype());
 	}
 	
 }
