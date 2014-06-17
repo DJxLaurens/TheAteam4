@@ -19,6 +19,7 @@ public class VoorraadWijzigenServlet extends HttpServlet {
 	private int voorraadType;
 	private int voorraadMin;
 	private int voorraad;
+	private String type;
 	//private int voorraadId;
 	private String s;
 	
@@ -43,9 +44,21 @@ public class VoorraadWijzigenServlet extends HttpServlet {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
 								}
+			 					
+			 					Product p = producten.getOnderdeelFromID(id);
+			 					
+			 					if(p.getType() == 1){
+			 						type = "brandstof";
+			 					}else{
+			 						type = "onderdelen";
+			 					}
+			 					
 			 				}
 		}
-			rd = req.getRequestDispatcher("voorraad_toevoegen.jsp");
+		
+		
+		
+			rd = req.getRequestDispatcher(type + "_bestellen.jsp");
 			rd.forward(req, resp);
 	}
 }
