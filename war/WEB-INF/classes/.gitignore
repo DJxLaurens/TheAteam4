@@ -1,0 +1,25 @@
+<<<<<<< HEAD
+/Connection
+/Servlet
+/Webapp
+=======
+/Domein/
+/Inloggen/
+/InloggenServlets/
+/Servlet/
+/VoorraadbeheerServlets/
+/DomeinModel/
+/Webapp/
+/BetalingFacturatieServlets/
+/Herinneringsbrieven/
+/Klantenbinding/
+/Onderhoudsbeurt/
+/OnderhoudsbeurtServlet/
+/OnderhoudsbeurtServlets/
+/KlantenbindingServlets/
+/HerinneringsbrievenServlets/
+/DAO/
+/Connection/
+/MyServletContextListener/
+/Onderdelen/
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
