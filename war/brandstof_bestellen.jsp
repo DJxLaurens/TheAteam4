@@ -22,7 +22,7 @@
 			</tr>
 			<%for(Product p : atd.getAlleBrandstoffen()){ %>
 			<tr id = "headRow">
-				<td><a href="verwijderVoorraad.jsp?id=<%=p.getProductNummer()%>&type=1">X</a></td>
+				<td><a href="verwijderVoorraad.jsp?id=<%=p.getProductNummer()%>&type=1"><img src="images/deleteIcon.png"/></a></td>
 				<td><%= p.getProductNummer()  %></td>
 				<td><%= p.getProductNaam()  %></td>
 				<td><%= p.getMinVoorraad() %> Liter</td>
