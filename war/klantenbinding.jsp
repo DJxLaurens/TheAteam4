@@ -2,10 +2,10 @@
 
 <div class="content">
 <div class="left">
-	<%@ page import="Webapp.Gebruiker"%>
-	<%@ page import="Webapp.Auto"%>
-	<%@ page import="Webapp.AutoTotaalDienst"%>
-	<%@ page import="Servlet.KlantenbindingServlet" %>
+	<%@ page import="Onderdelen.Gebruiker"%>
+	<%@ page import="Onderdelen.Auto"%>
+	<%@ page import="DomeinModel.AutoTotaalDienst"%>
+	<%@ page import="KlantenbindingServlets.KlantenbindingServlet" %>
 <form action="KlantenbindingServlet.do" method="get">
 	<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); %>
 	<h1>Herinneringsbrieven</h1>

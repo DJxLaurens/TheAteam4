@@ -12,13 +12,39 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Autototaaldiensten</title>
-<link href="style.css" rel="stylesheet">
+<link href="style/style.css" rel="stylesheet">
 </head>
 <body>	
 	<div class="container">
-		<div class="header">
-			<img src="images/Logo-A-Team.png" />
+		<div class="headerUser">
+			<img src="images/Logo-A-Team.png" class="logo" />
+			<div class="uitloggen">
+				<form action="LogoutServlet.do" method="get">
+					<table>
+						<tr>
+							<td>Naam:</td>
+							<td><%=session.getAttribute("naam")%></td>
+						</tr>
+						<tr>
+							<td>Email-adres:</td>
+							<td><%=session.getAttribute("email")%></td>
+						</tr>
+						<tr>
+							<td>laatstGeweest:</td>
+							<td><%=session.getAttribute("laatstgeweest")%></td>
+						</tr>
+						<tr>
+							<td>openFactuur:</td>
+							<td><%=session.getAttribute("openFactuur")%></td>
+						</tr>
+						<tr>
+							<td><input type="submit" value="Uitloggen" /></td>
+						</tr>
+					</table>
+				</form>
+			</div>
 		</div>
+
 		<div class="menu">
 			<ul>
 				<li><a href="index.jsp">Home</a></li>

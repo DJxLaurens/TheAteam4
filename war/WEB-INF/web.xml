@@ -17,7 +17,7 @@
 	
 	<servlet>
 		<servlet-name>FactuurbetalingBlokkeren Servlet</servlet-name>
-		<servlet-class>Servlet.FactuurbetalingBlokkerenServlet</servlet-class>
+		<servlet-class>HerinneringsbrievenServlets.FactuurbetalingBlokkerenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FactuurbetalingBlokkeren Servlet</servlet-name>
@@ -26,7 +26,7 @@
 	
 	<servlet>
 		<servlet-name>Klantenbinding Servlet</servlet-name>
-		<servlet-class>Servlet.KlantenbindingServlet</servlet-class>
+		<servlet-class>KlantenbindingServlets.KlantenbindingServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Klantenbinding Servlet</servlet-name>
@@ -44,7 +44,7 @@
 	
 	<servlet>
 		<servlet-name>Registreer Servlet</servlet-name>
-		<servlet-class>Servlet.RegistreerServlet</servlet-class>
+		<servlet-class>InloggenServlets.RegistreerServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Registreer Servlet</servlet-name>
@@ -53,7 +53,7 @@
 	
 	<servlet>
 		<servlet-name>Klus Toevoegen Servlet</servlet-name>
-		<servlet-class>Servlet.KlusToevoegenServlet</servlet-class>
+		<servlet-class>OnderhoudsbeurtServlets.KlusToevoegenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Klus Toevoegen Servlet</servlet-name>
@@ -62,7 +62,7 @@
 
 	<servlet>
 		<servlet-name>Login Servlet</servlet-name>
-		<servlet-class>Servlet.LoginServlet</servlet-class>
+		<servlet-class>InloggenServlets.LoginServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Login Servlet</servlet-name>
@@ -71,7 +71,7 @@
 	
 	<servlet>
 		<servlet-name>Logout Servlet</servlet-name>
-		<servlet-class>Servlet.LogoutServlet</servlet-class>
+		<servlet-class>InloggenServlets.LogoutServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Logout Servlet</servlet-name>
@@ -89,7 +89,7 @@
 	
 	<servlet>
 		<servlet-name>PrijsBerekenen Servlet</servlet-name>
-		<servlet-class>Servlet.PrijsBerekenenServlet</servlet-class>
+		<servlet-class>BetalingFacturatieServlets.PrijsBerekenenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>PrijsBerekenen Servlet</servlet-name>
@@ -98,7 +98,7 @@
 	
 	<servlet>
 		<servlet-name>Voorraad toevoegen</servlet-name>
-		<servlet-class>Servlet.VoorraadToevoegenServlet</servlet-class>
+		<servlet-class>VoorraadbeheerServlets.VoorraadToevoegenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Voorraad toevoegen</servlet-name>
@@ -107,7 +107,7 @@
 	
 	<servlet>
 		<servlet-name>Voorraad wijzigen</servlet-name>
-		<servlet-class>Servlet.VoorraadWijzigenServlet</servlet-class>
+		<servlet-class>VoorraadbeheerServlets.VoorraadWijzigenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Voorraad wijzigen</servlet-name>
@@ -116,7 +116,7 @@
 	
 	<servlet>
 		<servlet-name>Minimale voorraad wijzigen</servlet-name>
-		<servlet-class>Servlet.MinimaleVoorraadWijzigenServlet</servlet-class>
+		<servlet-class>VoorraadbeheerServlets.MinimaleVoorraadWijzigenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Minimale voorraad wijzigen</servlet-name>
@@ -125,7 +125,7 @@
 	
 	<servlet>
 		<servlet-name>Voorraad verwijderen</servlet-name>
-		<servlet-class>Servlet.VerwijderVoorraadServlet</servlet-class>
+		<servlet-class>VoorraadbeheerServlets.VerwijderVoorraadServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Voorraad verwijderen</servlet-name>
@@ -134,7 +134,7 @@
 	
 	<servlet>
 		<servlet-name>Weekplanning Servlet</servlet-name>
-		<servlet-class>Servlet.WeekplanningServlet</servlet-class>
+		<servlet-class>OnderhoudsbeurtServlets.WeekplanningServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Weekplanning Servlet</servlet-name>
@@ -143,7 +143,7 @@
 	
 	<servlet>
 		<servlet-name>Herinneringsbrief toevoegen</servlet-name>
-		<servlet-class>Servlet.BrievenAanmakenServlet</servlet-class>
+		<servlet-class>HerinneringsbrievenServlets.BrievenAanmakenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Herinneringsbrief toevoegen</servlet-name>
@@ -152,7 +152,7 @@
 	
 	<listener>
 		<listener-class>
-			Webapp.MyServletContextListener
+			MyServletContextListener.MyServletContextListener
 		</listener-class>
 	</listener>
 	
