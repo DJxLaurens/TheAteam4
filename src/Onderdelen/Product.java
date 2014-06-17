@@ -7,13 +7,15 @@ public class Product {
     private Double prijs;
     private int type;
     private int productID;
+    private int inBestelling;
 
-    public Product(int pId, String pNm, int tp, int mV, int vrd){
+    public Product(int pId, String pNm, int tp, int mV, int vrd, int iB){
         minVoorraad = mV;
         voorraad = vrd;
         productNaam = pNm;
         type = tp;
         productID = pId;
+        inBestelling = iB;
     }
 
     public int getType(){
@@ -39,6 +41,10 @@ public class Product {
         return voorraad;
     }
 
+    public int getInBestelling(){
+        return inBestelling;
+    }
+    
     public int getProductNummer(){
         return productID;
     }

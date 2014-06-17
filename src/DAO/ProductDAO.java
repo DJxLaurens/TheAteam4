@@ -41,8 +41,9 @@ public class ProductDAO {
 				int type = rs.getInt("type");
 				int minVoorraad = rs.getInt("minVoorraad");
 				int voorraad = rs.getInt("voorraad");
+				int inBestelling = rs.getInt("inbestelling");
 				
-				Product p = new Product(id, naam, type, minVoorraad, voorraad);	
+				Product p = new Product(id, naam, type, minVoorraad, voorraad, inBestelling);	
 				alleOnderdelenDB.add(p);
 				//System.out.println(p.getProductNaam());
 			}
@@ -100,8 +101,9 @@ public class ProductDAO {
 				int type = rs.getInt("type");
 				int minVoorraad = rs.getInt("minVoorraad");
 				int voorraad = rs.getInt("voorraad");
+				int inBestelling = rs.getInt("inbestelling");
 				
-				Product p = new Product(id, naam, type, minVoorraad, voorraad);	
+				Product p = new Product(id, naam, type, minVoorraad, voorraad, inBestelling);	
 				alleBrandstoffenDB.add(p);
 				//System.out.println(p.getProductNaam());
 			}
@@ -126,6 +128,7 @@ public class ProductDAO {
 		int type = 0;
 		int minVoorraad = 0;
 		int voorraad = 0;
+		int inBestelling = 0;
 		
 		try {
 			this.leesDatabase();
@@ -138,13 +141,14 @@ public class ProductDAO {
 				type = rs.getInt("type");
 				minVoorraad = rs.getInt("minVoorraad");
 				voorraad = rs.getInt("voorraad");
+				inBestelling = rs.getInt("inbestelling");
 			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Product p = new Product(id, naam, type, minVoorraad, voorraad);
+		Product p = new Product(id, naam, type, minVoorraad, voorraad, inBestelling);
 		
 		return p;
 	}
@@ -152,9 +156,10 @@ public class ProductDAO {
 	
 	
 	public void saveVoorraad(String vrdNm, int vT, int vrdMin, int vrd) throws SQLException {	
+		int inBestelling = 0;
 		this.leesDatabase();
 		statement = con.createStatement();
-		statement.execute("INSERT INTO voorraad (naam, type, minVoorraad, voorraad)"+ "VALUES ('"+ vrdNm + "','" + vT + "','" + vrdMin + "','" + vrd + "')");				
+		statement.execute("INSERT INTO voorraad (naam, type, minVoorraad, voorraad, inbestelling)"+ "VALUES ('"+ vrdNm + "','" + vT + "','" + vrdMin + "','" + vrd + "', '"+ inBestelling +"')");				
 	}
 	
 	public void changeVoorraad(int id, int nwVrd, int odVrd) throws SQLException {	

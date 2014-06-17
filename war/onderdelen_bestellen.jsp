@@ -18,6 +18,7 @@
 				<th>Onderdeelnaam</th>
 				<th>Minimale voorraad</th>
 				<th>Voorraad</th>
+				<th>In bestelling</th>
 				<th>Bestel</th>
 			</tr>
 			<%for(Product p : atd.getAlleOnderdelen()){ %>
@@ -27,6 +28,7 @@
 				<td><%= p.getProductNaam()  %></td>
 				<td><%= p.getMinVoorraad() %></td>
 				<td <%if(p.getVoorraad() < p.getMinVoorraad()){%> class="red" <%}%>><%= p.getVoorraad()  %></td>
+				<td><%= p.getInBestelling()  %></td>
 				<td><input type="text" name="prod_<%=p.getProductNummer()%>"/></td>
 				<td><a href="minimalevoorraad.jsp?id=<%=p.getProductNummer()%>&type=2">Minimale voorraad aanpassen</a></td>
 			</tr>
