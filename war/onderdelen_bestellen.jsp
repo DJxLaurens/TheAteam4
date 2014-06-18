@@ -1,4 +1,3 @@
-
 <jsp:include page="header.jsp" />
 <%@ page import="java.util.*"%>
 
@@ -37,6 +36,7 @@
 			<input type="hidden" name="voorraadMin" value="<%= p.getMinVoorraad() %>"/>
 			<input type="hidden" name="voorraad" value="<%= p.getVoorraad()  %>"/>
 			<input type="hidden" name="voorraadType" value="<%= p.getType() %>"/>
+			<input type="hidden" name="inbestelling" value="<%= p.getInBestelling() %>"/>
 			
 			<% }%>
 		</table>

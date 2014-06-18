@@ -41,6 +41,7 @@ public class ProductDAO {
 				int type = rs.getInt("type");
 				int minVoorraad = rs.getInt("minVoorraad");
 				int voorraad = rs.getInt("voorraad");
+				System.out.println("In bestelling waarde: " + rs.getInt("inbestelling"));
 				int inBestelling = rs.getInt("inbestelling");
 				
 				Product p = new Product(id, naam, type, minVoorraad, voorraad, inBestelling);	
@@ -169,6 +170,21 @@ public class ProductDAO {
 			
 		int voorraad = nwVrd + odVrd;	
 		String sql = "UPDATE voorraad " + "SET voorraad = "+ voorraad +" WHERE id=" + id;
+		statement.executeUpdate(sql);	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.getAlleOnderdelenDB();
+	}
+	
+	public void vrdInBestelling(int id, int nwVrd) throws SQLException {	
+		try {
+			this.leesDatabase();
+			statement = con.createStatement();
+			
+		int voorraad = nwVrd;	
+		String sql = "UPDATE voorraad " + "SET inbestelling = "+ voorraad +" WHERE id=" + id;
 		statement.executeUpdate(sql);	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
