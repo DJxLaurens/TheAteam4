@@ -6,9 +6,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 
 import DAO.GebruikersDAO;
+import Onderdelen.Gebruiker;
 
 public class GebruikersDAOTest {
 	GebruikersDAO gDao = new GebruikersDAO();
@@ -19,7 +21,9 @@ public class GebruikersDAOTest {
 			gDao.leesDatabase();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}		
+		}
+
+		gDao.getAlleGebruikersDB().get(0).setBlokkade(false);
 	}
 
 	@Test
@@ -35,16 +39,20 @@ public class GebruikersDAOTest {
 		assertEquals("jan@lolmail.com", gDao.getAlleGebruikersDB().get(0).getEmailadres());
 		assertEquals("11-03-2013", gDao.getAlleGebruikersDB().get(0).getLaatstgeweest());
 		assertEquals("01-01-2012", gDao.getAlleGebruikersDB().get(0).getOpenFactuur());
+		assertEquals(false, gDao.getAlleGebruikersDB().get(0).getBlokkade());
 	}
 
 	@Test
 	public void setBlokkade(){
-
+		gDao.setBlokkade(1);
+		assertEquals(true,gDao.getAlleGebruikersDB().get(0).getBlokkade());
 	}
 
 	@Test
 	public void getBlokkade(){
-
+		gDao.getBlokkadeDB();
+		assertEquals(false,gDao.getBlokkadeDB().get(1).getBlokkade());
+		assertEquals(false,gDao.getBlokkadeDB().get(2).getBlokkade());
 	}
 
 	@Test

@@ -97,6 +97,13 @@ public class Gebruiker {
     public void setBlokkade(){
         blokkade = true;
     }
+    public void setBlokkade(boolean b){
+    	if(b = true){
+    		blokkade = true;
+    	}else{
+    		blokkade = false;
+    	}
+    }
     
     public boolean getBlokkade(){
         return blokkade;
