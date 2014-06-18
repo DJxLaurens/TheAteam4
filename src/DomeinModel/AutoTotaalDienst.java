@@ -1,6 +1,5 @@
 package DomeinModel;
 
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,8 +11,6 @@ import Onderdelen.Auto;
 import Onderdelen.Gebruiker;
 import Onderdelen.Klus;
 import Onderdelen.Monteur;
-import Onderdelen.Parkeerplaats;
-import Onderdelen.Pas;
 import Onderdelen.Product;
 import DAO.AutosDAO;
 import DAO.GebruikersDAO;
@@ -22,7 +19,6 @@ import DAO.ProductDAO;
 
 public class AutoTotaalDienst {
     private ArrayList<Product> alleOnderdelen = new ArrayList<Product>();
-    private ArrayList<Product> alleOnderdelen2 = new ArrayList<Product>();
     private ArrayList<Product> alleBrandstoffen = new ArrayList<Product>();
     private ArrayList<Gebruiker> alleKlanten = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> alleKlanten1 = new ArrayList<Gebruiker>();
@@ -38,17 +34,9 @@ public class AutoTotaalDienst {
     private ArrayList<Gebruiker> factuur = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> brief = new ArrayList<Gebruiker>();
     private ArrayList<Klus> alleKlussen = new ArrayList<Klus>();
-    private ArrayList<Klus> alleKlussenCombo = new ArrayList<Klus>();
     private ArrayList<Klus> klussenStatus = new ArrayList<Klus>();
     private ArrayList<Monteur> alleMonteurs = new ArrayList<Monteur>();
-    private ArrayList<Parkeerplaats> alleParkeerplaatsen = new ArrayList<Parkeerplaats>();
-    private ArrayList<Parkeerplaats> alleVrijeParkeerplaatsen = new ArrayList<Parkeerplaats>();
-    private ArrayList<Parkeerplaats> alleBezetteParkeerplaatsen = new ArrayList<Parkeerplaats>();
-    private ArrayList<Parkeerplaats> alleReserveringen = new ArrayList<Parkeerplaats>();
-    private ArrayList<Pas> allePassen = new ArrayList<Pas>();
     private double literPrijs, werkUurPrijs, maandPrijs, weekPrijs, dagPrijs;
-    
-
    
     // checkt of ingevoerd gegeven een int getal is
     public static boolean isInteger(String s) {
@@ -99,90 +87,10 @@ public class AutoTotaalDienst {
         double ko = ka.getKorting();
         return ko;
     }
-
-    public boolean heeftOnderdeel(int artNr){
-//    	if (alleOnderdelen == null) {
-//    		alleOnderdelen = new Dbconnectie().getAlleProducten();
-//    	}
-    	
-        boolean b = false;
-        for (Product p: alleOnderdelen){
-            if (p.getProductNummer() == (artNr)){
-                    b = true;
-            }
-        }
-        return b;
-    }
-    public boolean voegOnderdeelToe(Product nwOnderdeel){
-        boolean b = false;
-        if(!heeftOnderdeel(nwOnderdeel.getProductNummer())){
-            alleOnderdelen.add(nwOnderdeel);
-            //new Dbconnectie().saveOnderdeel(nwOnderdeel);
-            b = true;
-        }
-        return b;
-    }
-
-    public void verwijderOnderdeel(Product exOnderdeel) {
-        if (heeftOnderdeel(exOnderdeel.getProductNummer())) {
-            alleOnderdelen.remove(exOnderdeel);
-        }
-    }
+    
     public ArrayList<Product> getAlleOnderdelen(){
-    		alleOnderdelen = new ProductDAO().getAlleOnderdelenDB();
+    	alleOnderdelen = new ProductDAO().getAlleOnderdelenDB();
         return alleOnderdelen;
-
-    }
-    
-    public Product getOnderdeelById(int id){
-    	Product onderdeel = new ProductDAO().getOnderdeelFromID(id);
-    	
-    	return onderdeel;
-    }
-    
-    //Onderdelen combobox bij PrijsBerekenenFrame
-    public boolean heeftOnderdeel2(int artNr){
-        boolean b = false;
-        for (Product p: alleOnderdelen2){
-            if (p.getProductNummer() == (artNr)){
-                    b = true;
-            }
-        }
-        return b;
-    }
-    public boolean voegOnderdeelToe2(Product nwOnderdeel){
-        boolean b = false;
-        if(!heeftOnderdeel2(nwOnderdeel.getProductNummer())){
-            alleOnderdelen2.add(nwOnderdeel);
-            b = true;
-        }
-        return b;
-    }
-    public void verwijderOnderdeel2(Product exOnderdeel) {
-        if (heeftOnderdeel(exOnderdeel.getProductNummer())) {
-            alleOnderdelen2.remove(exOnderdeel);
-        }
-    }
-    public ArrayList<Product> getAlleOnderdelen2(){
-        return alleOnderdelen2;
-
-    }
-    public boolean heeftBrandstof(int artNr){
-        boolean b = false;
-        for (Product p: alleBrandstoffen){
-            if (p.getProductNummer() == (artNr)){
-                    b = true;
-            }
-        }
-        return b;
-    }
-    public boolean voegBrandstofToe(Product nwBrandstof){
-        boolean b = false;
-        if(!heeftBrandstof(nwBrandstof.getProductNummer())){
-            alleBrandstoffen.add(nwBrandstof);
-            b = true;
-        }
-        return b;
     }
 
     public ArrayList<Product> getAlleBrandstoffen(){
@@ -211,25 +119,7 @@ public class AutoTotaalDienst {
     	}
     	return antw;
     }
-    
-    public Gebruiker zoekKlant(String nm){
-    	Gebruiker antw = null;
-        for(Gebruiker k: alleKlanten){
-            if(k.getNaam().equals(nm)){
-                antw = k;
-                break;
-            }
-        }
-        return antw;
-    }
-    public boolean voegKlantToe(Gebruiker nweKlant){
-        boolean b = false;
-        if(!heeftKlant(nweKlant.getNaam())){
-            alleKlanten.add(nweKlant);
-            b = true;
-        }
-        return b;
-    }
+
     public void verwijderKlant(Gebruiker exKlant, ArrayList a) {
         if (heeftKlant(exKlant.getNaam())) {
             a.remove(exKlant);
@@ -437,62 +327,7 @@ public class AutoTotaalDienst {
     public void blokkeer(Gebruiker k){
         k.setBlokkade();
     }
-    public boolean voegVrijeParkeerplaatsToe(Parkeerplaats nP){
-        boolean b = false;
-        if(nP.getBezet() == false){
-            alleVrijeParkeerplaatsen.add(nP);
-            b = true;
-        }
-        return b;
-    }
-    public ArrayList<Parkeerplaats> getAlleVrijeParkeerplaatsen(){
-        return alleVrijeParkeerplaatsen;
-    }
-    public boolean heeftParkeerplaats(int pNr){
-        boolean b = false;
-        for (Parkeerplaats p: alleVrijeParkeerplaatsen){
-            if (p.getNummer() == pNr){
-                b = true;
-            }
-        }
-        return b;
-    }
-    public boolean voegParkeerplaatsToe(Parkeerplaats p){
-        return alleParkeerplaatsen.add(p);
-    }
-    public void verwijderParkeerplaats(Parkeerplaats exPar) {
-        if (heeftParkeerplaats(exPar.getNummer())) {
-            alleVrijeParkeerplaatsen.remove(exPar);
-        }
-    }
-    public ArrayList<Parkeerplaats> getAlleParkeerplaatsen(){
-        return alleParkeerplaatsen;
-    }
-    public boolean heeftBezetteParkeerplaats(int pNr){
-        boolean b = false;
-        for (Parkeerplaats p: alleBezetteParkeerplaatsen){
-            if (p.getNummer() == pNr){
-                b = true;
-            }
-        }
-        return b;
-    }
-    public boolean voegBezetteParkeerplaatsToe(Parkeerplaats nP){
-        boolean b = false;
-        if(nP.getBezet() == true){
-            alleBezetteParkeerplaatsen.add(nP);
-            b = true;
-        }
-        return b;
-    }
-    public void verwijderBezetteParkeerplaats(Parkeerplaats exPar) {
-        if (heeftBezetteParkeerplaats(exPar.getNummer())) {
-            alleBezetteParkeerplaatsen.remove(exPar);
-        }
-    }
-    public ArrayList<Parkeerplaats> getAlleBezetteParkeerplaatsen(){
-        return alleBezetteParkeerplaatsen;
-    }
+
     public boolean heeftAuto(String kt){
         boolean b = false;
         for (Auto a: alleAutos){
@@ -520,37 +355,9 @@ public class AutoTotaalDienst {
         }
         return b;
     }
-    public void verwijderAuto(Auto exAuto) {
-        if (heeftAuto(exAuto.getKenteken())) {
-            alleAutos.remove(exAuto);
-        }
-    }
+    
     public ArrayList<Auto> getAlleAutos(){
         return alleAutos;
-    }
-    public boolean heeftKlus(int kNr){
-        boolean b = false;
-        for (Klus k: alleKlussen){
-            if (k.getKlusNummer() == kNr){
-                b = true;
-            }
-        }
-        return b;
-    }
-    public boolean voegKlusToe(Klus nK) throws SQLException{
-    	System.out.println("Ik vraag deze klus op: " + nK.getKlusNaam());
-        boolean b = false;
-            if(!heeftKlus(nK.getKlusNummer())){
-                alleKlussen.add(nK);
-                new KlussenDAO().saveKlus(nK);
-                b = true;
-            }
-        return b;
-    }
-    public void verwijderKlus(Klus exKlus) {
-       if (heeftKlus(exKlus.getKlusNummer())) {
-           alleKlussen.remove(exKlus);
-       }
     }
     
 	public ArrayList<Klus> getAlleKlussen() {
@@ -559,86 +366,9 @@ public class AutoTotaalDienst {
 		}
 		return alleKlussen;
 	}
-    //ArrayList met Onderdelen voor PrijsBerekenenFrame
-    public boolean heeftKlusCombo(int kNr){
-        boolean b = false;
-        for (Klus k: alleKlussenCombo){
-            if (k.getKlusNummer() == kNr){
-                b = true;
-            }
-        }
-        return b;
-    }
-    public boolean voegKlusToeCombo(Klus nK){
-        boolean b = false;
-        if(!heeftKlusCombo(nK.getKlusNummer())){
-            alleKlussenCombo.add(nK);
-            b = true;
-        }
-        return b;
-    }
-    public void verwijderKlusCombo(Klus exKlus) {
-       if (heeftKlusCombo(exKlus.getKlusNummer())) {
-           alleKlussenCombo.remove(exKlus);
-       }
-    }
-    public ArrayList<Klus> getAlleKlussenCombo(){
-        return alleKlussenCombo;
-	}
 
-	// ArrayList met Klussen die de datum van vandaag hebben
-	public boolean heeftKlusVandaag(int kNr) {
-		boolean b = false;
-		for (Klus k : klussenStatus) {
-			if (k.getKlusNummer() == kNr) {
-				b = true;
-			}
-		}
-		return b;
-	}
-
-	public boolean voegKlusVandaagToe(Klus nK) {
-		boolean b = false;
-		if (!heeftKlusVandaag(nK.getKlusNummer())) {
-			if ((getToday().equals(nK.getAlleData().get(0)))) {
-				klussenStatus.add(nK);
-				b = true;
-			}
-		}
-		return b;
-	}
-
-	public void verwijderKlusVandaag(Klus exKlus) {
-       if (heeftKlusVandaag(exKlus.getKlusNummer())) {
-           klussenStatus.remove(exKlus);
-       }
-    }
     public ArrayList<Klus> getAlleKlussenVandaag(){
         return klussenStatus;
-    }
-    public boolean heeftReservering(int pNr){
-        boolean b = false;
-        for (Parkeerplaats p: alleReserveringen){
-            if (p.getNummer() == pNr){
-                b = true;
-            }
-        }
-        return b;
-    }
-    public boolean voegReserveringToe(Parkeerplaats nR){
-        boolean b = false;
-                alleReserveringen.add(nR);
-                b = true;
-        return b;
-    }
-    public void verwijderReservering(Parkeerplaats nR) {
-        if (heeftReservering(nR.getNummer())) {
-            alleReserveringen.remove(nR);
-        }
-    }
-
-    public ArrayList<Parkeerplaats> getAlleReseveringen(){
-        return alleReserveringen;
     }
 
     public boolean voegMonteurToe(Monteur m){
@@ -646,31 +376,5 @@ public class AutoTotaalDienst {
     }
     public ArrayList<Monteur> getAlleMonteurs(){
         return alleMonteurs;
-    }
-    public boolean heeftPas(int pn){
-        boolean b = false;
-        for (Pas ps: allePassen){
-            if (ps.getPasnummer() == pn){
-                b = true;
-            }
-        }
-        return b;
-    }
-    public boolean voegPasToe(Pas nwePas){
-        boolean b = false;
-        if(!heeftPas(nwePas.getPasnummer())){
-            allePassen.add(nwePas);
-            b = true;
-        }
-        return b;
-    }
-    //Alle gegevens van de pas van de klant
-    public String toString(){
-        String s = "";
-        s = s + "De volgende passen zijn er: \n";
-        for (Pas ps : allePassen){
-           s = s + "\n" + ps.toString();
-        }
-        return s;
     }
 }
