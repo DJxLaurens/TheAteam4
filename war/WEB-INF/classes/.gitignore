@@ -1,21 +1,2 @@
-/Tests/
-/OnderdelenTest/
-<<<<<<< HEAD
-/OnderdelenTests/
-=======
-=======
-/DAOTests/
-<<<<<<< HEAD
-/DomeinModel/
-/Onderdelen/
-=======
->>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
->>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
-/DAO/
-/VoorraadbeheerServlets/
-<<<<<<< HEAD
 /Tests
-/HerinneringsbrievenServlets
-=======
->>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
->>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
+/TestsDAO
