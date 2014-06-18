@@ -1,12 +1,11 @@
-
 <jsp:include page="header.jsp" />
 <%@ page import="java.util.*"%>
 
 <div class="content">
 	<h1>Onderdeel bestellen</h1>
 
-	<%@ page import = "Webapp.AutoTotaalDienst" %>
-	<%@ page import = "Webapp.Product" %>
+	<%@ page import = "DomeinModel.AutoTotaalDienst" %>
+	<%@ page import = "Onderdelen.Product" %>
 	
 	<a href="voorraad_toevoegen.jsp">Voeg een onderdeel toe</a><br>
 	<form action="VoorraadWijzigenServlet.do" method="post">
@@ -18,27 +17,30 @@
 				<th>Onderdeelnaam</th>
 				<th>Minimale voorraad</th>
 				<th>Voorraad</th>
+				<th>In bestelling</th>
 				<th>Bestel</th>
 			</tr>
 			<%for(Product p : atd.getAlleOnderdelen()){ %>
 			<tr id = "headRow">
-				<td><a href="verwijderVoorraad.jsp?id=<%=p.getProductNummer()%>&type=2">X</a></td>
+				<td><a href="verwijderVoorraad.jsp?id=<%=p.getProductNummer()%>&type=2"><img src="images/deleteIcon.png"/></a></td>
 				<td><%= p.getProductNummer()  %></td>
 				<td><%= p.getProductNaam()  %></td>
 				<td><%= p.getMinVoorraad() %></td>
 				<td <%if(p.getVoorraad() < p.getMinVoorraad()){%> class="red" <%}%>><%= p.getVoorraad()  %></td>
+				<td><%= p.getInBestelling()  %></td>
 				<td><input type="text" name="prod_<%=p.getProductNummer()%>"/></td>
-				<td><a href="minimalevoorraad_onderdeel.jsp?id=<%=p.getProductNummer()%>&type=2">Minimale voorraad aanpassen</a></td>
+				<td><a href="minimalevoorraad.jsp?id=<%=p.getProductNummer()%>&type=2">Minimale voorraad aanpassen</a></td>
 			</tr>
 			<input type="hidden" name="voorraadId" value="<%= p.getProductNummer()  %>"/>
 			<input type="hidden" name="voorraadNaam" value="<%= p.getProductNaam()  %>"/>
 			<input type="hidden" name="voorraadMin" value="<%= p.getMinVoorraad() %>"/>
 			<input type="hidden" name="voorraad" value="<%= p.getVoorraad()  %>"/>
 			<input type="hidden" name="voorraadType" value="<%= p.getType() %>"/>
+			<input type="hidden" name="inbestelling" value="<%= p.getInBestelling() %>"/>
 			
 			<% }%>
 		</table>
-		<input type="submit" value="Bestel" name = "bestel">
+		<input type="submit" value="Bestel" name ="bestel">
 	</form>
 </div>
 

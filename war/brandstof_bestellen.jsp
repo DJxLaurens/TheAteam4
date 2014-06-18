@@ -5,8 +5,8 @@
 <div class="content">
 	<h1>Brandstof bestellen</h1>
 
-	<%@ page import = "Webapp.AutoTotaalDienst" %>
-	<%@ page import = "Webapp.Product" %>
+	<%@ page import = "DomeinModel.AutoTotaalDienst" %>
+	<%@ page import = "Onderdelen.Product" %>
 	
 	<a href="voorraad_toevoegen.jsp">Voeg een brandstof toe</a><br>
 	<form action="VoorraadWijzigenServlet.do" method="post">
@@ -18,15 +18,17 @@
 				<th>Brandstofnaam</th>
 				<th>Minimale voorraad</th>
 				<th>Voorraad</th>
+				<th>In bestelling</th>
 				<th>Bestel</th>
 			</tr>
 			<%for(Product p : atd.getAlleBrandstoffen()){ %>
 			<tr id = "headRow">
-				<td><a href="verwijderVoorraad.jsp?id=<%=p.getProductNummer()%>&type=1">X</a></td>
+				<td><a href="verwijderVoorraad.jsp?id=<%=p.getProductNummer()%>&type=1"><img src="images/deleteIcon.png"/></a></td>
 				<td><%= p.getProductNummer()  %></td>
 				<td><%= p.getProductNaam()  %></td>
 				<td><%= p.getMinVoorraad() %> Liter</td>
 				<td <%if(p.getVoorraad() < p.getMinVoorraad()){%> class="red" <%}%>><%= p.getVoorraad()  %> Liter</td>
+				<td><%= p.getInBestelling()  %> Liter</td>
 				<td><input type="text" name="prod_<%=p.getProductNummer()%>"/></td>
 				<td><a href="minimalevoorraad.jsp?id=<%=p.getProductNummer()%>&type=1">Minimale voorraad aanpassen</a></td>
 			</tr>

@@ -1,8 +1,8 @@
 <jsp:include page="header.jsp" />
 
 <div class="content">
-	<%@ page import = "Webapp.Klus" %>
-	<%@ page import = "Webapp.AutoTotaalDienst" %>
+	<%@ page import = "Onderdelen.Klus" %>
+	<%@ page import = "DomeinModel.AutoTotaalDienst" %>
 	<h1>Status 12-04-14</h1>
 	<form>
 		<table>

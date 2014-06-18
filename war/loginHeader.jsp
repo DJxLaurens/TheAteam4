@@ -5,34 +5,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Inloggen</title>
-<link href="style.css" rel="stylesheet">
+<link href="style/style.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<div class="header">
 			<img src="images/Logo-A-Team.png" class="logo"/>
-		<form action="LoginServlet.do" method="post">					
-			<h3>Login</h3>
-			<% 
-				Object msgs = request.getAttribute("msgs"); 
-				if (msgs != null) { 	 
-					out.println(msgs); 
-					out.println(); 		
-				}		
-				Object naam = request.getAttribute("email"); 
-			%>
-				<div>
-					<label>Email:</label> <input type="text" name="naam" value="<%if(naam !=null){ out.println(naam); }%>" />
-
-				</div>
-				<div>
-					<label>Wachtwoord:</label>
-					<input type="password" name="wachtwoord" />
-				</div>
-				<div>
-				<input type="submit" value="Inloggen"/>
-				</div>			
-		</form>	
+		<div class="login">
+			<form action="LoginServlet.do" method="post">					
+				<h3>Login</h3>
+				<% 
+					Object msgs = request.getAttribute("msgs"); 
+					if (msgs != null) { 	 
+						out.println(msgs); 
+						out.println(); 		
+					}		
+					Object naam = request.getAttribute("email"); 
+				%>
+					<div>
+						<label>Email:</label> <input type="text" name="naam" value="<%if(naam !=null){ out.println(naam); }%>" />
+	
+					</div>
+					<div>
+						<label>Wachtwoord:</label>
+						<input type="password" name="wachtwoord" />
+					</div>
+					<div>
+					<input type="submit" value="Inloggen"/>
+					</div>			
+			</form>	
+		</div>
 			
 		</div>
 		<div class="menu">
