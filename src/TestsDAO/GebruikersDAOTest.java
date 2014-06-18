@@ -1,4 +1,4 @@
-package DAOTests;
+package TestsDAO;
 
 import static org.junit.Assert.*;
 
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-public class KlussenDAOTest {
+public class GebruikersDAOTest {
 	
 	@Before
 	public void setUp(){
@@ -20,12 +20,22 @@ public class KlussenDAOTest {
 	}
 	
 	@Test
-	public void getAlleKlussenDB(){
+	public void getAlleGebruikersDB(){
 		
 	}
 	
 	@Test
-	public void saveKlus(){
+	public void setBlokkade(){
+		
+	}
+	
+	@Test
+	public void getBlokkade(){
+		
+	}
+	
+	@Test
+	public void saveGebruiker(){
 		
 	}
 }

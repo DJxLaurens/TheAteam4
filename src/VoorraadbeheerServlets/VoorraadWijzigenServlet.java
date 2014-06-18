@@ -37,9 +37,10 @@ public class VoorraadWijzigenServlet extends HttpServlet {
 									aantal = Integer.parseInt(req.getParameter(name));
 								}
 			 					//String huidigeVoorraad = req.getParameter("voorraad");
-			 					System.out.println("Nieuwe uitkomst: " + id + " " + aantal + " " + producten.getVoorraadById(id));
+			 					//System.out.println("Nieuwe uitkomst: " + id + " " + aantal + " " + producten.getVoorraadById(id));
 			 					try {
-									producten.changeVoorraad(id, aantal, producten.getVoorraadById(id));
+			 						producten.vrdInBestelling(id, aantal);
+									//producten.changeVoorraad(id, aantal, producten.getVoorraadById(id));
 								} catch (SQLException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();

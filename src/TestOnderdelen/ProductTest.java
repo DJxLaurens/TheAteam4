@@ -1,4 +1,4 @@
-package OnderdelenTest;
+package TestOnderdelen;
 
 import static org.junit.Assert.*;
 
@@ -44,6 +44,20 @@ public class ProductTest {
 	public void testInBestelling(){ 
 		Product p1 = new Product(4, "Uitlaat", 3, 50, 10, 5);
 		assertEquals(5, p1.getInBestelling());
+	}
+	
+	@Test
+	public void testProductNummer(){ 
+		Product p1 = new Product();
+		p1.setProductNummer(10);
+		assertEquals(10, p1.getProductNummer());
+	}
+	
+	@Test
+	public void testProductPrijs(){ 
+		Product p1 = new Product();
+		p1.setProductPrijs(20);
+		assertEquals(20, p1.getProductPrijs(), 0);
 	}
 	
 }
