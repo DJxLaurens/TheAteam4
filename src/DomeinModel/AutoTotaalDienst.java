@@ -92,6 +92,12 @@ public class AutoTotaalDienst {
     	alleOnderdelen = new ProductDAO().getAlleOnderdelenDB();
         return alleOnderdelen;
     }
+    
+    public Product getOnderdeelById(int id){
+    	  Product onderdeel = new ProductDAO().getOnderdeelFromID(id);
+    	   	
+    	  return onderdeel;
+    }
 
     public ArrayList<Product> getAlleBrandstoffen(){
 		alleBrandstoffen = new ProductDAO().getAlleBrandstoffenDB();
