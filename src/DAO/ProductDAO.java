@@ -41,6 +41,7 @@ public class ProductDAO {
 				int type = rs.getInt("type");
 				int minVoorraad = rs.getInt("minVoorraad");
 				int voorraad = rs.getInt("voorraad");
+				System.out.println("In bestelling waarde: " + rs.getInt("inbestelling"));
 				int inBestelling = rs.getInt("inbestelling");
 				
 				Product p = new Product(id, naam, type, minVoorraad, voorraad, inBestelling);	
