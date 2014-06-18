@@ -328,15 +328,6 @@ public class AutoTotaalDienst {
         k.setBlokkade();
     }
 
-    public boolean heeftAuto(String kt){
-        boolean b = false;
-        for (Auto a: alleAutos){
-            if (a.getKenteken().equals(kt)){
-                b = true;
-            }
-        }
-        return b;
-    }
     public Auto zoekAuto(String kt){
         Auto antw = null;
         for(Auto a: alleAutos){
@@ -346,35 +337,5 @@ public class AutoTotaalDienst {
             }
         }
         return antw;
-    }
-    public boolean voegAutoToe(Auto nweAuto){
-        boolean b = false;
-        if(!heeftAuto(nweAuto.getKenteken())){
-            alleAutos.add(nweAuto);
-            b = true;
-        }
-        return b;
-    }
-    
-    public ArrayList<Auto> getAlleAutos(){
-        return alleAutos;
-    }
-    
-	public ArrayList<Klus> getAlleKlussen() {
-		if (alleKlussen.isEmpty()) {
-			alleKlussen = new KlussenDAO().getAlleKlussenDB();
-		}
-		return alleKlussen;
-	}
-
-    public ArrayList<Klus> getAlleKlussenVandaag(){
-        return klussenStatus;
-    }
-
-    public boolean voegMonteurToe(Monteur m){
-        return alleMonteurs.add(m);
-    }
-    public ArrayList<Monteur> getAlleMonteurs(){
-        return alleMonteurs;
     }
 }

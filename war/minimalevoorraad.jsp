@@ -1,7 +1,7 @@
 <jsp:include page="header.jsp" />
 
-<%@ page import = "Webapp.AutoTotaalDienst" %>
-<%@ page import = "Webapp.Product" %>
+<%@ page import = "DomeinModel.AutoTotaalDienst" %>
+<%@ page import = "Onderdelen.Product" %>
 <%@ page import="java.util.*"%>
 
 <div class="content">

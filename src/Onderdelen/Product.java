@@ -1,23 +1,45 @@
 package Onderdelen;
 
 public class Product {
+	private int productID;
+    private String productNaam;
+    private int type;
     private int minVoorraad;
     private int voorraad;
-    private String productNaam;
     private Double prijs;
-    private int type;
-    private int productID;
+    private int inBestelling;
 
-    public Product(int pId, String pNm, int tp, int mV, int vrd){
+    public Product(int pId, String pNm, int tp, int mV, int vrd, int iB){
+    	productID = pId;
+    	productNaam = pNm;
+    	type = tp;
         minVoorraad = mV;
         voorraad = vrd;
-        productNaam = pNm;
-        type = tp;
-        productID = pId;
+        inBestelling = iB;
     }
-
+    
+    public int getProductID(){
+    	return productID;
+    }
+    
+    public void setProductID(int pi){
+    	productID = pi;
+    }
+    
+    public String getProductNaam(){
+        return productNaam;
+    }
+    
+    public void setProductNaam(String pn){
+    	productNaam = pn;
+    }
+    
     public int getType(){
     	return type;
+    }
+    
+    public void setType(int t){
+    	type = t;
     }
     
     public int getMinVoorraad(){
@@ -28,17 +50,18 @@ public class Product {
         minVoorraad = minVrd;
     }
 
-    public String getProductNaam(){
-        return productNaam;
+    public int getVoorraad(){
+        return voorraad;
     }
+    
     public void setVoorraad(int vrd){
         voorraad = vrd;
     }
 
-    public int getVoorraad(){
-        return voorraad;
+    public int getInBestelling(){
+        return inBestelling;
     }
-
+    
     public int getProductNummer(){
         return productID;
     }
