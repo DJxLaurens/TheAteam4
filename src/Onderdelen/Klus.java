@@ -99,10 +99,13 @@ public class Klus {
         } 
         return b;
     }
-	public void voegDatumToe(String d) {
+	public boolean voegDatumToe(String d) {
+		boolean b = false;
 		if (d.equals(getToday())) {
 			datum.add(d);
+			b = true;
 		}
+		return b;
 	}
     public ArrayList<String> getAlleData(){
         return datum;
