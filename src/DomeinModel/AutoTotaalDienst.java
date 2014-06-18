@@ -12,8 +12,8 @@ import Onderdelen.Auto;
 import Onderdelen.Gebruiker;
 import Onderdelen.Klus;
 import Onderdelen.Monteur;
-import Onderdelen.Parkeerplaats;
-import Onderdelen.Pas;
+//import Onderdelen.Parkeerplaats;
+//import Onderdelen.Pas;
 import Onderdelen.Product;
 import DAO.AutosDAO;
 import DAO.GebruikersDAO;
@@ -41,11 +41,11 @@ public class AutoTotaalDienst {
     private ArrayList<Klus> alleKlussenCombo = new ArrayList<Klus>();
     private ArrayList<Klus> klussenStatus = new ArrayList<Klus>();
     private ArrayList<Monteur> alleMonteurs = new ArrayList<Monteur>();
-    private ArrayList<Parkeerplaats> alleParkeerplaatsen = new ArrayList<Parkeerplaats>();
-    private ArrayList<Parkeerplaats> alleVrijeParkeerplaatsen = new ArrayList<Parkeerplaats>();
-    private ArrayList<Parkeerplaats> alleBezetteParkeerplaatsen = new ArrayList<Parkeerplaats>();
-    private ArrayList<Parkeerplaats> alleReserveringen = new ArrayList<Parkeerplaats>();
-    private ArrayList<Pas> allePassen = new ArrayList<Pas>();
+//    private ArrayList<Parkeerplaats> alleParkeerplaatsen = new ArrayList<Parkeerplaats>();
+//    private ArrayList<Parkeerplaats> alleVrijeParkeerplaatsen = new ArrayList<Parkeerplaats>();
+//    private ArrayList<Parkeerplaats> alleBezetteParkeerplaatsen = new ArrayList<Parkeerplaats>();
+//    private ArrayList<Parkeerplaats> alleReserveringen = new ArrayList<Parkeerplaats>();
+//    private ArrayList<Pas> allePassen = new ArrayList<Pas>();
     private double literPrijs, werkUurPrijs, maandPrijs, weekPrijs, dagPrijs;
     
 
@@ -437,71 +437,71 @@ public class AutoTotaalDienst {
     public void blokkeer(Gebruiker k){
         k.setBlokkade();
     }
-    public boolean voegVrijeParkeerplaatsToe(Parkeerplaats nP){
-        boolean b = false;
-        if(nP.getBezet() == false){
-            alleVrijeParkeerplaatsen.add(nP);
-            b = true;
-        }
-        return b;
-    }
-    public ArrayList<Parkeerplaats> getAlleVrijeParkeerplaatsen(){
-        return alleVrijeParkeerplaatsen;
-    }
-    public boolean heeftParkeerplaats(int pNr){
-        boolean b = false;
-        for (Parkeerplaats p: alleVrijeParkeerplaatsen){
-            if (p.getNummer() == pNr){
-                b = true;
-            }
-        }
-        return b;
-    }
-    public boolean voegParkeerplaatsToe(Parkeerplaats p){
-        return alleParkeerplaatsen.add(p);
-    }
-    public void verwijderParkeerplaats(Parkeerplaats exPar) {
-        if (heeftParkeerplaats(exPar.getNummer())) {
-            alleVrijeParkeerplaatsen.remove(exPar);
-        }
-    }
-    public ArrayList<Parkeerplaats> getAlleParkeerplaatsen(){
-        return alleParkeerplaatsen;
-    }
-    public boolean heeftBezetteParkeerplaats(int pNr){
-        boolean b = false;
-        for (Parkeerplaats p: alleBezetteParkeerplaatsen){
-            if (p.getNummer() == pNr){
-                b = true;
-            }
-        }
-        return b;
-    }
-    public boolean voegBezetteParkeerplaatsToe(Parkeerplaats nP){
-        boolean b = false;
-        if(nP.getBezet() == true){
-            alleBezetteParkeerplaatsen.add(nP);
-            b = true;
-        }
-        return b;
-    }
-    public void verwijderBezetteParkeerplaats(Parkeerplaats exPar) {
-        if (heeftBezetteParkeerplaats(exPar.getNummer())) {
-            alleBezetteParkeerplaatsen.remove(exPar);
-        }
-    }
-    public ArrayList<Parkeerplaats> getAlleBezetteParkeerplaatsen(){
-        return alleBezetteParkeerplaatsen;
-    }
-    public boolean heeftAuto(String kt){
-        boolean b = false;
-        for (Auto a: alleAutos){
-            if (a.getKenteken().equals(kt)){
-                b = true;
-            }
-        }
-        return b;
-    }
+//    public boolean voegVrijeParkeerplaatsToe(Parkeerplaats nP){
+//        boolean b = false;
+//        if(nP.getBezet() == false){
+//            alleVrijeParkeerplaatsen.add(nP);
+//            b = true;
+//        }
+//        return b;
+//    }
+//    public ArrayList<Parkeerplaats> getAlleVrijeParkeerplaatsen(){
+//        return alleVrijeParkeerplaatsen;
+//    }
+//    public boolean heeftParkeerplaats(int pNr){
+//        boolean b = false;
+//        for (Parkeerplaats p: alleVrijeParkeerplaatsen){
+//            if (p.getNummer() == pNr){
+//                b = true;
+//            }
+//        }
+//        return b;
+//    }
+//    public boolean voegParkeerplaatsToe(Parkeerplaats p){
+//        return alleParkeerplaatsen.add(p);
+//    }
+//    public void verwijderParkeerplaats(Parkeerplaats exPar) {
+//        if (heeftParkeerplaats(exPar.getNummer())) {
+//            alleVrijeParkeerplaatsen.remove(exPar);
+//        }
+//    }
+//    public ArrayList<Parkeerplaats> getAlleParkeerplaatsen(){
+//        return alleParkeerplaatsen;
+//    }
+//    public boolean heeftBezetteParkeerplaats(int pNr){
+//        boolean b = false;
+//        for (Parkeerplaats p: alleBezetteParkeerplaatsen){
+//            if (p.getNummer() == pNr){
+//                b = true;
+//            }
+//        }
+//        return b;
+//    }
+//    public boolean voegBezetteParkeerplaatsToe(Parkeerplaats nP){
+//        boolean b = false;
+//        if(nP.getBezet() == true){
+//            alleBezetteParkeerplaatsen.add(nP);
+//            b = true;
+//        }
+//        return b;
+//    }
+//    public void verwijderBezetteParkeerplaats(Parkeerplaats exPar) {
+//        if (heeftBezetteParkeerplaats(exPar.getNummer())) {
+//            alleBezetteParkeerplaatsen.remove(exPar);
+//        }
+//    }
+//    public ArrayList<Parkeerplaats> getAlleBezetteParkeerplaatsen(){
+//        return alleBezetteParkeerplaatsen;
+//    }
+//    public boolean heeftAuto(String kt){
+//        boolean b = false;
+//        for (Auto a: alleAutos){
+//            if (a.getKenteken().equals(kt)){
+//                b = true;
+//            }
+//        }
+//        return b;
+//    }
     public Auto zoekAuto(String kt){
         Auto antw = null;
         for(Auto a: alleAutos){
@@ -512,19 +512,19 @@ public class AutoTotaalDienst {
         }
         return antw;
     }
-    public boolean voegAutoToe(Auto nweAuto){
-        boolean b = false;
-        if(!heeftAuto(nweAuto.getKenteken())){
-            alleAutos.add(nweAuto);
-            b = true;
-        }
-        return b;
-    }
-    public void verwijderAuto(Auto exAuto) {
-        if (heeftAuto(exAuto.getKenteken())) {
-            alleAutos.remove(exAuto);
-        }
-    }
+//    public boolean voegAutoToe(Auto nweAuto){
+//        boolean b = false;
+//        if(!heeftAuto(nweAuto.getKenteken())){
+//            alleAutos.add(nweAuto);
+//            b = true;
+//        }
+//        return b;
+//    }
+//    public void verwijderAuto(Auto exAuto) {
+//        if (heeftAuto(exAuto.getKenteken())) {
+//            alleAutos.remove(exAuto);
+//        }
+//    }
     public ArrayList<Auto> getAlleAutos(){
         return alleAutos;
     }
@@ -616,61 +616,61 @@ public class AutoTotaalDienst {
     public ArrayList<Klus> getAlleKlussenVandaag(){
         return klussenStatus;
     }
-    public boolean heeftReservering(int pNr){
-        boolean b = false;
-        for (Parkeerplaats p: alleReserveringen){
-            if (p.getNummer() == pNr){
-                b = true;
-            }
-        }
-        return b;
-    }
-    public boolean voegReserveringToe(Parkeerplaats nR){
-        boolean b = false;
-                alleReserveringen.add(nR);
-                b = true;
-        return b;
-    }
-    public void verwijderReservering(Parkeerplaats nR) {
-        if (heeftReservering(nR.getNummer())) {
-            alleReserveringen.remove(nR);
-        }
-    }
-
-    public ArrayList<Parkeerplaats> getAlleReseveringen(){
-        return alleReserveringen;
-    }
-
-    public boolean voegMonteurToe(Monteur m){
-        return alleMonteurs.add(m);
-    }
-    public ArrayList<Monteur> getAlleMonteurs(){
-        return alleMonteurs;
-    }
-    public boolean heeftPas(int pn){
-        boolean b = false;
-        for (Pas ps: allePassen){
-            if (ps.getPasnummer() == pn){
-                b = true;
-            }
-        }
-        return b;
-    }
-    public boolean voegPasToe(Pas nwePas){
-        boolean b = false;
-        if(!heeftPas(nwePas.getPasnummer())){
-            allePassen.add(nwePas);
-            b = true;
-        }
-        return b;
-    }
-    //Alle gegevens van de pas van de klant
-    public String toString(){
-        String s = "";
-        s = s + "De volgende passen zijn er: \n";
-        for (Pas ps : allePassen){
-           s = s + "\n" + ps.toString();
-        }
-        return s;
-    }
+//    public boolean heeftReservering(int pNr){
+//        boolean b = false;
+//        for (Parkeerplaats p: alleReserveringen){
+//            if (p.getNummer() == pNr){
+//                b = true;
+//            }
+//        }
+//        return b;
+//    }
+//    public boolean voegReserveringToe(Parkeerplaats nR){
+//        boolean b = false;
+//                alleReserveringen.add(nR);
+//                b = true;
+//        return b;
+//    }
+//    public void verwijderReservering(Parkeerplaats nR) {
+//        if (heeftReservering(nR.getNummer())) {
+//            alleReserveringen.remove(nR);
+//        }
+//    }
+//
+//    public ArrayList<Parkeerplaats> getAlleReseveringen(){
+//        return alleReserveringen;
+//    }
+//
+//    public boolean voegMonteurToe(Monteur m){
+//        return alleMonteurs.add(m);
+//    }
+//    public ArrayList<Monteur> getAlleMonteurs(){
+//        return alleMonteurs;
+//    }
+//    public boolean heeftPas(int pn){
+//        boolean b = false;
+//        for (Pas ps: allePassen){
+//            if (ps.getPasnummer() == pn){
+//                b = true;
+//            }
+//        }
+//        return b;
+//    }
+//    public boolean voegPasToe(Pas nwePas){
+//        boolean b = false;
+//        if(!heeftPas(nwePas.getPasnummer())){
+//            allePassen.add(nwePas);
+//            b = true;
+//        }
+//        return b;
+//    }
+//    //Alle gegevens van de pas van de klant
+//    public String toString(){
+//        String s = "";
+//        s = s + "De volgende passen zijn er: \n";
+//        for (Pas ps : allePassen){
+//           s = s + "\n" + ps.toString();
+//        }
+//        return s;
+//    }
 }
