@@ -1,4 +1,4 @@
-package OnderdelenTests;
+package TestOnderdelen;
 
 import static org.junit.Assert.*;
 

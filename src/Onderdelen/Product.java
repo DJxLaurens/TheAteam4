@@ -6,7 +6,7 @@ public class Product {
     private int type;
     private int minVoorraad;
     private int voorraad;
-    private Double prijs;
+    private double prijs;
     private int inBestelling;
 
     public Product(int pId, String pNm, int tp, int mV, int vrd, int iB){
@@ -18,7 +18,10 @@ public class Product {
         inBestelling = iB;
     }
     
-    public int getProductID(){
+    public Product() {
+	}
+
+	public int getProductID(){
     	return productID;
     }
     
@@ -65,8 +68,17 @@ public class Product {
     public int getProductNummer(){
         return productID;
     }
+    
+    public void setProductNummer(int pn){
+        productID = pn;
+    }
+    
     public double getProductPrijs(){
         return prijs;
+    }
+    
+    public void setProductPrijs(double pp){
+        prijs = pp;
     }
     
     public String toString(){
