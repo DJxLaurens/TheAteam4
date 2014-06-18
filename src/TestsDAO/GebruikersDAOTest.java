@@ -23,7 +23,6 @@ public class GebruikersDAOTest {
 			e.printStackTrace();
 		}
 
-		gDao.getAlleGebruikersDB().get(0).setBlokkade(false);
 	}
 
 	@Test
@@ -39,7 +38,7 @@ public class GebruikersDAOTest {
 		assertEquals("jan@lolmail.com", gDao.getAlleGebruikersDB().get(0).getEmailadres());
 		assertEquals("11-03-2013", gDao.getAlleGebruikersDB().get(0).getLaatstgeweest());
 		assertEquals("01-01-2012", gDao.getAlleGebruikersDB().get(0).getOpenFactuur());
-		assertEquals(false, gDao.getAlleGebruikersDB().get(0).getBlokkade());
+		assertEquals(true, gDao.getAlleGebruikersDB().get(0).getBlokkade());
 	}
 
 	@Test
@@ -56,7 +55,10 @@ public class GebruikersDAOTest {
 	}
 
 	@Test
-	public void saveGebruiker(){
-
+	public void saveGebruiker() throws SQLException{
+		Gebruiker g = new Gebruiker(1, "Theo", null, null, null, null, null, "theo@lolmail.com", null, 1, null, false);
+		gDao.saveGebruiker(g);
+		assertEquals(g.getNaam(), gDao.getAlleGebruikersDB().get(5).getNaam());
+		assertEquals(g.getEmailadres(), gDao.getAlleGebruikersDB().get(5).getEmailadres());
 	}
 }
