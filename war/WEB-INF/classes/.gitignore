@@ -1,26 +1,11 @@
 <<<<<<< HEAD
-<<<<<<< HEAD
-/DAO/
-/VoorraadbeheerServlets/
-=======
-/Tests/
-/OnderdelenTest/
-<<<<<<< HEAD
-/OnderdelenTests/
-=======
-=======
-/DAOTests/
-<<<<<<< HEAD
-/DomeinModel/
+/TestOnderdelen/
 /Onderdelen/
 =======
->>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
->>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
-/DAO/
 /VoorraadbeheerServlets/
-<<<<<<< HEAD
-=======
+/TestsDAO/
 >>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
+<<<<<<< HEAD
 /Tests
 <<<<<<< HEAD
 /HerinneringsbrievenServlets
@@ -33,3 +18,6 @@
 >>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
 /TestOnderdelen/
 /TestsOnderdelen/
+=======
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
+/DAO/

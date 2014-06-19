@@ -20,6 +20,9 @@ public class Klus {
         autoId = aI;
         werknemerId = wI;
     }
+    public Klus(){
+    	
+    }
     public String getToday(){
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Calendar cal = Calendar.getInstance();
@@ -96,10 +99,13 @@ public class Klus {
         } 
         return b;
     }
-	public void voegDatumToe(String d) {
+	public boolean voegDatumToe(String d) {
+		boolean b = false;
 		if (d.equals(getToday())) {
 			datum.add(d);
+			b = true;
 		}
+		return b;
 	}
     public ArrayList<String> getAlleData(){
         return datum;

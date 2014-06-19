@@ -56,7 +56,6 @@ public class GebruikersDAO {
 				alleGebruikersDB.add(g);			
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		

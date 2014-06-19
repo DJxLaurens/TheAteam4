@@ -25,6 +25,16 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>PrijsAanpassen Servlet</servlet-name>
+		<servlet-class>VoorraadbeheerServlets.PrijsAanpassenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>PrijsAanpassen Servlet</servlet-name>
+	<url-pattern>/PrijsAanpassenServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
 		<servlet-name>Klantenbinding Servlet</servlet-name>
 		<servlet-class>KlantenbindingServlets.KlantenbindingServlet</servlet-class>
 	</servlet>
