@@ -11,11 +11,10 @@ public class Klus {
     private int werknemerId;
     private int klusNummer;
     private ArrayList<Auto>alleAutos = new ArrayList<Auto>();
-    private ArrayList<Monteur>alleMonteurs = new ArrayList<Monteur>();
+    private ArrayList<Gebruiker>alleMonteurs = new ArrayList<Gebruiker>();
     private ArrayList<String> datum = new ArrayList<String>();
-    public Klus(int kN, String kNm, String kO, int aI, int wI){
-    	klusNummer = kN;
-        klusNaam = kNm;
+    public Klus(String kNm, String kO, int aI, int wI){
+    	klusNaam = kNm;
         klusOmschrijving = kO;
         autoId = aI;
         werknemerId = wI;
@@ -84,14 +83,14 @@ public class Klus {
     
     public boolean heeftMonteur(String kt){
         boolean b = false;
-        for (Monteur m: alleMonteurs){
+        for (Gebruiker m: alleMonteurs){
             if (m.getNaam().equals(kt)){
                 b = true;
             }
         }
         return b;
     }
-    public boolean voegMonteurToe(Monteur m){
+    public boolean voegMonteurToe(Gebruiker m){
         boolean b = false;
         if(!heeftMonteur(m.getNaam())){
             alleMonteurs.add(m);
@@ -113,7 +112,7 @@ public class Klus {
     public ArrayList<Auto> getAlleAutos(){
         return alleAutos;
     }
-    public ArrayList<Monteur> getAlleMonteurs(){
+    public ArrayList<Gebruiker> getAlleMonteurs(){
         return alleMonteurs;
     }
     

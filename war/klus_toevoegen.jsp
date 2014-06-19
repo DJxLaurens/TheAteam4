@@ -2,14 +2,9 @@
 
 <div class="content">
 	<h1>Klus toevoegen</h1>
-
-	<%
-		Object msgs = request.getAttribute("msgs");
-		if (msgs != null) {
-			out.println(msgs);
-			out.println();
-		}
-	%>
+	<%@ page import="Onderdelen.Klus"%>
+	<%@ page import="Onderdelen.Auto"%>
+	<%@ page import="DomeinModel.AutoTotaalDienst"%>
 
 	<form action="KlusToevoegenServlet.do" method="post">
 		<table>
@@ -22,9 +17,12 @@
 				<td><input type="text" name="klusOmschrijving"></td>
 			</tr>
 			<tr>
-				<td>Kies Auto:</td>
-				<td><select><option value="BMW M3 GTR" name="auto">BMW
-							M3 GTR</option>
+				<td>Kies Auto:</td>				
+				<td><select name = "auto">
+				<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); 			
+				for(Auto a : atd.getAlleAutos()) {
+					%><option value=<%=a.getAutoID() %>><%= a.getMerk() + " " + a.getType() %>
+				<%}%></option>
 				</select></td>
 			</tr>
 		</table>

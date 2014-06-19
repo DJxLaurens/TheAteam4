@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import Onderdelen.Auto;
+import Onderdelen.Gebruiker;
 import Onderdelen.Klus;
 
 public class AutosDAO {
@@ -34,12 +35,25 @@ public class AutosDAO {
 		ArrayList<Auto> alleAutosDB = new ArrayList<Auto>();	
 		try {
 			this.leesDatabase();
-			output = statement.executeQuery("SELECT * FROM auto ");
+			output = statement.executeQuery("SELECT * FROM auto");
 			while (output.next()){
+				int id = output.getInt("auto_id");
+				String kenteken = output.getString("kenteken");
+				String merk = output.getString("merk");
 				int bouwjaar = output.getInt("bouwjaar");
-				int id = output.getInt("gebruiker_id");
-				Auto a = new Auto(bouwjaar);
-				a.setEigenaarID(id);
+				String type = output.getString("type");
+				int gebruikersId = output.getInt("gebruiker_id");
+				String brandstoftype = output.getString("brandstoftype");
+				GebruikersDAO geb = new GebruikersDAO();
+				Gebruiker eigenaar = null;
+				for(Gebruiker g : geb.getAlleGebruikersDB()){
+					if(gebruikersId == g.getGebruikerID()){
+						eigenaar = g;
+					}
+				}
+				Auto a = new Auto(kenteken, merk, bouwjaar, type, eigenaar, brandstoftype);
+				a.setAutoID(id);
+				a.setEigenaarID(gebruikersId);
 				alleAutosDB.add(a);			
 			}
 		} catch (SQLException e) {
@@ -49,7 +63,6 @@ public class AutosDAO {
 		
 		return alleAutosDB;
 	}
-	
 	public void saveAuto(Auto a) throws SQLException {	
 		this.leesDatabase();
 		statement.execute("INSERT INTO auto (kenteken, merk, bouwjaar, type, brandstoftype)"+ "VALUES ('"+ a.getKenteken() + "','" + a.getMerk() + "','" + a.getBouwjaar() + "','" + a.getType() + "','" + a.getBrandstoftype() + "')");				
