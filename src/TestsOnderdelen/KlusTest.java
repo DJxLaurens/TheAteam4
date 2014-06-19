@@ -8,25 +8,19 @@ import org.junit.Test;
 import Onderdelen.Auto;
 import Onderdelen.Gebruiker;
 import Onderdelen.Klus;
-import Onderdelen.Monteur;
 
 public class KlusTest {
 	Klus k = new Klus();
 	Auto a1 = new Auto(0);
 	Gebruiker g1 = new Gebruiker();
-	Monteur m = new Monteur(null);
+	Gebruiker m = new Gebruiker();
 
 	@Before
 	public void setUp() {
-		k = new Klus(1, "voorbeeldklus", "niks", 1, 1);
+		k = new Klus("voorbeeldklus", "niks", 1, 1);
 		g1 = new Gebruiker(0, 0, null, null, null, null, null, null, null, null, 0, null, 0);
 		a1 = new Auto("11-JJ-AT", "Opel", 1991, "Astra", g1, "Gas");
-		m = new Monteur("Henk Paladijn");
-	}
-
-	@Test
-	public void testKlusnummer() {
-		assertEquals(1, k.getKlusNummer());
+		m = new Gebruiker("Henk Paladijn");
 	}
 
 	@Test

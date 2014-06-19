@@ -9,6 +9,7 @@ public class Auto{
     private int eigenaarID;
     private Gebruiker eigenaar;
     private String brandstoftype;
+    private int autoID;
     
     public Auto(String kt, String mk, int bj, String tp, Gebruiker eig, String bt){
         kenteken = kt;
@@ -78,7 +79,13 @@ public class Auto{
     public void setBrandstoftype(String tp){
         brandstoftype = tp;
     }
-    
+    //wordt geset in AutoDAO
+    public void setAutoID(int id){
+    	id = autoID;
+    }
+    public int getAutoID(){
+    	return autoID;
+    }
     public String toString(){
         return merk + " " + type;
     }

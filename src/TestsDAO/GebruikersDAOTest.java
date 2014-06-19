@@ -28,7 +28,7 @@ public class GebruikersDAOTest {
 	@Test
 	public void getAlleGebruikersDB(){
 		assertEquals(1, gDao.getAlleGebruikersDB().get(0).getGebruikerID());
-		assertEquals(1, gDao.getAlleGebruikersDB().get(0).getRol());
+		assertEquals(4, gDao.getAlleGebruikersDB().get(0).getRol());
 		assertEquals("Jan", gDao.getAlleGebruikersDB().get(0).getNaam());
 		assertEquals("Jan", gDao.getAlleGebruikersDB().get(0).getWachtwoord());
 		assertEquals("Bananenlaan 1", gDao.getAlleGebruikersDB().get(0).getAdres());

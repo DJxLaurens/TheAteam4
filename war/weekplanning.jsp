@@ -3,7 +3,7 @@
 <div class="content">
 	<h1>Weekplanning</h1>
 	<%@ page import="Onderdelen.Klus"%>
-	<%@ page import="Onderdelen.Monteur"%>
+	<%@ page import="Onderdelen.Gebruiker"%>
 	<%@ page import="DomeinModel.AutoTotaalDienst"%>
 	<form action ="WeekplanningServlet.do" method = "post">
 		<table>
@@ -48,9 +48,9 @@
 				<td>Selecteer Monteur:</td>
 				<td><select>
 						<%
-							for(Monteur m : atd.getAlleMonteurs()) {
+							for(Gebruiker g : atd.getAlleMonteurs()) {
 						%>
-						<option value=monteur><%=m.getNaam()%>
+						<option value=monteur><%=g.getNaam()%>
 						</option>
 						<%
 							}
