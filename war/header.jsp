@@ -79,12 +79,15 @@
 					</ul></li>	
 				<%} %>			
 				<%if(rol == 1 || rol == 9){ %>
-				<li>Herinneringsbrieven			
-					<ul>
-						<li><a href="herinneringsbrieven-brievenaanmaken.jsp">Brieven aanmaken</a></li>
-						<li><a href="herinneringsbrieven-factuurbetalingblokkeren.jsp">Factuurbetaling blokkeren</a></li>						
-						<li><a href="klantenbinding.jsp">Klantenbinding</a></li>						
-					</ul></li>
+				<div class = "herinneringsbrieven">
+					<li>Herinneringsbrieven			
+						<ul>
+							<li><a href="herinneringsbrieven-brievenaanmaken.jsp">Brieven aanmaken</a></li>
+							<li><a href="herinneringsbrieven-factuurbetalingblokkeren.jsp">Factuurbetaling blokkeren</a></li>						
+							<li><a href="klantenbinding.jsp">Klantenbinding</a></li>						
+						</ul>
+					</li>
+				</div>
 				<%} %>
 				<%if(rol == 1 || rol == 3 || rol == 9){ %>
 				<li>Betalingen/Facturatie
