@@ -143,6 +143,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>In bestelling</servlet-name>
+		<servlet-class>VoorraadbeheerServlets.BestellingOphalenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>In bestelling</servlet-name>
+		<url-pattern>/BestellingOphalenServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>Weekplanning Servlet</servlet-name>
 		<servlet-class>OnderhoudsbeurtServlets.WeekplanningServlet</servlet-class>
 	</servlet>
