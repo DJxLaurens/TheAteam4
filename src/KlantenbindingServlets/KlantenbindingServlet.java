@@ -20,7 +20,7 @@ import Onderdelen.Gebruiker;
 public class KlantenbindingServlet extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+			throws ServletException, IOException{
 		
 		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");	
 		

@@ -2,11 +2,15 @@ package TestKlantenbindingSelenium;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
+
 import org.junit.*;
+
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class KlantenMetAutosJongerDan2010Test {
@@ -24,16 +28,14 @@ public class KlantenMetAutosJongerDan2010Test {
 
   @Test
   public void testKlantenMetAutosJongerDan2010() throws Exception {
-    driver.get(baseUrl + "/ATD-Windows/index.jsp");
-    driver.findElement(By.name("naam")).clear();
-    driver.findElement(By.name("naam")).sendKeys("admin@ikbendeadmin.nl");
-    driver.findElement(By.name("wachtwoord")).clear();
-    driver.findElement(By.name("wachtwoord")).sendKeys("admin");
-    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
-    driver.findElement(By.linkText("Klantenbinding")).click();
-    new Select(driver.findElement(By.name("veld1"))).selectByVisibleText("Jan");
-    driver.findElement(By.name("press")).click();
-    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+	  driver.get(baseUrl + "/ATD-Windows/index.jsp");
+	    driver.findElement(By.name("naam")).clear();
+	    driver.findElement(By.name("naam")).sendKeys("admin@ikbendeadmin.nl");
+	    driver.findElement(By.name("wachtwoord")).clear();
+	    driver.findElement(By.name("wachtwoord")).sendKeys("admin");
+	    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+	    
+	    
   }
 
   @After
