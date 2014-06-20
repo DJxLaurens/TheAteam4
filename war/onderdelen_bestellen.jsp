@@ -30,7 +30,7 @@
 				<td <%if(p.getVoorraad() < p.getMinVoorraad()){%> class="red" <%}%>><%= p.getVoorraad()  %></td>
 				<td><%= p.getInBestelling()  %></td>
 				<td><input type="text" name="prod_<%=p.getProductNummer()%>"/></td>
-				<td><a href="bestelling_ophalen.jsp?id=<%=p.getProductNummer()%>"><img src="images/icon-vrachtwagen.png"/></a></td>
+				<td><a href="bestelling_ophalen.jsp?id=<%=p.getProductNummer()%>&type=2"><img src="images/icon-vrachtwagen.png"/></a></td>
 				<td><a href="minimalevoorraad.jsp?id=<%=p.getProductNummer()%>&type=2">Minimale voorraad aanpassen</a></td>
 			</tr>
 			<input type="hidden" name="voorraadId" value="<%= p.getProductNummer()  %>"/>

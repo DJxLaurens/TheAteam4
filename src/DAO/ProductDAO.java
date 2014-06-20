@@ -232,6 +232,22 @@ public class ProductDAO {
 		this.getAlleOnderdelenDB();
 	}
 	
+	public void haalBestellingOp(int id, int ib, int vrd) throws SQLException {	
+		try {
+			this.leesDatabase();
+			statement = con.createStatement();
+			
+			int nwvrd = ib + vrd;
+			
+		String sql = "UPDATE voorraad " + "SET voorraad = "+ nwvrd +", inbestelling = 0 WHERE id=" + id;
+		statement.executeUpdate(sql);	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.getAlleOnderdelenDB();
+	}
+	
 	public void deleteVoorraad(int id) throws SQLException {	
 		try {
 			this.leesDatabase();

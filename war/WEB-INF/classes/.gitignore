@@ -1,4 +1,12 @@
-/Onderdelen/
-/TestOnderdelen/
-/VoorraadbeheerServlets/
+/BetalingFacturatieServlets/
+/DAO/
 /DomeinModel/
+/HerinneringsbrievenServlets/
+/InloggenServlets/
+/KlantenbindingServlets/
+/MyServletContextListener/
+/Onderdelen/
+/OnderhoudsbeurtServlets/
+/TestOnderdelen/
+/TestsDAO/
+/VoorraadbeheerServlets/
