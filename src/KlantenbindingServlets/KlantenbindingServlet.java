@@ -84,7 +84,8 @@ public class KlantenbindingServlet extends HttpServlet{
 			if(!x.equals("") && check == 2){
 				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmm");
 				Date datum = new Date();
-				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +2 maanden.txt", true); 
+				//FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +2 maanden.txt", true); 
+				FileWriter fw = new FileWriter("Users/Laurens/Desktop/["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +2 maanden.txt", true); 
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");
@@ -95,7 +96,14 @@ public class KlantenbindingServlet extends HttpServlet{
 				pw.println("");
 				pw.println("Henk Paladijn");
 				pw.close(); 
-				JOptionPane.showMessageDialog(null, "Aanmaken gelukt", "Brief is aangemaakt", JOptionPane.PLAIN_MESSAGE);
+				
+				PrintWriter out = resp.getWriter();  
+				resp.setContentType("text/html");  
+				out.println("<script type=\"text/javascript\">");  
+				out.println("alert('deadbeef');");  
+				out.println("</script>");
+				
+				//JOptionPane.showMessageDialog(null, "Aanmaken gelukt", "Brief is aangemaakt", JOptionPane.PLAIN_MESSAGE);
 				rd = req.getRequestDispatcher("klantenbinding.jsp");
 				rd.forward(req, resp);
 			}
