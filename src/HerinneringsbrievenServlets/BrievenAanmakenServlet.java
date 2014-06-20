@@ -1,5 +1,6 @@
 package HerinneringsbrievenServlets;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.FileWriter;
@@ -21,7 +22,7 @@ import Onderdelen.Gebruiker;
 
 public class BrievenAanmakenServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+			throws ServletException, IOException, FileNotFoundException {
 
 		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");	
 		
@@ -49,7 +50,9 @@ public class BrievenAanmakenServlet extends HttpServlet{
 			if(!x.equals("") && check != 2){
 				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmm");
 				Date datum = new Date();
-				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Betaalherinnering +90 dagen.txt", false); 
+				try{
+				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Betaalherinnering +90 dagen.txt", false);
+				//FileWriter fw = new FileWriter("/Users/Laurens/Desktop/["+sdf.format(datum)+"] "+x+" - Betaalherinnering +90 dagen.txt", false);
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");
@@ -59,12 +62,35 @@ public class BrievenAanmakenServlet extends HttpServlet{
 				pw.println("Met vriendelijke groet,");
 				pw.println("");
 				pw.println("Henk Paladijn");
+				
+				PrintWriter out = resp.getWriter();
+			    out.println("<script type=\"text/javascript\">");
+			    out.println("alert('Brief van " + x + " is aangemaakt');");  
+			    out.println("window.location = 'herinneringsbrieven-brievenaanmaken.jsp'");
+			    out.println("</script>");
+			    out.close();
 				pw.close(); 
-				JOptionPane.showMessageDialog(null, "Aanmaken gelukt", "Brief is aangemaakt", JOptionPane.PLAIN_MESSAGE);
-				rd = req.getRequestDispatcher("herinneringsbrieven-brievenaanmaken.jsp");
-				rd.forward(req, resp);
+				
+				
+//				rd = req.getRequestDispatcher("herinneringsbrieven-brievenaanmaken.jsp");
+//				rd.forward(req, resp);
+				
+				}catch(FileNotFoundException fnfe){
+					fnfe.printStackTrace();
+				}
+				
+				//JOptionPane.showMessageDialog(null, "Aanmaken gelukt", "Brief is aangemaakt", JOptionPane.PLAIN_MESSAGE);
+				
 			}
 			else if(check != 2){
+				
+//				PrintWriter out2 = resp.getWriter();
+//			    out2.println("<script type=\"text/javascript\">");
+//			    out2.println("alert('Brief aanmaken mislukt! Selecteer 1 klant");  
+//			    out2.println("window.location = 'herinneringsbrieven-brievenaanmaken.jsp'");
+//			    out2.println("</script>");
+//			    out2.close();
+			    
 				JOptionPane.showMessageDialog(null, "Aanmaken mislukt, Selecteer 1 klant", "Brief is niet aangemaakt", JOptionPane.PLAIN_MESSAGE);
 				rd = req.getRequestDispatcher("herinneringsbrieven-brievenaanmaken.jsp");
 				rd.forward(req, resp);
