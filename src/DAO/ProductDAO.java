@@ -41,11 +41,15 @@ public class ProductDAO {
 				int type = rs.getInt("type");
 				int minVoorraad = rs.getInt("minVoorraad");
 				int voorraad = rs.getInt("voorraad");
+
 //				System.out.println is ff in comments gezet wegens testen
 //				System.out.println("In bestelling waarde: " + rs.getInt("inbestelling"));
 				int inBestelling = rs.getInt("inbestelling");
 				
-				Product p = new Product(id, naam, type, minVoorraad, voorraad, inBestelling);	
+				System.out.println(naam);
+				
+				Product p = new Product(id, naam, type, minVoorraad, voorraad, inBestelling);
+				//System.out.println("In bestelling waarde van Product: " + naam + inBestelling +  "[new]");
 				alleOnderdelenDB.add(p);
 				//System.out.println(p.getProductNaam());
 			}
@@ -83,6 +87,26 @@ public class ProductDAO {
 		}
 		
 		return voorraad;
+		
+	}
+	
+	public int getBestellingById(int id){
+		int inbestelling = 0;
+		try {
+			this.leesDatabase();
+			statement = con.createStatement();
+			rs = statement.executeQuery("SELECT inbestelling FROM voorraad where id='"+ id +"'");
+			
+			while (rs.next()) {
+				inbestelling = rs.getInt("inbestelling");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return inbestelling;
 		
 	}
 
@@ -155,8 +179,6 @@ public class ProductDAO {
 		return p;
 	}
 	
-	
-	
 	public void saveVoorraad(String vrdNm, int vT, int vrdMin, int vrd) throws SQLException {	
 		int inBestelling = 0;
 		this.leesDatabase();
@@ -179,18 +201,23 @@ public class ProductDAO {
 		this.getAlleOnderdelenDB();
 	}
 	
-	public void vrdInBestelling(int id, int nwVrd) throws SQLException {	
+	public void vrdInBestelling(int id, int nwVrd, int odVrd) throws SQLException {	
 		try {
 			this.leesDatabase();
 			statement = con.createStatement();
 			
-		int voorraad = nwVrd;	
+		int voorraad = nwVrd + odVrd;
+		System.out.println("Voorraad: " + voorraad);
 		String sql = "UPDATE voorraad " + "SET inbestelling = "+ voorraad +" WHERE id=" + id;
 		statement.executeUpdate(sql);	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//this.getAlleOnderdelenDB();
+	}
+	
+	public void getAlleOnderdelen(){
 		this.getAlleOnderdelenDB();
 	}
 	
@@ -200,6 +227,22 @@ public class ProductDAO {
 			statement = con.createStatement();
 			
 		String sql = "UPDATE voorraad " + "SET minVoorraad = "+ nwMVrd +" WHERE id=" + id;
+		statement.executeUpdate(sql);	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.getAlleOnderdelenDB();
+	}
+	
+	public void haalBestellingOp(int id, int ib, int vrd) throws SQLException {	
+		try {
+			this.leesDatabase();
+			statement = con.createStatement();
+			
+			int nwvrd = ib + vrd;
+			
+		String sql = "UPDATE voorraad " + "SET voorraad = "+ nwvrd +", inbestelling = 0 WHERE id=" + id;
 		statement.executeUpdate(sql);	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

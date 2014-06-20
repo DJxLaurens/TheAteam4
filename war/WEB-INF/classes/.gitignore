@@ -1,8 +1,30 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+/BetalingFacturatieServlets/
+/DAO/
+/DomeinModel/
+/HerinneringsbrievenServlets/
+/InloggenServlets/
+/KlantenbindingServlets/
+/MyServletContextListener/
+/Onderdelen/
+/OnderhoudsbeurtServlets/
+/TestOnderdelen/
+/TestsDAO/
+/VoorraadbeheerServlets/
+=======
 /TestsDAO/
 /DAO/
 /DomeinModel/
 /Onderdelen/
 /OnderhoudsbeurtServlets/
 /TestsOnderdelen/
+<<<<<<< HEAD
 /TestHerinneringsbrievenSelenium/
+=======
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
+/TestHerinneringsbrievenSelenium/
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
 /TestKlantenbindingSelenium/
