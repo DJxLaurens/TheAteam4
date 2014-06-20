@@ -79,7 +79,8 @@
 					</ul></li>	
 				<%} %>			
 				<%if(rol == 1 || rol == 9){ %>
-				<div class="herinneringsbrieven">
+
+				<div class = "herinneringsbrieven">
 					<li>Herinneringsbrieven			
 						<ul>
 							<li><a href="herinneringsbrieven-brievenaanmaken.jsp">Brieven aanmaken</a></li>
@@ -88,6 +89,7 @@
 						</ul>
 					</li>
 				</div>
+
 				<%} %>
 				<%if(rol == 1 || rol == 3 || rol == 9){ %>
 				<li>Betalingen/Facturatie
