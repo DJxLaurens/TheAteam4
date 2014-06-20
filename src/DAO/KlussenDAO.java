@@ -27,7 +27,7 @@ public class KlussenDAO {
 			e.printStackTrace();
 		}		
 	}
-	
+	//zoek alle klussen in de database
 	public ArrayList<Klus> getAlleKlussenDB() {
 		ArrayList<Klus> alleKlussenDB = new ArrayList<Klus>();	
 		try {
@@ -39,7 +39,8 @@ public class KlussenDAO {
 				String omschrijving = output.getString("omschrijving");
 				int autoId = output.getInt("auto_id");
 				int werknemerId = output.getInt("werknemer_id");
-				Klus u = new Klus(id, naam, omschrijving, autoId, werknemerId);
+				Klus u = new Klus(naam, omschrijving, autoId, werknemerId);
+				u.setKlusNummer(id);
 				alleKlussenDB.add(u);			
 			}
 		} catch (SQLException e) {
@@ -49,9 +50,10 @@ public class KlussenDAO {
 		
 		return alleKlussenDB;
 	}
-	
+	//voegt een klus toe aan de database
 	public void saveKlus(Klus k) throws SQLException {	
 		this.leesDatabase();
 		statement.execute("INSERT INTO klussen (naam, omschrijving, auto_id, werknemer_id)"+ "VALUES ('"+ k.getKlusNaam() + "','" + k.getKlusOmschrijving() + "','" + k.getAutoId() + "','" + k.getWerknemerId() + "')");				
 	}
+	
 }

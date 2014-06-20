@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /BetalingFacturatieServlets/
 /DAO/
 /DomeinModel/
@@ -10,3 +11,13 @@
 /TestOnderdelen/
 /TestsDAO/
 /VoorraadbeheerServlets/
+=======
+/TestsDAO/
+/DAO/
+/DomeinModel/
+/Onderdelen/
+/OnderhoudsbeurtServlets/
+/TestsOnderdelen/
+>>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
+/TestHerinneringsbrievenSelenium/
+/TestKlantenbindingSelenium/
