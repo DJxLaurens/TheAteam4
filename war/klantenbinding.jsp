@@ -17,7 +17,7 @@
     
 	<div>
 		<select name="veld1">
-			<option value="leeg">Kies een Klant</option>
+			<option value="leeg">Kies een klant</option>
 			<% if(atd.getjongerdan().size() == 0){
 				for(Gebruiker g : atd.getAlleKlantenJongerDan2010()){ %>
 					<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
@@ -31,14 +31,12 @@
 		</select>
 	</div>
 
-
-
 	<h4>Klanten met auto's ouder dan 2010 die een onderhoudsbeurt
 		nodig hebben:</h4>
 
 	<div>
 		<select name="veld2">
-			<option value="leeg">Kies een Klant</option>
+			<option value="leeg">Kies een klant</option>
 			<% if(atd.getouderdan().size() == 0){
 				for(Gebruiker g : atd.getAlleKlantenOuderDan2010()){ %>
 					<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
@@ -56,7 +54,7 @@
 
 	<div>
 		<select name="veld3">
-			<option value="leeg">Kies een Klant</option>
+			<option value="leeg">Kies een klant</option>
 			<% if(atd.getafwezig().size() == 0){
 				for(Gebruiker g : atd.getAlleKlantenLaatstgeweest()){ %>
 					<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>

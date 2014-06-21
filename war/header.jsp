@@ -79,24 +79,14 @@
 					</ul></li>	
 				<%} %>			
 				<%if(rol == 1 || rol == 9){ %>
-<<<<<<< HEAD
 					<li id="herinneringsbrieven">Herinneringsbrieven			
-=======
-
-				<div class = "herinneringsbrieven">
-					<li>Herinneringsbrieven			
->>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
 						<ul>
-							<li><a href="herinneringsbrieven-brievenaanmaken.jsp">Brieven aanmaken</a></li>
-							<li><a href="herinneringsbrieven-factuurbetalingblokkeren.jsp">Factuurbetaling blokkeren</a></li>						
+							<li id="brieven aanmaken"><a href="herinneringsbrieven-brievenaanmaken.jsp">Brieven aanmaken</a></li>
+							<li id="factuurbetaling blokkeren"><a href="herinneringsbrieven-factuurbetalingblokkeren.jsp">Factuurbetaling blokkeren</a></li>						
 							<li id="klantenbinding"><a href="klantenbinding.jsp">Klantenbinding</a></li>						
 						</ul>
 					</li>
-<<<<<<< HEAD
-=======
-				</div>
 
->>>>>>> branch 'master' of https://github.com/DJxLaurens/TheAteam4.git
 				<%} %>
 				<%if(rol == 1 || rol == 3 || rol == 9){ %>
 				<li>Betalingen/Facturatie

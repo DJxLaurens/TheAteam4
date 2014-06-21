@@ -2,11 +2,15 @@ package TestHerinneringsbrievenSelenium;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
+
 import org.junit.*;
+
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class KlantenDieNogNietBetaaldHebbenBinnen90DagenTest {
@@ -29,11 +33,29 @@ public class KlantenDieNogNietBetaaldHebbenBinnen90DagenTest {
     driver.findElement(By.name("naam")).sendKeys("admin@ikbendeadmin.nl");
     driver.findElement(By.name("wachtwoord")).clear();
     driver.findElement(By.name("wachtwoord")).sendKeys("admin");
+    Thread.sleep(4000L); 
     driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
-    driver.findElement(By.linkText("Brieven aanmaken")).click();
+    Thread.sleep(4000L); 
+    
+    WebElement mnuElement;   
+    mnuElement = driver.findElement(By.id("herinneringsbrieven"));
+    mnuElement.click();
+      
+    Actions builder = new Actions(driver);  
+    builder.moveToElement(mnuElement).perform();  
+    Thread.sleep(4000L);  
+    driver.findElement(By.id("brieven aanmaken")).click();  
+    driver.get("http://localhost:8080/ATD-Windows/herinneringsbrieven-brievenaanmaken.jsp");
+    Thread.sleep(2000L);
+    
     new Select(driver.findElement(By.name("veld1"))).selectByVisibleText("Jan");
+    Thread.sleep(4000L);  
     driver.findElement(By.name("press")).click();
+    Thread.sleep(4000L);
+    driver.switchTo().alert().accept();
+    Thread.sleep(4000L);
     driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+    Thread.sleep(4000L);
   }
 
   @After

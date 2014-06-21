@@ -33,9 +33,29 @@ public class KlantenMetAutosJongerDan2010Test {
 	    driver.findElement(By.name("naam")).sendKeys("admin@ikbendeadmin.nl");
 	    driver.findElement(By.name("wachtwoord")).clear();
 	    driver.findElement(By.name("wachtwoord")).sendKeys("admin");
+	    Thread.sleep(4000L);  
 	    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+	    Thread.sleep(4000L);  
 	    
+	    WebElement mnuElement;   
+	    mnuElement = driver.findElement(By.id("herinneringsbrieven"));
+	    mnuElement.click();
+	      
+	    Actions builder = new Actions(driver);  
+	    builder.moveToElement(mnuElement).perform();  
+	    Thread.sleep(4000L);  
+	    driver.findElement(By.id("klantenbinding")).click();  
+	    driver.get("http://localhost:8080/ATD-Windows/klantenbinding.jsp");
+	    Thread.sleep(4000L);
 	    
+	    new Select(driver.findElement(By.name("veld1"))).selectByVisibleText("Jan");
+	    Thread.sleep(4000L);  
+	    driver.findElement(By.name("press")).click();
+	    Thread.sleep(4000L);
+	    driver.switchTo().alert().accept();
+	    Thread.sleep(4000L);
+	    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+	    Thread.sleep(4000L);
   }
 
   @After
