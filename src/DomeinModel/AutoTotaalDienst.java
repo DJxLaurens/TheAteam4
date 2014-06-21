@@ -10,7 +10,7 @@ import java.util.Date;
 import Onderdelen.Auto;
 import Onderdelen.Gebruiker;
 import Onderdelen.Klus;
-import Onderdelen.Monteur;
+import Onderdelen.Gebruiker;
 import Onderdelen.Product;
 import DAO.AutosDAO;
 import DAO.GebruikersDAO;
@@ -35,7 +35,7 @@ public class AutoTotaalDienst {
     private ArrayList<Gebruiker> brief = new ArrayList<Gebruiker>();
     private ArrayList<Klus> alleKlussen = new ArrayList<Klus>();
     private ArrayList<Klus> klussenStatus = new ArrayList<Klus>();
-    private ArrayList<Monteur> alleMonteurs = new ArrayList<Monteur>();
+    private ArrayList<Gebruiker> alleMonteurs = new ArrayList<Gebruiker>();
     private double literPrijs, werkUurPrijs, maandPrijs, weekPrijs, dagPrijs;
    
     // checkt of ingevoerd gegeven een int getal is
@@ -92,6 +92,12 @@ public class AutoTotaalDienst {
     	alleOnderdelen = new ProductDAO().getAlleOnderdelenDB();
         return alleOnderdelen;
     }
+    
+    public Product getOnderdeelById(int id){
+    	  Product onderdeel = new ProductDAO().getOnderdeelFromID(id);
+    	   	
+    	  return onderdeel;
+    }
 
     public ArrayList<Product> getAlleBrandstoffen(){
 		alleBrandstoffen = new ProductDAO().getAlleBrandstoffenDB();
@@ -127,7 +133,6 @@ public class AutoTotaalDienst {
     }
     
     public ArrayList<Gebruiker> getAlleKlanten(){
-    	System.out.println(alleKlanten);
     	return alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
     }
     
@@ -148,7 +153,7 @@ public class AutoTotaalDienst {
 	    		}
 	    	}
     	}
-	    	return jongerdan;
+	   	return jongerdan;
     }
     
     //Hier worden alle Klanten met een auto ouder dan 2010 toegevoegd aan de ArrayList
@@ -169,6 +174,20 @@ public class AutoTotaalDienst {
 	    	}
     	}
 	    	return ouderdan;
+    }
+    
+    public ArrayList<Auto> getAlleAutos(){
+    	return alleAutos = new AutosDAO().getAlleAutosDB();
+    }
+    
+    public ArrayList<Gebruiker> getAlleMonteurs(){
+    	alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
+    	for(Gebruiker g : alleKlanten){
+    		if(g.getRol() == 7){
+    			alleMonteurs.add(g);
+    		}
+    	}
+    	return alleMonteurs;
     }
     
     public ArrayList<Gebruiker> getAlleKlantenLaatstgeweest(){
@@ -273,11 +292,9 @@ public class AutoTotaalDienst {
         test.add(Calendar.DATE, -60);
 
         for (Gebruiker k : alleKlanten) {
-//            if (k.getLaatstgeweest().before(test)) {
-                if(!afwezig.contains(k)){
-                    afwezig.add(k);
-                }
-//            }
+            if(!afwezig.contains(k)){
+                afwezig.add(k);
+            }
         }
         return afwezig;
     }
@@ -338,4 +355,8 @@ public class AutoTotaalDienst {
         }
         return antw;
     }
+    //klussen voor in de weekplanning
+    public ArrayList<Klus> getAlleKlussen() {
+		return alleKlussen = new KlussenDAO().getAlleKlussenDB();
+	}
 }

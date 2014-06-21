@@ -50,14 +50,14 @@
 				<li><a href="index.jsp">Home</a></li>
 				<% int rol = Integer.parseInt(session.getAttribute("rol").toString());
 				if(rol == 5 || rol == 9){ %>
-				<li><a href="">Voorraadbeheer</a>
+				<li>Voorraadbeheer
 					<ul>
 						<li><a href="onderdelen_bestellen.jsp">Onderdelen</a></li>
 						<li><a href="brandstof_bestellen.jsp">Brandstof</a></li>
 					</ul></li>
 				<%} %>
 				<%if(rol == 6 || rol == 9){ %>
-				<li><a href="">Onderhoudsbeurt</a>
+				<li>Onderhoudsbeurt
 					<ul>
 						<li><a href="klus_toevoegen.jsp">Klus toevoegen</a></li>
 						<li><a href="weekplanning.jsp">Weekplanning</a></li>
@@ -65,7 +65,7 @@
 					</ul></li>
 				<%} %>
 				<%if(rol == 2 || rol == 4 || rol == 8 || rol == 9){ %>
-				<li><a href="">Parkeergarage</a>				
+				<li>Parkeergarage				
 					<ul>
 						<%if(rol == 2 || rol == 9){ %>
 						<li><a href="parkeerplaats_reserveren.jsp">Parkeerplaats reserveren</a></li>
@@ -79,15 +79,17 @@
 					</ul></li>	
 				<%} %>			
 				<%if(rol == 1 || rol == 9){ %>
-				<li><a href="">Herinneringsbrieven</a>				
-					<ul>
-						<li><a href="herinneringsbrieven-brievenaanmaken.jsp">Brievenaanmaken</a></li>
-						<li><a href="herinneringsbrieven-factuurbetalingblokkeren.jsp">Factuurbetaling blokkeren</a></li>						
-						<li><a href="klantenbinding.jsp">Klantenbinding</a></li>						
-					</ul></li>
+					<li id="herinneringsbrieven">Herinneringsbrieven			
+						<ul>
+							<li id="brieven aanmaken"><a href="herinneringsbrieven-brievenaanmaken.jsp">Brieven aanmaken</a></li>
+							<li id="factuurbetaling blokkeren"><a href="herinneringsbrieven-factuurbetalingblokkeren.jsp">Factuurbetaling blokkeren</a></li>						
+							<li id="klantenbinding"><a href="klantenbinding.jsp">Klantenbinding</a></li>						
+						</ul>
+					</li>
+
 				<%} %>
 				<%if(rol == 1 || rol == 3 || rol == 9){ %>
-				<li><a href="">Betalingen/Facturatie</a>
+				<li>Betalingen/Facturatie
 					<ul>
 						<li><a href="prijsaanpassen.jsp">Prijs aanpassen</a></li>
 						<li><a href="prijsberekenen.jsp">Prijs berekenen</a></li>

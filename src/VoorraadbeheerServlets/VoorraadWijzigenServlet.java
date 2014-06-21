@@ -39,7 +39,7 @@ public class VoorraadWijzigenServlet extends HttpServlet {
 			 					//String huidigeVoorraad = req.getParameter("voorraad");
 			 					//System.out.println("Nieuwe uitkomst: " + id + " " + aantal + " " + producten.getVoorraadById(id));
 			 					try {
-			 						producten.vrdInBestelling(id, aantal);
+			 						producten.vrdInBestelling(id, aantal, producten.getBestellingById(id));
 									//producten.changeVoorraad(id, aantal, producten.getVoorraadById(id));
 								} catch (SQLException e) {
 									// TODO Auto-generated catch block
@@ -57,7 +57,7 @@ public class VoorraadWijzigenServlet extends HttpServlet {
 			 				}
 		}
 		
-		
+		producten.getAlleOnderdelen();
 		
 			rd = req.getRequestDispatcher(type + "_bestellen.jsp");
 			rd.forward(req, resp);

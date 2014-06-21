@@ -12,7 +12,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 
 import DomeinModel.AutoTotaalDienst;
 import Onderdelen.Gebruiker;
@@ -20,7 +19,7 @@ import Onderdelen.Gebruiker;
 public class KlantenbindingServlet extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+			throws ServletException, IOException{
 		
 		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");	
 		
@@ -60,7 +59,7 @@ public class KlantenbindingServlet extends HttpServlet{
 			if(!x.equals("") && check != 2){
 				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmm");
 				Date datum = new Date();
-				FileWriter fw = new FileWriter("["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +1 jaar.txt", true);
+				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +1 jaar.txt", true);
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");
@@ -71,20 +70,27 @@ public class KlantenbindingServlet extends HttpServlet{
 				pw.println("");
 				pw.println("Henk Paladijn");
 				pw.close(); 
-				JOptionPane.showMessageDialog(null, "Aanmaken gelukt", "Brief is aangemaakt", JOptionPane.PLAIN_MESSAGE);
-				rd = req.getRequestDispatcher("klantenbinding.jsp");
-				rd.forward(req, resp);
+				
+				PrintWriter out = resp.getWriter();
+			    out.println("<script type=\"text/javascript\">");
+			    out.println("alert('Brief van " + x + " is aangemaakt!');");  
+			    out.println("window.location = 'klantenbinding.jsp'");
+			    out.println("</script>");
+			    out.close();
 			}
 			else if(check != 2){
-				JOptionPane.showMessageDialog(null, "Aanmaken mislukt, Selecteer 1 klant", "Brief is niet aangemaakt", JOptionPane.PLAIN_MESSAGE);
-				rd = req.getRequestDispatcher("klantenbinding.jsp");
-				rd.forward(req, resp);
+				PrintWriter out = resp.getWriter();
+			    out.println("<script type=\"text/javascript\">");
+			    out.println("alert('Aanmaken mislukt, selecteer een klant!');");  
+			    out.println("window.location = 'klantenbinding.jsp'");
+			    out.println("</script>");
+			    out.close();
 			}
 			
 			if(!x.equals("") && check == 2){
 				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmm");
 				Date datum = new Date();
-				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +2 maanden.txt", true); 
+				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +2 maanden.txt", true);  
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");
@@ -95,14 +101,21 @@ public class KlantenbindingServlet extends HttpServlet{
 				pw.println("");
 				pw.println("Henk Paladijn");
 				pw.close(); 
-				JOptionPane.showMessageDialog(null, "Aanmaken gelukt", "Brief is aangemaakt", JOptionPane.PLAIN_MESSAGE);
-				rd = req.getRequestDispatcher("klantenbinding.jsp");
-				rd.forward(req, resp);
+				
+				PrintWriter out = resp.getWriter();
+			    out.println("<script type=\"text/javascript\">");
+			    out.println("alert('Brief van " + x + " is aangemaakt!');");  
+			    out.println("window.location = 'klantenbinding.jsp'");
+			    out.println("</script>");
+			    out.close();
 			}
 			else if(check == 2){
-				JOptionPane.showMessageDialog(null, "Aanmaken mislukt, Selecteer 1 klant", "Brief is niet aangemaakt", JOptionPane.PLAIN_MESSAGE);
-				rd = req.getRequestDispatcher("klantenbinding.jsp");
-				rd.forward(req, resp);
+				PrintWriter out = resp.getWriter();
+			    out.println("<script type=\"text/javascript\">");
+			    out.println("alert('Aanmaken mislukt, selecteer een klant!');");  
+			    out.println("window.location = 'klantenbinding.jsp'");
+			    out.println("</script>");
+			    out.close();
 			}
 		}
 	}
