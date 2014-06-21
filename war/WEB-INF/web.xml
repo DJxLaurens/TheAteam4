@@ -25,6 +25,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>RapportagesMaken Servlet</servlet-name>
+		<servlet-class>BetalingFacturatieServlets.RapportagesMakenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RapportagesMaken Servlet</servlet-name>
+		<url-pattern>/RapportagesMakenServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>PrijsAanpassen Servlet</servlet-name>
 		<servlet-class>VoorraadbeheerServlets.PrijsAanpassenServlet</servlet-class>
 	</servlet>
