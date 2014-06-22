@@ -100,9 +100,12 @@ public class RapportagesMakenServlet extends HttpServlet{
 		}
 		
 		if(foutmelding == 2){
-			JOptionPane.showMessageDialog(null, "Aanmaken mislukt, Vul alle gegevens in met getallen boven 0", "Rapportages niet aangemaakt", JOptionPane.PLAIN_MESSAGE);
-			rd = req.getRequestDispatcher("rapportagesaanmaken.jsp");
-			rd.forward(req, resp);
+			PrintWriter out = resp.getWriter();
+		    out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Aanmaken mislukt, vul alle invulvelden in met getallen boven 0!');");  
+		    out.println("window.location = 'rapportagesaanmaken.jsp'");
+		    out.println("</script>");
+		    out.close();
 		}
 		else{
 			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmm");
@@ -154,10 +157,12 @@ public class RapportagesMakenServlet extends HttpServlet{
 	        pw2.close();
 	        pw3.close();
 	        
-	        JOptionPane.showMessageDialog(null, "Aanmaken gelukt!", "Rapportages aangemaakt", JOptionPane.PLAIN_MESSAGE);
-			rd = req.getRequestDispatcher("rapportagesaanmaken.jsp");
-			rd.forward(req, resp);
-			
+			PrintWriter out = resp.getWriter();
+		    out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Aanmaken gelukt, rapportages (BTW per artikel, BTW per transactie en Financiële status) zijn aangemaakt!');");  
+		    out.println("window.location = 'rapportagesaanmaken.jsp'");
+		    out.println("</script>");
+		    out.close();
 		}
 		
 	}

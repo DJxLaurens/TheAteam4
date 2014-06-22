@@ -35,7 +35,7 @@
 	
 	<servlet>
 		<servlet-name>PrijsAanpassen Servlet</servlet-name>
-		<servlet-class>VoorraadbeheerServlets.PrijsAanpassenServlet</servlet-class>
+		<servlet-class>BetalingFacturatieServlets.PrijsAanpassenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 	<servlet-name>PrijsAanpassen Servlet</servlet-name>
