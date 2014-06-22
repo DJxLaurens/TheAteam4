@@ -8,12 +8,10 @@
 <link href="style/style.css" rel="stylesheet">
 </head>
 <body>
-	<div class="container">
-		<div class="header">
-			<img src="images/Logo-A-Team.png" class="logo"/>
-		<div class="login">
+	<div class="headStroke">
+	<div class="loginBox">
 			<form action="LoginServlet.do" method="post">					
-				<h3>Login</h3>
+				<h3 style="margin-top: 35px; line-height: 20px;"><img src="images/login_icon.png" style="height: 20px; float: left; margin-right: 8px;">Account</h3>
 				<% 
 					Object msgs = request.getAttribute("msgs"); 
 					if (msgs != null) { 	 
@@ -23,20 +21,26 @@
 					Object naam = request.getAttribute("email"); 
 				%>
 					<div>
-						<label>Email:</label> <input type="text" name="naam" value="<%if(naam !=null){ out.println(naam); }%>" />
+						<input type="text" class="small" style="margin-right: 10px;" name="naam" placeholder="E-mail adres" value="<%if(naam !=null){ out.println(naam); }%>" />
 	
 					</div>
 					<div>
-						<label>Wachtwoord:</label>
-						<input type="password" name="wachtwoord" />
+						<input type="password" class="small" name="wachtwoord" placeholder="Wachtwoord" />
 					</div>
 					<div>
 					<input type="submit" value="Inloggen"/>
 					</div>			
 			</form>	
 		</div>
-			
 		</div>
+	
+	<div class="container">
+
+		<!-- <div class="header"> -->
+			<img src="images/Logo-A-Team.png" class="logo"/>
+		
+			
+		<!-- </div> -->
 		<div class="menu">
 			<ul>
 				<li><a href="loginIndex.jsp">Home</a></li>
