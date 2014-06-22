@@ -10,7 +10,7 @@ import Onderdelen.Gebruiker;
 
 public class AutoTest {
 	Gebruiker g1 = new Gebruiker();
-	Auto a1 = new Auto(0);
+	Auto a1 = new Auto();
 	
 
 	@Before

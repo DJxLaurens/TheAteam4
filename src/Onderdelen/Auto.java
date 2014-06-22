@@ -21,8 +21,7 @@ public class Auto {
 		brandstoftype = bt;
 	}
 
-	public Auto(int bj) {
-		bouwjaar = bj;
+	public Auto() {
 	}
 
 	public String getKenteken() {

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.AutosDAO;
 import DAO.KlussenDAO;
+import DomeinModel.AutoTotaalDienst;
+import Onderdelen.Auto;
 import Onderdelen.Klus;
 
 public class KlusToevoegenServlet extends HttpServlet {
@@ -23,6 +25,7 @@ public class KlusToevoegenServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");
 		klusNaam = req.getParameter("klusNaam");
 		klusOmschrijving = req.getParameter("klusOmschrijving");
 		String string = (String) req.getParameter("auto");
@@ -30,9 +33,15 @@ public class KlusToevoegenServlet extends HttpServlet {
 		werknemerId = 0;
 		
 		if (!"".equals(klusNaam) && !"".equals(klusOmschrijving)) {			
-			Klus k = new Klus(klusNaam, klusOmschrijving, autoId, werknemerId);
+			Klus k = new Klus(klusNaam, klusOmschrijving, autoId, werknemerId);			
 			try {
 				klus.saveKlus(k);
+				for(Auto a : atd.getAlleAutos()){
+					if(a.getAutoID() == autoId){
+						k.voegAutoToe(a);
+					}
+				}
+				System.out.println(k.getAlleAutos());
 				s = "Toevoegen is gelukt";
 			} catch (SQLException e) {
 				e.printStackTrace();

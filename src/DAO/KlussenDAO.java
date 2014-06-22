@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import Onderdelen.Auto;
+import Onderdelen.Gebruiker;
 import Onderdelen.Klus;
 
 public class KlussenDAO {
@@ -54,6 +56,31 @@ public class KlussenDAO {
 	public void saveKlus(Klus k) throws SQLException {	
 		this.leesDatabase();
 		statement.execute("INSERT INTO klussen (naam, omschrijving, auto_id, werknemer_id)"+ "VALUES ('"+ k.getKlusNaam() + "','" + k.getKlusOmschrijving() + "','" + k.getAutoId() + "','" + k.getWerknemerId() + "')");				
+	}
+	public Auto getAuto(int id){
+		Auto a = new Auto();
+		try {
+			this.leesDatabase();
+			output = statement.executeQuery("SELECT * FROM auto WHERE auto_id =" + id);
+			String kenteken = output.getString("kenteken");
+			String merk = output.getString("merk");
+			int bouwjaar = output.getInt("bouwjaar");
+			String type = output.getString("type");
+			int gebruikersId = output.getInt("gebruiker_id");
+			String brandstoftype = output.getString("brandstoftype");
+			GebruikersDAO geb = new GebruikersDAO();
+			Gebruiker eigenaar = null;
+			for(Gebruiker g : geb.getAlleGebruikersDB()){
+				if(gebruikersId == g.getGebruikerID()){
+					eigenaar = g;
+				}
+			}
+			a = new Auto(id, kenteken, merk, bouwjaar, type, eigenaar, brandstoftype);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return a;
 	}
 	public void setBlokkade(int gId){
 		try {
