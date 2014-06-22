@@ -50,9 +50,6 @@ public class GebruikersDAO {
 				boolean blokkade = output.getBoolean("blokkade");
 				Gebruiker g = new Gebruiker(rol_id, naam, wachtwoord, adres, postcode, woonplaats, telefoonnummer, emailadres, laatstgeweest, korting, openFactuur, blokkade);
 				g.setID(gebruiker_id);
-				g.setLaatstgeweest(laatstgeweest);
-				g.setOpenFactuur(openFactuur);
-				g.setBlokkade();
 				alleGebruikersDB.add(g);			
 			}
 		} catch (SQLException e) {

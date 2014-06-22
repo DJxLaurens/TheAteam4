@@ -183,13 +183,7 @@ public class AutoTotaalDienst {
     }
     
     public ArrayList<Gebruiker> getAlleMonteurs(){
-    	alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
-    	for(Gebruiker g : alleKlanten){
-    		if(g.getRol() == 7){
-    			alleMonteurs.add(g);
-    		}
-    	}
-    	return alleMonteurs;
+    	return alleMonteurs = new GebruikersDAO().getAlleGebruikersDB();
     }
     
     public ArrayList<Gebruiker> getAlleKlantenLaatstgeweest(){

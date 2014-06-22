@@ -16,7 +16,7 @@ public class AutoTest {
 	@Before
 	public void setUp(){
 		g1 = new Gebruiker(0, 0, null, null, null, null, null, null, null, null, 0, null, 0);
-		a1 = new Auto("11-JJ-AT", "Opel", 1991, "Astra", g1, "Gas");		
+		a1 = new Auto(1, "11-JJ-AT", "Opel", 1991, "Astra", g1, "Gas");		
 	}
 	@Test
 	public void testKenteken(){ 		

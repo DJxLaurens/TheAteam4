@@ -51,8 +51,7 @@ public class AutosDAO {
 						eigenaar = g;
 					}
 				}
-				Auto a = new Auto(kenteken, merk, bouwjaar, type, eigenaar, brandstoftype);
-				a.setAutoID(id);
+				Auto a = new Auto(id, kenteken, merk, bouwjaar, type, eigenaar, brandstoftype);
 				a.setEigenaarID(gebruikersId);
 				alleAutosDB.add(a);			
 			}
