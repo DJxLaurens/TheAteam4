@@ -22,7 +22,6 @@ public class GebruikersDAOTest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@Test
