@@ -28,7 +28,7 @@ public class GebruikersDAOTest {
 	@Test
 	public void getAlleGebruikersDB(){
 		assertEquals(1, gDao.getAlleGebruikersDB().get(0).getGebruikerID());
-		assertEquals(4, gDao.getAlleGebruikersDB().get(0).getRol());
+		assertEquals(1, gDao.getAlleGebruikersDB().get(0).getRol());
 		assertEquals("Jan", gDao.getAlleGebruikersDB().get(0).getNaam());
 		assertEquals("Jan", gDao.getAlleGebruikersDB().get(0).getWachtwoord());
 		assertEquals("Bananenlaan 1", gDao.getAlleGebruikersDB().get(0).getAdres());
@@ -50,8 +50,8 @@ public class GebruikersDAOTest {
 	@Test
 	public void getBlokkade(){
 		gDao.getBlokkadeDB();
-		assertEquals(false,gDao.getBlokkadeDB().get(1).getBlokkade());
-		assertEquals(false,gDao.getBlokkadeDB().get(2).getBlokkade());
+		assertEquals(true,gDao.getAlleGebruikersDB().get(1).getBlokkade());
+		assertEquals(true,gDao.getAlleGebruikersDB().get(2).getBlokkade());
 	}
 
 	@Test

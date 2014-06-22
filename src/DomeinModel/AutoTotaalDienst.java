@@ -21,12 +21,14 @@ public class AutoTotaalDienst {
     private ArrayList<Product> alleOnderdelen = new ArrayList<Product>();
     private ArrayList<Product> alleBrandstoffen = new ArrayList<Product>();
     private ArrayList<Gebruiker> alleKlanten = new ArrayList<Gebruiker>();
-    private ArrayList<Gebruiker> alleKlanten1 = new ArrayList<Gebruiker>();
-    private ArrayList<Gebruiker> alleKlanten2 = new ArrayList<Gebruiker>();
-    private ArrayList<Gebruiker> alleKlanten3 = new ArrayList<Gebruiker>();
-    private ArrayList<Gebruiker> alleKlanten4 = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleKlantenJonger = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleKlantenOuder = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleKlantenLG = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleKlantenBlok = new ArrayList<Gebruiker>();
+    private ArrayList<Gebruiker> alleKlantenBrief = new ArrayList<Gebruiker>();
     private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
-    private ArrayList<Auto> alleAutos1 = new ArrayList<Auto>();
+    private ArrayList<Auto> jongerAutos = new ArrayList<Auto>();
+    private ArrayList<Auto> ouderAutos = new ArrayList<Auto>();
     private ArrayList<Gebruiker> jongerdan = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> ouderdan = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> afwezig = new ArrayList<Gebruiker>();
@@ -92,6 +94,12 @@ public class AutoTotaalDienst {
     	alleOnderdelen = new ProductDAO().getAlleOnderdelenDB();
         return alleOnderdelen;
     }
+    
+    public Product getOnderdeelById(int id){
+    	  Product onderdeel = new ProductDAO().getOnderdeelFromID(id);
+    	   	
+    	  return onderdeel;
+    }
 
     public ArrayList<Product> getAlleBrandstoffen(){
 		alleBrandstoffen = new ProductDAO().getAlleBrandstoffenDB();
@@ -132,14 +140,14 @@ public class AutoTotaalDienst {
     
     //Hier worden alle Klanten met een auto jonger dan 2010 toegevoegd aan de ArrayList
     public ArrayList<Gebruiker> getAlleKlantenJongerDan2010(){
-    	if(alleKlanten.isEmpty() && alleAutos.isEmpty()) {
-	    	alleKlanten = new GebruikersDAO().getAlleGebruikersDB();
-	    	alleAutos = new AutosDAO().getAlleAutosDB();
+    	if(alleKlantenJonger.isEmpty() && jongerAutos.isEmpty()) {
+	    	alleKlantenJonger = new GebruikersDAO().getAlleGebruikersDB();
+	    	jongerAutos = new AutosDAO().getAlleAutosDB();
 	    	int x = 0;
-	    	for(Auto a: alleAutos){
+	    	for(Auto a: jongerAutos){
 	    		if(a.getBouwjaar() < 2010){
 	    			x = a.getEigenaarID();
-	    			for(Gebruiker g: alleKlanten){
+	    			for(Gebruiker g: alleKlantenJonger){
 	    				if(g.getGebruikerID() == x){
 	    					jongerdan.add(g);
 	    				}
@@ -152,14 +160,14 @@ public class AutoTotaalDienst {
     
     //Hier worden alle Klanten met een auto ouder dan 2010 toegevoegd aan de ArrayList
     public ArrayList<Gebruiker> getAlleKlantenOuderDan2010(){
-    	if(alleKlanten1.isEmpty() && alleAutos1.isEmpty()) {
-	    	alleKlanten1 = new GebruikersDAO().getAlleGebruikersDB();
-	    	alleAutos1 = new AutosDAO().getAlleAutosDB();
+    	if(alleKlantenOuder.isEmpty() && ouderAutos.isEmpty()) {
+	    	alleKlantenOuder = new GebruikersDAO().getAlleGebruikersDB();
+	    	ouderAutos = new AutosDAO().getAlleAutosDB();
 	    	int x = 0;
-	    	for(Auto a: alleAutos1){
+	    	for(Auto a: ouderAutos){
 	    		if(a.getBouwjaar() > 2010){
 	    			x = a.getEigenaarID();
-	    			for(Gebruiker g: alleKlanten1){
+	    			for(Gebruiker g: alleKlantenOuder){
 	    				if(g.getGebruikerID() == x){
 	    					ouderdan.add(g);
 	    				}
@@ -170,8 +178,8 @@ public class AutoTotaalDienst {
 	    	return ouderdan;
     }
     
-    public ArrayList<Auto> getAlleAutos(){
-    	return alleAutos = new AutosDAO().getAlleAutosDB();
+    public ArrayList<Auto> getJongerAutos(){
+    	return jongerAutos = new AutosDAO().getAlleAutosDB();
     }
     
     public ArrayList<Gebruiker> getAlleMonteurs(){
@@ -182,9 +190,9 @@ public class AutoTotaalDienst {
     	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
     	Calendar test = Calendar.getInstance();
         test.add(Calendar.DATE, -60);
-    	if(alleKlanten2.isEmpty()) {
-	    	alleKlanten2 = new GebruikersDAO().getAlleGebruikersDB();
-	    	for(Gebruiker g: alleKlanten2){
+    	if(alleKlantenLG.isEmpty()) {
+	    	alleKlantenLG = new GebruikersDAO().getAlleGebruikersDB();
+	    	for(Gebruiker g: alleKlantenLG){
 	    		String xx = "";
 	        	Date date = null;
 	    		xx = g.getLaatstgeweest();
@@ -208,9 +216,9 @@ public class AutoTotaalDienst {
     	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
     	Calendar test = Calendar.getInstance();
         test.add(Calendar.DATE, -90);
-        if(alleKlanten3.isEmpty()){
-        	alleKlanten3 = new GebruikersDAO().getAlleGebruikersDB();
-        	for(Gebruiker g: alleKlanten3){
+        if(alleKlantenBlok.isEmpty()){
+        	alleKlantenBlok = new GebruikersDAO().getAlleGebruikersDB();
+        	for(Gebruiker g: alleKlantenBlok){
         		if(g.getOpenFactuur().equals(null)){
         			g.setOpenFactuur("06-06-2012");
         		}
@@ -241,24 +249,24 @@ public class AutoTotaalDienst {
     	new GebruikersDAO().setBlokkade(gId);
     }
     
-    public ArrayList<Gebruiker> getAlleKlanten1(){
-        return alleKlanten1;
+    public ArrayList<Gebruiker> getAlleKlantenOuder(){
+        return alleKlantenOuder;
     }
     
-    public ArrayList<Gebruiker> getAlleKlanten2(){
-    	return alleKlanten2;
+    public ArrayList<Gebruiker> getAlleKlantenLG(){
+    	return alleKlantenLG;
     }
     
     public ArrayList<Gebruiker> getAlleKlanten3(){
-    	return alleKlanten3;
+    	return alleKlantenBlok;
     }
     
     public ArrayList<Gebruiker> getAlleKlanten4(){
-    	return alleKlanten4;
+    	return alleKlantenBrief;
     }
     
-    public ArrayList<Auto> getAlleAutos1(){
-        return alleAutos1;
+    public ArrayList<Auto> getOuderAutos(){
+        return ouderAutos;
     }
     
     // Arraylist van auto's jonger dan 2010
@@ -304,12 +312,12 @@ public class AutoTotaalDienst {
     }
     //Maak factuur als klanten langer dan 90 dagen niet hebben betaald
     public ArrayList<Gebruiker> getAlleKlantenBrieven90(){
-    	if(alleKlanten4.isEmpty()) {
-    		alleKlanten4 = new GebruikersDAO().getAlleGebruikersDB();
+    	if(alleKlantenBrief.isEmpty()) {
+    		alleKlantenBrief = new GebruikersDAO().getAlleGebruikersDB();
     		Calendar test = Calendar.getInstance();
     		test.add(Calendar.DATE, -90);
     		Date date1 = test.getTime();
-    		for (Gebruiker k : alleKlanten4){
+    		for (Gebruiker k : alleKlantenBrief){
     			if(k.getOpenFactuur() != null){
     				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     				Date date2 = null;

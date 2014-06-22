@@ -26,17 +26,18 @@
 				<td><a href="verwijderVoorraad.jsp?id=<%=p.getProductNummer()%>&type=1"><img src="images/deleteIcon.png"/></a></td>
 				<td><%= p.getProductNummer()  %></td>
 				<td><%= p.getProductNaam()  %></td>
-				<td><%= p.getMinVoorraad() %> Liter</td>
+				<td><%= p.getMinVoorraad() %> Liter <a href="minimalevoorraad.jsp?id=<%=p.getProductNummer()%>&type=1"><img src="images/edit_icon.png" style="float: right; margin-right: 45px;"/></a></td>
 				<td <%if(p.getVoorraad() < p.getMinVoorraad()){%> class="red" <%}%>><%= p.getVoorraad()  %> Liter</td>
 				<td><%= p.getInBestelling()  %> Liter</td>
 				<td><input type="text" name="prod_<%=p.getProductNummer()%>"/></td>
-				<td><a href="minimalevoorraad.jsp?id=<%=p.getProductNummer()%>&type=1">Minimale voorraad aanpassen</a></td>
+				<%if(p.getInBestelling() != 0){ %><td><a href="bestelling_ophalen.jsp?id=<%=p.getProductNummer()%>&type=1"><img src="images/icon-vrachtwagen.png"/></a></td><%} %>
 			</tr>
 			<input type="hidden" name="voorraadId" value="<%= p.getProductNummer()  %>"/>
 			<input type="hidden" name="voorraadNaam" value="<%= p.getProductNaam()  %>"/>
 			<input type="hidden" name="voorraadMin" value="<%= p.getMinVoorraad() %>"/>
 			<input type="hidden" name="voorraad" value="<%= p.getVoorraad()  %>"/>
 			<input type="hidden" name="voorraadType" value="<%= p.getType() %>"/>
+			<input type="hidden" name="inbestelling" value="<%= p.getInBestelling() %>"/>
 			
 			<% }%>
 		</table>

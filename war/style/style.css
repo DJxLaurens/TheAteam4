@@ -1,3 +1,10 @@
+body{
+	margin: 0px;
+	padding:0px;
+	font: 13px Helmet, Freesans, sans-serif;
+	color: black;
+}
+
 #form {
 	font-family: "Trebuchet MS";
 	position: absolute;
@@ -26,30 +33,33 @@
 
 
 .menu {
-	background-color: black;
-	color: white;
+	color: black;
 	height: 40px;
 	line-height: 40px;
 	font-weight: bold;
 	padding-left: 15px;
 	padding-right: 15px;
+	float: left;
+	width: 100%;
+	margin-top: 10px;
+	font: bold 14px/32px "Helvetica", arial, sans-serif;
 }
 
 .content {
 	padding: 10px;
 	float: left;
-	width: 960px;
+	width: 100%;
+	color: #515152;
+	background-color: #EDEDED;
 }
 
 .footer {
-	background-color: #8a8fad;
 	height: 40px;
 	line-height: 40px;
-	color: white;
-	padding-left: 15px;
-	padding-right: 15px;
+	color: black;
 	float: left;
-	width: 930px;
+	width: 100%;
+	text-align: center;
 }
 
 .menu ul {
@@ -64,11 +74,11 @@
 }
 
 .menu ul li a {
-	color: white;
+	color: black;
 }
 
 .menu ul li a:hover {
-	color: white;
+	color: black;
 	text-decoration: underline !important;
 }
 
@@ -78,22 +88,21 @@
 }
 
 .menu ul li a:link {
-	color: white;
+	color: black;
 	text-decoration: none;
 }
 
 .menu ul li a:visited {
-	color: white;
+	color: black;
 	text-decoration: none;
 }
 .menu ul { padding:1; margin:1; list-style:none; } 
-.menu li { float:left; position:relative; font-size:13px; padding-right:100; display:block;} 
-.menu li ul { display:none; position:absolute; background:black; height:auto; width:14em;} 
-.menu li:hover ul{ display:block !important; background:black; height:auto; width:14em; } 
+.menu li { float:left; position:relative; font-size: 17px; padding-right:100; display:block;} 
+.menu li ul { display:none; position:absolute; background:white; height:auto; width:14em;} 
+.menu li:hover ul{ display:block !important; background:white; height:auto; width:14em; } 
 .menu li ul li{ clear:both; border-style:none;font-size: 12px; padding-left: 10px;}
 
 .container {
-	border: 1px solid black;
 	width: 960px;
 	margin-left: auto;
 	margin-right: auto;
@@ -113,6 +122,7 @@
 	border: 1px solid black;
 	width: 400px;
 	padding: 5px;
+	background-color: white;
 }
 
 .box1{
@@ -130,6 +140,7 @@
 	border:1px solid black;
 	border-collapse:collapse;
 	padding: 5px;
+	background-color: white;
 }
 
 .header input{
@@ -154,14 +165,14 @@
 }
 .header {
 	background-color: #8a8fad;
-	width: 960px;
+	width: 100%;
 	height: 150px;
 }
 
-.header .logo {
-	width: 500px;
-	margin-top: 30px;
-	margin-left: 30px;
+.logo {
+	width: 310px;
+	float: left;
+	margin-top: -70px;
 }
 
 .header .auto {
@@ -185,16 +196,84 @@
 }
 .headerUser {
 	background-color: #8a8fad;
-	width: 960px;
+	width: 100%;
 	height: 150px;
 }
 
-.headerUser .logo {
-	width: 500px;
-	margin-top: 30px;
-	margin-left: 30px;
+.login{
+	margin-top: -110px !important;
 }
 
-.login{
-	margin-top: -100px !important;
+.headStroke{
+	background-color: #EEEEEE;
+	height: 30px;
+	width: 100%;
+	margin-bottom: 50px;
+}
+
+.loginBox{
+	float: left;
+	width: 335px;
+	height: 135px;
+	padding: 0 10px;
+	margin: 0 0 0 767px;
+	background: #EEEEEE;
+	border-bottom-left-radius: 5px;
+	-moz-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-o-border-bottom-left-radius: 5px;
+	-khtml-border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-o-border-bottom-right-radius: 5px;
+	-khtml-border-bottom-right-radius: 5px;
+}
+
+.accountBox{
+	float: left;
+	width: 335px;
+	height: 165px;
+	padding: 0 10px;
+	margin: 0 0 0 767px;
+	background: #EEEEEE;
+	border-bottom-left-radius: 5px;
+	-moz-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-o-border-bottom-left-radius: 5px;
+	-khtml-border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-o-border-bottom-right-radius: 5px;
+	-khtml-border-bottom-right-radius: 5px;
+}
+
+input.small {
+	float: left;
+	width: 140px;
+	height: 24px;
+	padding: 0 10px;
+	margin: 0 0 10px 0;
+	border: 1px solid #dddada;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-o-border-radius: 2px;
+	-khtml-border-radius: 2px;
+}
+
+.accountBox input[type="submit"], .loginBox input[type="submit"] {
+	background: #454545;
+	height: 24px;
+	color: #fff;
+	border: none;
+	padding: 0 15px;
+	font: italic 12px/24px "Georgia", helvetica, arial, sans-serif;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-o-border-radius: 12px;
+	-khtml-border-radius: 12px;
+	float: right;
 }

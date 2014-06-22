@@ -15,35 +15,40 @@
 <link href="style/style.css" rel="stylesheet">
 </head>
 <body>	
+
+<div class="headStroke">
+	<div class="accountBox">
+		
+		<form action="LogoutServlet.do" method="get">
+			<table style="margin-top: 35px;">
+			<tr>
+				<td>
+					<h3 style="margin: 0px; line-height: 20px; float: left;"><img src="images/my_account.png" style="height: 20px; float: left; margin-right: 8px;">Account</h3>
+				</td>
+			</tr>
+				<tr>
+					<td>Naam:</td>
+					<td><%=session.getAttribute("naam")%></td>
+				</tr>
+				<tr>
+					<td>Email-adres:</td>
+					<td><%=session.getAttribute("email")%></td>
+				</tr>
+				<tr>
+					<td>laatstGeweest:</td>
+					<td><%=session.getAttribute("laatstgeweest")%></td>
+				</tr>
+				<tr>
+					<td>openFactuur:</td>
+					<td><%=session.getAttribute("openFactuur")%></td>
+				</tr>
+			</table>
+			<input type="submit" value="Uitloggen" />
+		</form>
+	</div>
+	</div>
 	<div class="container">
-		<div class="headerUser">
 			<img src="images/Logo-A-Team.png" class="logo" />
-			<div class="uitloggen">
-				<form action="LogoutServlet.do" method="get">
-					<table>
-						<tr>
-							<td>Naam:</td>
-							<td><%=session.getAttribute("naam")%></td>
-						</tr>
-						<tr>
-							<td>Email-adres:</td>
-							<td><%=session.getAttribute("email")%></td>
-						</tr>
-						<tr>
-							<td>laatstGeweest:</td>
-							<td><%=session.getAttribute("laatstgeweest")%></td>
-						</tr>
-						<tr>
-							<td>openFactuur:</td>
-							<td><%=session.getAttribute("openFactuur")%></td>
-						</tr>
-						<tr>
-							<td><input type="submit" value="Uitloggen" /></td>
-						</tr>
-					</table>
-				</form>
-			</div>
-		</div>
 
 		<div class="menu">
 			<ul>
@@ -79,12 +84,14 @@
 					</ul></li>	
 				<%} %>			
 				<%if(rol == 1 || rol == 9){ %>
-				<li>Herinneringsbrieven			
-					<ul>
-						<li><a href="herinneringsbrieven-brievenaanmaken.jsp">Brievenaanmaken</a></li>
-						<li><a href="herinneringsbrieven-factuurbetalingblokkeren.jsp">Factuurbetaling blokkeren</a></li>						
-						<li><a href="klantenbinding.jsp">Klantenbinding</a></li>						
-					</ul></li>
+					<li id="herinneringsbrieven">Herinneringsbrieven			
+						<ul>
+							<li id="brieven aanmaken"><a href="herinneringsbrieven-brievenaanmaken.jsp">Brieven aanmaken</a></li>
+							<li id="factuurbetaling blokkeren"><a href="herinneringsbrieven-factuurbetalingblokkeren.jsp">Factuurbetaling blokkeren</a></li>						
+							<li id="klantenbinding"><a href="klantenbinding.jsp">Klantenbinding</a></li>						
+						</ul>
+					</li>
+
 				<%} %>
 				<%if(rol == 1 || rol == 3 || rol == 9){ %>
 				<li>Betalingen/Facturatie

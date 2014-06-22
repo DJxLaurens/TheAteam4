@@ -57,7 +57,7 @@
 			</tr>
 			<tr>
 				<td><select name="rol_id">
-						<option value="1">Administrateur</option>
+						<option value="9">Administrateur</option>
 						<option value="2">Bedrijfsleider</option>
 						<option value="3">Kassamedewerker</option>
 						<option value="4">Klant</option>

@@ -17,12 +17,11 @@
 
 	<div>
 		<select name="veld1">
-			<option value="leeg">Kies een Klant</option>
+			<option value="leeg">Kies een klant</option>
 			
 			<% for(Gebruiker g : atd.getAlleKlantenBrieven90()) { %>
 			<option value="<%= g.getNaam() %>"><%= g.getNaam() %></option>
 			<% }%>
-			<%System.out.println("Klanten die langer dan 90 dagen niet betaald hebben: " + atd.getAlleKlantenBrieven90()); %>
 		</select>
 	</div>
 
