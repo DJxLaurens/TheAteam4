@@ -2,11 +2,15 @@ package TestKlantenbindingSelenium;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
+
 import org.junit.*;
+
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class KlantenMetAutosOuderDan2010Test {
@@ -24,16 +28,34 @@ public class KlantenMetAutosOuderDan2010Test {
 
   @Test
   public void testKlantenMetAutosOuderDan2010() throws Exception {
-    driver.get(baseUrl + "/ATD-Windows/index.jsp");
-    driver.findElement(By.name("naam")).clear();
-    driver.findElement(By.name("naam")).sendKeys("admin@lolmail.com");
-    driver.findElement(By.name("wachtwoord")).clear();
-    driver.findElement(By.name("wachtwoord")).sendKeys("admin");
-    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
-    driver.findElement(By.linkText("Klantenbinding")).click();
-    new Select(driver.findElement(By.name("veld2"))).selectByVisibleText("Piet");
-    driver.findElement(By.name("press")).click();
-    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+	  driver.get(baseUrl + "/ATD-Windows/index.jsp");
+	    driver.findElement(By.name("naam")).clear();
+	    driver.findElement(By.name("naam")).sendKeys("admin@ikbendeadmin.nl");
+	    driver.findElement(By.name("wachtwoord")).clear();
+	    driver.findElement(By.name("wachtwoord")).sendKeys("admin");
+	    Thread.sleep(4000L);  
+	    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+	    Thread.sleep(4000L);  
+	    
+	    WebElement mnuElement;   
+	    mnuElement = driver.findElement(By.id("herinneringsbrieven"));
+	    mnuElement.click();
+	      
+	    Actions builder = new Actions(driver);  
+	    builder.moveToElement(mnuElement).perform();  
+	    Thread.sleep(4000L);  
+	    driver.findElement(By.id("klantenbinding")).click();  
+	    driver.get("http://localhost:8080/ATD-Windows/klantenbinding.jsp");
+	    Thread.sleep(4000L);
+	    
+	    new Select(driver.findElement(By.name("veld2"))).selectByVisibleText("Piet");
+	    Thread.sleep(4000L);  
+	    driver.findElement(By.name("press")).click();
+	    Thread.sleep(4000L);
+	    driver.switchTo().alert().accept();
+	    Thread.sleep(4000L);
+	    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+	    Thread.sleep(4000L);
   }
 
   @After

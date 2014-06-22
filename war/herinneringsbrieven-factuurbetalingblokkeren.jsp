@@ -17,20 +17,14 @@
 
 			<div>
 				<select name="klantveld">
-					<option value="leeg">Kies een Klant</option>
-				<% if(atd.getblokkade().size() == 0){
-				for(Gebruiker g : atd.getAlleKlantenBlok()){ %>
+					<option value="leeg">Kies een klant</option>
+				<% for(Gebruiker g : atd.getblokkade()){ %>
 					<option value="<%= g.getGebruikerID() %>" name="blokkadeId"><%= g.getNaam() %></option>
-				<%}
-			}
-			else{
-				for(Gebruiker g : atd.getblokkade()){ %>
-				<option value="<%=g.getGebruikerID() %>" name="blokkadeId"><%= g.getNaam() %></option>
-			<%}			
-			}%>
+				<%}%>
+	
 				</select>
 			</div>
-
+			<br/>
 			<input type="submit" value="Betaling blokkeren" name="press" />
 
 		</div>

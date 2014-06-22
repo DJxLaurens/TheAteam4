@@ -28,31 +28,34 @@ public class KlantenLangerDan2MaandenAfwezigTest {
 
   @Test
   public void testKlantenLangerDan2MaandenAfwezig() throws Exception {
-    driver.get(baseUrl + "/ATD-Windows/index.jsp");
-    driver.findElement(By.name("naam")).clear();
-    driver.findElement(By.name("naam")).sendKeys("admin@ikbendeadmin.nl");
-    driver.findElement(By.name("wachtwoord")).clear();
-    driver.findElement(By.name("wachtwoord")).sendKeys("admin");
-    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
-//    driver.findElement(By.linkText("Klantenbinding")).click();
-    
-//    Actions builder = new Actions(driver);
-//    WebElement we = driver.findElement(By.id("Herinneringsbrieven"));
-//    WebElement sublink = driver.findElement(By.id("Klantenbinding"));  
-//    builder.moveToElement(we).click().moveToElement(sublink).click().build().perform();
-    
-      driver.findElement(By.xpath("//div[@class = 'menu']/ul/li[5]")).click(); 
-//      driver.findElement(By.xpath("//div[@class = 'menu']/ul/li[5]/ul/li[3]/a")).click(); 
-      
-//    Actions actions = new Actions(driver);
-//    WebElement menuHoverLink = driver.findElement(By.cssSelector("#access > ul > li"));
-//    actions.moveToElement(menuHoverLink).build().perform();
-//    WebElement subLink = driver.findElement(By.cssSelector("#access > ul > li > ul > li > a"));
-//    subLink.click();
-    
-//    new Select(driver.findElement(By.name("veld3"))).selectByVisibleText("Jan");
-//    driver.findElement(By.name("press")).click();
-//    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+	  driver.get(baseUrl + "/ATD-Windows/index.jsp");
+	    driver.findElement(By.name("naam")).clear();
+	    driver.findElement(By.name("naam")).sendKeys("admin@ikbendeadmin.nl");
+	    driver.findElement(By.name("wachtwoord")).clear();
+	    driver.findElement(By.name("wachtwoord")).sendKeys("admin");
+	    Thread.sleep(4000L);  
+	    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+	    Thread.sleep(4000L);  
+	    
+	    WebElement mnuElement;   
+	    mnuElement = driver.findElement(By.id("herinneringsbrieven"));
+	    mnuElement.click();
+	      
+	    Actions builder = new Actions(driver);  
+	    builder.moveToElement(mnuElement).perform();  
+	    Thread.sleep(4000L);  
+	    driver.findElement(By.id("klantenbinding")).click();  
+	    driver.get("http://localhost:8080/ATD-Windows/klantenbinding.jsp");
+	    Thread.sleep(4000L);
+	    
+	    new Select(driver.findElement(By.name("veld3"))).selectByVisibleText("Jan");
+	    Thread.sleep(4000L);  
+	    driver.findElement(By.name("press")).click();
+	    Thread.sleep(4000L);
+	    driver.switchTo().alert().accept();
+	    Thread.sleep(4000L);
+	    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+	    Thread.sleep(4000L);
   }
 
   @After
