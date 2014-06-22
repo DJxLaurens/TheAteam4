@@ -27,19 +27,19 @@
 				</td>
 			</tr>
 				<tr>
-					<td>Naam:</td>
+					<td><b>Naam:</b></td>
 					<td><%=session.getAttribute("naam")%></td>
 				</tr>
 				<tr>
-					<td>Email-adres:</td>
+					<td><b>Email-adres:</b></td>
 					<td><%=session.getAttribute("email")%></td>
 				</tr>
 				<tr>
-					<td>laatstGeweest:</td>
+					<td><b>laatstGeweest:</b></td>
 					<td><%=session.getAttribute("laatstgeweest")%></td>
 				</tr>
 				<tr>
-					<td>openFactuur:</td>
+					<td><b>openFactuur:</b></td>
 					<td><%=session.getAttribute("openFactuur")%></td>
 				</tr>
 			</table>
