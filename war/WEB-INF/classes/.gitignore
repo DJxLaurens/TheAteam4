@@ -1,2 +1,14 @@
 /BetalingFacturatieServlets/
 /DAO/
+/DomeinModel/
+/HerinneringsbrievenServlets/
+/InloggenServlets/
+/KlantenbindingServlets/
+/MyServletContextListener/
+/Onderdelen/
+/OnderhoudsbeurtServlets/
+/TestHerinneringsbrievenSelenium/
+/TestKlantenbindingSelenium/
+/TestsDAO/
+/TestsOnderdelen/
+/VoorraadbeheerServlets/
