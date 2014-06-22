@@ -45,7 +45,7 @@ public class ProductDAOTest {
 	@Test
 	public void setOnderdelenDB(){
 //		methode is nog niet uitgeschreven
-//		fail("methode is niet uitgeschreven");
+		fail("methode is niet uitgeschreven");
 	}
 	
 	@Test
@@ -61,7 +61,7 @@ public class ProductDAOTest {
 	@Test
 	public void setBrandstoffenDB(){
 //		methode is nog niet uitgeschreven
-//		fail("methode is niet uitgeschreven");
+		fail("methode is niet uitgeschreven");
 	}
 	
 	@Test
@@ -102,14 +102,14 @@ public class ProductDAOTest {
 	
 	@Test
 	public void deleteVoorraad(){
-////		vrdID is hoogste product ID in database
-//		int vrdID = 6;
-//		try {
-//			pDao.deleteVoorraad(vrdID);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		int aantProducten = pDao.getAlleBrandstoffenDB().size()+pDao.getAlleOnderdelenDB().size();
-//		assertEquals((vrdID-1), aantProducten);	
+//		vrdID is hoogste product ID in database
+		int vrdID = 6;
+		try {
+			pDao.deleteVoorraad(vrdID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		int aantProducten = pDao.getAlleBrandstoffenDB().size()+pDao.getAlleOnderdelenDB().size();
+		assertEquals((vrdID-1), aantProducten);	
 	}
 }
