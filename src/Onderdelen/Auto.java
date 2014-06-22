@@ -1,92 +1,95 @@
 package Onderdelen;
 
+public class Auto {
+	private String kenteken;
+	private String merk;
+	private int bouwjaar;
+	private String type;
+	private int eigenaarID;
+	private Gebruiker eigenaar;
+	private String brandstoftype;
+	private int autoID;
 
-public class Auto{
-    private String kenteken;
-    private String merk;
-    private int bouwjaar;
-    private String type;
-    private int eigenaarID;
-    private Gebruiker eigenaar;
-    private String brandstoftype;
-    private int autoID;
-    
-    public Auto(String kt, String mk, int bj, String tp, Gebruiker eig, String bt){
-        kenteken = kt;
-        merk = mk;
-        bouwjaar = bj;
-        type = tp;
-        eigenaar = eig;
-        brandstoftype = bt;
-    }
-    
-    public Auto(int bj){
-    	bouwjaar = bj;
-    }
+	public Auto(int id, String kt, String mk, int bj, String tp, Gebruiker eig,
+			String bt) {
+		autoID = id;
+		kenteken = kt;
+		merk = mk;
+		bouwjaar = bj;
+		type = tp;
+		eigenaar = eig;
+		brandstoftype = bt;
+	}
 
-    public String getKenteken(){
-        return kenteken;
-    }
+	public Auto(int bj) {
+		bouwjaar = bj;
+	}
 
-    public void setKenteken(String kt){
-        kenteken = kt;
-    }
-    
-    public int getEigenaarID(){
-    	return eigenaarID;
-    }
-    
-    public void setEigenaarID(int id){
-    	eigenaarID = id;
-    }
+	public String getKenteken() {
+		return kenteken;
+	}
 
-    public String getMerk(){
-        return merk;
-    }
+	public void setKenteken(String kt) {
+		kenteken = kt;
+	}
 
-    public void setMerk(String mk){
-        merk = mk;
-    }
+	public int getEigenaarID() {
+		return eigenaarID;
+	}
 
-    public int getBouwjaar(){
-        return bouwjaar;
-    }
+	public void setEigenaarID(int id) {
+		eigenaarID = id;
+	}
 
-    public void setBouwjaar(int bj){
-        bouwjaar = bj;
-    }
+	public String getMerk() {
+		return merk;
+	}
 
-    public String getType(){
-        return type;
-    }
+	public void setMerk(String mk) {
+		merk = mk;
+	}
 
-    public void setType(String tp){
-        type = tp;
-    }
+	public int getBouwjaar() {
+		return bouwjaar;
+	}
 
-    public Gebruiker getEigenaar(){
-        return eigenaar;
-    }
+	public void setBouwjaar(int bj) {
+		bouwjaar = bj;
+	}
 
-    public void setEigenaar(Gebruiker eig){
-        eigenaar = eig;
-    }
+	public String getType() {
+		return type;
+	}
 
-    public String getBrandstoftype(){
-        return brandstoftype;
-    }
+	public void setType(String tp) {
+		type = tp;
+	}
 
-    public void setBrandstoftype(String tp){
-        brandstoftype = tp;
-    }
-    //wordt geset in AutoDAO
-    public void setAutoID(int id){
-    	id = autoID;
-    }
-    public int getAutoID(){
-    	return autoID;
-    }
-    public String toString(){
-        return merk + " " + type;
-    }
+	public Gebruiker getEigenaar() {
+		return eigenaar;
+	}
+
+	public void setEigenaar(Gebruiker eig) {
+		eigenaar = eig;
+	}
+
+	public String getBrandstoftype() {
+		return brandstoftype;
+	}
+
+	public void setBrandstoftype(String tp) {
+		brandstoftype = tp;
+	}
+
+	public void setAutoID(int id) {
+		autoID = id;
+	}
+
+	public int getAutoID() {
+		return autoID;
+	}
+
+	public String toString() {
+		return merk + " " + type;
+	}
 }

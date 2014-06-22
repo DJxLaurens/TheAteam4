@@ -19,20 +19,18 @@ public class KlusToevoegenServlet extends HttpServlet {
 	private String klusOmschrijving;
 	private int autoId;
 	private int werknemerId;
-	private int klusNummer;
 	private String s;
-	
+
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {	
-			klusNaam = req.getParameter("klusNaam");
-			klusOmschrijving = req.getParameter("klusOmschrijving");
-			String string = (String)req.getParameter("autos");
-			autoId = Integer.parseInt(string);
-			werknemerId = 0;
-			
-			req.setAttribute("msgs", s);
-			RequestDispatcher rd = null;
-			Klus k = new Klus(klusNaam, klusOmschrijving, autoId, werknemerId);			
+			throws ServletException, IOException {
+		klusNaam = req.getParameter("klusNaam");
+		klusOmschrijving = req.getParameter("klusOmschrijving");
+		String string = (String) req.getParameter("auto");
+		autoId = Integer.parseInt(string);
+		werknemerId = 0;
+		
+		if (!"".equals(klusNaam) && !"".equals(klusOmschrijving)) {			
+			Klus k = new Klus(klusNaam, klusOmschrijving, autoId, werknemerId);
 			try {
 				klus.saveKlus(k);
 				s = "Toevoegen is gelukt";
@@ -40,8 +38,12 @@ public class KlusToevoegenServlet extends HttpServlet {
 				e.printStackTrace();
 				s = "Toevoegen is mislukt";
 			}
-			
-			rd = req.getRequestDispatcher("klus_toevoegen.jsp");
-			rd.forward(req, resp);
+		}else{
+			s = "Vul een klusnaam en klusomschrijving in";
+		}
+		req.setAttribute("msgs", s);
+		RequestDispatcher rd = null;
+		rd = req.getRequestDispatcher("klus_toevoegen.jsp");
+		rd.forward(req, resp);
 	}
 }

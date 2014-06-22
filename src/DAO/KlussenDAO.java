@@ -55,5 +55,17 @@ public class KlussenDAO {
 		this.leesDatabase();
 		statement.execute("INSERT INTO klussen (naam, omschrijving, auto_id, werknemer_id)"+ "VALUES ('"+ k.getKlusNaam() + "','" + k.getKlusOmschrijving() + "','" + k.getAutoId() + "','" + k.getWerknemerId() + "')");				
 	}
+	public void setBlokkade(int gId){
+		try {
+				this.leesDatabase();
+				statement = con.createStatement();
+				System.out.println("Voer Query uit");
+				String sql = "UPDATE gebruiker " + "SET blokkade = 1 WHERE gebruiker_id=" + gId;
+				statement.executeUpdate(sql);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	
 }

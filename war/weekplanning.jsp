@@ -4,8 +4,16 @@
 	<h1>Weekplanning</h1>
 	<%@ page import="Onderdelen.Klus"%>
 	<%@ page import="Onderdelen.Gebruiker"%>
+	<%@ page import="Onderdelen.Auto"%>
 	<%@ page import="DomeinModel.AutoTotaalDienst"%>
-	<form action ="WeekplanningServlet.do" method = "post">
+	<form action="WeekplanningServlet.do" method="post">
+		<% 
+		Object msgs = request.getAttribute("msgs"); 
+		if (msgs != null) { 	 
+			out.println(msgs); 
+			out.println(); 		
+		}		
+		%>
 		<table>
 			<tr>
 				<td>Klus:</td>
@@ -17,13 +25,18 @@
 			
 			for(Klus k : atd.getAlleKlussen()) { %>
 			<tr id="headRow">
-				<td><%= k.getKlusNaam()  %></td>
-				<td><%= k.getWerknemerId() %></td>
-				<td><%= k.getAutoId()  %></td>
+				<td><%if(atd.getAlleKlussen().size() > 0){ 
+					out.println(k.getKlusNaam()); 
+					}%></td>
+				<td><%if(k.getAlleMonteurs().size() > 0){ 
+					out.println(k.getAlleMonteurs().get(0)); 
+					}%></td>
+				<td><%if(k.getAlleAutos().size() > 0){ 
+					out.println(k.getAlleAutos().get(0)); 
+					}%></td>
 				<td>0</td>
-				<td><input type="text" name="aantal"></td>
 			</tr>
-			<% }%>
+			<%}%>
 		</table>
 		<table>
 			<tr>
@@ -47,14 +60,12 @@
 			<tr>
 				<td>Selecteer Monteur:</td>
 				<td><select>
-						<%
-							for(Gebruiker g : atd.getAlleMonteurs()) {
-						%>
-						<option value=monteur><%=g.getNaam()%>
-						</option>
-						<%
-							}
-						%>
+					<%
+					for(Gebruiker g : atd.getAlleMonteurs()) {
+						if(g.getRol() == 4){
+						%><option value=<%= g.getNaam() %>><%= g.getNaam() %>
+					<%}
+					}%></option>
 				</select></td>
 			</tr>
 
