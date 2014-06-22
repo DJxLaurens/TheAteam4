@@ -37,7 +37,6 @@ body{
 	height: 40px;
 	line-height: 40px;
 	font-weight: bold;
-	padding-left: 15px;
 	padding-right: 15px;
 	float: left;
 	width: 100%;
@@ -97,7 +96,7 @@ body{
 	text-decoration: none;
 }
 .menu ul { padding:1; margin:1; list-style:none; } 
-.menu li { float:left; position:relative; font-size: 17px; padding-right:100; display:block;} 
+.menu li { float:left; position:relative; font-size: 15px; padding-right:100; display:block;} 
 .menu li ul { display:none; position:absolute; background:white; height:auto; width:14em;} 
 .menu li:hover ul{ display:block !important; background:white; height:auto; width:14em; } 
 .menu li ul li{ clear:both; border-style:none;font-size: 12px; padding-left: 10px;}
@@ -214,7 +213,7 @@ body{
 .loginBox{
 	float: left;
 	width: 335px;
-	height: 135px;
+	height: 150px;
 	padding: 0 10px;
 	margin: 0 0 0 767px;
 	background: #EEEEEE;
@@ -276,4 +275,11 @@ input.small {
 	-o-border-radius: 12px;
 	-khtml-border-radius: 12px;
 	float: right;
+	cursor: pointer;
+}
+
+.loginBox input[type="submit"]:hover, .accountBox input[type="submit"]:hover{
+	background: white;
+	color: #454545;
+	cursor: pointer;
 }
