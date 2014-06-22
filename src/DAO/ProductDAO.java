@@ -109,10 +109,6 @@ public class ProductDAO {
 		return inbestelling;
 		
 	}
-
-	public void setOnderdelenDB(){
-		
-	}
 	
 	public ArrayList<Product> getAlleBrandstoffenDB() {
 		ArrayList<Product> alleBrandstoffenDB = new ArrayList<Product>();
@@ -142,10 +138,6 @@ public class ProductDAO {
 		//TO DO: Data uit de DB halen en toevoegen aan de ArrayList.
 		
 		return alleBrandstoffenDB;
-	}
-	
-	public void setBrandstoffenDB(){
-		
 	}
 	
 	public Product getOnderdeelFromID(int pId){
