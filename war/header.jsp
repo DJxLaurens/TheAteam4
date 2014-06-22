@@ -55,10 +55,10 @@
 				<li><a href="index.jsp">Home</a></li>
 				<% int rol = Integer.parseInt(session.getAttribute("rol").toString());
 				if(rol == 5 || rol == 9){ %>
-				<li>Voorraadbeheer
+				<li id="voorraadbeheer">Voorraadbeheer
 					<ul>
-						<li><a href="onderdelen_bestellen.jsp">Onderdelen</a></li>
-						<li><a href="brandstof_bestellen.jsp">Brandstof</a></li>
+						<li id ="onderdelen bestellen"><a href="onderdelen_bestellen.jsp">Onderdelen</a></li>
+						<li id ="brandstof bestellen"><a href="brandstof_bestellen.jsp">Brandstof</a></li>
 					</ul></li>
 				<%} %>
 				<%if(rol == 6 || rol == 9){ %>
@@ -94,16 +94,16 @@
 
 				<%} %>
 				<%if(rol == 1 || rol == 3 || rol == 9){ %>
-				<li>Betalingen/Facturatie
+				<li id = "betalingen/facturatie">Betalingen/Facturatie
 					<ul>
-						<li><a href="prijsaanpassen.jsp">Prijs aanpassen</a></li>
+						<li id="prijs aanpassen"><a href="prijsaanpassen.jsp">Prijs aanpassen</a></li>
 						<li><a href="prijsberekenen.jsp">Prijs berekenen</a></li>
-						<li><a href="rapportagesaanmaken.jsp">Rapportages
+						<li id="rapportages aanmaken"><a href="rapportagesaanmaken.jsp">Rapportages
 								aanmaken</a></li>
 					</ul></li>
 				<%} %>
 				<%if(rol == 3 || rol == 9){ %>
-				<li><a href="registreer.jsp">Registreren</a>
+				<li id="registreren"><a href="registreer.jsp">Registreren</a>
 				<%} %>
 			</ul>
 		</div>
