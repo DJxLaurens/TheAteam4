@@ -11,7 +11,7 @@ import Onderdelen.Klus;
 
 public class KlusTest {
 	Klus k = new Klus();
-	Auto a1 = new Auto(0);
+	Auto a1 = new Auto();
 	Gebruiker g1 = new Gebruiker();
 	Gebruiker m = new Gebruiker();
 

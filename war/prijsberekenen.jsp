@@ -1,8 +1,9 @@
 <jsp:include page="header.jsp" />
-
+<%@ page import="DomeinModel.AutoTotaalDienst"%>
 <div class="content">
 <div class="left">
 <form action="PrijsBerekenenServlet.do" method="get">
+<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); %>
 	<h1>Prijs Berekenen</h1>
 	<table>
 		<tr>
@@ -92,11 +93,11 @@
 
 	<h1>Prijzenoverzicht</h1>
 	<div class="box">
-		<p>- Literprijs is momenteel:<p>
-		<p>- Gewerkte manurenprijs is momenteel:<p>
-		<p>- Dagprijs is momenteel:<p>
-		<p>- Weekprijs is momenteel:<p>
-		<p>- Maandprijs is momenteel:<p>
+		<p>- Literprijs is momenteel: <% out.print(atd.getLiterPrijs()); %><p>
+		<p>- Gewerkte manurenprijs is momenteel: <% out.print(atd.getWerkUurPrijs()); %><p>
+		<p>- Dagprijs is momenteel: <% out.print(atd.getDagPrijs()); %></p>
+		<p>- Weekprijs is momenteel: <% out.print(atd.getWeekPrijs()); %><p>
+		<p>- Maandprijs is momenteel: <% out.print(atd.getMaandPrijs()); %><p>
 	</div>
 </form>
 

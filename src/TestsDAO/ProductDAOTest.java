@@ -27,9 +27,9 @@ public class ProductDAOTest {
 		assertEquals(1, pDao.getAlleOnderdelenDB().get(0).getProductID());
 		assertEquals("Buisje", pDao.getAlleOnderdelenDB().get(0).getProductNaam());
 		assertEquals(2, pDao.getAlleOnderdelenDB().get(0).getType());
-		assertEquals(10, pDao.getAlleOnderdelenDB().get(0).getMinVoorraad());
-		assertEquals(25, pDao.getAlleOnderdelenDB().get(0).getVoorraad());
-		assertEquals(10, pDao.getAlleOnderdelenDB().get(0).getInBestelling());
+		assertEquals(11, pDao.getAlleOnderdelenDB().get(0).getMinVoorraad());
+		assertEquals(45, pDao.getAlleOnderdelenDB().get(0).getVoorraad());
+		assertEquals(0, pDao.getAlleOnderdelenDB().get(0).getInBestelling());
 	}
 	
 	@Test
@@ -43,12 +43,6 @@ public class ProductDAOTest {
 	}
 	
 	@Test
-	public void setOnderdelenDB(){
-//		methode is nog niet uitgeschreven
-		fail("methode is niet uitgeschreven");
-	}
-	
-	@Test
 	public void getAlleBrandstoffenDB(){
 		assertEquals(2, pDao.getAlleBrandstoffenDB().get(0).getProductID());
 		assertEquals("Euro 95 ongelood", pDao.getAlleBrandstoffenDB().get(0).getProductNaam());
@@ -59,14 +53,8 @@ public class ProductDAOTest {
 	}
 	
 	@Test
-	public void setBrandstoffenDB(){
-//		methode is nog niet uitgeschreven
-		fail("methode is niet uitgeschreven");
-	}
-	
-	@Test
 	public void getOnderdeelFromID(){
-		assertEquals(pDao.getAlleOnderdelenDB().get(0), pDao.getOnderdeelFromID(1));
+		assertEquals(pDao.getAlleOnderdelenDB().get(0).toString(), pDao.getOnderdeelFromID(1).toString());
 	}
 	
 	@Test
@@ -77,12 +65,14 @@ public class ProductDAOTest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		assertEquals(p, pDao.getAlleOnderdelenDB().get(5));
+		assertEquals(p.toString(),pDao.getAlleOnderdelenDB().get(5).toString());
 	}
 	
 	@Test
-	public void changeVoorraad(){
-		
+	public void changeVoorraad() throws SQLException{
+		assertEquals(45, pDao.getOnderdeelFromID(1).getVoorraad());
+		pDao.changeVoorraad(1, 5, 45);
+		assertEquals(50, pDao.getOnderdeelFromID(1).getVoorraad());
 	}
 	
 	@Test
@@ -93,7 +83,7 @@ public class ProductDAOTest {
 	@Test
 	public void changeMinVoorraad(){
 		try {
-			pDao.changeMinVoorraad(5, 20);
+			pDao.changeMinVoorraad(4, 20);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -103,7 +93,7 @@ public class ProductDAOTest {
 	@Test
 	public void deleteVoorraad(){
 //		vrdID is hoogste product ID in database
-		int vrdID = 6;
+		int vrdID = 8;
 		try {
 			pDao.deleteVoorraad(vrdID);
 		} catch (SQLException e) {

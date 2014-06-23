@@ -1,4 +1,4 @@
-package VoorraadbeheerServlets;
+package BetalingFacturatieServlets;
 
 import java.io.IOException;
 

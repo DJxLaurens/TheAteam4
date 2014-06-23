@@ -355,4 +355,8 @@ public class AutoTotaalDienst {
     public ArrayList<Klus> getAlleKlussen() {
 		return alleKlussen = new KlussenDAO().getAlleKlussenDB();
 	}
+    //autos voor in combobox in klus_toevoegen.jsp
+    public ArrayList<Auto> getAlleAutos(){
+    	return alleAutos = new AutosDAO().getAlleAutosDB();
+    }
 }

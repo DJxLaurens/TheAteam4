@@ -7,13 +7,12 @@
 	<%@ page import="DomeinModel.AutoTotaalDienst"%>
 
 	<form action="KlusToevoegenServlet.do" method="post">
-		<% 
+	<% 
 		Object msgs = request.getAttribute("msgs"); 
 		if (msgs != null) { 	 
 			out.println(msgs); 
 			out.println(); 		
-		}	
-		%>	
+		}	%>	
 		<table>
 			<tr>
 				<td>Klus naam:</td>
