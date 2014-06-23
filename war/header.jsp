@@ -69,6 +69,7 @@
 						<li><a href="status.jsp">Status</a></li>
 					</ul></li>
 				<%} %>
+				<!--  
 				<%if(rol == 2 || rol == 4 || rol == 8 || rol == 9){ %>
 				<li>Parkeergarage				
 					<ul>
@@ -82,7 +83,8 @@
 						<li><a href="overzicht_bezetting.jsp">Overzicht vorige maand</a></li>
 						<%} %>
 					</ul></li>	
-				<%} %>			
+				<%} %>		
+				-->	
 				<%if(rol == 1 || rol == 9){ %>
 					<li id="herinneringsbrieven">Herinneringsbrieven			
 						<ul>
