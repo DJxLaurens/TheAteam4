@@ -30,11 +30,17 @@
 					}%></td>
 				<td><%if(k.getAlleMonteurs().size() > 0){ 
 					out.println(k.getAlleMonteurs().get(0)); 
-					}%></td>
+					}else{
+					out.println("onbekend"); }%></td>
 				<td><%if(k.getAlleAutos().size() > 0){ 
 					out.println(k.getAlleAutos().get(0)); 
-					}%></td>
-				<td>0</td>
+					System.out.println(k.getAlleAutos());
+					}else{
+					out.println("onbekend"); }%></td>
+				<td><%if(k.getAlleData().size() > 0){ 
+					out.println(k.getAlleData().get(0)); 
+					}else{
+					out.println("onbekend"); }%></td>
 			</tr>
 			<%}%>
 		</table>

@@ -40,8 +40,7 @@ public class KlusToevoegenServlet extends HttpServlet {
 					if(a.getAutoID() == autoId){
 						k.voegAutoToe(a);
 					}
-				}
-				System.out.println(k.getAlleAutos());
+				}			
 				s = "Toevoegen is gelukt";
 			} catch (SQLException e) {
 				e.printStackTrace();
