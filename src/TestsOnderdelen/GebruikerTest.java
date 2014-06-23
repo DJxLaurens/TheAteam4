@@ -13,7 +13,7 @@ public class GebruikerTest {
 	
 	@Before
 	public void setUp(){
-		g1 = new Gebruiker(5, 4, "Lionel", "Messi", "Kalverenstraat 10", "1234AB", "Kalverenstraat 10", "87654321", "lionel@lolmail.com", "11-02-2012", 10, "01-01-2011", 1);	
+		g1 = new Gebruiker(5, 4, "Lionel", "Messi", "Kalverenstraat 10", "1234AB", "Kalverenstraat 10", "8765432153", "lionel@lolmail.com", "11-02-2012", 10, "01-01-2011", 1);	
 	}
 	@Test
 	public void testGebruikerID(){ 
@@ -47,7 +47,7 @@ public class GebruikerTest {
 	
 	@Test
 	public void testTelefoonnummer(){ 
-		assertEquals("87654321", g1.getTelefoonnummer());
+		assertEquals("8765432153", g1.getTelefoonnummer());
 	}
 	
 	@Test

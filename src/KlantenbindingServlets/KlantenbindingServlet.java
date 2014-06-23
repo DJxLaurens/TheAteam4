@@ -59,7 +59,7 @@ public class KlantenbindingServlet extends HttpServlet{
 			if(!x.equals("") && check != 2){
 				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmm");
 				Date datum = new Date();
-				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +1 jaar.txt", true);
+				FileWriter fw = new FileWriter("["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +1 jaar.txt", true);
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");
@@ -90,7 +90,7 @@ public class KlantenbindingServlet extends HttpServlet{
 			if(!x.equals("") && check == 2){
 				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmm");
 				Date datum = new Date();
-				FileWriter fw = new FileWriter("C:/testbrieven/["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +2 maanden.txt", true);  
+				FileWriter fw = new FileWriter("["+sdf.format(datum)+"] "+x+" - Herinnering onderhoudsbeurt +2 maanden.txt", true);  
 				PrintWriter pw = new PrintWriter(fw);			
 				pw.println("Geachte " + x + ",");
 				pw.println("");
