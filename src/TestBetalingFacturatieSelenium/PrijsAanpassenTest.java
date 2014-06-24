@@ -30,27 +30,27 @@ public class PrijsAanpassenTest {
 
 	@Test
 	public void testPrijsAanpassen() throws Exception, FileNotFoundException {
-		
-			  File f = new File("C:/Users/Jacky/Dropbox/Themaopdracht 4/CSVTestdata/PrijsAanpassenTest2.csv");
-				if(f.exists()&&f.isFile()){
-					String literprijs;
-					String manurenprijs;
-					String dagprijs;
-					String weekprijs;
-					String maandprijs;
-					FileReader fr = new FileReader(f);
-					BufferedReader br = new BufferedReader(fr);
-					String line;
-					while((line = br.readLine()) != null){
-						Scanner sc = new Scanner(line);
-						sc.useDelimiter(";");
-						while(sc.hasNext()){
-							literprijs = sc.next();	
-							manurenprijs = sc.next();
-							dagprijs = sc.next();	
-							weekprijs = sc.next();
-							maandprijs = sc.next();	
-			
+
+		File f = new File("C:/Users/Theolice/Desktop/CSVTestdata/PrijsAanpassenTest2.csv");
+		if(f.exists()&&f.isFile()){
+			String literprijs;
+			String manurenprijs;
+			String dagprijs;
+			String weekprijs;
+			String maandprijs;
+			FileReader fr = new FileReader(f);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while((line = br.readLine()) != null){
+				Scanner sc = new Scanner(line);
+				sc.useDelimiter(";");
+				while(sc.hasNext()){
+					literprijs = sc.next();	
+					manurenprijs = sc.next();
+					dagprijs = sc.next();	
+					weekprijs = sc.next();
+					maandprijs = sc.next();	
+
 					driver.get(baseUrl + "/ATD-Windows/index.jsp");
 					driver.findElement(By.name("naam")).clear();
 					driver.findElement(By.name("naam")).sendKeys("admin@ikbendeadmin.nl");
