@@ -52,7 +52,6 @@ public class AutoTotaalDienstenDAO {
 				alleATDDB.add(atd);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		
@@ -72,7 +71,6 @@ public class AutoTotaalDienstenDAO {
 		String sql = "DELETE FROM autototaaldienst WHERE id=" + id;
 		statement.executeUpdate(sql);	
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
