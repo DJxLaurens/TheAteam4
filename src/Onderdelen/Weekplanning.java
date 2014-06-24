@@ -5,14 +5,12 @@ public class Weekplanning {
 	String klusNaam;
 	String monteur;
 	String auto;
-	String datum;
 	
-	public Weekplanning(int id, String kNm, String m, String a, String dtm){
+	public Weekplanning(int id, String kNm, String m, String a){
 			weekplanningId = id;
 			klusNaam = kNm;
 	        monteur = m;
 	        auto = a;
-	        datum = dtm;
 	    }
 	
 	public int getId(){
@@ -31,7 +29,4 @@ public class Weekplanning {
 		return auto;
 	}
 	
-	public String getDatum(){
-		return datum;
-	}
 }

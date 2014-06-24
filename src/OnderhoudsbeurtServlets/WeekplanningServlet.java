@@ -36,7 +36,7 @@ public class WeekplanningServlet extends HttpServlet {
 		System.out.println(datumIngevoerd + " " + req.getParameter("klusNaam") + " " + req.getParameter("monteurNaam") + " " + req.getParameter("autoId"));
 		RequestDispatcher rd = null;
 		try {
-			klus.saveWeekplanning(datumIngevoerd, klusNaam, monteurNaam, autoId);
+			klus.saveWeekplanning(klusNaam, monteurNaam, autoId);
 			klus.setIngepland(id);
 			atd.verwijderKlusById(id);
 		} catch (SQLException e) {

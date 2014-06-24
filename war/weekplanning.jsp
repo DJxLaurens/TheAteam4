@@ -17,19 +17,19 @@
 		%>
 		<table>
 			<tr>
+				<th style="text-align: left;">Klusnummer:</th>
 				<th style="text-align: left;">Klus:</th>
 				<th style="text-align: left;">Monteur:</th>
 				<th style="text-align: left;">Auto:</th>
-				<th style="text-align: left;">Datum:</th>
 			</tr>
 			<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); 
 			
 			for(Weekplanning w : atd.getWeekplanning()) { %>
 			<tr id="headRow">
+				<td><%out.println(w.getId());%></td>
 				<td><%out.println(w.getKlusNaam());%></td>
 				<td><%out.println(w.getMonteur());%></td>
 				<td><%out.println(w.getAuto());%></td>
-				<td><%out.println(w.getDatum());%></td>
 				<td><a href="verwijderWeekplanning.jsp?id=<%=w.getId()%>"><img src="images/deleteIcon.png"/></a></td>
 			</tr>
 			<%}%>
@@ -49,11 +49,6 @@
 					}
 				}%>
 				</select></td>
-			</tr>
-			<tr>
-				<td>Datum:</td>
-				<td><input type="text" name="dag"> - <input type="text"
-					name="maand"> - <input type="text" name="jaar"></td>
 			</tr>
 			<tr>
 				<td>Selecteer Monteur:</td>
