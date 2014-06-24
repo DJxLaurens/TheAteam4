@@ -1,6 +1,7 @@
 package BetalingFacturatieServlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.AutoTotaalDienstenDAO;
 import DomeinModel.AutoTotaalDienst;
 
 public class PrijsAanpassenServlet extends HttpServlet{
@@ -88,6 +90,20 @@ public class PrijsAanpassenServlet extends HttpServlet{
 			}
 			if(mp > 0){
 				atd.setMaandPrijs(mp);
+			}
+			
+			try {
+				new AutoTotaalDienstenDAO().deleteAutoTotaalDienst(1);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			try {
+				new AutoTotaalDienstenDAO().saveAutoTotaalDienst(atd);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
 			rd = req.getRequestDispatcher("prijsaanpassen.jsp");
