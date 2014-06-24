@@ -28,7 +28,7 @@ public class OnderdeelBestellenTest {
 
   @Test
   public void testOnderdeelBestellen() throws Exception {
-    driver.get(baseUrl + "/ATD-Windows/index.jsp");
+    driver.get(baseUrl + "/ATD-Laurens/index.jsp");
     driver.findElement(By.name("naam")).clear();
     driver.findElement(By.name("naam")).sendKeys("admin@ikbendeadmin.nl");
     Thread.sleep(2000L);
@@ -64,8 +64,8 @@ public class OnderdeelBestellenTest {
     Thread.sleep(2000L);
     driver.findElement(By.cssSelector("div.content > form > input[type=\"submit\"]")).click();
     Thread.sleep(4000L);
-    driver.findElement(By.name("prod_16")).clear();
-    driver.findElement(By.name("prod_16")).sendKeys("8");
+    driver.findElement(By.name("prod_9")).clear();
+    driver.findElement(By.name("prod_9")).sendKeys("8");
     Thread.sleep(2000L);
     driver.findElement(By.name("bestel")).click();
     Thread.sleep(4000L);

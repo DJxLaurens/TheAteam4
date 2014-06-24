@@ -27,8 +27,6 @@ public class KlusToevoegenServlet extends HttpServlet {
 	private String s;
 	private String datum;
 	private int datumIngevuld, datumVandaag;
-	private int count = 0;
-
 	public String getToday() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 		Calendar cal = Calendar.getInstance();
@@ -37,33 +35,31 @@ public class KlusToevoegenServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext()
-				.getAttribute("atdRef");
+		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");
 		klusNaam = req.getParameter("klusNaam");
 		klusOmschrijving = req.getParameter("klusOmschrijving");
 		String string = (String) req.getParameter("auto");
 		autoId = Integer.parseInt(string);
 		werknemerId = 0;
-		String dag = req.getParameter("dag");
-		String maand = req.getParameter("maand");
-		String jaar = req.getParameter("jaar");
+		
+String dag = req.getParameter("dag");
+String maand = req.getParameter("maand");
+String jaar = req.getParameter("jaar");
 
-		if (!"".equals(klusNaam) && !"".equals(klusOmschrijving)
-				&& !"".equals(dag) && !"".equals(maand) && !"".equals(jaar)) {
-			datum = jaar + maand + dag;
-			datumIngevuld = Integer.parseInt(datum);
-			datumVandaag = Integer.parseInt(getToday());
-			if (datumIngevuld < datumVandaag) {
-				s = "datum moet in de toekomst liggen";
-			} else {
-				Klus k = new Klus(klusNaam, klusOmschrijving, autoId,
-						werknemerId, datum);
-				try {
-					klus.saveKlus(k);
-					for (Auto a : atd.getAlleAutos()) {
-						if (a.getAutoID() == autoId) {
-							k.voegAutoToe(a);
-							k.voegDatumToe(datum);
+if (!"".equals(klusNaam) && !"".equals(klusOmschrijving)
+		&& !"".equals(dag) && !"".equals(maand) && !"".equals(jaar)) {
+	datum = jaar + maand + dag;
+	datumIngevuld = Integer.parseInt(datum);
+	datumVandaag = Integer.parseInt(getToday());
+	if (datumIngevuld > datumVandaag) {
+		Klus k = new Klus(0, klusNaam, klusOmschrijving, autoId,
+				werknemerId, datum, 0);		
+			try {
+				klus.saveKlus(k);
+				for(Auto a : atd.getAlleAutos()){
+					if(a.getAutoID() == autoId){
+						k.voegAutoToe(a);
+						k.voegDatumToe(datum);
 						}
 					}
 					s = "Toevoegen is gelukt";
@@ -71,6 +67,8 @@ public class KlusToevoegenServlet extends HttpServlet {
 					e.printStackTrace();
 					s = "Toevoegen is mislukt";
 				}
+			} else {
+				s = "datum moet in de toekomst liggen";
 			}
 		} else {
 			s = "Vul een klusnaam, klusomschrijving en een datum in";

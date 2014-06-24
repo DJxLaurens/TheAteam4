@@ -1,9 +1,10 @@
 <jsp:include page="header.jsp" />
 
 <div class="content">
-	<h1>Weekplanning</h1>
+	<h1>Planning</h1>
 	<%@ page import="Onderdelen.Klus"%>
 	<%@ page import="Onderdelen.Gebruiker"%>
+	<%@ page import="Onderdelen.Weekplanning"%>
 	<%@ page import="Onderdelen.Auto"%>
 	<%@ page import="DomeinModel.AutoTotaalDienst"%>
 	<form action="WeekplanningServlet.do" method="post">
@@ -16,31 +17,20 @@
 		%>
 		<table>
 			<tr>
-				<td>Klus:</td>
-				<td>Monteur:</td>
-				<td>Auto:</td>
-				<td>Datum:</td>
+				<th style="text-align: left;">Klusnummer:</th>
+				<th style="text-align: left;">Klus:</th>
+				<th style="text-align: left;">Monteur:</th>
+				<th style="text-align: left;">Auto:</th>
 			</tr>
 			<% AutoTotaalDienst atd = (AutoTotaalDienst)application.getAttribute("atdRef"); 
 			
-			for(Klus k : atd.getAlleKlussen()) { %>
+			for(Weekplanning w : atd.getWeekplanning()) { %>
 			<tr id="headRow">
-				<td><%if(atd.getAlleKlussen().size() > 0){ 
-					out.println(k.getKlusNaam()); 
-					}%></td>
-				<td><%if(k.getAlleMonteurs().size() > 0){ 
-					out.println(k.getAlleMonteurs().get(0)); 
-					}else{
-					out.println("onbekend"); }%></td>
-				<td><%if(k.getAlleAutos().size() > 0){ 
-					out.println(k.getAlleAutos().get(0)); 
-					System.out.println(k.getAlleAutos());
-					}else{
-					out.println("onbekend"); }%></td>
-				<td><%if(k.getAlleData().size() > 0){ 
-					out.println(k.getAlleData().get(0)); 
-					}else{
-					out.println("onbekend"); }%></td>
+				<td><%out.println(w.getId());%></td>
+				<td><%out.println(w.getKlusNaam());%></td>
+				<td><%out.println(w.getMonteur());%></td>
+				<td><%out.println(w.getAuto());%></td>
+				<td><a href="verwijderWeekplanning.jsp?id=<%=w.getId()%>"><img src="images/deleteIcon.png"/></a></td>
 			</tr>
 			<%}%>
 		</table>
@@ -51,17 +41,14 @@
 						<%
 				for(Klus k : atd.getAlleKlussen()) {
 					if(k.getWerknemerId() == 0){ %>
-						<option value=klus><%=k.getKlusNaam()%>
-						</option>
+						<option name=klus value="<%=k.getKlusNaam()%>"><%=k.getKlusNaam()%></option>
+						<input type="hidden" name="klusNaam" value="<%=k.getKlusNaam()%>"/>
+						<input type="hidden" name="klusID" value="<%=k.getKlusNummer()%>"/>
+						<input type="hidden" name="autoId" value="<%=k.getAutoId()%>"/>
 						<%
 					}
 				}%>
 				</select></td>
-			</tr>
-			<tr>
-				<td>Datum:</td>
-				<td><input type="text" name="dag"> - <input type="text"
-					name="maand"> - <input type="text" name="jaar"></td>
 			</tr>
 			<tr>
 				<td>Selecteer Monteur:</td>
@@ -70,10 +57,13 @@
 					for(Gebruiker g : atd.getAlleMonteurs()) {
 						if(g.getRol() == 4){
 						%><option value=<%= g.getNaam() %>><%= g.getNaam() %>
+						<input type="hidden" name="monteurNaam" value="<%=g.getNaam()%>"/>
 					<%}
 					}%></option>
 				</select></td>
 			</tr>
+			
+			
 
 		</table>
 		<input type="submit" value="Toevoegen">
