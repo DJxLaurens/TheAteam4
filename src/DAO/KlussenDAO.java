@@ -37,15 +37,14 @@ public class KlussenDAO {
 		
 		try {
 			this.leesDatabase();
-			output = statement.executeQuery("SELECT * FROM weekplanning ORDER BY datum");
+			output = statement.executeQuery("SELECT * FROM weekplanning");
 			while (output.next()){
 				int id = output.getInt("id");
 				String klusNaam = output.getString("klusnaam");
 				String monteur = output.getString("monteur");
 				String auto = output.getString("auto");
-				String datum = output.getString("datum");
 				
-				Weekplanning w = new Weekplanning(id, klusNaam, monteur, auto, datum);
+				Weekplanning w = new Weekplanning(id, klusNaam, monteur, auto);
 				weekplanning.add(w);			
 			}
 		} catch (SQLException e) {
@@ -129,13 +128,13 @@ public class KlussenDAO {
 		statement.execute("UPDATE klussen " + "SET ingepland = 1 WHERE id=" + id);
 	}
 	
-	public void saveWeekplanning(String dtm, String kN, String mN, String aI) throws SQLException{
+	public void saveWeekplanning(String kN, String mN, String aI) throws SQLException{
 		this.leesDatabase();
 		
 		AutosDAO ad = new AutosDAO();
 		String autoNaam = ad.getAutoById(aI);
 		
-		statement.execute("INSERT INTO weekplanning (klusnaam, monteur, auto, datum)"+ "VALUES ('"+ kN + "','" + mN + "','" + autoNaam + "','" + dtm + "')");	
+		statement.execute("INSERT INTO weekplanning (klusnaam, monteur, auto)"+ "VALUES ('"+ kN + "','" + mN + "','" + autoNaam + "')");	
 	}
 	
 	public Weekplanning getWeekplanningByID(int id){
@@ -162,7 +161,7 @@ public class KlussenDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Weekplanning week = new Weekplanning(id, klusNaam, monteur, auto, datum);
+		Weekplanning week = new Weekplanning(id, klusNaam, monteur, auto);
 		
 		return week;
 	}
