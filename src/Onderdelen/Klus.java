@@ -41,6 +41,10 @@ public class Klus {
         return klusNaam;
     }
     
+    public int getIngepland(){
+    	return ingepland;
+    }
+    
     public String getKlusOmschrijving(){
         return klusOmschrijving;
     }
@@ -125,5 +129,8 @@ public class Klus {
     }    
     public String toString(){
         return klusNaam;
+    }   
+    public String toStringTest(){
+        return klusNaam+id+autoId+klusOmschrijving;
     }
 }
