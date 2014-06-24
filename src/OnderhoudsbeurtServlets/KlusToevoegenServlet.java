@@ -33,7 +33,7 @@ public class KlusToevoegenServlet extends HttpServlet {
 		werknemerId = 0;
 		
 		if (!"".equals(klusNaam) && !"".equals(klusOmschrijving)) {			
-			Klus k = new Klus(klusNaam, klusOmschrijving, autoId, werknemerId);			
+			Klus k = new Klus(klusNaam, klusOmschrijving, autoId, werknemerId, 0);			
 			try {
 				klus.saveKlus(k);
 				for(Auto a : atd.getAlleAutos()){

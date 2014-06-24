@@ -10,14 +10,26 @@ public class Klus {
     private int autoId;
     private int werknemerId;
     private int klusNummer;
+    private int ingepland;
+    private int id;
     private ArrayList<Auto>alleAutos = new ArrayList<Auto>();
     private ArrayList<Gebruiker>alleMonteurs = new ArrayList<Gebruiker>();
     private ArrayList<String> datum = new ArrayList<String>();
-    public Klus(String kNm, String kO, int aI, int wI){
+    public Klus(String kNm, String kO, int aI, int wI, int ig){
     	klusNaam = kNm;
         klusOmschrijving = kO;
         autoId = aI;
         werknemerId = wI;
+        ingepland = ig;
+    }
+    
+    public Klus(int id, String kNm, String kO, int aI, int wI, int ig){
+    	klusNummer = id;
+    	klusNaam = kNm;
+        klusOmschrijving = kO;
+        autoId = aI;
+        werknemerId = wI;
+        ingepland = ig;
     }
     public Klus(){
     	

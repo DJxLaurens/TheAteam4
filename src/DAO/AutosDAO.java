@@ -62,6 +62,27 @@ public class AutosDAO {
 		
 		return alleAutosDB;
 	}
+	
+	public String getAutoById(String ai) throws SQLException{
+		String merk = null;
+		String type = null;
+		Integer.parseInt(ai);
+		
+		this.leesDatabase();
+		output = statement.executeQuery("SELECT merk, type FROM auto WHERE auto_id =" + ai);
+		
+		System.out.println(output);
+		
+		while (output.next()) {
+			merk = output.getString("merk");
+			type = output.getString("type");
+		}
+		
+		String auto = merk + " " + type;
+		
+		return auto;
+	}
+	
 	public void saveAuto(Auto a) throws SQLException {	
 		this.leesDatabase();
 		statement.execute("INSERT INTO auto (kenteken, merk, bouwjaar, type, brandstoftype)"+ "VALUES ('"+ a.getKenteken() + "','" + a.getMerk() + "','" + a.getBouwjaar() + "','" + a.getType() + "','" + a.getBrandstoftype() + "')");				
