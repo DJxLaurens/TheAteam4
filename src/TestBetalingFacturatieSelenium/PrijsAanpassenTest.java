@@ -23,15 +23,15 @@ public class PrijsAanpassenTest {
 
 	@Before
 	public void setUp() throws Exception {
-		driver = new FirefoxDriver();
-		baseUrl = "http://localhost:8080/";
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
 	@Test
 	public void testPrijsAanpassen() throws Exception, FileNotFoundException {
+		driver = new FirefoxDriver();
+		baseUrl = "http://localhost:8080/";
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-		File f = new File("C:/Users/Theolice/Desktop/CSVTestdata/PrijsAanpassenTest2.csv");
+		File f = new File("C:/Users/Theo/Desktop/CSVTestdata/PrijsAanpassenTest2.csv");
 		if(f.exists()&&f.isFile()){
 			String literprijs;
 			String manurenprijs;
@@ -42,6 +42,12 @@ public class PrijsAanpassenTest {
 			BufferedReader br = new BufferedReader(fr);
 			String line;
 			while((line = br.readLine()) != null){
+				driver.get(baseUrl + "/ATD-Windows/index.jsp");
+				driver.findElement(By.name("naam")).clear();
+				driver.findElement(By.name("naam")).sendKeys("jan@lolmail.com");
+				driver.findElement(By.name("wachtwoord")).clear();
+				driver.findElement(By.name("wachtwoord")).sendKeys("Jan");
+				driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
 				Scanner sc = new Scanner(line);
 				sc.useDelimiter(";");
 				while(sc.hasNext()){
@@ -50,51 +56,28 @@ public class PrijsAanpassenTest {
 					dagprijs = sc.next();	
 					weekprijs = sc.next();
 					maandprijs = sc.next();	
-
-					driver.get(baseUrl + "/ATD-Windows/index.jsp");
-					driver.findElement(By.name("naam")).clear();
-					driver.findElement(By.name("naam")).sendKeys("admin@ikbendeadmin.nl");
-					driver.findElement(By.name("wachtwoord")).clear();
-					driver.findElement(By.name("wachtwoord")).sendKeys("admin");
-					//Thread.sleep(4000L);
-					driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
-					//Thread.sleep(4000L);
-
 					WebElement mnuElement;
 					mnuElement = driver.findElement(By.id("betalingen/facturatie"));
 					mnuElement.click();
-
 					Actions builder = new Actions(driver);
 					builder.moveToElement(mnuElement).perform();
-					//Thread.sleep(4000L);
 					driver.findElement(By.id("prijs aanpassen")).click();
 					driver.get("http://localhost:8080/ATD-Windows/prijsaanpassen.jsp");
-					//Thread.sleep(4000L);
-
 					driver.findElement(By.name("literprijs")).clear();
 					driver.findElement(By.name("literprijs")).sendKeys(literprijs);
-					Thread.sleep(1000L);
 					driver.findElement(By.name("manurenprijs")).clear();
 					driver.findElement(By.name("manurenprijs")).sendKeys(manurenprijs);
-					Thread.sleep(1000L);
 					driver.findElement(By.name("dagprijs")).clear();
 					driver.findElement(By.name("dagprijs")).sendKeys(dagprijs);
-					Thread.sleep(1000L);
 					driver.findElement(By.name("weekprijs")).clear();
 					driver.findElement(By.name("weekprijs")).sendKeys(weekprijs);
-					Thread.sleep(1000L);
 					driver.findElement(By.name("maandprijs")).clear();
 					driver.findElement(By.name("maandprijs")).sendKeys(maandprijs);
-					Thread.sleep(1000L);
-					driver.findElement(By.name("press")).click();
-					//Thread.sleep(4000L);
 					driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
-					//Thread.sleep(4000L);
+					driver.findElement(By.name("press")).click();
 				}
-				line = br.readLine();
 				sc.close();
 			}
-			br.close();
 		}
 	}
 
