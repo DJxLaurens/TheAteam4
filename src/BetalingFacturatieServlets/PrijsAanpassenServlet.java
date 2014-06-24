@@ -1,6 +1,7 @@
 package BetalingFacturatieServlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -78,6 +79,12 @@ public class PrijsAanpassenServlet extends HttpServlet{
 
 			if(lp > 0){
 				atd.setLiterPrijs(lp);
+				PrintWriter out = resp.getWriter();
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert(Prijs is aangepast!');");  
+				out.println("window.location = 'prijsaanpassen.jsp'");
+				out.println("</script>");
+				out.close();
 			}
 			if(mup > 0){
 				atd.setWerkUurPrijs(mup);
