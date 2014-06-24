@@ -31,7 +31,7 @@ public class PrijsAanpassenTest {
 	@Test
 	public void testPrijsAanpassen() throws Exception {
 		//VERANDER DE FILE LOCATIE
-		File f = new File("C:/Users/Theolice/Desktop/Testgegevens-autos-normaal.csv");
+		File f = new File("C:/Users/Theo/Dropbox/Thema opdracht 4/CSV Testdata/PrijsAanpassenTest.csv");
 		if(f.exists()&&f.isFile()){
 			String literprijs = "";
 			String manurenprijs = "";
@@ -43,7 +43,6 @@ public class PrijsAanpassenTest {
 			String line;
 			while((line = br.readLine()) != null){
 				Scanner sc = new Scanner(line);
-				sc.useDelimiter(";");
 				while(sc.hasNext()){
 					literprijs = sc.next();	
 					manurenprijs = sc.next();
