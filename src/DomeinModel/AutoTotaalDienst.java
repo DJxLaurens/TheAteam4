@@ -12,6 +12,7 @@ import Onderdelen.Gebruiker;
 import Onderdelen.Klus;
 import Onderdelen.Gebruiker;
 import Onderdelen.Product;
+import Onderdelen.Weekplanning;
 import DAO.AutosDAO;
 import DAO.GebruikersDAO;
 import DAO.KlussenDAO;
@@ -36,6 +37,7 @@ public class AutoTotaalDienst {
     private ArrayList<Gebruiker> factuur = new ArrayList<Gebruiker>();
     private ArrayList<Gebruiker> brief = new ArrayList<Gebruiker>();
     private ArrayList<Klus> alleKlussen = new ArrayList<Klus>();
+    private ArrayList<Weekplanning> weekplanning = new ArrayList<Weekplanning>();
     private ArrayList<Klus> klussenStatus = new ArrayList<Klus>();
     private ArrayList<Gebruiker> alleMonteurs = new ArrayList<Gebruiker>();
     private double literPrijs, werkUurPrijs, maandPrijs, weekPrijs, dagPrijs;
@@ -351,12 +353,42 @@ public class AutoTotaalDienst {
         }
         return antw;
     }
+    
+    public Klus zoekKlus(int id){
+        Klus antw = null;
+        for(Klus k: alleKlussen){
+            if(k.getKlusNummer()==id){
+                antw = k;
+                break;
+            }
+        }
+        return antw;
+    }
+    
     //klussen voor in de weekplanning
     public ArrayList<Klus> getAlleKlussen() {
 		return alleKlussen = new KlussenDAO().getAlleKlussenDB();
 	}
+    
+    public void verwijderKlusById(int id){
+    	Klus antw = this.zoekKlus(id);
+    	alleKlussen.remove(antw);
+    }
+    
     //autos voor in combobox in klus_toevoegen.jsp
     public ArrayList<Auto> getAlleAutos(){
     	return alleAutos = new AutosDAO().getAlleAutosDB();
     }
+    
+    
+    public ArrayList<Weekplanning> getWeekplanning() {
+		return weekplanning = new KlussenDAO().getWeekplanning();
+	}
+    
+    public Weekplanning getWeekplanningById(int id){
+  	  Weekplanning week = new KlussenDAO().getWeekplanningByID(id);
+  	   	
+  	  return week;
+  }
+    
 }
