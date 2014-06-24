@@ -17,7 +17,7 @@ public class KlusTest {
 
 	@Before
 	public void setUp() {
-		k = new Klus("voorbeeldklus", "niks", 1, 1);
+		k = new Klus(10,"voorbeeldklus", "niks", 1, 1, "120102", 0);
 		g1 = new Gebruiker(0, 0, null, null, null, null, null, null, null, null, 0, null, 0);
 		a1 = new Auto(1, "11-JJ-AT", "Opel", 1991, "Astra", g1, "Gas");
 		m = new Gebruiker("Henk Paladijn");
@@ -54,11 +54,6 @@ public class KlusTest {
 	@Test
 	public void testVoegMonteurToe() {
 		assertTrue(k.voegMonteurToe(m));
-	}
-
-	@Test
-	public void testVoegDatumToe() {
-		assertTrue(k.voegDatumToe(k.getToday()));
 	}
 
 	@Test

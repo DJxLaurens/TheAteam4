@@ -65,7 +65,7 @@
 				<li>Onderhoudsbeurt
 					<ul>
 						<li><a href="klus_toevoegen.jsp">Klus toevoegen</a></li>
-						<li><a href="weekplanning.jsp">Weekplanning</a></li>
+						<li><a href="weekplanning.jsp">Planning</a></li>
 						<li><a href="status.jsp">Status</a></li>
 					</ul></li>
 				<%} %>
@@ -99,7 +99,7 @@
 				<li id = "betalingen/facturatie">Betalingen/Facturatie
 					<ul>
 						<li id="prijs aanpassen"><a href="prijsaanpassen.jsp">Prijs aanpassen</a></li>
-						<li><a href="prijsberekenen.jsp">Prijs berekenen</a></li>
+						<!--<li><a href="prijsberekenen.jsp">Prijs berekenen</a></li>-->
 						<li id="rapportages aanmaken"><a href="rapportagesaanmaken.jsp">Rapportages
 								aanmaken</a></li>
 					</ul></li>
