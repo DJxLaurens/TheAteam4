@@ -31,6 +31,13 @@
 				<%}%></option>
 				</select></td>
 			</tr>
+			<tr>
+				<td>Datum:</td>
+				<td>
+				<input type="number" name="dag" min="1" max="31">
+				<input type="number" name="maand" min="1" max="12">
+				<input type="number" name="jaar" min="2014" max="2020"></td>
+			</tr>
 		</table>
 		<input type="submit" value="Toevoegen">
 	</form>

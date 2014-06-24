@@ -6,6 +6,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import DAO.GebruikersDAO;
+import DomeinModel.AutoTotaalDienst;
 import Onderdelen.Gebruiker;
 
 import java.sql.SQLException;
@@ -16,7 +17,8 @@ public class RegistreerServlet extends HttpServlet {
 	private String s = "";
 	private boolean loginSucces, loginSuccesWachtwoord, loginSuccesEmail = false;
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {		
+			throws ServletException, IOException {
+		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");
 		String naam = req.getParameter("naam");
 		String wachtwoord = req.getParameter("wachtwoord");
 		String wachtwoord2 = req.getParameter("wachtwoord2");
@@ -58,6 +60,14 @@ public class RegistreerServlet extends HttpServlet {
 				s = "Emailadres is niet hetzelfde!\n";
 			}
 			
+			for (Gebruiker g : atd.getAlleKlanten()) {
+				if(g.getEmailadres().equals(emailadres)){
+					s = "Emailadres is al in gebruik";
+					loginSucces = false;
+					break;
+				}
+			}
+			
 		} else {
 			s = "Niet alle velden zijn ingevuld!\n";
 		}
@@ -73,7 +83,7 @@ public class RegistreerServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			s = "Toevoegen is gelukt";
-			rd = req.getRequestDispatcher("index.jsp");
+			rd = req.getRequestDispatcher("registreer.jsp");
 		} else
 			rd = req.getRequestDispatcher("registreer.jsp");
 			rd.forward(req, resp);
