@@ -41,7 +41,8 @@ public class KlussenDAO {
 				String omschrijving = output.getString("omschrijving");
 				int autoId = output.getInt("auto_id");
 				int werknemerId = output.getInt("werknemer_id");
-				Klus u = new Klus(naam, omschrijving, autoId, werknemerId);
+				String datum = output.getString("datum");
+				Klus u = new Klus(naam, omschrijving, autoId, werknemerId, datum);
 				u.setKlusNummer(id);
 				alleKlussenDB.add(u);			
 			}
@@ -55,7 +56,7 @@ public class KlussenDAO {
 	//voegt een klus toe aan de database
 	public void saveKlus(Klus k) throws SQLException {	
 		this.leesDatabase();
-		statement.execute("INSERT INTO klussen (naam, omschrijving, auto_id, werknemer_id)"+ "VALUES ('"+ k.getKlusNaam() + "','" + k.getKlusOmschrijving() + "','" + k.getAutoId() + "','" + k.getWerknemerId() + "')");				
+		statement.execute("INSERT INTO klussen (naam, omschrijving, auto_id, werknemer_id, datum)"+ "VALUES ('"+ k.getKlusNaam() + "','" + k.getKlusOmschrijving() + "','" + k.getAutoId() + "','" + k.getWerknemerId() + "','" + k.getDatum() + "')");				
 	}
 	public Auto getAuto(int id){
 		Auto a = new Auto();

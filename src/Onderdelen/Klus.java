@@ -10,14 +10,16 @@ public class Klus {
     private int autoId;
     private int werknemerId;
     private int klusNummer;
+    private String datumKlus;
     private ArrayList<Auto>alleAutos = new ArrayList<Auto>();
     private ArrayList<Gebruiker>alleMonteurs = new ArrayList<Gebruiker>();
     private ArrayList<String> datum = new ArrayList<String>();
-    public Klus(String kNm, String kO, int aI, int wI){
+    public Klus(String kNm, String kO, int aI, int wI, String dat){
     	klusNaam = kNm;
         klusOmschrijving = kO;
         autoId = aI;
         werknemerId = wI;
+        datumKlus = dat;
     }
     public Klus(){
     	
@@ -42,6 +44,12 @@ public class Klus {
         return autoId;
     }
     
+    public void setDatum(String dat){
+    	datumKlus = dat;
+    }
+    public String getDatum(){
+    	return datumKlus;
+    }
     public int getWerknemerId(){
         return werknemerId;
     }
@@ -98,13 +106,8 @@ public class Klus {
         } 
         return b;
     }
-	public boolean voegDatumToe(String d) {
-		boolean b = false;
-		if (d.equals(getToday())) {
-			datum.add(d);
-			b = true;
-		}
-		return b;
+	public void voegDatumToe(String d) {
+		datum.add(d);		
 	}
     public ArrayList<String> getAlleData(){
         return datum;
@@ -114,8 +117,7 @@ public class Klus {
     }
     public ArrayList<Gebruiker> getAlleMonteurs(){
         return alleMonteurs;
-    }
-    
+    }    
     public String toString(){
         return klusNaam;
     }

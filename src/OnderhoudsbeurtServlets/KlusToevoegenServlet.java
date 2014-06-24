@@ -2,6 +2,9 @@ package OnderhoudsbeurtServlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,32 +25,55 @@ public class KlusToevoegenServlet extends HttpServlet {
 	private int autoId;
 	private int werknemerId;
 	private String s;
+	private String datum;
+	private int datumIngevuld, datumVandaag;
+	private int count = 0;
+
+	public String getToday() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+		Calendar cal = Calendar.getInstance();
+		return dateFormat.format(cal.getTime());
+	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");
+		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext()
+				.getAttribute("atdRef");
 		klusNaam = req.getParameter("klusNaam");
 		klusOmschrijving = req.getParameter("klusOmschrijving");
 		String string = (String) req.getParameter("auto");
 		autoId = Integer.parseInt(string);
 		werknemerId = 0;
-		
-		if (!"".equals(klusNaam) && !"".equals(klusOmschrijving)) {			
-			Klus k = new Klus(klusNaam, klusOmschrijving, autoId, werknemerId);			
-			try {
-				klus.saveKlus(k);
-				for(Auto a : atd.getAlleAutos()){
-					if(a.getAutoID() == autoId){
-						k.voegAutoToe(a);
+		String dag = req.getParameter("dag");
+		String maand = req.getParameter("maand");
+		String jaar = req.getParameter("jaar");
+
+		if (!"".equals(klusNaam) && !"".equals(klusOmschrijving)
+				&& !"".equals(dag) && !"".equals(maand) && !"".equals(jaar)) {
+			datum = jaar + maand + dag;
+			datumIngevuld = Integer.parseInt(datum);
+			datumVandaag = Integer.parseInt(getToday());
+			if (datumIngevuld < datumVandaag) {
+				s = "datum moet in de toekomst liggen";
+			} else {
+				Klus k = new Klus(klusNaam, klusOmschrijving, autoId,
+						werknemerId, datum);
+				try {
+					klus.saveKlus(k);
+					for (Auto a : atd.getAlleAutos()) {
+						if (a.getAutoID() == autoId) {
+							k.voegAutoToe(a);
+							k.voegDatumToe(datum);
+						}
 					}
-				}			
-				s = "Toevoegen is gelukt";
-			} catch (SQLException e) {
-				e.printStackTrace();
-				s = "Toevoegen is mislukt";
+					s = "Toevoegen is gelukt";
+				} catch (SQLException e) {
+					e.printStackTrace();
+					s = "Toevoegen is mislukt";
+				}
 			}
-		}else{
-			s = "Vul een klusnaam en klusomschrijving in";
+		} else {
+			s = "Vul een klusnaam, klusomschrijving en een datum in";
 		}
 		req.setAttribute("msgs", s);
 		RequestDispatcher rd = null;
