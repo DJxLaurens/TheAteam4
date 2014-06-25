@@ -17,6 +17,7 @@ public class LoginServlet extends HttpServlet {
 		boolean loginSuccess = false;
 		String loginEmail = req.getParameter("naam");
 		String loginWachtwoord = req.getParameter("wachtwoord");
+		//checkt of velden zijn ingevuld
 		if ("".equals(loginEmail) || "".equals(loginWachtwoord)) {
 			req.setAttribute("msgs", "Vul AUB uw e-mailadres en wachtwoord in");
 			req.setAttribute("email", loginEmail );
@@ -29,6 +30,7 @@ public class LoginServlet extends HttpServlet {
 				laatstGeweest = g.getLaatstgeweest();
 				openFactuur = g.getOpenFactuur();
 				rol_id = g.getRol();
+				// check of email/wachtwoord bij bevestig email/wachtwoord hetzelfde zijn
 				if (dbEmail.equals(loginEmail) && dbWachtwoord.equals(loginWachtwoord)) {
 					loginSuccess = true;
 					break;

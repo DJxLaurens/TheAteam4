@@ -16,9 +16,7 @@ public class FactuurbetalingBlokkerenServlet extends HttpServlet{
 	
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 				throws ServletException, IOException {
-		
-			RequestDispatcher rd = null;
-			
+				
 			if(req.getParameter("klantveld").equals("leeg")){
 				PrintWriter out = resp.getWriter();
 			    out.println("<script type=\"text/javascript\">");

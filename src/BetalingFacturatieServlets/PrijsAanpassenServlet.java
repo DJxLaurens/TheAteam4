@@ -40,13 +40,13 @@ public class PrijsAanpassenServlet extends HttpServlet{
 			String v3=(String)req.getParameter("dagprijs");
 			String v4=(String)req.getParameter("weekprijs");
 			String v5=(String)req.getParameter("maandprijs");
-
+			// maak double variabel aan om prijzen in te zetten;
 			double lp = 0;
 			double mup = 0;
 			double dp = 0;
 			double wp = 0;
 			double mp = 0;
-
+			//kijkt of String een double is
 			if(isDouble(v1)){
 				lp = Double.parseDouble(v1);
 			} else{

@@ -30,7 +30,7 @@ public class AutosDAO {
 			e.printStackTrace();
 		}		
 	}
-	
+	//haalt alle gegevens uit de tabel auto
 	public ArrayList<Auto> getAlleAutosDB() {
 		ArrayList<Auto> alleAutosDB = new ArrayList<Auto>();	
 		try {
@@ -62,7 +62,7 @@ public class AutosDAO {
 		
 		return alleAutosDB;
 	}
-	
+	// haalt auto met meegegeven id op
 	public String getAutoById(String ai) throws SQLException{
 		String merk = null;
 		String type = null;

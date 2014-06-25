@@ -38,7 +38,7 @@ public class RegistreerServlet extends HttpServlet {
 		String openFactuur = "00-00-0000" ; // DateFormat moet voor vergelijken verschil datums auto
 		String tempBlokkade = req.getParameter("blokkade");
 		boolean blokkade = false;
-		
+		// checkt of velden zijn ingevuld
 		if (!"".equals(naam) && !"".equals(wachtwoord) && !"".equals(adres) && !"".equals(postcode) 
 				&& !"".equals(woonplaats) && !"".equals(telefoonnummer) && !"".equals(emailadres)) {			
 			rol_id = Integer.parseInt(tempRol);
@@ -59,7 +59,7 @@ public class RegistreerServlet extends HttpServlet {
 			if (!loginSuccesEmail) {
 				s = "Emailadres is niet hetzelfde!\n";
 			}
-			
+			// kijkt in arraylist of gebruiker al bestaat
 			for (Gebruiker g : atd.getAlleKlanten()) {
 				if(g.getEmailadres().equals(emailadres)){
 					s = "Emailadres is al in gebruik";
