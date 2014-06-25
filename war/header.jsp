@@ -62,10 +62,10 @@
 					</ul></li>
 				<%} %>
 				<%if(rol == 6 || rol == 9){ %>
-				<li>Onderhoudsbeurt
+				<li id="onderhoudsbeurt">Onderhoudsbeurt
 					<ul>
-						<li><a href="klus_toevoegen.jsp">Klus toevoegen</a></li>
-						<li><a href="weekplanning.jsp">Planning</a></li>
+						<li id="klus toevoegen"><a href="klus_toevoegen.jsp">Klus toevoegen</a></li>
+						<li id="weekplanning"><a href="weekplanning.jsp">Planning</a></li>
 						<li><a href="status.jsp">Status</a></li>
 					</ul></li>
 				<%} %>

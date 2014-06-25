@@ -32,8 +32,7 @@ public class RapportagesMakenTest {
 
 	@Test
 	public void testRapportagesMaken() throws Exception {
-		File f = new File(
-				"C:/Users/Jacky/Dropbox/Themaopdracht 4/CSVTestdata/RapportagesMakenTest2.csv");
+		File f = new File("C:/Users/Jacky/Dropbox/Themaopdracht 4/CSVTestdata/RapportagesMakenTest.csv");
 		if (f.exists() && f.isFile()) {
 			String hoogstebtwperproduct;
 			String gemiddeldebtwperproduct;
@@ -56,18 +55,15 @@ public class RapportagesMakenTest {
 					winst = sc.next();
 					driver.get(baseUrl + "/ATD-Windows/index.jsp");
 					driver.findElement(By.name("naam")).clear();
-					driver.findElement(By.name("naam")).sendKeys(
-							"admin@ikbendeadmin.nl");
+					driver.findElement(By.name("naam")).sendKeys("admin@ikbendeadmin.nl");
 					driver.findElement(By.name("wachtwoord")).clear();
 					driver.findElement(By.name("wachtwoord")).sendKeys("admin");
 					Thread.sleep(4000L);
-					driver.findElement(By.cssSelector("input[type=\"submit\"]"))
-							.click();
+					driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
 					Thread.sleep(4000L);
 
 					WebElement mnuElement;
-					mnuElement = driver.findElement(By
-							.id("betalingen/facturatie"));
+					mnuElement = driver.findElement(By.id("betalingen/facturatie"));
 					mnuElement.click();
 
 					Actions builder = new Actions(driver);
@@ -78,23 +74,16 @@ public class RapportagesMakenTest {
 					Thread.sleep(4000L);
 
 					driver.findElement(By.name("hoogsteBTWPerProduct")).clear();
-					driver.findElement(By.name("hoogsteBTWPerProduct"))
-							.sendKeys(hoogstebtwperproduct);
+					driver.findElement(By.name("hoogsteBTWPerProduct")).sendKeys(hoogstebtwperproduct);
 					Thread.sleep(2000L);
-					driver.findElement(By.name("gemiddeldeBTWPerProduct"))
-							.clear();
-					driver.findElement(By.name("gemiddeldeBTWPerProduct"))
-							.sendKeys(gemiddeldebtwperproduct);
+					driver.findElement(By.name("gemiddeldeBTWPerProduct")).clear();
+					driver.findElement(By.name("gemiddeldeBTWPerProduct")).sendKeys(gemiddeldebtwperproduct);
 					Thread.sleep(2000L);
-					driver.findElement(By.name("hoogsteBTWPerTransactie"))
-							.clear();
-					driver.findElement(By.name("hoogsteBTWPerTransactie"))
-							.sendKeys(hoogstebtwpertransactie);
+					driver.findElement(By.name("hoogsteBTWPerTransactie")).clear();
+					driver.findElement(By.name("hoogsteBTWPerTransactie")).sendKeys(hoogstebtwpertransactie);
 					Thread.sleep(2000L);
-					driver.findElement(By.name("gemiddeldeBTWPerTransactie"))
-							.clear();
-					driver.findElement(By.name("gemiddeldeBTWPerTransactie"))
-							.sendKeys(gemiddeldebtwpertransactie);
+					driver.findElement(By.name("gemiddeldeBTWPerTransactie")).clear();
+					driver.findElement(By.name("gemiddeldeBTWPerTransactie")).sendKeys(gemiddeldebtwpertransactie);
 					Thread.sleep(2000L);
 					driver.findElement(By.name("omzet")).clear();
 					driver.findElement(By.name("omzet")).sendKeys(omzet);
@@ -106,8 +95,7 @@ public class RapportagesMakenTest {
 					Thread.sleep(2000L);
 					driver.switchTo().alert().accept();
 					Thread.sleep(4000L);
-					driver.findElement(By.cssSelector("input[type=\"submit\"]"))
-							.click();
+					driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
 					Thread.sleep(2000L);
 				}
 				line = br.readLine();

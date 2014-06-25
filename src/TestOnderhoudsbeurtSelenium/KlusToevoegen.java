@@ -1,4 +1,4 @@
-package TestVoorraadbeheerSelenium;
+package TestOnderhoudsbeurtSelenium;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,7 +17,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
-public class OnderdeelBestellenTest {
+public class KlusToevoegen {
 	private WebDriver driver;
 	private String baseUrl;
 	private boolean acceptNextAlert = true;
@@ -31,13 +31,14 @@ public class OnderdeelBestellenTest {
 	}
 
 	@Test
-	public void testOnderdeelBestellen() throws Exception {
-		File f = new File("C:/Users/Jacky/Dropbox/Themaopdracht 4/CSVTestdata/OnderdelenBestellenTest.csv");
+	public void testKlusToevoegen() throws Exception {
+		File f = new File("C:/Users/Jacky/Dropbox/Themaopdracht 4/CSVTestdata/KlusToevoegenTest.csv");
 		if (f.exists() && f.isFile()) {
-			String voorraadnaam;
-			String minimalevoorraad;
-			String voorraad;
-			String producten;
+			String klusnaam;
+			String klusomschrijving;
+			String datumdag;
+			String datummaand;
+			String datumjaar;
 			FileReader fr = new FileReader(f);
 			BufferedReader br = new BufferedReader(fr);
 			String line;
@@ -45,14 +46,14 @@ public class OnderdeelBestellenTest {
 				Scanner sc = new Scanner(line);
 				sc.useDelimiter(";");
 				while (sc.hasNext()) {
-					voorraadnaam = sc.next();
-					minimalevoorraad = sc.next();
-					voorraad = sc.next();
-					producten = sc.next();
+					klusnaam = sc.next();
+					klusomschrijving = sc.next();
+					datumdag = sc.next();
+					datummaand = sc.next();
+					datumjaar = sc.next();
 					driver.get(baseUrl + "/ATD-Windows/index.jsp");
 					driver.findElement(By.name("naam")).clear();
 					driver.findElement(By.name("naam")).sendKeys("admin@ikbendeadmin.nl");
-					Thread.sleep(2000L);
 					driver.findElement(By.name("wachtwoord")).clear();
 					driver.findElement(By.name("wachtwoord")).sendKeys("admin");
 					Thread.sleep(2000L);
@@ -60,38 +61,46 @@ public class OnderdeelBestellenTest {
 					Thread.sleep(2000L);
 
 					WebElement mnuElement;
-					mnuElement = driver.findElement(By.id("voorraadbeheer"));
+					mnuElement = driver.findElement(By.id("onderhoudsbeurt"));
 					mnuElement.click();
 
 					Actions builder = new Actions(driver);
 					builder.moveToElement(mnuElement).perform();
-					Thread.sleep(4000L);
-					driver.findElement(By.id("onderdelen bestellen")).click();
-					driver.get("http://localhost:8080/ATD-Windows/onderdelen_bestellen.jsp");
-					Thread.sleep(4000L);
+					Thread.sleep(2000L);
+					driver.findElement(By.id("klus toevoegen")).click();
+					driver.get("http://localhost:8080/ATD-Windows/klus_toevoegen.jsp");
+					Thread.sleep(2000L);
 
-					driver.findElement(By.linkText("Voeg een onderdeel toe")).click();
-					Thread.sleep(4000L);
-					new Select(driver.findElement(By.name("type"))).selectByVisibleText("Onderdeel");
+					driver.findElement(By.name("klusNaam")).clear();
+					driver.findElement(By.name("klusNaam")).sendKeys(klusnaam);
 					Thread.sleep(2000L);
-					driver.findElement(By.name("voorraadNaam")).clear();
-					driver.findElement(By.name("voorraadNaam")).sendKeys(voorraadnaam);
+					driver.findElement(By.name("klusOmschrijving")).clear();
+					driver.findElement(By.name("klusOmschrijving")).sendKeys(klusomschrijving);
 					Thread.sleep(2000L);
-					driver.findElement(By.name("voorraadMin")).clear();
-					driver.findElement(By.name("voorraadMin")).sendKeys(minimalevoorraad);
+					driver.findElement(By.name("dag")).clear();
+					driver.findElement(By.name("dag")).sendKeys(datumdag);
 					Thread.sleep(2000L);
-					driver.findElement(By.name("voorraad")).clear();
-					driver.findElement(By.name("voorraad")).sendKeys(voorraad);
+					driver.findElement(By.name("maand")).clear();
+					driver.findElement(By.name("maand")).sendKeys(datummaand);
+					Thread.sleep(2000L);
+					driver.findElement(By.name("jaar")).clear();
+					driver.findElement(By.name("jaar")).sendKeys(datumjaar);
 					Thread.sleep(2000L);
 					driver.findElement(By.cssSelector("div.content > form > input[type=\"submit\"]")).click();
-					Thread.sleep(4000L);
-					driver.findElement(By.name("prod_15")).clear();
-					driver.findElement(By.name("prod_15")).sendKeys(producten);
 					Thread.sleep(2000L);
-					driver.findElement(By.name("bestel")).click();
+
+					WebElement mnuElement1;
+					mnuElement1 = driver.findElement(By.id("onderhoudsbeurt"));
+					mnuElement1.click();
+					Thread.sleep(2000L);
+
+					Actions builder1 = new Actions(driver);
+					builder1.moveToElement(mnuElement1).perform();
+					Thread.sleep(2000L);
+					driver.findElement(By.id("weekplanning")).click();
+					driver.get("http://localhost:8080/ATD-Windows/weekplanning.jsp");
 					Thread.sleep(4000L);
-					driver.findElement(By.xpath("(//tr[@id='headRow']/td[8]/a/img)[2]")).click();
-					Thread.sleep(4000L);
+
 					driver.findElement(By.cssSelector("div.content > form > input[type=\"submit\"]")).click();
 					Thread.sleep(4000L);
 					driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
