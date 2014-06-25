@@ -55,6 +55,12 @@ public class PrijsAanpassenServlet extends HttpServlet{
 
 			if(isDouble(v2)){
 				mup = Double.parseDouble(v2);
+				PrintWriter out = resp.getWriter();
+			    out.println("<script type=\"text/javascript\">");
+			    out.println("alert('Brief2 van is aangemaakt!');");  
+			    out.println("window.location = 'prijsaanpassen.jsp'");
+			    out.println("</script>");
+			    out.close();
 			} else{
 				mup = atd.getWerkUurPrijs();
 			}
