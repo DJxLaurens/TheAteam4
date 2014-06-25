@@ -49,12 +49,6 @@ public class PrijsAanpassenServlet extends HttpServlet{
 
 			if(isDouble(v1)){
 				lp = Double.parseDouble(v1);
-				PrintWriter out = resp.getWriter();
-			    out.println("<script type=\"text/javascript\">");
-			    out.println("alert('Brief van is aangemaakt!');");  
-			    out.println("window.location = 'prijsaanpassen.jsp'");
-			    out.println("</script>");
-			    out.close();
 			} else{
 				lp = atd.getLiterPrijs();
 			}
@@ -85,6 +79,7 @@ public class PrijsAanpassenServlet extends HttpServlet{
 
 			if(isDouble(v5)){
 				mp = Double.parseDouble(v5);
+
 			} else{
 				mp = atd.getMaandPrijs();
 			}
