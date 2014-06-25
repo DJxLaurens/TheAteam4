@@ -101,7 +101,7 @@ public class ProductDAO {
 		return inbestelling;
 		
 	}
-	
+	// haalt alle voorraden op met type 1
 	public ArrayList<Product> getAlleBrandstoffenDB() {
 		ArrayList<Product> alleBrandstoffenDB = new ArrayList<Product>();
 		try {
@@ -131,6 +131,7 @@ public class ProductDAO {
 		
 		return alleBrandstoffenDB;
 	}
+	// haalt de voorraad met meegegeven id op
 	
 	public Product getOnderdeelFromID(int pId){
 		int id = 0;
@@ -169,7 +170,7 @@ public class ProductDAO {
 		statement = con.createStatement();
 		statement.execute("INSERT INTO voorraad (naam, type, minVoorraad, voorraad, inbestelling)"+ "VALUES ('"+ vrdNm + "','" + vT + "','" + vrdMin + "','" + vrd + "', '"+ inBestelling +"')");				
 	}
-	
+	//verandert de voorraad in de db met de voorraad die megegeven wordt
 	public void changeVoorraad(int id, int nwVrd, int odVrd) throws SQLException {	
 		try {
 			this.leesDatabase();
@@ -184,7 +185,7 @@ public class ProductDAO {
 		}
 		this.getAlleOnderdelenDB();
 	}
-	
+	// set inbestelling met meegegeven data
 	public void vrdInBestelling(int id, int nwVrd, int odVrd) throws SQLException {	
 		try {
 			this.leesDatabase();
