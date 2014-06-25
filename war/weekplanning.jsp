@@ -18,6 +18,7 @@
 		<table>
 			<tr>
 				<th style="text-align: left;">Klusnummer:</th>
+				<th style="text-align: left;">Datum:</th>
 				<th style="text-align: left;">Klus:</th>
 				<th style="text-align: left;">Monteur:</th>
 				<th style="text-align: left;">Auto:</th>
@@ -27,6 +28,7 @@
 			for(Weekplanning w : atd.getWeekplanning()) { %>
 			<tr id="headRow">
 				<td><%out.println(w.getId());%></td>
+				<td><%out.println(w.getDatum());%></td>
 				<td><%out.println(w.getKlusNaam());%></td>
 				<td><%out.println(w.getMonteur());%></td>
 				<td><%out.println(w.getAuto());%></td>
@@ -46,6 +48,7 @@
 						<input type="hidden" name="klusNaam" value="<%=k.getKlusNaam()%>"/>
 						<input type="hidden" name="klusID" value="<%=k.getKlusNummer()%>"/>
 						<input type="hidden" name="autoId" value="<%=k.getAutoId()%>"/>
+						<input type="hidden" name="datum" value="<%=k.getDatum() %>"/>
 						<%
 					}
 				}%>

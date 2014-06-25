@@ -43,8 +43,9 @@ public class KlussenDAO {
 				String klusNaam = output.getString("klusnaam");
 				String monteur = output.getString("monteur");
 				String auto = output.getString("auto");
+				String datum = output.getString("datum");
 				
-				Weekplanning w = new Weekplanning(id, klusNaam, monteur, auto);
+				Weekplanning w = new Weekplanning(id, klusNaam, monteur, auto, datum);
 				weekplanning.add(w);			
 			}
 		} catch (SQLException e) {
@@ -127,13 +128,13 @@ public class KlussenDAO {
 		statement.execute("UPDATE klussen " + "SET ingepland = 1 WHERE id=" + id);
 	}
 	
-	public void saveWeekplanning(String kN, String mN, String aI) throws SQLException{
+	public void saveWeekplanning(String kN, String mN, String aI, String dtm) throws SQLException{
 		this.leesDatabase();
 		
 		AutosDAO ad = new AutosDAO();
 		String autoNaam = ad.getAutoById(aI);
 		
-		statement.execute("INSERT INTO weekplanning (klusnaam, monteur, auto)"+ "VALUES ('"+ kN + "','" + mN + "','" + autoNaam + "')");	
+		statement.execute("INSERT INTO weekplanning (klusnaam, monteur, auto, datum)"+ "VALUES ('"+ kN + "','" + mN + "','" + autoNaam + "','" + dtm +  "')");	
 	}
 	
 	public Weekplanning getWeekplanningByID(int id){
@@ -160,7 +161,7 @@ public class KlussenDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Weekplanning week = new Weekplanning(id, klusNaam, monteur, auto);
+		Weekplanning week = new Weekplanning(id, klusNaam, monteur, auto, datum);
 		
 		return week;
 	}

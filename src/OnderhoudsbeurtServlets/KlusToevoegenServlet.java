@@ -25,7 +25,7 @@ public class KlusToevoegenServlet extends HttpServlet {
 	private int autoId;
 	private int werknemerId;
 	private String s;
-	private String datum;
+	private String datum, datumDB;
 	private int datumIngevuld, datumVandaag;
 	public String getToday() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
@@ -51,9 +51,10 @@ if (!"".equals(klusNaam) && !"".equals(klusOmschrijving)
 	datum = jaar + maand + dag;
 	datumIngevuld = Integer.parseInt(datum);
 	datumVandaag = Integer.parseInt(getToday());
+	datumDB = dag + "-" + maand + "-" + jaar;
 	if (datumIngevuld > datumVandaag) {
 		Klus k = new Klus(0, klusNaam, klusOmschrijving, autoId,
-				werknemerId, datum, 0);		
+				werknemerId, datumDB, 0);		
 			try {
 				klus.saveKlus(k);
 				for(Auto a : atd.getAlleAutos()){

@@ -18,7 +18,7 @@ import DomeinModel.AutoTotaalDienst;
 
 public class WeekplanningServlet extends HttpServlet {
 	private KlussenDAO klus = new KlussenDAO();
-	private String datumIngevoerd, datumVandaag, klusNaam, monteurNaam, autoId;
+	private String datumIngevoerd, datumVandaag, klusNaam, monteurNaam, autoId, datum;
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -32,6 +32,7 @@ public class WeekplanningServlet extends HttpServlet {
 		autoId = req.getParameter("autoId");
 		monteurNaam = req.getParameter("monteurNaam");
 		klusNaam = req.getParameter("klusNaam");
+		datum = req.getParameter("datum");
 		
 		
 		RequestDispatcher rd = null;
@@ -40,7 +41,7 @@ public class WeekplanningServlet extends HttpServlet {
 		if(atd.getAlleKlussen().size()!=0){
 			int id = Integer.parseInt(req.getParameter("klusID"));
 		try {
-			klus.saveWeekplanning(klusNaam, monteurNaam, autoId);
+			klus.saveWeekplanning(klusNaam, monteurNaam, autoId, datum);
 			klus.setIngepland(id);
 			atd.verwijderKlusById(id);
 		} catch (SQLException e) {
