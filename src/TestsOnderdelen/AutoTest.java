@@ -21,7 +21,6 @@ public class AutoTest {
 	@Test
 	public void testKenteken(){ 		
 		assertEquals("11-JJ-AT", a1.getKenteken());
-		System.out.println(a1.getAutoID());
 	}
 	
 	@Test
