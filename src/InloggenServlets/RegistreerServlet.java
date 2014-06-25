@@ -19,6 +19,7 @@ public class RegistreerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");
+		
 		String naam = req.getParameter("naam");
 		String wachtwoord = req.getParameter("wachtwoord");
 		String wachtwoord2 = req.getParameter("wachtwoord2");
