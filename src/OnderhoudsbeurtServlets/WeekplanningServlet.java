@@ -36,6 +36,7 @@ public class WeekplanningServlet extends HttpServlet {
 		
 		RequestDispatcher rd = null;
 		
+
 		if(atd.getAlleKlussen().size()!=0){
 			int id = Integer.parseInt(req.getParameter("klusID"));
 		try {

@@ -71,8 +71,6 @@ public class AutosDAO {
 		this.leesDatabase();
 		output = statement.executeQuery("SELECT merk, type FROM auto WHERE auto_id =" + ai);
 		
-		System.out.println(output);
-		
 		while (output.next()) {
 			merk = output.getString("merk");
 			type = output.getString("type");

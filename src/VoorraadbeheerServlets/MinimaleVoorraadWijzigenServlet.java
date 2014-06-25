@@ -23,9 +23,6 @@ public class MinimaleVoorraadWijzigenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 			RequestDispatcher rd = null;
-			
-			System.out.println("Onderdeel id: " + req.getParameter("onderdeelId"));
-			System.out.println("Nieuwe minimale voorraad"  + req.getParameter("minVoorraad"));
 		
 			try {
 				producten.changeMinVoorraad(Integer.parseInt(req.getParameter("onderdeelId")), Integer.parseInt(req.getParameter("minVoorraad")));

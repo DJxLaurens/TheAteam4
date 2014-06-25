@@ -42,24 +42,14 @@ public class ProductDAO {
 				int minVoorraad = rs.getInt("minVoorraad");
 				int voorraad = rs.getInt("voorraad");
 
-//				System.out.println is ff in comments gezet wegens testen
-//				System.out.println("In bestelling waarde: " + rs.getInt("inbestelling"));
 				int inBestelling = rs.getInt("inbestelling");
-				
-				System.out.println(naam);
-				
 				Product p = new Product(id, naam, type, minVoorraad, voorraad, inBestelling);
-				//System.out.println("In bestelling waarde van Product: " + naam + inBestelling +  "[new]");
 				alleOnderdelenDB.add(p);
-				//System.out.println(p.getProductNaam());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    
-		
-		//TO DO: Data uit de DB halen en toevoegen aan de ArrayList.
 		
 		return alleOnderdelenDB;
 	}
@@ -127,10 +117,8 @@ public class ProductDAO {
 				
 				Product p = new Product(id, naam, type, minVoorraad, voorraad, inBestelling);	
 				alleBrandstoffenDB.add(p);
-				//System.out.println(p.getProductNaam());
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    
@@ -199,14 +187,12 @@ public class ProductDAO {
 			statement = con.createStatement();
 			
 		int voorraad = nwVrd + odVrd;
-		System.out.println("Voorraad: " + voorraad);
 		String sql = "UPDATE voorraad " + "SET inbestelling = "+ voorraad +" WHERE id=" + id;
 		statement.executeUpdate(sql);	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//this.getAlleOnderdelenDB();
 	}
 	
 	public void getAlleOnderdelen(){

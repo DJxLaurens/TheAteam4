@@ -114,7 +114,6 @@ public class KlussenDAO {
 		try {
 				this.leesDatabase();
 				statement = con.createStatement();
-				System.out.println("Voer Query uit");
 				String sql = "UPDATE gebruiker " + "SET blokkade = 1 WHERE gebruiker_id=" + gId;
 				statement.executeUpdate(sql);
 			} catch (SQLException e) {

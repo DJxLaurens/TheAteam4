@@ -303,11 +303,9 @@ public class AutoTotaalDienst {
         test.add(Calendar.DATE, -30);
         for (Gebruiker k : alleKlanten){
             if(k.getOpenFactuur() != null){
-//                if(k.getOpenFactuur().before(test)){
                     if(!factuur.contains(k)){
                         factuur.add(k);
                     }
-//                }
             }
         }
         return factuur;
