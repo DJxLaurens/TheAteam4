@@ -31,7 +31,7 @@ public class KlussenDAO {
 			e.printStackTrace();
 		}		
 	}
-	
+	// haalt alle gegevens uit tabel weekplanning op
 	public ArrayList<Weekplanning> getWeekplanning(){
 		ArrayList<Weekplanning> weekplanning = new ArrayList<Weekplanning>();
 		
@@ -56,7 +56,7 @@ public class KlussenDAO {
 		return weekplanning;
 	}
 	
-	//zoek alle klussen in de database
+	//haalt alle gegevens uit de tabel klus op met ingepland "0"
 	public ArrayList<Klus> getAlleKlussenDB() {
 		ArrayList<Klus> alleKlussenDB = new ArrayList<Klus>();	
 		try {

@@ -33,20 +33,21 @@ public class KlantenbindingServlet extends HttpServlet{
 		String x = "";
 		int check = 1;
 		
+		// check of veld 1 niet leeg is;
 		if(!v1.equals("leeg") && v2.equals("leeg") && v3.equals("leeg")){
 			x = v1;
 			ArrayList<Gebruiker> klanten = atd.getjongerdan();
 			Gebruiker klant = atd.zoekGebruiker(x, klanten);
 			atd.verwijderKlant(klant, klanten);
 		}
-
+		// check of veld 2 niet leeg is;
 		if(v1.equals("leeg") && !v2.equals("leeg") && v3.equals("leeg")){
 			x = v2;
 			ArrayList<Gebruiker> klanten = atd.getouderdan();
 			Gebruiker klant = atd.zoekGebruiker(x, klanten);
 			atd.verwijderKlant(klant, klanten);
 		}
-
+		// check of veld 3 niet leeg is;
 		if(v1.equals("leeg") && v2.equals("leeg") && !v3.equals("leeg")){
 			x = v3;
 			check = 2;

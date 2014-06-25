@@ -27,6 +27,7 @@ public class KlusToevoegenServlet extends HttpServlet {
 	private String s;
 	private String datum, datumDB;
 	private int datumIngevuld, datumVandaag;
+
 	public String getToday() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 		Calendar cal = Calendar.getInstance();
@@ -35,17 +36,18 @@ public class KlusToevoegenServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");
+		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext()
+				.getAttribute("atdRef");
 		klusNaam = req.getParameter("klusNaam");
 		klusOmschrijving = req.getParameter("klusOmschrijving");
 		String string = (String) req.getParameter("auto");
 		autoId = Integer.parseInt(string);
 		werknemerId = 0;
-		
-String dag = req.getParameter("dag");
-String maand = req.getParameter("maand");
-String jaar = req.getParameter("jaar");
 
+		String dag = req.getParameter("dag");
+		String maand = req.getParameter("maand");
+		String jaar = req.getParameter("jaar");
+		//checkt of invulvelden gevuld zijn
 if (!"".equals(klusNaam) && !"".equals(klusOmschrijving)
 		&& !"".equals(dag) && !"".equals(maand) && !"".equals(jaar)) {
 	datum = jaar + maand + dag;

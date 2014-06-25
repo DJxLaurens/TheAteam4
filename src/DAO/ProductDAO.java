@@ -18,39 +18,41 @@ public class ProductDAO {
 	public void leesDatabase() throws SQLException {
 		String url = "jdbc:mysql://localhost/autototaaldiensten";
 		String user = "root";
-		String password = ""; 
-		
+		String password = "";
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = (Connection) DriverManager.getConnection(url, user, password);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}		
+		}
 	}
-	
+
+	// haalt alle gegevens uit de tabel voorraad met type "2"
 	public ArrayList<Product> getAlleOnderdelenDB() {
 		ArrayList<Product> alleOnderdelenDB = new ArrayList<Product>();
 		try {
 			this.leesDatabase();
 			statement = con.createStatement();
-			rs = statement.executeQuery("SELECT * FROM voorraad where type='2'");
-			
+			rs = statement
+					.executeQuery("SELECT * FROM voorraad where type='2'");
+
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String naam = rs.getString("naam");
 				int type = rs.getInt("type");
 				int minVoorraad = rs.getInt("minVoorraad");
 				int voorraad = rs.getInt("voorraad");
-
 				int inBestelling = rs.getInt("inbestelling");
+				
 				Product p = new Product(id, naam, type, minVoorraad, voorraad, inBestelling);
 				alleOnderdelenDB.add(p);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}    		
+		//TO DO: Data uit de DB halen en toevoegen aan de ArrayList.		
 		return alleOnderdelenDB;
 	}
 	
@@ -59,7 +61,7 @@ public class ProductDAO {
 		
 		return size;
 	}
-	
+	// haalt de voorraad op met meegegeven voorraadId
 	public int getVoorraadById(int id){
 		int voorraad = 0;
 		try {
@@ -79,7 +81,7 @@ public class ProductDAO {
 		return voorraad;
 		
 	}
-	
+	// haalt de inbestelling op de meegegeven voorraadId;
 	public int getBestellingById(int id){
 		int inbestelling = 0;
 		try {
@@ -99,7 +101,7 @@ public class ProductDAO {
 		return inbestelling;
 		
 	}
-	
+	// haalt alle voorraden op met type 1
 	public ArrayList<Product> getAlleBrandstoffenDB() {
 		ArrayList<Product> alleBrandstoffenDB = new ArrayList<Product>();
 		try {
@@ -117,8 +119,10 @@ public class ProductDAO {
 				
 				Product p = new Product(id, naam, type, minVoorraad, voorraad, inBestelling);	
 				alleBrandstoffenDB.add(p);
+				//System.out.println(p.getProductNaam());
 			}
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    
@@ -127,6 +131,7 @@ public class ProductDAO {
 		
 		return alleBrandstoffenDB;
 	}
+	// haalt de voorraad met meegegeven id op
 	
 	public Product getOnderdeelFromID(int pId){
 		int id = 0;
@@ -165,7 +170,7 @@ public class ProductDAO {
 		statement = con.createStatement();
 		statement.execute("INSERT INTO voorraad (naam, type, minVoorraad, voorraad, inbestelling)"+ "VALUES ('"+ vrdNm + "','" + vT + "','" + vrdMin + "','" + vrd + "', '"+ inBestelling +"')");				
 	}
-	
+	//verandert de voorraad in de db met de voorraad die megegeven wordt
 	public void changeVoorraad(int id, int nwVrd, int odVrd) throws SQLException {	
 		try {
 			this.leesDatabase();
@@ -180,19 +185,21 @@ public class ProductDAO {
 		}
 		this.getAlleOnderdelenDB();
 	}
-	
+	// set inbestelling met meegegeven data
 	public void vrdInBestelling(int id, int nwVrd, int odVrd) throws SQLException {	
 		try {
 			this.leesDatabase();
 			statement = con.createStatement();
 			
 		int voorraad = nwVrd + odVrd;
+		System.out.println("Voorraad: " + voorraad);
 		String sql = "UPDATE voorraad " + "SET inbestelling = "+ voorraad +" WHERE id=" + id;
 		statement.executeUpdate(sql);	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//this.getAlleOnderdelenDB();
 	}
 	
 	public void getAlleOnderdelen(){

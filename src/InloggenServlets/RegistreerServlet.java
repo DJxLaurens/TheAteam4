@@ -19,6 +19,7 @@ public class RegistreerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		AutoTotaalDienst atd = (AutoTotaalDienst) getServletContext().getAttribute("atdRef");
+		
 		String naam = req.getParameter("naam");
 		String wachtwoord = req.getParameter("wachtwoord");
 		String wachtwoord2 = req.getParameter("wachtwoord2");
@@ -38,7 +39,7 @@ public class RegistreerServlet extends HttpServlet {
 		String openFactuur = "00-00-0000" ; // DateFormat moet voor vergelijken verschil datums auto
 		String tempBlokkade = req.getParameter("blokkade");
 		boolean blokkade = false;
-		
+		// checkt of velden zijn ingevuld
 		if (!"".equals(naam) && !"".equals(wachtwoord) && !"".equals(adres) && !"".equals(postcode) 
 				&& !"".equals(woonplaats) && !"".equals(telefoonnummer) && !"".equals(emailadres)) {			
 			rol_id = Integer.parseInt(tempRol);
@@ -59,7 +60,7 @@ public class RegistreerServlet extends HttpServlet {
 			if (!loginSuccesEmail) {
 				s = "Emailadres is niet hetzelfde!\n";
 			}
-			
+			// kijkt in arraylist of gebruiker al bestaat
 			for (Gebruiker g : atd.getAlleKlanten()) {
 				if(g.getEmailadres().equals(emailadres)){
 					s = "Emailadres is al in gebruik";

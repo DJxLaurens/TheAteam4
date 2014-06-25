@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
 public class RapportagesMakenServlet extends HttpServlet{
-	
+	// checkt of getal een double is
 	public boolean isDouble(String str) {
 		try {
 			Double.parseDouble(str);
@@ -26,16 +26,14 @@ public class RapportagesMakenServlet extends HttpServlet{
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
-		RequestDispatcher rd = null;
-		
+		//cast parameter naar string	
 		String v1 = (String)req.getParameter("hoogsteBTWPerProduct");
 		String v2 = (String)req.getParameter("gemiddeldeBTWPerProduct");
 		String v3 = (String)req.getParameter("hoogsteBTWPerTransactie");
 		String v4 = (String)req.getParameter("gemiddeldeBTWPerTransactie");
 		String v5 = (String)req.getParameter("omzet");
 		String v6 = (String)req.getParameter("winst");
-		
+		//maakt double variabele aan voor alle parameters
 		double hoogsteProduct = 0;
 		double gemiddeldProduct = 0;
 		double hoogsteTransactie = 0;
@@ -141,7 +139,7 @@ public class RapportagesMakenServlet extends HttpServlet{
 	        pw2.println("");
 	        pw2.println("Henk Paladijn");
 	        
-	        pw3.println("Rapport Financiële status:");
+	        pw3.println("Rapport Financiï¿½le status:");
 	        pw3.println("");
 	        pw3.println("Geachte heer/mevrouw,");
 	        pw3.println("");
@@ -159,7 +157,7 @@ public class RapportagesMakenServlet extends HttpServlet{
 	        
 			PrintWriter out = resp.getWriter();
 		    out.println("<script type=\"text/javascript\">");
-		    out.println("alert('Aanmaken gelukt, rapportages (BTW per artikel, BTW per transactie en Financiële status) zijn aangemaakt!');");  
+		    out.println("alert('Aanmaken gelukt, rapportages (BTW per artikel, BTW per transactie en Financiï¿½le status) zijn aangemaakt!');");  
 		    out.println("window.location = 'rapportagesaanmaken.jsp'");
 		    out.println("</script>");
 		    out.close();

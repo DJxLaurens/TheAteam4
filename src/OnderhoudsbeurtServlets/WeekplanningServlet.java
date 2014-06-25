@@ -37,7 +37,7 @@ public class WeekplanningServlet extends HttpServlet {
 		
 		RequestDispatcher rd = null;
 		
-
+		//kijk of combobox leeg is
 		if(atd.getAlleKlussen().size()!=0){
 			int id = Integer.parseInt(req.getParameter("klusID"));
 		try {

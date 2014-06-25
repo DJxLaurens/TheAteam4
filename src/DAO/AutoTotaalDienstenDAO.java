@@ -29,7 +29,7 @@ public class AutoTotaalDienstenDAO {
 			e.printStackTrace();
 		}		
 	}
-	
+	// haalt alle gegevens uit de tabel autototaaldienst
 	public AutoTotaalDienst getATD() {
 		ArrayList<AutoTotaalDienst> alleATDDB = new ArrayList<AutoTotaalDienst>();	
 		try {

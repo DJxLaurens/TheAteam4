@@ -29,6 +29,7 @@ public class GebruikersDAO {
 			e.printStackTrace();
 		}		
 	}
+	//haalt alle gegevens uit tabel gebruiker
 	public ArrayList<Gebruiker> getAlleGebruikersDB() {
 		ArrayList<Gebruiker> alleGebruikersDB = new ArrayList<Gebruiker>();	
 		try {
@@ -58,7 +59,7 @@ public class GebruikersDAO {
 		
 		return alleGebruikersDB;
 	}
-	
+	// zet het blokkade veld in tabel gebruiker op 1, oftewel true
 	public void setBlokkade(int gId){
 	try {
 			this.leesDatabase();
@@ -70,7 +71,7 @@ public class GebruikersDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	// haalt alle gegevens uit tabel gebruiker op met blokkade "0"
 	public ArrayList<Gebruiker> getBlokkadeDB() {
 		ArrayList<Gebruiker> getBlokkadeDB = new ArrayList<Gebruiker>();
 		try {

@@ -15,9 +15,6 @@ import Onderdelen.Product;
 
 public class BestellingOphalenServlet extends HttpServlet {
 	private ProductDAO producten = new ProductDAO();
-	private String type;
-	//private int voorraadId;
-	private String s;
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
