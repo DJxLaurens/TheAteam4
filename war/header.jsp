@@ -62,12 +62,15 @@
 						<li id ="brandstof bestellen"><a href="brandstof_bestellen.jsp">Brandstof</a></li>
 					</ul></li>
 				<%} %>
-				<%if(rol == 6 || rol == 9){ %>
+				<%if(rol == 6 || rol == 9 || rol == 4){ %>
 				<li id="onderhoudsbeurt">Onderhoudsbeurt
 					<ul>
+						<%if(rol == 6 || rol == 9 || rol == 4){ %>
 						<li id="klus toevoegen"><a href="klus_toevoegen.jsp">Klus toevoegen</a></li>
+						<%}
+						if(rol == 6 || rol == 9 || rol == 4){ %>
 						<li id="weekplanning"><a href="weekplanning.jsp">Planning</a></li>
-						<li><a href="status.jsp">Status</a></li>
+						<%} %>
 					</ul></li>
 				<%} %>
 				<!--  
