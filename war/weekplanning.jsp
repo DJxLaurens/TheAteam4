@@ -41,6 +41,7 @@
 						<%
 				for(Klus k : atd.getAlleKlussen()) {
 					if(k.getWerknemerId() == 0){ %>
+						<option name="leeg" value="selecteer klus">selecteer klus</option>
 						<option name=klus value="<%=k.getKlusNaam()%>"><%=k.getKlusNaam()%></option>
 						<input type="hidden" name="klusNaam" value="<%=k.getKlusNaam()%>"/>
 						<input type="hidden" name="klusID" value="<%=k.getKlusNummer()%>"/>

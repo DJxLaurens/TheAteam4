@@ -36,7 +36,7 @@ public class WeekplanningServlet extends HttpServlet {
 		
 		RequestDispatcher rd = null;
 		
-		if(req.getParameter("klusId") != null){
+		if(req.getParameter("klusNaam") != null){
 			int id = Integer.parseInt(req.getParameter("klusID"));
 		try {
 			klus.saveWeekplanning(klusNaam, monteurNaam, autoId);

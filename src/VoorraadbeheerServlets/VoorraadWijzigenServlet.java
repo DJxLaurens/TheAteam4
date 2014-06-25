@@ -49,8 +49,10 @@ public class VoorraadWijzigenServlet extends HttpServlet {
 			 					Product p = producten.getOnderdeelFromID(id);
 			 					
 			 					if(p.getType() == 1){
+			 						System.out.println("BrandstofTYPE: " + p.getType());
 			 						type = "brandstof";
 			 					}else{
+			 						System.out.println("BrandstofTYPE: " + p.getType());
 			 						type = "onderdelen";
 			 					}
 			 					
