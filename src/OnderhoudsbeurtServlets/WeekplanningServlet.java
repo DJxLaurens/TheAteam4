@@ -1,6 +1,7 @@
 package OnderhoudsbeurtServlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -31,10 +32,12 @@ public class WeekplanningServlet extends HttpServlet {
 		autoId = req.getParameter("autoId");
 		monteurNaam = req.getParameter("monteurNaam");
 		klusNaam = req.getParameter("klusNaam");
-		int id = Integer.parseInt(req.getParameter("klusID"));
 		
-		System.out.println(datumIngevoerd + " " + req.getParameter("klusNaam") + " " + req.getParameter("monteurNaam") + " " + req.getParameter("autoId"));
+		
 		RequestDispatcher rd = null;
+		
+		if(req.getParameter("klusId") != null){
+			int id = Integer.parseInt(req.getParameter("klusID"));
 		try {
 			klus.saveWeekplanning(klusNaam, monteurNaam, autoId);
 			klus.setIngepland(id);
@@ -42,6 +45,14 @@ public class WeekplanningServlet extends HttpServlet {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		}else{
+			PrintWriter out = resp.getWriter();
+		    out.println("<script type=\"text/javascript\">");
+		    out.println("alert('Selecteer a.u.b. een klus!');");  
+		    out.println("window.location = 'weekplanning.jsp'");
+		    out.println("</script>");
+		    out.close();
 		}
 		rd = req.getRequestDispatcher("weekplanning.jsp");
 		rd.forward(req, resp);
