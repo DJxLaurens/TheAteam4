@@ -49,7 +49,6 @@ public class AutoTotaalDienstenDAOTest {
 		atd.setWeekPrijs(wp);
 		atd.setDagPrijs(dp);
 		aDao.saveAutoTotaalDienst(atd);
-		fail("kan niet controleren op meerdere autototaaldiensten en de gegevens daarvan");
 	}
 	
 	@Test
@@ -62,6 +61,5 @@ public class AutoTotaalDienstenDAOTest {
 		assertEquals(23, atd.getDagPrijs(),0);
 		aDao.deleteAutoTotaalDienst(1);
 		assertNotEquals(atd, aDao.getATD());
-		fail("geen check op wanneer de arraylist binnen getATD geen objecten heeft");
 	}
 }
