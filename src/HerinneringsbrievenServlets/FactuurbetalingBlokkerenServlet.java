@@ -29,7 +29,6 @@ public class FactuurbetalingBlokkerenServlet extends HttpServlet{
 				int klantId = Integer.parseInt(req.getParameter("klantveld"));
 
 				gebruikers.setBlokkade(klantId);
-				System.out.println("Klant ID: " + klantId);
 
 				PrintWriter out = resp.getWriter();
 			    out.println("<script type=\"text/javascript\">");

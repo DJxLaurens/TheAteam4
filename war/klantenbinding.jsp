@@ -68,7 +68,7 @@
 		</select>
 	</div>
 
-	</br>
+	<br>
 
 	<input type="submit" value="Brieven aanmaken" name="press" /> 
 
@@ -83,7 +83,7 @@
 		int year = now.get(Calendar.YEAR);
 		String s = day + "-" + month + "-" + year;
 		%>
-	</br> </br>
+	<br> <br>
 	<%= s %>
 
 	<h1>Brievenoverzicht</h1>

@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Inloggen</title>
 <link href="style/style.css" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 </head>
 <body>
 	<div class="headStroke">
