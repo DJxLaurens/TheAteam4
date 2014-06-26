@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.KlussenDAO;
 import DomeinModel.AutoTotaalDienst;
+import Onderdelen.Klus;
 
 public class WeekplanningServlet extends HttpServlet {
 	private KlussenDAO klus = new KlussenDAO();
@@ -29,19 +30,21 @@ public class WeekplanningServlet extends HttpServlet {
 		String maand = req.getParameter("maand");
 		String jaar = req.getParameter("jaar");
 		datumIngevoerd = dag + "-" + maand + "-" + jaar;
-		autoId = req.getParameter("autoId");
+//		autoId = req.getParameter("autoId");
 		monteurNaam = req.getParameter("monteurNaam");
-		klusNaam = req.getParameter("klusNaam");
-		datum = req.getParameter("datum");
+//		klusNaam = req.getParameter("klusNaam");
+//		datum = req.getParameter("datum");
 		
+		System.out.println(req.getParameter("klusID"));
 		
+		Klus k = atd.getKlusById(Integer.parseInt(req.getParameter("klusID")));
 		RequestDispatcher rd = null;
 		
 		//kijk of combobox leeg is
 		if(atd.getAlleKlussen().size()!=0){
 			int id = Integer.parseInt(req.getParameter("klusID"));
 		try {
-			klus.saveWeekplanning(klusNaam, monteurNaam, autoId, datum);
+			klus.saveWeekplanning(k.getKlusNaam(), monteurNaam, k.getAutoId(), k.getDatum());
 			klus.setIngepland(id);
 			atd.verwijderKlusById(id);
 		} catch (SQLException e) {

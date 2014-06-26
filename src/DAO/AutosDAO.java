@@ -63,13 +63,12 @@ public class AutosDAO {
 		return alleAutosDB;
 	}
 	// haalt auto met meegegeven id op
-	public String getAutoById(String ai) throws SQLException{
+	public String getAutoById(int i) throws SQLException{
 		String merk = null;
 		String type = null;
-		Integer.parseInt(ai);
 		
 		this.leesDatabase();
-		output = statement.executeQuery("SELECT merk, type FROM auto WHERE auto_id =" + ai);
+		output = statement.executeQuery("SELECT merk, type FROM auto WHERE auto_id =" + i);
 		
 		while (output.next()) {
 			merk = output.getString("merk");

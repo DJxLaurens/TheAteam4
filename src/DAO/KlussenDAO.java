@@ -71,7 +71,7 @@ public class KlussenDAO {
 				String datum = output.getString("datum");
 				int ingepland = output.getInt("ingepland");
 				Klus u = new Klus(id, naam, omschrijving, autoId, werknemerId, datum, ingepland);
-				u.setKlusNummer(id);
+				//u.setKlusNummer(id);
 				alleKlussenDB.add(u);			
 			}
 		} catch (SQLException e) {
@@ -128,11 +128,11 @@ public class KlussenDAO {
 		statement.execute("UPDATE klussen " + "SET ingepland = 1 WHERE id=" + id);
 	}
 	
-	public void saveWeekplanning(String kN, String mN, String aI, String dtm) throws SQLException{
+	public void saveWeekplanning(String kN, String mN, int i, String dtm) throws SQLException{
 		this.leesDatabase();
 		
 		AutosDAO ad = new AutosDAO();
-		String autoNaam = ad.getAutoById(aI);
+		String autoNaam = ad.getAutoById(i);
 		
 		statement.execute("INSERT INTO weekplanning (klusnaam, monteur, auto, datum)"+ "VALUES ('"+ kN + "','" + mN + "','" + autoNaam + "','" + dtm +  "')");	
 	}
@@ -178,6 +178,37 @@ public class KlussenDAO {
 			e.printStackTrace();
 		}
 		this.getWeekplanning();
+	}
+	
+	public Klus getKlusById(int id){
+		int kN = 0, aI = 0, wI = 0, iG = 0;
+		String kNm = null;
+		String kO = null;
+		String dT = null;
+		
+		try {
+			this.leesDatabase();
+			statement = con.createStatement();
+			output = statement.executeQuery("SELECT * FROM klussen where id='"+ id +"'");
+			
+			while (output.next()) {
+				kN = output.getInt("id");
+				kNm = output.getString("naam");
+				kO = output.getString("omschrijving");
+				aI = output.getInt("auto_id");
+				wI = output.getInt("werknemer_id");
+				iG = output.getInt("ingepland");
+				dT = output.getString("datum");
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Klus k = new Klus(kN, kNm, kO, aI, wI, dT, iG);
+		
+		return k;
 	}
 	
 	

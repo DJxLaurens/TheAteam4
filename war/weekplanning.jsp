@@ -39,29 +39,21 @@
 		<table>
 			<tr>
 				<td>Selecteer klus:</td>
-				<td><select>
-						<%
-				for(Klus k : atd.getAlleKlussen()) {
-					if(k.getWerknemerId() == 0){ %>
-						<option name="leeg" value="selecteer klus">selecteer klus</option>
-						<option name=klus value="<%=k.getKlusNaam()%>"><%=k.getKlusNaam()%></option>
-						<input type="hidden" name="klusNaam" value="<%=k.getKlusNaam()%>"/>
-						<input type="hidden" name="klusID" value="<%=k.getKlusNummer()%>"/>
-						<input type="hidden" name="autoId" value="<%=k.getAutoId()%>"/>
-						<input type="hidden" name="datum" value="<%=k.getDatum() %>"/>
-						<%
-					}
-				}%>
+				<td><select name="klusID">
+						<option value="leeg">Kies een klus</option>
+				
+				<% for(Klus k : atd.getAlleKlussen()) { %>
+			<option value="<%= k.getKlusNummer() %>"><%= k.getKlusNaam() %></option>
+			<% }%>
 				</select></td>
 			</tr>
 			<tr>
 				<td>Selecteer Monteur:</td>
-				<td><select>
+				<td><select name="monteurNaam">
 					<%
 					for(Gebruiker g : atd.getAlleMonteurs()) {
 						if(g.getRol() == 4){
 						%><option value=<%= g.getNaam() %>><%= g.getNaam() %>
-						<input type="hidden" name="monteurNaam" value="<%=g.getNaam()%>"/>
 					<%}
 					}%></option>
 				</select></td>

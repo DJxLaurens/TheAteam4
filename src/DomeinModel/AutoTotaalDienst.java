@@ -389,4 +389,10 @@ public class AutoTotaalDienst {
   	  return week;
   }
     
+    public Klus getKlusById(int id){
+    	Klus k = new KlussenDAO().getKlusById(id);
+    	
+    	return k;
+    }
+    
 }
