@@ -78,7 +78,7 @@ public class KlussenDAOTest {
 	
 	@Test
 	public void saveWeekplanning() throws SQLException{
-		kDao.saveWeekplanning("Velgen poetsen", "Henk", "3", "27-06-2014");
+		kDao.saveWeekplanning("Velgen poetsen", "Henk", 3, "27-06-2014");
 		assertEquals(10, kDao.getWeekplanningByID(10).getId());
 		assertEquals("Velgen poetsen", kDao.getWeekplanningByID(7).getKlusNaam());
 	}
